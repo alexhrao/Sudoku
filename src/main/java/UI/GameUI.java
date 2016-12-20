@@ -18,4 +18,12 @@ public class GameUI extends BorderPane {
     public Board getBoard() {
         return board;
     }
+
+    public ButtonMenu getMenu() {
+        return menu;
+    }
+
+    public InfoMenu getInfo() {
+        return info;
+    }
 }

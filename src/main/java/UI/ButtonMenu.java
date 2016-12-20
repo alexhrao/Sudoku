@@ -5,9 +5,6 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 
-/**
- * Created by alexh on 12/19/2016.
- */
 public class ButtonMenu extends VBox {
     private Button note = new Button("Note");
     private Button clear = new Button("Clear");
@@ -32,7 +29,7 @@ public class ButtonMenu extends VBox {
         return pause;
     }
 
-    public Button hint() {
+    public Button getHint() {
         return hint;
     }
 
@@ -40,13 +37,23 @@ public class ButtonMenu extends VBox {
         return numbers;
     }
 
+    public Button getNumber(int num) {
+        return numbers.getNumber(num);
+    }
+
     private class Numbers extends GridPane {
+        private Button[] buttons = new Button[9];
         public Numbers() {
             for (int r = 0; r < 3; r ++) {
                 for (int c = 0; c < 3; c++) {
-                    this.add(new Button(" " + (1 + c + (r * 3))), c, r);
+                    buttons[c + (r * 3)] = new Button(" " + (1 + c + (r * 3)));
+                    this.add(buttons[c + (r * 3)], c, r);
                 }
             }
+        }
+
+        public Button getNumber(int num) {
+            return buttons[num];
         }
     }
 }

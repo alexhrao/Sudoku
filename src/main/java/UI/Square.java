@@ -10,26 +10,19 @@ public class Square extends StackPane {
     private Notes notes = new Notes();
     private Answer answer = new Answer();
     private Rectangle overlay = new Rectangle(130, 130, Color.rgb(0, 0, 0, 0.0));
+    private int row;
+    private int col;
 
-    public Square(int ans) {
-        this();
+    public Square(int row, int col, int ans) {
+        this(row, col);
         answer.setAnswer(ans);
     }
 
-    public Square() {
+    public Square(int row, int col) {
+        this.row = row;
+        this.col = col;
         overlay.setStroke(Color.BLACK);
-        this.setOnMouseEntered(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent mouseEvent) {
-                overlay.setStroke(Color.RED);
-            }
-        });
-        this.setOnMouseExited(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent mouseEvent) {
-                overlay.setStroke(Color.BLACK);
-            }
-        });
+
         this.getChildren().addAll(answer, notes, overlay);
     }
 
@@ -43,5 +36,18 @@ public class Square extends StackPane {
 
     public Rectangle getOverlay() {
         return overlay;
+    }
+
+    public int getRow() {
+        return this.row;
+    }
+
+    public int getCol() {
+        return this.col;
+    }
+
+    public void clear() {
+        notes.clear();
+        answer.clear();
     }
 }

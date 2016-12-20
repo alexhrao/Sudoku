@@ -8,29 +8,55 @@ import javafx.scene.text.Text;
  * Created by alexh on 12/20/2016.
  */
 public class InfoMenu extends ToolBar {
-    private Text name = new Text("Player 1");
-    private Color color = new Color(1, 0, 0, 1);
+    private Text[] name;
+    private Color[] color;
 
     public InfoMenu() {
-        this.setPrefHeight(50);
-        name.setStroke(color);
-        this.getItems().add(name);
+        this(toArr("Player 1"), toArr(Color.RED));
     }
-
-    public Text getName() {
-        return this.name;
+    public InfoMenu(String name, Color color) {
+        this(toArr(name), toArr(color));
     }
-
-    public void setName(String name) {
-        this.name.setText(name);
-    }
-
-    public Color getColor() {
-        return this.color;
-    }
-
-    public void setColor(Color color) {
+    public InfoMenu(String[] name, Color[] color) {
+        this.name = new Text[name.length];
+        for (int k = 0; k < name.length; k++) {
+            this.name[k] = new Text(name[k]);
+            this.name[k].setStroke(color[k]);
+        }
         this.color = color;
+
+        this.setPrefHeight(50);
+        this.getItems().add(this.name[0]);
+        for (int k = 1; k < this.name.length; k++) {
+            this.getItems().add(new Text("   "));
+            this.getItems().add(this.name[k]);
+        }
+    }
+
+    public Text getName(int player) {
+        return name[player];
+    }
+
+    public void setName(int player, String name) {
+        this.name[player] = new Text(name);
+    }
+
+    public Color getColor(int player) {
+        return color[player];
+    }
+
+    public void setColor(int player, Color color) {
+        this.color[player] = color;
+    }
+
+    private static String[] toArr(String in) {
+        String[] out = {in};
+        return out;
+    }
+
+    private static Color[] toArr(Color in) {
+        Color[] out = {in};
+        return out;
     }
 
 }
