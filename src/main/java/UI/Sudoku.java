@@ -2,12 +2,9 @@ package main.java.UI;
 
 import javafx.application.Application;
 
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.image.Image;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import main.java.generator.Generator;
@@ -40,7 +37,7 @@ public class Sudoku extends Application {
         launch(args);
     }
 
-    public void setup() {
+    private void setup() {
         TextInputDialog td = new TextInputDialog("30");
         td.setHeaderText("How many free spaces would you like?");
         td.setTitle("Difficulty");
@@ -60,33 +57,19 @@ public class Sudoku extends Application {
         control.setSoln(solnBoard);
 
         ButtonMenu menu = ui.getMenu();
-        menu.getNote().setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                control.setNote(!control.getNote());
+        menu.getNote().setOnAction(e -> control.setNote(!control.getNote()));
+        menu.getClear().setOnAction(e -> control.getLastClicked().clear());
+        menu.getPause().setOnAction(e -> {
+            if (control.getPlay()) {
+                menu.getPause().setText("Pause");
+                ui.getInfo().setPause(false);
+            } else {
+                menu.getPause().setText("Play");
+                ui.getInfo().setPause(true);
             }
+            control.setPlay(!control.getPlay());
         });
-        menu.getClear().setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                control.getLastClicked().clear();
-            }
-        });
-        menu.getPause().setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                if (control.getPlay()) {
-                    menu.getPause().setText("Pause");
-                    ui.getInfo().setPause(false);
-                } else {
-                    menu.getPause().setText("Play");
-                    ui.getInfo().setPause(true);
-                }
-                control.setPlay(!control.getPlay());
-            }
-        });
-
-        menu.getHint().setOnAction(n -> {
+        menu.getHint().setOnAction(e -> {
             Square sq = control.getLastClicked();
             sq.clear();
             int r = sq.getRow();
@@ -98,63 +81,57 @@ public class Sudoku extends Application {
         });
         for (int i = 0; i < 9; i++) {
             final int num = i;
-            menu.getNumber(i).setOnAction(new EventHandler<ActionEvent>() {
-                @Override
-                public void handle(ActionEvent actionEvent) {
-                    int r = control.getLastClicked().getRow();
-                    int c = control.getLastClicked().getCol();
-                    if (control.getLastClicked().getAnswer().getVisible()
-                            && (control.getLastClicked().getAnswer().getFill() == Color.BLACK)) {
-                        return;
-                    }
-                    if (control.getNote()) {
-                        control.getLastClicked().getNotes().toggle(num + 1);
+            menu.getNumber(i).setOnAction(e -> {
+                int r = control.getLastClicked().getRow();
+                int c = control.getLastClicked().getCol();
+                if (control.getLastClicked().getAnswer().getVisible()
+                        && (control.getLastClicked().getAnswer().getFill() == Color.BLACK)) {
+                    return;
+                }
+                if (control.getNote()) {
+                    control.getLastClicked().getNotes().toggle(num + 1);
+                } else {
+                    control.getLastClicked().getNotes().clear();
+                    control.getLastClicked().getAnswer().setValue(num + 1);
+                    if ((num + 1) == solnBoard[r][c]) {
+                        menu.disable();
+                        control.getLastClicked().getAnswer().setFill(control.getColor());
                     } else {
-                        control.getLastClicked().getNotes().clear();
-                        control.getLastClicked().getAnswer().setValue(num + 1);
-                        if ((num + 1) == solnBoard[r][c]) {
-                            menu.disable();
-                            control.getLastClicked().getAnswer().setFill(control.getColor());
-                        } else {
-                            menu.enable();
-                            control.getLastClicked().getAnswer().setFill(Color.DARKRED);
-                        }
+                        menu.enable();
+                        control.getLastClicked().getAnswer().setFill(Color.DARKRED);
                     }
                 }
             });
         }
 
         final Board board = ui.getBoard();
-        for (int r = 0; r < 9; r++) {
-            for (int c = 0; c < 9; c++) {
-                final Square sq = board.getSquare(r, c);
-                final int ans = solnBoard[r][c];
-                board.getSquare(r, c).setOnMouseClicked(new EventHandler<MouseEvent>() {
-                    @Override
-                    public void handle(MouseEvent mouseEvent) {
-                        for (int r = 0; r < 9; r++) {
-                            for (int c = 0; c < 9; c++) {
-                                if (board.getSquare(r, c).getOverlay().getStroke() == control.getColor())
+        for (int row = 0; row < 9; row++) {
+            for (int col = 0; col < 9; col++) {
+                final Square sq = board.getSquare(row, col);
+                final int ans = solnBoard[row][col];
+                board.getSquare(row, col).setOnMouseClicked(e -> {
+                    for (int r = 0; r < 9; r++) {
+                        for (int c = 0; c < 9; c++) {
+                            if (board.getSquare(r, c).getOverlay().getStroke() == control.getColor())
                                 board.getSquare(r, c).getOverlay().setStroke(Color.BLACK);
-                                board.getSquare(r, c).getOverlay().setStrokeWidth(1);
-                            }
+                            board.getSquare(r, c).getOverlay().setStrokeWidth(1);
                         }
-                        control.setLastClicked(sq);
-                        if (sq.getAnswer().getVisible() && sq.getAnswer().getValue() == ans) {
-                            ui.getMenu().disable();
-                        } else {
-                            ui.getMenu().enable();
-                        }
-                        sq.getOverlay().setStroke(control.getColor());
-                        if (control.getLastClicked().getAnswer().getVisible()
-                                && (control.getLastClicked().getAnswer().getFill() == Color.BLACK)) {
-                            return;
-                        }
-                        if (sq.getAnswer().getValue() == ans) {
-                            sq.getAnswer().setFill(control.getColor());
-                        } else {
-                            sq.getAnswer().setFill(Color.DARKRED);
-                        }
+                    }
+                    control.setLastClicked(sq);
+                    if (sq.getAnswer().getVisible() && sq.getAnswer().getValue() == ans) {
+                        ui.getMenu().disable();
+                    } else {
+                        ui.getMenu().enable();
+                    }
+                    sq.getOverlay().setStroke(control.getColor());
+                    if (control.getLastClicked().getAnswer().getVisible()
+                            && (control.getLastClicked().getAnswer().getFill() == Color.BLACK)) {
+                        return;
+                    }
+                    if (sq.getAnswer().getValue() == ans) {
+                        sq.getAnswer().setFill(control.getColor());
+                    } else {
+                        sq.getAnswer().setFill(Color.DARKRED);
                     }
                 });
             }

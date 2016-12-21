@@ -4,20 +4,16 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
-public class Answer extends Text {
+class Answer extends Text {
     private boolean isVisible = false;
     private int value = 0;
-    public Answer() {
+    Answer() {
         this.clear();
         this.setFont(new Font(50));
         this.setFill(Color.WHITE);
     }
-    public Answer(int ans) {
-        this();
-        this.setValue(ans);
-    }
 
-    public void setValue(int ans) {
+    void setValue(int ans) {
         if (ans > 9 || ans < 1) {
             this.clear();
             this.setFill(Color.WHITE);
@@ -30,18 +26,18 @@ public class Answer extends Text {
         }
     }
 
-    public int getValue() {
+    int getValue() {
         return value;
     }
 
-    public void clear() {
+    void clear() {
         this.setText("");
         this.setVisible(false);
         isVisible = false;
         value = 0;
     }
 
-    public boolean getVisible() {
+    boolean getVisible() {
         return isVisible;
     }
 }
