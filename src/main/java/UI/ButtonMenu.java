@@ -9,7 +9,7 @@ public class ButtonMenu extends VBox {
     private Button note = new Button("Note");
     private Button clear = new Button("Clear");
     private Button pause = new Button("Pause");
-    private Button hint = new Button("Hint");
+    private Button hint = new Button("Show Answer");
     private Numbers numbers = new Numbers();
 
     public ButtonMenu() {

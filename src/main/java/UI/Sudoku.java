@@ -57,7 +57,14 @@ public class Sudoku extends Application {
         control.setSoln(solnBoard);
 
         ButtonMenu menu = ui.getMenu();
-        menu.getNote().setOnAction(e -> control.setNote(!control.getNote()));
+        menu.getNote().setOnAction(e -> {
+            control.setNote(!control.getNote());
+            if (control.getNote()) {
+                menu.getNote().setText("Answer");
+            } else {
+                menu.getNote().setText("Note");
+            }
+        });
         menu.getClear().setOnAction(e -> control.getLastClicked().clear());
         menu.getPause().setOnAction(e -> {
             if (control.getPlay()) {
@@ -82,13 +89,27 @@ public class Sudoku extends Application {
         for (int i = 0; i < 9; i++) {
             final int num = i;
             menu.getNumber(i).setOnAction(e -> {
+                int numPresent = 0;
+                for (int r = 0; r < 9; r++) {
+                    for (int c = 0; c < 9; c++) {
+                        if (gameBoard[r][c] == (num + 1)) {
+                            numPresent++;
+                        }
+                    }
+                }
+                //TODO: clear boxes when we answer!
+                /*if (numPresent == 9) {
+                    menu.getNumber(num).setDisable(true);
+                }*/
                 int r = control.getLastClicked().getRow();
                 int c = control.getLastClicked().getCol();
                 if (control.getLastClicked().getAnswer().getVisible()
-                        && (control.getLastClicked().getAnswer().getFill() == Color.BLACK)) {
+                        && ((control.getLastClicked().getAnswer().getFill() == Color.BLACK)
+                        || (control.getLastClicked().getAnswer().getFill() == Color.GREEN))) {
                     return;
                 }
                 if (control.getNote()) {
+                    control.getLastClicked().getAnswer().clear();
                     control.getLastClicked().getNotes().toggle(num + 1);
                 } else {
                     control.getLastClicked().getNotes().clear();
@@ -125,7 +146,8 @@ public class Sudoku extends Application {
                     }
                     sq.getOverlay().setStroke(control.getColor());
                     if (control.getLastClicked().getAnswer().getVisible()
-                            && (control.getLastClicked().getAnswer().getFill() == Color.BLACK)) {
+                            && ((control.getLastClicked().getAnswer().getFill() == Color.BLACK)
+                            || (control.getLastClicked().getAnswer().getFill() == Color.GREEN))) {
                         return;
                     }
                     if (sq.getAnswer().getValue() == ans) {
