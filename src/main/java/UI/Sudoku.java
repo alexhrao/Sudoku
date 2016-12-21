@@ -5,6 +5,7 @@ import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
+import javafx.scene.control.TextInputDialog;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
@@ -12,6 +13,8 @@ import javafx.stage.Stage;
 import main.java.generator.Generator;
 import main.java.generator.Grid;
 import main.java.generator.Solver;
+
+import java.util.Optional;
 
 public class Sudoku extends Application {
     private GameUI ui = new GameUI();
@@ -38,8 +41,16 @@ public class Sudoku extends Application {
     }
 
     public void setup() {
-        //TODO: Get user's input about complexity.
+        TextInputDialog td = new TextInputDialog("30");
+        td.setHeaderText("How many free spaces would you like?");
+        td.setTitle("Difficulty");
+        Stage stage = (Stage) td.getDialogPane().getScene().getWindow();
+        stage.getIcons().add(new Image("File:./src/main/java/resources/icon.png"));
+        Optional<String> strSpaces = td.showAndWait();
         int numSpaces = 30;
+        if (strSpaces.isPresent()) {
+            numSpaces = Integer.parseInt(strSpaces.get());
+        }
         Grid game = generator.generate(numSpaces);
         gameBoard = Grid.to(game);
         Solver solver = new Solver();
@@ -135,7 +146,6 @@ public class Sudoku extends Application {
                             ui.getMenu().enable();
                         }
                         sq.getOverlay().setStroke(control.getColor());
-                        sq.getOverlay().setStrokeWidth(2);
                         if (control.getLastClicked().getAnswer().getVisible()
                                 && (control.getLastClicked().getAnswer().getFill() == Color.BLACK)) {
                             return;
