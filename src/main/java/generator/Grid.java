@@ -3,7 +3,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 /**
  * This class represents a Sudoku Grid consisting of a 9x9 matrix containing nine 3x3 sub-grids of
@@ -24,72 +23,67 @@ public class Grid {
    * @return a Grid instance corresponding to the provided two-dimensional int-array
    */
 
-  public static int[][] to(Grid grid) {
-    int[][] out = new int[9][9];
-    for (int r = 0; r < 9; r++) {
-      for (int c = 0; c < 9; c++) {
-        out[r][c] = grid.getCell(r, c).getValue();
-      }
+    public static int[][] to(Grid grid) {
+        int[][] out = new int[9][9];
+        for (int r = 0; r < 9; r++) {
+            for (int c = 0; c < 9; c++) {
+                out[r][c] = grid.getCell(r, c).getValue();
+            }
+        }
+        return out;
     }
-    return out;
-  }
-  public static Grid of(int[][] grid) {
-    verifyGrid(grid);
+    public static Grid of(int[][] grid) {
+        verifyGrid(grid);
 
-    Cell[][] cells = new Cell[9][9];
-    List<List<Cell>> rows = new ArrayList<>();
-    List<List<Cell>> columns = new ArrayList<>();
-    List<List<Cell>> boxes = new ArrayList<>();
+        Cell[][] cells = new Cell[9][9];
+        List<List<Cell>> rows = new ArrayList<>();
+        List<List<Cell>> columns = new ArrayList<>();
+        List<List<Cell>> boxes = new ArrayList<>();
 
-    for (int i = 0; i < 9; i++) {
-      rows.add(new ArrayList<Cell>());
-      columns.add(new ArrayList<Cell>());
-      boxes.add(new ArrayList<Cell>());
-    }
-
-    Cell lastCell = null;
-    for (int row = 0; row < grid.length; row++) {
-      for (int column = 0; column < grid[row].length; column++) {
-        Cell cell = new Cell(grid[row][column]);
-        cells[row][column] = cell;
-
-        rows.get(row).add(cell);
-        columns.get(column).add(cell);
-        boxes.get((row / 3) * 3 + column / 3).add(cell);
-
-        if (lastCell != null) {
-          lastCell.setNextCell(cell);
+        for (int i = 0; i < 9; i++) {
+            rows.add(new ArrayList<Cell>());
+          columns.add(new ArrayList<Cell>());
+          boxes.add(new ArrayList<Cell>());
         }
 
-        lastCell = cell;
-      }
-    }
+        Cell lastCell = null;
+        for (int row = 0; row < grid.length; row++) {
+            for (int column = 0; column < grid[row].length; column++) {
+                Cell cell = new Cell(grid[row][column]);
+                cells[row][column] = cell;
+                rows.get(row).add(cell);
+                columns.get(column).add(cell);
+                boxes.get((row / 3) * 3 + column / 3).add(cell);
+                if (lastCell != null) {
+                    lastCell.setNextCell(cell);
+                }
+                lastCell = cell;
+            }
+        }
 
-    for (int i = 0; i < 9; i++) {
-      List<Cell> row = rows.get(i);
-      for (Cell cell : row) {
-        List<Cell> rowNeighbors = new ArrayList<>(row);
-        rowNeighbors.remove(cell);
+        for (int i = 0; i < 9; i++) {
+            List<Cell> row = rows.get(i);
+            for (Cell cell : row) {
+                List<Cell> rowNeighbors = new ArrayList<>(row);
+                rowNeighbors.remove(cell);
 
-        cell.setRowNeighbors(rowNeighbors);
-      }
+                cell.setRowNeighbors(rowNeighbors);
+            }
 
-      List<Cell> column = columns.get(i);
-      for (Cell cell : column) {
-        List<Cell> columnNeighbors = new ArrayList<>(column);
-        columnNeighbors.remove(cell);
+            List<Cell> column = columns.get(i);
+            for (Cell cell : column) {
+                List<Cell> columnNeighbors = new ArrayList<>(column);
+                columnNeighbors.remove(cell);
+                cell.setColumnNeighbors(columnNeighbors);
+            }
 
-        cell.setColumnNeighbors(columnNeighbors);
-      }
-
-      List<Cell> box = boxes.get(i);
-      for (Cell cell : box) {
-        List<Cell> boxNeighbors = new ArrayList<>(box);
-        boxNeighbors.remove(cell);
-
-        cell.setBoxNeighbors(boxNeighbors);
-      }
-    }
+            List<Cell> box = boxes.get(i);
+            for (Cell cell : box) {
+                List<Cell> boxNeighbors = new ArrayList<>(box);
+                boxNeighbors.remove(cell);
+                cell.setBoxNeighbors(boxNeighbors);
+            }
+        }
 
     return new Grid(cells);
   }

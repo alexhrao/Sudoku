@@ -13,6 +13,8 @@ public class Controller {
     private Color playerColor;
     private boolean isNote;
     private boolean isPlay;
+    private int[][] board;
+    private int[][] soln;
 
     public Controller() {
         this("Player 1", Color.RED);
@@ -71,5 +73,21 @@ public class Controller {
 
     public void setPlay(boolean play) {
         this.isPlay = play;
+    }
+
+    public int[][] getBoard() {
+        return board;
+    }
+
+    public void setBoard(int[][] board) {
+        this.board = board;
+    }
+
+    public int[][] getSoln() {
+        return soln;
+    }
+
+    public void setSoln(int[][] soln) {
+        this.soln = soln;
     }
 }

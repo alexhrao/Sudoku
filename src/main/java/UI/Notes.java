@@ -14,7 +14,7 @@ public class Notes extends GridPane {
         for (int c = 0; c < 3; c++) {
             for (int r = 0; r < 3; r++) {
                 notes[c + (r * 3)] = new Text(" " + Integer.toString(1 + c + (r * 3)) + " ");
-                notes[c + (r * 3)].setFont(new Font(30));
+                notes[c + (r * 3)].setFont(new Font(20));
                 this.add(notes[c + (r * 3)], c, r);
                 this.visibility[c + (r * 3)] = true;
             }

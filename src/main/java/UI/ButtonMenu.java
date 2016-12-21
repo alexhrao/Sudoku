@@ -41,6 +41,20 @@ public class ButtonMenu extends VBox {
         return numbers.getNumber(num);
     }
 
+    public void disable() {
+        note.setDisable(true);
+        clear.setDisable(true);
+        hint.setDisable(true);
+        numbers.disable();
+    }
+
+    public void enable() {
+        note.setDisable(false);
+        clear.setDisable(false);
+        hint.setDisable(false);
+        numbers.enable();
+    }
+
     private class Numbers extends GridPane {
         private Button[] buttons = new Button[9];
         public Numbers() {
@@ -54,6 +68,18 @@ public class ButtonMenu extends VBox {
 
         public Button getNumber(int num) {
             return buttons[num];
+        }
+
+        public void disable() {
+            for (int i = 0; i < 9; i++) {
+                buttons[i].setDisable(true);
+            }
+        }
+
+        public void enable() {
+            for (int i = 0; i < 9; i++) {
+                buttons[i].setDisable(false);
+            }
         }
     }
 }

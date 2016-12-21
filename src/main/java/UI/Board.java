@@ -21,4 +21,13 @@ public class Board extends GridPane {
         return squares[row][col];
     }
 
+    public void populate(int[][] board) {
+        for (int row = 0; row < 9; row++) {
+            for (int col = 0; col < 9; col++) {
+                this.squares[row][col].clear();
+                this.squares[row][col].getAnswer().setValue(board[row][col]);
+            }
+        }
+    }
+
 }

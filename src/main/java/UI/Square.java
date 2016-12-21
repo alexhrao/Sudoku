@@ -9,13 +9,13 @@ import javafx.scene.shape.Rectangle;
 public class Square extends StackPane {
     private Notes notes = new Notes();
     private Answer answer = new Answer();
-    private Rectangle overlay = new Rectangle(130, 130, Color.rgb(0, 0, 0, 0.0));
+    private Rectangle overlay = new Rectangle(85, 85, Color.rgb(0, 0, 0, 0.0));
     private int row;
     private int col;
 
     public Square(int row, int col, int ans) {
         this(row, col);
-        answer.setAnswer(ans);
+        answer.setValue(ans);
     }
 
     public Square(int row, int col) {

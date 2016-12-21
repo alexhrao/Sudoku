@@ -1,5 +1,6 @@
 package main.java.UI;
 
+import javafx.scene.Node;
 import javafx.scene.control.ToolBar;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
@@ -10,6 +11,7 @@ import javafx.scene.text.Text;
 public class InfoMenu extends ToolBar {
     private Text[] name;
     private Color[] color;
+    private Text pause = new Text("Playing...");
 
     public InfoMenu() {
         this(toArr("Player 1"), toArr(Color.RED));
@@ -25,12 +27,14 @@ public class InfoMenu extends ToolBar {
         }
         this.color = color;
 
-        this.setPrefHeight(50);
+        this.setPrefHeight(25);
         this.getItems().add(this.name[0]);
         for (int k = 1; k < this.name.length; k++) {
             this.getItems().add(new Text("   "));
             this.getItems().add(this.name[k]);
         }
+        this.getItems().add(new Text("   "));
+        this.getItems().add(pause);
     }
 
     public Text getName(int player) {
@@ -47,6 +51,19 @@ public class InfoMenu extends ToolBar {
 
     public void setColor(int player, Color color) {
         this.color[player] = color;
+    }
+
+    public void add(Node node) {
+        this.add(new Text("   "));
+        this.add(node);
+    }
+
+    public void setPause(boolean isPause) {
+        if (isPause) {
+            this.pause.setText("Paused...");
+        } else {
+            this.pause.setText("Playing...");
+        }
     }
 
     private static String[] toArr(String in) {
