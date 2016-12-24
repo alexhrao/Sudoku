@@ -1,8 +1,9 @@
-package main.java.UI;
+package main.java.logic;
 
 import javafx.scene.paint.Color;
+import main.java.ui.Square;
 
-class Controller {
+public class Controller {
     private Square lastClicked;
     private String playerName;
     private Color playerColor;
@@ -11,56 +12,56 @@ class Controller {
     private int[][] board;
     private int[][] soln;
 
-    Controller() {
+    public Controller() {
         this("Player 1", Color.RED);
     }
-    Controller(String name, Color color) {
+    public Controller(String name, Color color) {
         this.playerName = name;
         this.playerColor = color;
     }
 
-    Square getLastClicked() {
+    public Square getLastClicked() {
         return lastClicked;
     }
 
 
-    String getName() {
+    public String getName() {
         return playerName;
     }
 
-    Color getColor() {
+    public Color getColor() {
         return playerColor;
     }
 
-    boolean getNote() {
+    public boolean getNote() {
         return isNote;
     }
 
-    boolean getPlay() {
+    public boolean getPlay() {
         return isPlay;
     }
 
-    void setLastClicked(Square square) {
+    public void setLastClicked(Square square) {
         this.lastClicked = square;
     }
 
-    void setNote(boolean note) {
+    public void setNote(boolean note) {
         this.isNote = note;
     }
 
-    void setPlay(boolean play) {
+    public void setPlay(boolean play) {
         this.isPlay = play;
     }
 
-    void setBoard(int[][] board) {
+    public void setBoard(int[][] board) {
         this.board = board;
     }
 
-    int[][] getSoln() {
+    public int[][] getSoln() {
         return soln;
     }
 
-    void setSoln(int[][] soln) {
+    public void setSoln(int[][] soln) {
         this.soln = soln;
     }
 }

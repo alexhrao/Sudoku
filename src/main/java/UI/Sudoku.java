@@ -1,4 +1,4 @@
-package main.java.UI;
+package main.java.ui;
 
 import javafx.application.Application;
 
@@ -10,6 +10,9 @@ import javafx.stage.Stage;
 import main.java.generator.Generator;
 import main.java.generator.Grid;
 import main.java.generator.Solver;
+import main.java.logic.Controller;
+import main.java.networking.SudokuClient;
+import main.java.networking.SudokuServer;
 
 import java.util.Optional;
 
@@ -19,6 +22,8 @@ public class Sudoku extends Application {
     private Generator generator = new Generator();
     private int[][] gameBoard;
     private int[][] solnBoard;
+    private SudokuClient client;
+    private Thread tClient;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -41,8 +46,8 @@ public class Sudoku extends Application {
         TextInputDialog td = new TextInputDialog("30");
         td.setHeaderText("How many free spaces would you like?");
         td.setTitle("Difficulty");
-        Stage stage = (Stage) td.getDialogPane().getScene().getWindow();
-        stage.getIcons().add(new Image("File:./src/main/java/resources/icon.png"));
+        Stage tdStage = (Stage) td.getDialogPane().getScene().getWindow();
+        tdStage.getIcons().add(new Image("File:./src/main/java/resources/icon.png"));
         Optional<String> strSpaces = td.showAndWait();
         int numSpaces = 30;
         if (strSpaces.isPresent()) {
@@ -138,7 +143,20 @@ public class Sudoku extends Application {
                             board.getSquare(r, c).getOverlay().setStrokeWidth(1);
                         }
                     }
+                    if (control.getLastClicked() != null) {
+                        control.getLastClicked().setSelected(false);
+                    }
+                    Square first = control.getLastClicked();
+                    if (first == null) {
+                        client = new SudokuClient(sq);
+                    } else {
+                        client = new SudokuClient(first, sq);
+                    }
                     control.setLastClicked(sq);
+                    tClient = new Thread(client);
+                    tClient.start();
+
+                    sq.setSelected(true);
                     if (sq.getAnswer().getVisible() && sq.getAnswer().getValue() == ans) {
                         ui.getMenu().disable();
                     } else {

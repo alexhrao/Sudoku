@@ -1,4 +1,4 @@
-package main.java.UI;
+package main.java.ui;
 
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
@@ -10,6 +10,7 @@ public class Square extends StackPane {
     private Notes notes = new Notes();
     private Answer answer = new Answer();
     private Rectangle overlay = new Rectangle(85, 85, Color.rgb(0, 0, 0, 0.0));
+    private boolean selected = false;
     private int row;
     private int col;
 
@@ -44,6 +45,14 @@ public class Square extends StackPane {
 
     public int getCol() {
         return this.col;
+    }
+
+    public boolean isSelected() {
+        return selected;
+    }
+
+    public void setSelected(boolean selected) {
+        this.selected = selected;
     }
 
     public void clear() {

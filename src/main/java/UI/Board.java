@@ -1,8 +1,8 @@
-package main.java.UI;
+package main.java.ui;
 
 import javafx.scene.layout.GridPane;
 
-class Board extends GridPane {
+public class Board extends GridPane {
     private Square[][] squares = new Square[9][9];
 
     Board() {

@@ -1,4 +1,4 @@
-package main.java.UI;
+package main.java.ui;
 
 import javafx.geometry.Insets;
 import javafx.scene.layout.GridPane;
@@ -42,5 +42,8 @@ public class Notes extends GridPane {
         for (int k = 1; k < 10; k++) {
             this.hide(k);
         }
+    }
+    public boolean[] getVisibility() {
+        return visibility;
     }
 }

@@ -1,4 +1,4 @@
-package main.java.UI;
+package main.java.ui;
 
 import javafx.scene.Node;
 import javafx.scene.control.ToolBar;
