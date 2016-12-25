@@ -16,17 +16,18 @@ import main.java.networking.SudokuServer;
 
 import java.util.Optional;
 
-public class Sudoku extends Application {
+public class Sudoku extends Application{
     private GameUI ui = new GameUI();
     private Controller control;
     private Generator generator = new Generator();
     private int[][] gameBoard;
     private int[][] solnBoard;
-    private SudokuClient client;
-    private Thread tClient;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+        SudokuServer server = new SudokuServer("localhost", 60000);
+        Thread tServer = new Thread(server);
+        tServer.start();
         control = new Controller();
         setup();
         ui.getBoard().populate(gameBoard);
@@ -147,13 +148,14 @@ public class Sudoku extends Application {
                         control.getLastClicked().setSelected(false);
                     }
                     Square first = control.getLastClicked();
+                    SudokuClient client;
                     if (first == null) {
                         client = new SudokuClient(sq);
                     } else {
                         client = new SudokuClient(first, sq);
                     }
                     control.setLastClicked(sq);
-                    tClient = new Thread(client);
+                    Thread tClient = new Thread(client);
                     tClient.start();
 
                     sq.setSelected(true);
@@ -176,5 +178,17 @@ public class Sudoku extends Application {
                 });
             }
         }
+    }
+
+    public GameUI getUi() {
+        return ui;
+    }
+
+    public Controller getControl() {
+        return control;
+    }
+
+    public int[][] getSolnBoard() {
+        return solnBoard;
     }
 }

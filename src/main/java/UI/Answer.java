@@ -4,7 +4,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
-public class Answer extends Text {
+public class Answer extends Text implements Comparable<Answer> {
     private boolean isVisible = false;
     private int value = 0;
     public Answer() {
@@ -37,7 +37,21 @@ public class Answer extends Text {
         value = 0;
     }
 
-    boolean getVisible() {
+    public boolean getVisible() {
         return isVisible;
+    }
+
+    @Override
+    public int compareTo(Answer answer) {
+        return answer.getValue() - this.getValue();
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        if (object == null || !(object instanceof Answer)) {
+            throw new IllegalArgumentException("Valid variable of class Answer not given!");
+        } else {
+            return ((Answer) object).getValue() == this.getValue();
+        }
     }
 }

@@ -1,5 +1,8 @@
 package main.java.networking;
 
+import javafx.application.Application;
+import main.java.ui.Sudoku;
+
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -10,6 +13,7 @@ import java.net.Socket;
 public class SudokuServer implements Runnable {
     private String host;
     private int port;
+    private volatile boolean isGoing = true;
 
     public SudokuServer() {
         this("localhost", 60000);
@@ -23,7 +27,7 @@ public class SudokuServer implements Runnable {
     public void run() {
 
         try (ServerSocket server = new ServerSocket(port)) {
-            while (true) {
+            while (isGoing) {
                 Thread thread = new SudokuServerThread(server.accept());
                 thread.start();
             }
@@ -33,7 +37,11 @@ public class SudokuServer implements Runnable {
     }
 
     public static void main(String[] args) {
+        // Thread game = new Thread(new Sudoku());
         SudokuServer server = new SudokuServer();
         server.run();
+    }
+    public void setGoing(boolean isGoing) {
+        this.isGoing = isGoing;
     }
 }
