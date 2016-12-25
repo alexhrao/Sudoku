@@ -28,7 +28,7 @@ public class SudokuPrimary extends Application{
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        SudokuServer server = new SudokuServer("localhost", 60000);
+        SudokuServer server = new SudokuServer("localhost", 60000, ui);
         Thread tServer = new Thread(server);
         tServer.start();
         control = new Controller();
