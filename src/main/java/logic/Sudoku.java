@@ -6,10 +6,14 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ColorPicker;
+import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
@@ -36,7 +40,7 @@ public class Sudoku extends Application{
     private SudokuServer server;
     private Stage primaryStage;
     private String playerName;
-    private ColorPicker playerColor;
+    private Color playerColor;
     private String hostName;
     private int hostPort;
     private String serverName;
@@ -47,8 +51,8 @@ public class Sudoku extends Application{
     public void start(Stage primaryStage) throws Exception {
         this.gatherInformation();
         this.primaryStage = primaryStage;
-        control = new Controller(playerName, playerColor.getValue(), serverName, hostName, serverPort, hostPort);
-        ui = new GameUI(playerName, playerColor.getValue(), control);
+        control = new Controller(playerName, playerColor, serverName, hostName, serverPort, hostPort);
+        ui = new GameUI(playerName, playerColor, control);
         server = new SudokuServer(control.getServerHost(), control.getServerPort(), ui);
         Thread tServer = new Thread(server);
         tServer.start();
@@ -67,7 +71,59 @@ public class Sudoku extends Application{
     }
 
     private void gatherInformation() {
-        Stage tdStage;
+        /* Regardless of server set up, we need to capture:
+            * Player Name
+            * Player Color
+            * Number of free spaces.
+            * Server Host & Port
+            * Client Host & Port (Advanced) -> if not given, use any available one (0).
+            *
+           We will need:
+            * A Background image
+            * A grid of the uicontrols.
+         */
+        // Structure:
+        ImageView background = new ImageView("File:./src/main/java/resources/icon.png");
+        GridPane controls = new GridPane();
+        GridPane advanced = new GridPane();
+        GridPane colorPane = new GridPane();
+        TextField name = new TextField("Your Name");
+        ColorPicker colorPicker = new ColorPicker(Color.RED);
+        TextField spaces = new TextField("Number of Spaces");
+        TextField serverHost = new TextField("Server Host");
+        TextField sPort = new TextField("Server Port");
+        TextField clientHost = new TextField("Client Host");
+        TextField clientPort = new TextField("Client Port");
+
+        advanced.add(clientHost, 0, 0);
+        advanced.add(clientPort, 1, 0);
+        colorPane.add(new Text("Pick your color:"), 0, 0);
+        colorPane.add(colorPicker, 1, 0);
+        controls.add(new Text("Please enter your information:"), 0, 0);
+        controls.add(name, 0, 1);
+        controls.add(colorPane, 0, 2);
+        controls.add(spaces, 0, 3);
+        controls.add(serverHost, 0, 4);
+        controls.add(sPort, 1, 4);
+        controls.add(advanced, 0, 5, 2, 2);
+
+        StackPane infoPane = new StackPane(background, controls);
+        Stage infoStage = new Stage();
+        Scene infoScene = new Scene(infoPane);
+        infoStage.setScene(infoScene);
+        infoStage.getIcons().add(background.getImage());
+        infoStage.showAndWait();
+
+        
+        playerName = name.getText();
+        playerColor = colorPicker.getValue();
+        serverName = serverHost.getText();
+        serverPort = Integer.parseInt(sPort.getText());
+        hostName = clientHost.getText();
+        hostPort = Integer.parseInt(clientPort.getText());
+
+
+        /*Stage tdStage;
         TextInputDialog tdName = new TextInputDialog("Player 1");
         tdName.setHeaderText("Enter your name.");
         tdName.setTitle("Name");
@@ -141,7 +197,7 @@ public class Sudoku extends Application{
             serverPort = Integer.parseInt(server.get());
         } else {
             serverPort = 60001;
-        }
+        }*/
     }
     private void setup() {
         TextInputDialog td = new TextInputDialog("30");
