@@ -11,13 +11,11 @@ import javafx.scene.control.TextInputDialog;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javafx.stage.WindowEvent;
 import main.java.generator.Generator;
 import main.java.generator.Grid;
@@ -45,6 +43,7 @@ public class Sudoku extends Application{
     private int hostPort;
     private String serverName;
     private int serverPort;
+    private int numSpaces;
 
 
     @Override
@@ -62,7 +61,8 @@ public class Sudoku extends Application{
         primaryStage.setTitle("Sudoku");
         primaryStage.setScene(game);
         primaryStage.getIcons().add(
-                new Image("File:./src/main/java/resources/icon.png"));
+                new Image("File:./src/main/resources/icon.png"));
+        primaryStage.setResizable(false);
         primaryStage.show();
     }
 
@@ -83,133 +83,80 @@ public class Sudoku extends Application{
             * A grid of the uicontrols.
          */
         // Structure:
-        ImageView background = new ImageView("File:./src/main/java/resources/icon.png");
         GridPane controls = new GridPane();
         GridPane advanced = new GridPane();
         GridPane colorPane = new GridPane();
+        ImageView background = new ImageView(new Image("File:./src/main/resources/icon.png"));
+        // Controls
         TextField name = new TextField("Your Name");
         ColorPicker colorPicker = new ColorPicker(Color.RED);
-        TextField spaces = new TextField("Number of Spaces");
-        TextField serverHost = new TextField("Server Host");
-        TextField sPort = new TextField("Server Port");
-        TextField clientHost = new TextField("Client Host");
-        TextField clientPort = new TextField("Client Port");
+        TextField spaces = new TextField("30");
+        spaces.setMaxWidth(40);
+        GridPane spacesPane = new GridPane();
+        spacesPane.add(new Text("How many spaces?"), 0, 0);
+        spacesPane.add(spaces, 1, 0);
+        TextField serverHost = new TextField("localhost");
+        TextField sPort = new TextField("60000");
+        sPort.setMaxWidth(75);
+        GridPane serverPane = new GridPane();
+        serverPane.add(new Text("Server Host & Port:"), 0, 0);
+        serverPane.add(serverHost, 1, 0);
+        serverPane.add(sPort, 2, 0);
+        TextField clientHost = new TextField("localhost");
+        TextField clientPort = new TextField("60000");
+        clientPort.setMaxWidth(75);
+        advanced.setVisible(false);
 
-        advanced.add(clientHost, 0, 0);
-        advanced.add(clientPort, 1, 0);
+        Button done = new Button("Done");
+        Button showAdvanced = new Button("Show Advanced Options:");
+        showAdvanced.setOnAction(e -> {
+            if (advanced.isVisible()) {
+                showAdvanced.setText("Show Advanced Options:");
+                advanced.setVisible(false);
+            } else {
+                showAdvanced.setText("Hide Advanced Options:");
+                advanced.setVisible(true);
+            }
+        });
+        Button cancel = new Button("Cancel");
+        cancel.setOnAction(e -> System.exit(0));
+
+        advanced.add(new Text("Client Host & Port:"), 0, 1);
+        advanced.add(clientHost, 1, 1);
+        advanced.add(clientPort, 2, 1);
         colorPane.add(new Text("Pick your color:"), 0, 0);
         colorPane.add(colorPicker, 1, 0);
-        controls.add(new Text("Please enter your information:"), 0, 0);
         controls.add(name, 0, 1);
         controls.add(colorPane, 0, 2);
-        controls.add(spaces, 0, 3);
-        controls.add(serverHost, 0, 4);
-        controls.add(sPort, 1, 4);
-        controls.add(advanced, 0, 5, 2, 2);
+        controls.add(spacesPane, 0, 3);
+        controls.add(serverPane, 0, 4, 3, 1);
+        controls.add(showAdvanced, 0, 5, 3, 1);
+        controls.add(advanced, 0, 6, 3, 1);
+        controls.add(done, 0, 7);
+        controls.add(cancel, 1, 7);
 
         StackPane infoPane = new StackPane(background, controls);
         Stage infoStage = new Stage();
         Scene infoScene = new Scene(infoPane);
+        infoScene.setFill(null);
         infoStage.setScene(infoScene);
-        infoStage.getIcons().add(background.getImage());
-        infoStage.showAndWait();
+        infoStage.setResizable(false);
 
-        
+        infoStage.getIcons().add(new Image("File:./src/main/resources/icon.png"));
         playerName = name.getText();
         playerColor = colorPicker.getValue();
+        done.setOnAction(e -> infoStage.close());
+        infoStage.setTitle("Player Information");
+        infoStage.showAndWait();
+
+
+        numSpaces = Integer.parseInt(spaces.getText());
         serverName = serverHost.getText();
         serverPort = Integer.parseInt(sPort.getText());
         hostName = clientHost.getText();
         hostPort = Integer.parseInt(clientPort.getText());
-
-
-        /*Stage tdStage;
-        TextInputDialog tdName = new TextInputDialog("Player 1");
-        tdName.setHeaderText("Enter your name.");
-        tdName.setTitle("Name");
-        tdStage = (Stage) tdName.getDialogPane().getScene().getWindow();
-        tdStage.getIcons().add(new Image("File:./src/main/java/resources/icon.png"));
-        Optional<String> name = tdName.showAndWait();
-        if (name.isPresent()) {
-            playerName = name.get();
-        } else {
-            playerName = "Player 1";
-        }
-
-        playerColor = new ColorPicker(Color.RED);
-        Button done = new Button("Done");
-        Text explain = new Text("Please select a color.");
-        VBox info = new VBox(20, playerColor, explain, done);
-        info.setAlignment(Pos.CENTER);
-        Scene color = new Scene(info);
-        Stage colorStage = new Stage();
-        done.setOnAction(e -> {
-            colorStage.close();
-        });
-        colorStage.setScene(color);
-        colorStage.setTitle("Pick your color");
-        colorStage.getIcons().add(new Image("File:./src/main/java/resources/icon.png"));
-        colorStage.showAndWait();
-
-        TextInputDialog tdHost = new TextInputDialog("localhost");
-        tdHost.setHeaderText("What is the host address?");
-        tdHost.setTitle("Host address");
-        tdStage = (Stage) tdHost.getDialogPane().getScene().getWindow();
-        tdStage.getIcons().add(new Image("File:./src/main/java/resources/icon.png"));
-        Optional<String> host = tdHost.showAndWait();
-        if (host.isPresent()) {
-            hostName = host.get();
-        } else {
-            hostName = "localhost";
-        }
-
-        TextInputDialog tdHostPort = new TextInputDialog("60000");
-        tdHostPort.setHeaderText("What is the host port?");
-        tdHostPort.setTitle("Host Port");
-        tdStage = (Stage) tdHostPort.getDialogPane().getScene().getWindow();
-        tdStage.getIcons().add(new Image("File:./src/main/java/resources/icon.png"));
-        host = tdHostPort.showAndWait();
-        if (host.isPresent()) {
-            hostPort = Integer.parseInt(host.get());
-        } else {
-            hostPort = 60000;
-        }
-
-        TextInputDialog tdServer = new TextInputDialog("localhost");
-        tdHost.setHeaderText("What is the server address?");
-        tdHost.setTitle("Server address");
-        tdStage = (Stage) tdServer.getDialogPane().getScene().getWindow();
-        tdStage.getIcons().add(new Image("File:./src/main/java/resources/icon.png"));
-        Optional<String> server = tdHost.showAndWait();
-        if (server.isPresent()) {
-            serverName = host.get();
-        } else {
-            serverName = "localhost";
-        }
-
-        TextInputDialog tdServerPort = new TextInputDialog("60001");
-        tdServerPort.setHeaderText("What is the server port?");
-        tdServer.setTitle("Server Port");
-        tdStage = (Stage) tdServerPort.getDialogPane().getScene().getWindow();
-        tdStage.getIcons().add(new Image("File:./src/main/java/resources/icon.png"));
-        server = tdServerPort.showAndWait();
-        if (server.isPresent()) {
-            serverPort = Integer.parseInt(server.get());
-        } else {
-            serverPort = 60001;
-        }*/
     }
     private void setup() {
-        TextInputDialog td = new TextInputDialog("30");
-        td.setHeaderText("How many free spaces would you like?");
-        td.setTitle("Difficulty");
-        Stage tdStage = (Stage) td.getDialogPane().getScene().getWindow();
-        tdStage.getIcons().add(new Image("File:./src/main/java/resources/icon.png"));
-        Optional<String> strSpaces = td.showAndWait();
-        int numSpaces = 30;
-        if (strSpaces.isPresent()) {
-            numSpaces = Integer.parseInt(strSpaces.get());
-        }
         Grid game = generator.generate(numSpaces);
         gameBoard = Grid.to(game);
         Solver solver = new Solver();
