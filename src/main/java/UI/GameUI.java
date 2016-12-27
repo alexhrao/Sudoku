@@ -48,11 +48,12 @@ public class GameUI extends BorderPane {
             Thread tClient = new Thread(client);
             tClient.start();
         });
-        Rectangle overlay = new Rectangle(chat.getChatWidth(), 770, Color.color(0, 0, 0, 0));
+        Rectangle overlay = new Rectangle(chat.getChatWidth() + 6, 770, Color.color(0, 0, 0, 0));
         overlay.setStroke(Color.color(0, 0, 0, 1));
-        overlay.setStrokeWidth(2);
+        overlay.setStrokeWidth(4);
         ScrollPane chatScroll = new ScrollPane(chat);
-        chatScroll.setMaxWidth(300);
+        chatScroll.setFitToWidth(true);
+        chatScroll.setMinWidth(300);
         StackPane chatPane = new StackPane(overlay, chatScroll);
         this.setTop(info);
         this.setCenter(center);
