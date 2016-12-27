@@ -32,7 +32,6 @@ public class SudokuSecondary extends Application{
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        //TODO: Add Primary Launcher!
         this.primaryStage = primaryStage;
         control = new Controller("Raeedah Choudhury", Color.BLUE, "localhost", "localhost", 60001, 60000);
         ui = new GameUI("Raeedah Choudhury", Color.BLUE, control);

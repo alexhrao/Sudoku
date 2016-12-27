@@ -202,6 +202,10 @@ public class Sudoku extends Application{
         for (int i = 0; i < 9; i++) {
             final int num = i;
             menu.getNumber(i).setOnAction((ActionEvent e) -> {
+                if (control.getLastClicked().getAnswer().getVisible()
+                        && !control.getLastClicked().getAnswer().getFill().equals(Color.DARKRED)) {
+                    return;
+                }
                 int numPresent = 0;
                 for (int r = 0; r < 9; r++) {
                     for (int c = 0; c < 9; c++) {
@@ -210,22 +214,37 @@ public class Sudoku extends Application{
                         }
                     }
                 }
-                //TODO: clear boxes when we answer!
-                /*if (numPresent == 9) {
+                if (numPresent == 9) {
                     menu.getNumber(num).setDisable(true);
-                }*/
-                int r = control.getLastClicked().getRow();
-                int c = control.getLastClicked().getCol();
-                if (control.getLastClicked().getAnswer().getVisible()
-                        && !control.getLastClicked().getAnswer().getFill().equals(Color.DARKRED)) {
-                    return;
                 }
                 if (control.getNote()) {
                     control.getLastClicked().getAnswer().clear();
                     control.getLastClicked().getNotes().toggle(num + 1);
                 } else {
+                    for (int r = 0; r < 9; r++) {
+                        int c = control.getLastClicked().getCol();
+                        if (!ui.getBoard().getSquare(r, c).getAnswer().getVisible()) {
+                            ui.getBoard().getSquare(r, c).getNotes().hide(num + 1);
+                        }
+                    }
+                    for (int c = 0; c < 9; c++) {
+                        int r = control.getLastClicked().getRow();
+                        if (!ui.getBoard().getSquare(r, c).getAnswer().getVisible()) {
+                            ui.getBoard().getSquare(r, c).getNotes().hide(num + 1);
+                        }
+                    }
+
+                    for (int r = (int) (3 * Math.floor(control.getLastClicked().getRow() / 3)) - 1;
+                         r < 3 * Math.ceil(control.getLastClicked().getRow() / 3) - 1; r++) {
+                        for (int c = (int) (3 * Math.floor(control.getLastClicked().getCol() / 3)) - 1;
+                             c < 3 * Math.ceil(control.getLastClicked().getCol() / 3) - 1; c++) {
+                            ui.getBoard().getSquare(r, c).getNotes().hide(num + 1);
+                        }
+                    }
                     control.getLastClicked().getNotes().clear();
                     control.getLastClicked().getAnswer().setValue(num + 1);
+                    int r = control.getLastClicked().getRow();
+                    int c = control.getLastClicked().getCol();
                     if ((num + 1) == ui.getSolnBoard()[r][c]) {
                         menu.disable();
                         control.getLastClicked().getAnswer().setFill(control.getColor());
