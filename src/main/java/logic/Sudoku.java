@@ -1,39 +1,56 @@
 package main.java.logic;
 
 import javafx.application.Application;
-
+import javafx.event.ActionEvent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.ColorPicker;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.image.Image;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import main.java.generator.Generator;
 import main.java.generator.Grid;
 import main.java.generator.Solver;
-import main.java.logic.Controller;
 import main.java.networking.SudokuClient;
 import main.java.networking.SudokuServer;
 import main.java.ui.Board;
 import main.java.ui.ButtonMenu;
 import main.java.ui.GameUI;
 import main.java.ui.Square;
-
+import java.io.IOException;
 import java.util.Optional;
 
 public class Sudoku extends Application{
-    private GameUI ui = new GameUI();
+    private GameUI ui;
     private Controller control;
     private Generator generator = new Generator();
     private int[][] gameBoard;
     private int[][] solnBoard;
+    private SudokuServer server;
+    private Stage primaryStage;
+    private String playerName;
+    private ColorPicker playerColor;
+    private String hostName;
+    private int hostPort;
+    private String serverName;
+    private int serverPort;
+
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        SudokuServer server = new SudokuServer("localhost", 60000, ui);
+        this.gatherInformation();
+        this.primaryStage = primaryStage;
+        control = new Controller(playerName, playerColor.getValue(), serverName, hostName, serverPort, hostPort);
+        ui = new GameUI(playerName, playerColor.getValue(), control);
+        server = new SudokuServer(control.getServerHost(), control.getServerPort(), ui);
         Thread tServer = new Thread(server);
         tServer.start();
-        control = new Controller();
-        setup();
+        this.setup();
         ui.getBoard().populate(gameBoard);
         Scene game = new Scene(ui, 870, 800);
         primaryStage.setTitle("Sudoku");
@@ -47,6 +64,81 @@ public class Sudoku extends Application{
         launch(args);
     }
 
+    private void gatherInformation() {
+        Stage tdStage;
+        TextInputDialog tdName = new TextInputDialog("Player 1");
+        tdName.setHeaderText("Enter your name.");
+        tdName.setTitle("Name");
+        tdStage = (Stage) tdName.getDialogPane().getScene().getWindow();
+        tdStage.getIcons().add(new Image("File:./src/main/java/resources/icon.png"));
+        Optional<String> name = tdName.showAndWait();
+        if (name.isPresent()) {
+            playerName = name.get();
+        } else {
+            playerName = "Player 1";
+        }
+
+        playerColor = new ColorPicker(Color.RED);
+        Button done = new Button("Done");
+        VBox info = new VBox(20, playerColor, done);
+        Scene color = new Scene(info);
+        Stage colorStage = new Stage();
+        done.setOnAction(e -> {
+            colorStage.close();
+        });
+        colorStage.setScene(color);
+        colorStage.setTitle("Pick your color");
+        colorStage.getIcons().add(new Image("File:./src/main/java/resources/icon.png"));
+        colorStage.showAndWait();
+
+        TextInputDialog tdHost = new TextInputDialog("localhost");
+        tdHost.setHeaderText("What is the host address?");
+        tdHost.setTitle("Host address");
+        tdStage = (Stage) tdHost.getDialogPane().getScene().getWindow();
+        tdStage.getIcons().add(new Image("File:./src/main/java/resources/icon.png"));
+        Optional<String> host = tdHost.showAndWait();
+        if (host.isPresent()) {
+            hostName = host.get();
+        } else {
+            hostName = "localhost";
+        }
+
+        TextInputDialog tdHostPort = new TextInputDialog("60000");
+        tdHostPort.setHeaderText("What is the host port?");
+        tdHostPort.setTitle("Host Port");
+        tdStage = (Stage) tdHostPort.getDialogPane().getScene().getWindow();
+        tdStage.getIcons().add(new Image("File:./src/main/java/resources/icon.png"));
+        host = tdHostPort.showAndWait();
+        if (host.isPresent()) {
+            hostPort = Integer.parseInt(host.get());
+        } else {
+            hostPort = 60000;
+        }
+
+        TextInputDialog tdServer = new TextInputDialog("localhost");
+        tdHost.setHeaderText("What is the server address?");
+        tdHost.setTitle("Server address");
+        tdStage = (Stage) tdServer.getDialogPane().getScene().getWindow();
+        tdStage.getIcons().add(new Image("File:./src/main/java/resources/icon.png"));
+        Optional<String> server = tdHost.showAndWait();
+        if (server.isPresent()) {
+            serverName = host.get();
+        } else {
+            serverName = "localhost";
+        }
+
+        TextInputDialog tdServerPort = new TextInputDialog("60001");
+        tdServerPort.setHeaderText("What is the server port?");
+        tdServer.setTitle("Server Port");
+        tdStage = (Stage) tdServerPort.getDialogPane().getScene().getWindow();
+        tdStage.getIcons().add(new Image("File:./src/main/java/resources/icon.png"));
+        server = tdServerPort.showAndWait();
+        if (server.isPresent()) {
+            serverPort = Integer.parseInt(server.get());
+        } else {
+            serverPort = 60001;
+        }
+    }
     private void setup() {
         TextInputDialog td = new TextInputDialog("30");
         td.setHeaderText("How many free spaces would you like?");
@@ -63,11 +155,20 @@ public class Sudoku extends Application{
         Solver solver = new Solver();
         solver.solve(game);
         solnBoard = Grid.to(game);
+        ui.setSolnBoard(solnBoard);
         control.setBoard(gameBoard);
         control.setSoln(solnBoard);
-
+        ui.getMenu().getSend().setOnAction((ActionEvent e) -> {
+            SudokuClient clientStart;
+            clientStart = new SudokuClient(control.getClientHost(), control.getClientPort(), gameBoard, solnBoard);
+            Thread tClientStart = new Thread(clientStart);
+            tClientStart.start();
+            SudokuClient playerInfo = new SudokuClient(control.getClientHost(), control.getClientPort(), control.getName(), control.getColor(), true);
+            Thread tplayerInfo = new Thread(playerInfo);
+            tplayerInfo.start();
+        });
         ButtonMenu menu = ui.getMenu();
-        menu.getNote().setOnAction(e -> {
+        menu.getNote().setOnAction((ActionEvent e) -> {
             control.setNote(!control.getNote());
             if (control.getNote()) {
                 menu.getNote().setText("Answer");
@@ -75,8 +176,8 @@ public class Sudoku extends Application{
                 menu.getNote().setText("Note");
             }
         });
-        menu.getClear().setOnAction(e -> control.getLastClicked().clear());
-        menu.getPause().setOnAction(e -> {
+        menu.getClear().setOnAction((ActionEvent e) -> control.getLastClicked().clear());
+        menu.getPause().setOnAction((ActionEvent e) -> {
             if (control.getPlay()) {
                 menu.getPause().setText("Pause");
                 ui.getInfo().setPause(false);
@@ -86,19 +187,21 @@ public class Sudoku extends Application{
             }
             control.setPlay(!control.getPlay());
         });
-        menu.getHint().setOnAction(e -> {
+        menu.getHint().setOnAction((ActionEvent e) -> {
             Square sq = control.getLastClicked();
             sq.clear();
             int r = sq.getRow();
             int c = sq.getCol();
-            sq.getAnswer().setValue(control.getSoln()[r][c]);
-            sq.getOverlay().setStroke(Color.GREEN);
+            sq.getAnswer().setValue(ui.getSolnBoard()[r][c]);
             sq.getAnswer().setFill(Color.GREEN);
             menu.disable();
+            SudokuClient client = new SudokuClient(control.getClientHost(), control.getClientPort(), sq);
+            Thread tClient = new Thread(client);
+            tClient.start();
         });
         for (int i = 0; i < 9; i++) {
             final int num = i;
-            menu.getNumber(i).setOnAction(e -> {
+            menu.getNumber(i).setOnAction((ActionEvent e) -> {
                 int numPresent = 0;
                 for (int r = 0; r < 9; r++) {
                     for (int c = 0; c < 9; c++) {
@@ -114,8 +217,7 @@ public class Sudoku extends Application{
                 int r = control.getLastClicked().getRow();
                 int c = control.getLastClicked().getCol();
                 if (control.getLastClicked().getAnswer().getVisible()
-                        && ((control.getLastClicked().getAnswer().getFill() == Color.BLACK)
-                        || (control.getLastClicked().getAnswer().getFill() == Color.GREEN))) {
+                        && !control.getLastClicked().getAnswer().getFill().equals(Color.DARKRED)) {
                     return;
                 }
                 if (control.getNote()) {
@@ -124,7 +226,7 @@ public class Sudoku extends Application{
                 } else {
                     control.getLastClicked().getNotes().clear();
                     control.getLastClicked().getAnswer().setValue(num + 1);
-                    if ((num + 1) == solnBoard[r][c]) {
+                    if ((num + 1) == ui.getSolnBoard()[r][c]) {
                         menu.disable();
                         control.getLastClicked().getAnswer().setFill(control.getColor());
                     } else {
@@ -132,6 +234,10 @@ public class Sudoku extends Application{
                         control.getLastClicked().getAnswer().setFill(Color.DARKRED);
                     }
                 }
+                SudokuClient client;
+                client = new SudokuClient(control.getClientHost(), control.getClientPort(), control.getLastClicked());
+                Thread tClient = new Thread(client);
+                tClient.start();
             });
         }
 
@@ -139,49 +245,55 @@ public class Sudoku extends Application{
         for (int row = 0; row < 9; row++) {
             for (int col = 0; col < 9; col++) {
                 final Square sq = board.getSquare(row, col);
-                final int ans = solnBoard[row][col];
-                board.getSquare(row, col).setOnMouseClicked(e -> {
+                board.getSquare(row, col).setOnMouseClicked((MouseEvent e) -> {
+                    int ans = ui.getSolnBoard()[sq.getRow()][sq.getCol()];
                     for (int r = 0; r < 9; r++) {
                         for (int c = 0; c < 9; c++) {
-                            if (board.getSquare(r, c).getOverlay().getStroke() == control.getColor())
+                            if (board.getSquare(r, c).getOverlay().getStroke().equals(control.getColor())) {
                                 board.getSquare(r, c).getOverlay().setStroke(Color.BLACK);
+                            }
                             board.getSquare(r, c).getOverlay().setStrokeWidth(1);
+                            board.getSquare(r, c).setSelected(false);
                         }
                     }
                     if (control.getLastClicked() != null) {
                         control.getLastClicked().setSelected(false);
                     }
                     Square first = control.getLastClicked();
-                    SudokuClient client;
-                    if (first == null) {
-                        client = new SudokuClient(sq);
-                    } else {
-                        client = new SudokuClient(first, sq);
-                    }
                     control.setLastClicked(sq);
-                    Thread tClient = new Thread(client);
-                    tClient.start();
-
+                    SudokuClient client;
                     sq.setSelected(true);
-                    if (sq.getAnswer().getVisible() && sq.getAnswer().getValue() == ans) {
+                    if (sq.getAnswer().getVisible() && !sq.getAnswer().getFill().equals(Color.DARKRED)) {
                         ui.getMenu().disable();
                     } else {
                         ui.getMenu().enable();
                     }
                     sq.getOverlay().setStroke(control.getColor());
-                    if (control.getLastClicked().getAnswer().getVisible()
-                            && ((control.getLastClicked().getAnswer().getFill() == Color.BLACK)
-                            || (control.getLastClicked().getAnswer().getFill() == Color.GREEN))) {
-                        return;
+                    if (!(sq.getAnswer().getVisible()
+                            && !sq.getAnswer().getFill().equals(Color.DARKRED))) {
+                        if (sq.getAnswer().getValue() == ans) {
+                            sq.getAnswer().setFill(control.getColor());
+                        } else {
+                            sq.getAnswer().setFill(Color.DARKRED);
+                        }
                     }
-                    if (sq.getAnswer().getValue() == ans) {
-                        sq.getAnswer().setFill(control.getColor());
+                    if (first == null) {
+                        client = new SudokuClient(control.getClientHost(), control.getClientPort(), sq);
                     } else {
-                        sq.getAnswer().setFill(Color.DARKRED);
+                        client = new SudokuClient(control.getClientHost(), control.getClientPort(), first, sq);
                     }
+                    Thread tClient = new Thread(client);
+                    tClient.start();
                 });
             }
         }
+        primaryStage.setOnCloseRequest((WindowEvent n) -> {
+            try {
+                server.getServer().close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
     }
 
     public GameUI getUi() {

@@ -131,8 +131,7 @@ public class SudokuSecondary extends Application{
                 int r = control.getLastClicked().getRow();
                 int c = control.getLastClicked().getCol();
                 if (control.getLastClicked().getAnswer().getVisible()
-                        && ((control.getLastClicked().getAnswer().getFill().equals(Color.BLACK))
-                        || (control.getLastClicked().getAnswer().getFill().equals(Color.GREEN)))) {
+                        && !control.getLastClicked().getAnswer().getFill().equals(Color.DARKRED)) {
                     return;
                 }
                 if (control.getNote()) {
@@ -160,8 +159,8 @@ public class SudokuSecondary extends Application{
         for (int row = 0; row < 9; row++) {
             for (int col = 0; col < 9; col++) {
                 final Square sq = board.getSquare(row, col);
-                final int ans = ui.getSolnBoard()[row][col];
                 board.getSquare(row, col).setOnMouseClicked((MouseEvent e) -> {
+                    int ans = ui.getSolnBoard()[sq.getRow()][sq.getCol()];
                     for (int r = 0; r < 9; r++) {
                         for (int c = 0; c < 9; c++) {
                             if (board.getSquare(r, c).getOverlay().getStroke().equals(control.getColor())) {
@@ -185,8 +184,7 @@ public class SudokuSecondary extends Application{
                     }
                     sq.getOverlay().setStroke(control.getColor());
                     if (!(sq.getAnswer().getVisible()
-                            && ((sq.getAnswer().getFill().equals(Color.BLACK))
-                            || (sq.getAnswer().getFill().equals(Color.GREEN))))) {
+                            && !sq.getAnswer().getFill().equals(Color.DARKRED))) {
                         if (sq.getAnswer().getValue() == ans) {
                             sq.getAnswer().setFill(control.getColor());
                         } else {
