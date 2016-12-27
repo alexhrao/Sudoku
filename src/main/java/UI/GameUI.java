@@ -1,10 +1,13 @@
 package main.java.ui;
 
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.StackPane;
+import javafx.geometry.Pos;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
+import javafx.scene.control.TextInputControl;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Text;
 import main.java.logic.Controller;
 
 /**
@@ -16,6 +19,10 @@ public class GameUI extends BorderPane {
     private InfoMenu info;
     private volatile int[][] solnBoard;
     private Controller control;
+    private GridPane chat = new GridPane();
+    private VBox thisPlayer = new VBox(20);
+    private VBox thatPlayer = new VBox(20);
+    private HBox sendChat = new HBox(20);
 
     public GameUI() {
         this("Player 1", Color.RED, new Controller());
@@ -33,9 +40,20 @@ public class GameUI extends BorderPane {
         }
         info = new InfoMenu(playerName, playerColor);
         StackPane center = new StackPane(squares, board);
+        chat.add(thisPlayer, 0, 1);
+        chat.add(thatPlayer, 1, 1);
+        chat.add(new Text("Chat Log:"), 0, 0, 2, 1);
+        sendChat.getChildren().add(new TextField("Hello World!"));
+        sendChat.getChildren().add(new Button("Send!"));
         this.setTop(info);
         this.setCenter(center);
         this.setLeft(menu);
+        this.setRight(chat);
+        this.setBottom(sendChat);
+        this.thisPlayerChat("Hello!");
+        this.thatPlayerChat("Hi!");
+        setAlignment(this.getBottom(),
+                Pos.CENTER);
     }
 
     public Board getBoard() {
@@ -60,5 +78,15 @@ public class GameUI extends BorderPane {
 
     public Controller getControl() {
         return this.control;
+    }
+
+    public void thisPlayerChat(String chat) {
+        thisPlayer.getChildren().add(new Text(chat));
+        thatPlayer.getChildren().add(new Text(""));
+    }
+
+    public void thatPlayerChat(String chat) {
+        thatPlayer.getChildren().add(new Text(chat));
+        thisPlayer.getChildren().add(new Text(""));
     }
 }
