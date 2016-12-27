@@ -1,5 +1,6 @@
 package main.java.networking;
 
+import main.java.logic.Controller;
 import main.java.ui.Square;
 
 import java.io.BufferedOutputStream;
@@ -24,10 +25,29 @@ public class SudokuClient implements Runnable {
     private boolean isPlayer = false;
     private String playerName;
     private Color playerColor;
+    private String message;
     private boolean isReturn = false;
+    private boolean isMessage = false;
+    private Color messageColor;
 
-    public SudokuClient(Square... squares) {
-        this("localhost", 60000, squares);
+    public SudokuClient(Controller control, Square...squares) {
+        this(control.getClientHost(), control.getClientPort(), squares);
+    }
+
+    public SudokuClient(Controller control, int[][] board, int[][] solnBoard) {
+        this(control.getClientHost(), control.getClientPort(), board, solnBoard);
+    }
+
+    public SudokuClient(Controller control, String playerName, Color playerColor) {
+        this(control.getClientHost(), control.getClientPort(), playerName, playerColor);
+    }
+
+    public SudokuClient(Controller control, String playerName, Color playerColor, boolean isReturn) {
+        this(control.getClientHost(), control.getClientPort(), playerName, playerColor, isReturn);
+    }
+
+    public SudokuClient(Controller control, Color color, String message) {
+        this(control.getClientHost(), control.getClientPort(), color, message);
     }
 
     public SudokuClient(String host, int port, int[][] board, int[][] solnBoard) {
@@ -49,7 +69,14 @@ public class SudokuClient implements Runnable {
         this.playerColor = playerColor;
         this.isPlayer = true;
         this.isReturn = isReturn;
+    }
 
+    public SudokuClient(String host, int port, Color color, String message) {
+        this.host = host;
+        this.port = port;
+        this.message = message;
+        this.isMessage = true;
+        this.messageColor = color;
     }
     public SudokuClient(String host, int port, Square... squares) {
         this.host = host;
@@ -64,6 +91,8 @@ public class SudokuClient implements Runnable {
                 translator = new SudokuProtocol(this.board, this.solnBoard);
             } else if (isPlayer) {
                 translator = new SudokuProtocol(this.playerName, this.playerColor, this.isReturn);
+            } else if (isMessage) {
+                translator = new SudokuProtocol(this.message, this.messageColor);
             } else {
                 translator = new SudokuProtocol(this.squares);
             }

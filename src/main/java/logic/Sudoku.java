@@ -2,6 +2,7 @@ package main.java.logic;
 
 import javafx.application.Application;
 import javafx.event.ActionEvent;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ColorPicker;
@@ -11,6 +12,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import main.java.generator.Generator;
@@ -52,7 +54,7 @@ public class Sudoku extends Application{
         tServer.start();
         this.setup();
         ui.getBoard().populate(gameBoard);
-        Scene game = new Scene(ui, 870, 800);
+        Scene game = new Scene(ui, 1175, 825);
         primaryStage.setTitle("Sudoku");
         primaryStage.setScene(game);
         primaryStage.getIcons().add(
@@ -80,7 +82,9 @@ public class Sudoku extends Application{
 
         playerColor = new ColorPicker(Color.RED);
         Button done = new Button("Done");
-        VBox info = new VBox(20, playerColor, done);
+        Text explain = new Text("Please select a color.");
+        VBox info = new VBox(20, playerColor, explain, done);
+        info.setAlignment(Pos.CENTER);
         Scene color = new Scene(info);
         Stage colorStage = new Stage();
         done.setOnAction(e -> {

@@ -66,6 +66,16 @@ public class SudokuServerThread extends Thread {
                         Thread tplayerInfo = new Thread(playerInfo);
                         tplayerInfo.start();
                     }
+                } else if (instruct.isMessage()) {
+                    String message = instruct.getMessage();
+                    double[] color = instruct.getColor();
+                    class AddChat implements Runnable {
+                        @Override
+                        public void run() {
+                            ui.getChat().thatPlayerChat(message, Color.color(color[0], color[1], color[2], color[3]));
+                        }
+                    }
+                    Platform.runLater(new AddChat());
                 } else {
                     for (int i = 0; i < instruct.getData().length; i++) {
                         Data datum = instruct.getData()[i];

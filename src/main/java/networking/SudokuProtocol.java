@@ -35,6 +35,11 @@ public class SudokuProtocol implements Serializable {
         this.data = packet.getData();
     }
 
+    public SudokuProtocol(String message, Color color) {
+        this.packet = new SudokuPacket(message, color);
+        this.data = packet.getData();
+    }
+
     public SudokuPacket getPacket() {
         return packet;
     }

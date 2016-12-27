@@ -17,6 +17,8 @@ public class SudokuPacket implements Serializable {
     private boolean isBoard = false;
     private boolean isPlayer = false;
     private boolean isReturn = false;
+    private boolean isMessage = false;
+    private String message;
 
     public SudokuPacket(String name, Color color, boolean isReturn) {
         this.name = name;
@@ -33,7 +35,22 @@ public class SudokuPacket implements Serializable {
         this.board = board;
         this.solnBoard = solnBoard;
         this.isBoard = true;
+        this.data = null;
     }
+
+    public SudokuPacket(String message) {
+        this(message, Color.BLACK);
+    }
+    public SudokuPacket(String message, Color color) {
+        this.message = message;
+        this.isMessage = true;
+        this.data = null;
+        this.color[0] = color.getRed();
+        this.color[1] = color.getGreen();
+        this.color[2] = color.getBlue();
+        this.color[3] = color.getOpacity();
+    }
+
     public SudokuPacket(Square... squares) {
         this.data = new Data[squares.length];
         for (int s = 0; s < squares.length; s++) {
@@ -106,5 +123,13 @@ public class SudokuPacket implements Serializable {
 
     public boolean isReturn() {
         return this.isReturn;
+    }
+
+    public boolean isMessage() {
+        return this.isMessage;
+    }
+
+    public String getMessage() {
+        return this.message;
     }
 }

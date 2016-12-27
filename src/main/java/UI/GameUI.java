@@ -2,13 +2,15 @@ package main.java.ui;
 
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
-import javafx.scene.control.TextInputControl;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import main.java.logic.Controller;
+import main.java.networking.Chat;
+import main.java.networking.SudokuClient;
 
 /**
  * Created by alexh on 12/19/2016.
@@ -19,10 +21,8 @@ public class GameUI extends BorderPane {
     private InfoMenu info;
     private volatile int[][] solnBoard;
     private Controller control;
-    private GridPane chat = new GridPane();
-    private VBox thisPlayer = new VBox(20);
-    private VBox thatPlayer = new VBox(20);
-    private HBox sendChat = new HBox(20);
+    private Chat chat;
+    private Chatter chatter;
 
     public GameUI() {
         this("Player 1", Color.RED, new Controller());
@@ -40,20 +40,25 @@ public class GameUI extends BorderPane {
         }
         info = new InfoMenu(playerName, playerColor);
         StackPane center = new StackPane(squares, board);
-        chat.add(thisPlayer, 0, 1);
-        chat.add(thatPlayer, 1, 1);
-        chat.add(new Text("Chat Log:"), 0, 0, 2, 1);
-        sendChat.getChildren().add(new TextField("Hello World!"));
-        sendChat.getChildren().add(new Button("Send!"));
+        chat = new Chat(control);
+        chatter = new Chatter();
+        chatter.getSender().setOnAction(e -> {
+            chat.thisPlayerChat(chatter.getChatter().getText());
+            SudokuClient client = new SudokuClient(control.getClientHost(), control.getClientPort(), control.getColor(), chatter.getChatter().getText());
+            Thread tClient = new Thread(client);
+            tClient.start();
+        });
+        Rectangle overlay = new Rectangle(chat.getChatWidth(), 770, Color.color(0, 0, 0, 0));
+        overlay.setStroke(Color.color(0, 0, 0, 1));
+        overlay.setStrokeWidth(2);
+        ScrollPane chatScroll = new ScrollPane(chat);
+        chatScroll.setMaxWidth(300);
+        StackPane chatPane = new StackPane(overlay, chatScroll);
         this.setTop(info);
         this.setCenter(center);
         this.setLeft(menu);
-        this.setRight(chat);
-        this.setBottom(sendChat);
-        this.thisPlayerChat("Hello!");
-        this.thatPlayerChat("Hi!");
-        setAlignment(this.getBottom(),
-                Pos.CENTER);
+        this.setRight(chatPane);
+        this.setBottom(chatter);
     }
 
     public Board getBoard() {
@@ -80,13 +85,11 @@ public class GameUI extends BorderPane {
         return this.control;
     }
 
-    public void thisPlayerChat(String chat) {
-        thisPlayer.getChildren().add(new Text(chat));
-        thatPlayer.getChildren().add(new Text(""));
+    public Chat getChat() {
+        return chat;
     }
 
-    public void thatPlayerChat(String chat) {
-        thatPlayer.getChildren().add(new Text(chat));
-        thisPlayer.getChildren().add(new Text(""));
+    public Chatter getChatter() {
+        return chatter;
     }
 }
