@@ -23,39 +23,39 @@ public class InfoMenu extends ToolBar {
         this.name = new Text[name.length];
         for (int k = 0; k < name.length; k++) {
             this.name[k] = new Text(name[k]);
-            this.name[k].setStroke(color[k]);
+            this.name[k].setFill(color[k]);
         }
         this.color = color;
 
         this.setPrefHeight(25);
+        this.getItems().add(pause);
+        this.getItems().add(new Text("   "));
         this.getItems().add(this.name[0]);
         for (int k = 1; k < this.name.length; k++) {
             this.getItems().add(new Text("   "));
             this.getItems().add(this.name[k]);
         }
-        this.getItems().add(new Text("   "));
-        this.getItems().add(pause);
     }
 
     public Text getName(int player) {
-        return name[player];
+        return name[player - 1];
     }
 
     public void setName(int player, String name) {
-        this.name[player] = new Text(name);
+        this.name[player - 1] = new Text(name);
     }
 
     public Color getColor(int player) {
-        return color[player];
+        return color[player - 1];
     }
 
     public void setColor(int player, Color color) {
-        this.color[player] = color;
+        this.color[player - 1] = color;
     }
 
     public void add(Node node) {
-        this.add(new Text("   "));
-        this.add(node);
+        this.getItems().add(new Text("   "));
+        this.getItems().add(node);
     }
 
     public void setPause(boolean isPause) {

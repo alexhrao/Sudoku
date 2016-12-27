@@ -7,13 +7,15 @@ import java.io.Serializable;
  */
 public class Data implements Serializable {
     private double[] ansColor;
+    private double[] overColor;
     private int ans = 0;
     private int[] notes;
     private int[] posn;
     private boolean selected;
 
-    public Data(double[] ansColor, int ans, int[] notes, int[] posn, boolean selected) {
+    public Data(double[] ansColor, double[] overColor, int ans, int[] notes, int[] posn, boolean selected) {
         this.ansColor = ansColor;
+        this.overColor = overColor;
         this.ans = ans;
         this.notes = notes;
         this.posn = posn;
@@ -38,6 +40,10 @@ public class Data implements Serializable {
 
     public boolean isSelected() {
         return selected;
+    }
+
+    public double[] getOverColor() {
+        return overColor;
     }
 
 

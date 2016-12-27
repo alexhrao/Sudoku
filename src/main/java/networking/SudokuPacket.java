@@ -11,15 +11,28 @@ import java.io.Serializable;
 public class SudokuPacket implements Serializable {
     private Data[] data;
     private String name;
-    private double[] color;
+    private double[] color = new double[4];
+    private int[][] board;
+    private int[][] solnBoard;
+    private boolean isBoard = false;
+    private boolean isPlayer = false;
+    private boolean isReturn = false;
 
-    public SudokuPacket(String name, Color color) {
+    public SudokuPacket(String name, Color color, boolean isReturn) {
         this.name = name;
         this.color[0] = color.getRed();
         this.color[1] = color.getGreen();
         this.color[2] = color.getBlue();
         this.color[3] = color.getOpacity();
+        this.isPlayer = true;
         this.data = null;
+        this.isReturn = isReturn;
+    }
+
+    public SudokuPacket(int[][] board, int[][] solnBoard) {
+        this.board = board;
+        this.solnBoard = solnBoard;
+        this.isBoard = true;
     }
     public SudokuPacket(Square... squares) {
         this.data = new Data[squares.length];
@@ -30,6 +43,11 @@ public class SudokuPacket implements Serializable {
             ansColor[1] = ((Color) sq.getAnswer().getFill()).getGreen();
             ansColor[2] = ((Color) sq.getAnswer().getFill()).getBlue();
             ansColor[3] = ((Color) sq.getAnswer().getFill()).getOpacity();
+            double[] overColor = new double[4];
+            overColor[0] = ((Color) sq.getOverlay().getStroke()).getRed();
+            overColor[1] = ((Color) sq.getOverlay().getStroke()).getGreen();
+            overColor[2] = ((Color) sq.getOverlay().getStroke()).getBlue();
+            overColor[3] = ((Color) sq.getOverlay().getStroke()).getOpacity();
             int ans = sq.getAnswer().getValue();
             int count = 0;
             boolean[] visibility = sq.getNotes().getVisibility();
@@ -50,7 +68,7 @@ public class SudokuPacket implements Serializable {
             posn[0] = sq.getRow();
             posn[1] = sq.getCol();
             boolean selected = sq.isSelected();
-            this.data[s] = new Data(ansColor, ans, notes, posn, selected);
+            this.data[s] = new Data(ansColor, overColor, ans, notes, posn, selected);
         }
     }
 
@@ -60,5 +78,33 @@ public class SudokuPacket implements Serializable {
 
     public Data[] getData() {
         return this.data;
+    }
+
+    public boolean isBoard() {
+        return isBoard;
+    }
+
+    public boolean isPlayer() {
+        return isPlayer;
+    }
+
+    public int[][] getBoard() {
+        return board;
+    }
+
+    public int[][] getSolnBoard() {
+        return solnBoard;
+    }
+
+    public double[] getColor() {
+        return color;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public boolean isReturn() {
+        return this.isReturn;
     }
 }

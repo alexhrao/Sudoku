@@ -1,4 +1,4 @@
-package main.java.ui;
+package main.java.logic;
 
 import javafx.application.Application;
 
@@ -13,6 +13,10 @@ import main.java.generator.Solver;
 import main.java.logic.Controller;
 import main.java.networking.SudokuClient;
 import main.java.networking.SudokuServer;
+import main.java.ui.Board;
+import main.java.ui.ButtonMenu;
+import main.java.ui.GameUI;
+import main.java.ui.Square;
 
 import java.util.Optional;
 
@@ -25,7 +29,7 @@ public class Sudoku extends Application{
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        SudokuServer server = new SudokuServer("localhost", 60000);
+        SudokuServer server = new SudokuServer("localhost", 60000, ui);
         Thread tServer = new Thread(server);
         tServer.start();
         control = new Controller();

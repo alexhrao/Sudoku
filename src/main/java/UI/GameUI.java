@@ -5,6 +5,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import main.java.logic.Controller;
 
 /**
  * Created by alexh on 12/19/2016.
@@ -12,8 +13,15 @@ import javafx.scene.shape.Rectangle;
 public class GameUI extends BorderPane {
     private Board board = new Board();
     private ButtonMenu menu = new ButtonMenu();
-    private InfoMenu info = new InfoMenu();
+    private InfoMenu info;
+    private volatile int[][] solnBoard;
+    private Controller control;
+
     public GameUI() {
+        this("Player 1", Color.RED, new Controller());
+    }
+    public GameUI(String playerName, Color playerColor, Controller control) {
+        this.control = control;
         GridPane squares = new GridPane();
         for (int r = 0; r < 3; r++) {
             for (int c = 0; c < 3; c++) {
@@ -23,6 +31,7 @@ public class GameUI extends BorderPane {
                 squares.add(box, c, r);
             }
         }
+        info = new InfoMenu(playerName, playerColor);
         StackPane center = new StackPane(squares, board);
         this.setTop(info);
         this.setCenter(center);
@@ -39,5 +48,17 @@ public class GameUI extends BorderPane {
 
     public InfoMenu getInfo() {
         return info;
+    }
+
+    public synchronized int[][] getSolnBoard() {
+        return solnBoard;
+    }
+
+    public synchronized void setSolnBoard(int[][] solnBoard) {
+        this.solnBoard = solnBoard;
+    }
+
+    public Controller getControl() {
+        return this.control;
     }
 }

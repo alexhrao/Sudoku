@@ -9,15 +9,23 @@ public class Controller {
     private Color playerColor;
     private boolean isNote;
     private boolean isPlay;
-    private int[][] board;
-    private int[][] soln;
+    private volatile int[][] board;
+    private volatile int[][] soln;
+    private int sPort;
+    private int cPort;
+    private String sHost;
+    private String cHost;
 
     public Controller() {
-        this("Player 1", Color.RED);
+        this("Player 1", Color.RED, "localhost", "localhost", 1025, 1026);
     }
-    public Controller(String name, Color color) {
+    public Controller(String name, Color color, String sHost, String cHost, int sPort, int cPort) {
         this.playerName = name;
         this.playerColor = color;
+        this.sHost = sHost;
+        this.cHost = cHost;
+        this.sPort = sPort;
+        this.cPort = cPort;
     }
 
     public Square getLastClicked() {
@@ -63,5 +71,29 @@ public class Controller {
 
     public void setSoln(int[][] soln) {
         this.soln = soln;
+    }
+
+    public void setServerPort(int port) {
+        this.sPort = port;
+    }
+
+    public int getServerPort() {
+        return this.sPort;
+    }
+
+    public void setClientPort(int port) {
+        this.cPort = port;
+    }
+
+    public int getClientPort() {
+        return this.cPort;
+    }
+
+    public String getServerHost() {
+        return this.sHost;
+    }
+
+    public String getClientHost() {
+        return this.cHost;
     }
 }

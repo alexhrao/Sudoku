@@ -18,6 +18,10 @@ public class Board extends GridPane {
         return squares[row][col];
     }
 
+    public void setSquare(int row, int col, Square square) {
+        this.squares[row][col] = square;
+    }
+
     public void populate(int[][] board) {
         for (int row = 0; row < 9; row++) {
             for (int col = 0; col < 9; col++) {

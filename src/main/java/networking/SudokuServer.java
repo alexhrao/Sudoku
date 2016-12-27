@@ -1,12 +1,10 @@
 package main.java.networking;
 
-import javafx.application.Application;
 import main.java.ui.GameUI;
-import main.java.ui.Sudoku;
 
 import java.io.*;
 import java.net.ServerSocket;
-import java.net.Socket;
+import java.net.SocketException;
 
 /**
  * Created by alexh on 12/21/2016.
@@ -16,20 +14,27 @@ public class SudokuServer implements Runnable {
     private int port;
     private GameUI ui;
     private volatile boolean isGoing = true;
+    private ServerSocket server;
 
     public SudokuServer(String host, int port, GameUI ui) {
         this.host = host;
         this.port = port;
         this.ui = ui;
+
     }
 
     @Override
     public void run() {
 
         try (ServerSocket server = new ServerSocket(port)) {
+            this.server = server;
             while (isGoing) {
-                Thread thread = new SudokuServerThread(server.accept(), ui);
-                thread.start();
+                try {
+                    Thread thread = new SudokuServerThread(server.accept(), ui);
+                    thread.start();
+                } catch (SocketException e) {
+                    return;
+                }
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -41,5 +46,9 @@ public class SudokuServer implements Runnable {
     }
     public void setGoing(boolean isGoing) {
         this.isGoing = isGoing;
+    }
+
+    public ServerSocket getServer() {
+        return server;
     }
 }

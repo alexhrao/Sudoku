@@ -10,11 +10,12 @@ public class ButtonMenu extends VBox {
     private Button clear = new Button("Clear");
     private Button pause = new Button("Pause");
     private Button hint = new Button("Show Answer");
+    private Button send = new Button("Send Game");
     private Numbers numbers = new Numbers();
 
     public ButtonMenu() {
         numbers.setPadding(new Insets(10));
-        this.getChildren().addAll(note, clear, pause, hint, numbers);
+        this.getChildren().addAll(note, clear, pause, hint, numbers, send);
     }
 
     public Button getNote() {
@@ -35,6 +36,10 @@ public class ButtonMenu extends VBox {
 
     public Numbers getNumbers() {
         return numbers;
+    }
+
+    public Button getSend() {
+        return send;
     }
 
     public Button getNumber(int num) {
