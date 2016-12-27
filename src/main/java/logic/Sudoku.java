@@ -27,6 +27,7 @@ import main.java.ui.ButtonMenu;
 import main.java.ui.GameUI;
 import main.java.ui.Square;
 import java.io.IOException;
+import java.io.InterruptedIOException;
 import java.util.Optional;
 
 public class Sudoku extends Application{
@@ -152,10 +153,19 @@ public class Sudoku extends Application{
 
         numSpaces = Integer.parseInt(spaces.getText());
         serverName = serverHost.getText();
-        serverPort = Integer.parseInt(sPort.getText());
+        try {
+            serverPort = Integer.parseInt(sPort.getText());
+        } catch (Exception e) {
+            serverPort = 0;
+        }
         hostName = clientHost.getText();
-        hostPort = Integer.parseInt(clientPort.getText());
+        try {
+            hostPort = Integer.parseInt(clientPort.getText());
+        } catch (Exception e) {
+            hostPort = 0;
+        }
     }
+
     private void setup() {
         Grid game = generator.generate(numSpaces);
         gameBoard = Grid.to(game);
