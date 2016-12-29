@@ -1,8 +1,8 @@
-package main.java.networking;
+package main.java.server.networking;
 
 
 import javafx.scene.paint.Color;
-import main.java.ui.Square;
+import main.java.server.ui.Square;
 import java.io.Serializable;
 
 public class SudokuProtocol implements Serializable {

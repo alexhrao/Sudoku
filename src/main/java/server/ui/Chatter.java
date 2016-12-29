@@ -1,12 +1,10 @@
-package main.java.ui;
+package main.java.server.ui;
 
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 
-/**
- * Created by alexh on 12/27/2016.
- */
+
 public class Chatter extends HBox {
     TextField chatter = new TextField("Hello World!");
     Button sender = new Button("Send");

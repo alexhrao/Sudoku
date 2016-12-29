@@ -1,10 +1,8 @@
-package main.java.networking;
+package main.java.server.networking;
 
 import java.io.Serializable;
 
-/**
- * Created by alexh on 12/22/2016.
- */
+
 public class Data implements Serializable {
     private double[] ansColor;
     private double[] overColor;

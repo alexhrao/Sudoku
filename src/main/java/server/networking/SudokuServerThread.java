@@ -1,10 +1,10 @@
-package main.java.networking;
+package main.java.server.networking;
 
 import javafx.application.Platform;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
-import main.java.ui.GameUI;
-import main.java.ui.Square;
+import main.java.server.ui.GameUI;
+import main.java.server.ui.Square;
 
 import java.io.EOFException;
 import java.io.IOException;
@@ -35,8 +35,7 @@ public class SudokuServerThread extends Thread {
                     int[][] board = instruct.getBoard();
                     int[][] solnBoard = instruct.getSolnBoard();
                     ui.setSolnBoard(solnBoard);
-                    ui.getControl().setSoln(solnBoard);
-                    ui.getControl().setBoard(board);
+                    ui.getControl().setSolnBoard(solnBoard);
                     for (int row = 0; row < 9; row++) {
                         for (int col = 0; col < 9; col++) {
                             ui.getBoard().getSquare(row, col).clear();

@@ -1,4 +1,4 @@
-package main.java.generator;
+package main.java.server.generator;
 import java.util.Optional;
 import java.util.Random;
 

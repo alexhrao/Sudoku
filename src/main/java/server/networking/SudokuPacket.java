@@ -1,13 +1,10 @@
-package main.java.networking;
+package main.java.server.networking;
 
 import javafx.scene.paint.Color;
-import main.java.ui.Square;
+import main.java.server.ui.Square;
 
 import java.io.Serializable;
 
-/**
- * Created by alexh on 12/22/2016.
- */
 public class SudokuPacket implements Serializable {
     private Data[] data;
     private String name;

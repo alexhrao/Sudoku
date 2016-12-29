@@ -1,4 +1,4 @@
-package main.java.generator;
+package main.java.server.generator;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;

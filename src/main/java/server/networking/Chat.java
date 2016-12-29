@@ -1,24 +1,19 @@
-package main.java.networking;
+package main.java.server.networking;
 
-import javafx.geometry.Pos;
-import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
-import main.java.logic.Controller;
+import main.java.server.logic.Controller;
 
-/**
- * Created by alexh on 12/27/2016.
- */
 public class Chat extends GridPane {
+    private final int SPACING = 20;
     private Controller control;
-    private VBox thisPlayer = new VBox(20);
-    private VBox thatPlayer = new VBox(20);
-    private HBox sendChat = new HBox(20);
+    private VBox thisPlayer;
+    private VBox thatPlayer;
+    private HBox sendChat;
     private TextField chatter;
     private int chatWidth;
 
@@ -26,6 +21,9 @@ public class Chat extends GridPane {
         this(300, control);
     }
     public Chat(int chatWidth, Controller control) {
+        thisPlayer = new VBox(SPACING);
+        thatPlayer = new VBox(SPACING);
+        sendChat = new HBox(SPACING);
         this.chatWidth = chatWidth;
         this.control = control;
         this.setMinWidth(chatWidth);

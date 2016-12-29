@@ -1,14 +1,11 @@
-package main.java.networking;
+package main.java.server.networking;
 
-import main.java.ui.GameUI;
+import main.java.server.ui.GameUI;
 
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.SocketException;
 
-/**
- * Created by alexh on 12/21/2016.
- */
 public class SudokuServer implements Runnable {
     private String host;
     private int port;
@@ -50,5 +47,13 @@ public class SudokuServer implements Runnable {
 
     public ServerSocket getServer() {
         return server;
+    }
+
+    public String getHost() {
+        return this.host;
+    }
+
+    public void setHost(String host) {
+        this.host = host;
     }
 }

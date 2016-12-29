@@ -1,7 +1,7 @@
-package main.java.logic;
+package main.java.server.logic;
 
 import javafx.scene.paint.Color;
-import main.java.ui.Square;
+import main.java.server.ui.Square;
 
 public class Controller {
     private Square lastClicked;
@@ -9,23 +9,19 @@ public class Controller {
     private Color playerColor;
     private boolean isNote;
     private boolean isPlay;
-    private volatile int[][] board;
-    private volatile int[][] soln;
-    private int sPort;
-    private int cPort;
-    private String sHost;
-    private String cHost;
+    private volatile int[][] solnBoard;
+    private int serverPort;
+    private int clientPort;
+    private String serverHost;
+    private String clientHost;
 
-    public Controller() {
-        this("Player 1", Color.RED, "localhost", "localhost", 1025, 1026);
-    }
-    public Controller(String name, Color color, String sHost, String cHost, int sPort, int cPort) {
+    public Controller(String name, Color color, String serverHost, String clientHost, int serverPort, int clientPort) {
         this.playerName = name;
         this.playerColor = color;
-        this.sHost = sHost;
-        this.cHost = cHost;
-        this.sPort = sPort;
-        this.cPort = cPort;
+        this.serverHost = serverHost;
+        this.clientHost = clientHost;
+        this.serverPort = serverPort;
+        this.clientPort = clientPort;
     }
 
     public Square getLastClicked() {
@@ -61,39 +57,35 @@ public class Controller {
         this.isPlay = play;
     }
 
-    public void setBoard(int[][] board) {
-        this.board = board;
+    public int[][] getSolnBoard() {
+        return solnBoard;
     }
 
-    public int[][] getSoln() {
-        return soln;
-    }
-
-    public void setSoln(int[][] soln) {
-        this.soln = soln;
+    public void setSolnBoard(int[][] solnBoard) {
+        this.solnBoard = solnBoard;
     }
 
     public void setServerPort(int port) {
-        this.sPort = port;
+        this.serverPort = port;
     }
 
     public int getServerPort() {
-        return this.sPort;
+        return this.serverPort;
     }
 
     public void setClientPort(int port) {
-        this.cPort = port;
+        this.clientPort = port;
     }
 
     public int getClientPort() {
-        return this.cPort;
+        return this.clientPort;
     }
 
     public String getServerHost() {
-        return this.sHost;
+        return this.serverHost;
     }
 
     public String getClientHost() {
-        return this.cHost;
+        return this.clientHost;
     }
 }
