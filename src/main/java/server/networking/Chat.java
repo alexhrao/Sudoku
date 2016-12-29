@@ -17,9 +17,19 @@ public class Chat extends GridPane {
     private TextField chatter;
     private int chatWidth;
 
+    /**
+     *
+     * @param control The controller.
+     */
     public Chat(Controller control) {
         this(300, control);
     }
+
+    /**
+     *
+     * @param chatWidth A preferred int width for the chat box.
+     * @param control The controller.
+     */
     public Chat(int chatWidth, Controller control) {
         thisPlayer = new VBox(SPACING);
         thatPlayer = new VBox(SPACING);
@@ -33,6 +43,10 @@ public class Chat extends GridPane {
         this.add(thatPlayer, 1, 1);
     }
 
+    /**
+     *
+     * @param msg The String message to send.
+     */
     public void thisPlayerChat(String msg) {
         Text message = new Text(msg);
         message.setFill(control.getColor());
@@ -40,6 +54,11 @@ public class Chat extends GridPane {
         thatPlayer.getChildren().add(new Text(""));
     }
 
+    /**
+     *
+     * @param msg The String message to receive.
+     * @param color The Color this message should be.
+     */
     public void thatPlayerChat(String msg, Color color) {
         Text message = new Text(msg);
         message.setFill(color);
@@ -47,22 +66,42 @@ public class Chat extends GridPane {
         thisPlayer.getChildren().add(new Text(""));
     }
 
+    /**
+     *
+     * @param msg The String message to receive.
+     */
     public void thatPlayerChat(String msg) {
         thatPlayerChat(msg, Color.BLACK);
     }
 
+    /**
+     *
+     * @return The VBox chat box for this player.
+     */
     public VBox getThisPlayer() {
         return thisPlayer;
     }
 
+    /**
+     *
+     * @return The VBox chat box for the other player(s).
+     */
     public VBox getThatPlayer() {
         return thatPlayer;
     }
 
+    /**
+     *
+     * @return The HBox Chat builder.
+     */
     public HBox getSendChat() {
         return sendChat;
     }
 
+    /**
+     *
+     * @return The int width for the chat log.
+     */
     public int getChatWidth() {
         return this.chatWidth;
     }

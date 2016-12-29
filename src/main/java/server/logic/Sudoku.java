@@ -41,7 +41,11 @@ public class Sudoku extends Application{
     private int serverPort;
     private int numSpaces;
 
-
+    /**
+     *
+     * @param primaryStage The Primary Window for this application.
+     * @throws Exception Throws this if setup fails.
+     */
     @Override
     public void start(Stage primaryStage) throws Exception {
         this.gatherInformation();
@@ -62,9 +66,14 @@ public class Sudoku extends Application{
         primaryStage.show();
     }
 
+    /**
+     *
+     * @param args Command line arguments.
+     */
     public static void main(String[] args) {
         launch(args);
     }
+
 
     private void gatherInformation() {
         /* Regardless of server set up, we need to capture:
@@ -177,8 +186,8 @@ public class Sudoku extends Application{
         });
         ButtonMenu menu = ui.getMenu();
         menu.getNote().setOnAction((ActionEvent e) -> {
-            control.setNote(!control.getNote());
-            if (control.getNote()) {
+            control.setNote(!control.isNote());
+            if (control.isNote()) {
                 menu.getNote().setText("Answer");
             } else {
                 menu.getNote().setText("Note");
@@ -186,14 +195,14 @@ public class Sudoku extends Application{
         });
         menu.getClear().setOnAction((ActionEvent e) -> control.getLastClicked().clear());
         menu.getPause().setOnAction((ActionEvent e) -> {
-            if (control.getPlay()) {
+            if (control.isPlay()) {
                 menu.getPause().setText("Pause");
                 ui.getInfo().setPause(false);
             } else {
                 menu.getPause().setText("Play");
                 ui.getInfo().setPause(true);
             }
-            control.setPlay(!control.getPlay());
+            control.setPlay(!control.isPlay());
         });
         menu.getHint().setOnAction((ActionEvent e) -> {
             Square sq = control.getLastClicked();
@@ -225,7 +234,7 @@ public class Sudoku extends Application{
                 if (numPresent == 9) {
                     menu.getNumber(num).setDisable(true);
                 }
-                if (control.getNote()) {
+                if (control.isNote()) {
                     control.getLastClicked().getAnswer().clear();
                     control.getLastClicked().getNotes().toggle(num);
                 } else {
@@ -323,14 +332,26 @@ public class Sudoku extends Application{
         });
     }
 
+    /**
+     *
+     * @return The GameUI currently being used.
+     */
     public GameUI getUi() {
         return ui;
     }
 
+    /**
+     *
+     * @return The current Controller.
+     */
     public Controller getControl() {
         return control;
     }
 
+    /**
+     *
+     * @return A double-layered int array representing the solution board.
+     */
     public int[][] getSolnBoard() {
         return solnBoard;
     }
