@@ -83,7 +83,6 @@ public class SudokuServerThread extends Thread {
                         int row = datum.getPosn()[0];
                         int col = datum.getPosn()[1];
                         int[] notes = datum.getNotes();
-                        boolean isSelected = datum.isSelected();
                         double[] ansColor = datum.getAnsColor();
                         double[] overColor = datum.getOverColor();
                         Square square = ui.getBoard().getSquare(row, col);

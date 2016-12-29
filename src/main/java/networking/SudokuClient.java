@@ -13,7 +13,6 @@ import javafx.scene.paint.Color;
  * Created by alexh on 12/21/2016.
  */
 public class SudokuClient implements Runnable {
-    private Socket client;
     private String host;
     private int port;
     private ObjectOutputStream out;

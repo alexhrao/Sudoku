@@ -2,12 +2,10 @@ package main.java.logic;
 
 import javafx.application.Application;
 import javafx.event.ActionEvent;
-import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.TextField;
-import javafx.scene.control.TextInputDialog;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -15,7 +13,6 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 import javafx.stage.WindowEvent;
 import main.java.generator.Generator;
 import main.java.generator.Grid;
@@ -27,8 +24,6 @@ import main.java.ui.ButtonMenu;
 import main.java.ui.GameUI;
 import main.java.ui.Square;
 import java.io.IOException;
-import java.io.InterruptedIOException;
-import java.util.Optional;
 
 public class Sudoku extends Application{
     private GameUI ui;
@@ -144,13 +139,11 @@ public class Sudoku extends Application{
         infoStage.setResizable(false);
 
         infoStage.getIcons().add(new Image("File:./src/main/resources/icon.png"));
-        playerName = name.getText();
-        playerColor = colorPicker.getValue();
         done.setOnAction(e -> infoStage.close());
         infoStage.setTitle("Player Information");
         infoStage.showAndWait();
-
-
+        playerName = name.getText();
+        playerColor = colorPicker.getValue();
         numSpaces = Integer.parseInt(spaces.getText());
         serverName = serverHost.getText();
         try {
