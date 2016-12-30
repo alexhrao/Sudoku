@@ -5,6 +5,7 @@ import main.java.server.ui.GameUI;
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.SocketException;
+import java.util.ArrayList;
 
 public class SudokuServer implements Runnable {
     private String host;
@@ -12,12 +13,12 @@ public class SudokuServer implements Runnable {
     private GameUI ui;
     private volatile boolean isGoing = true;
     private ServerSocket server;
+    private ArrayList<Thread> connections;
 
     public SudokuServer(String host, int port, GameUI ui) {
         this.host = host;
         this.port = port;
         this.ui = ui;
-
     }
 
     @Override
@@ -28,6 +29,7 @@ public class SudokuServer implements Runnable {
             while (isGoing) {
                 try {
                     Thread thread = new SudokuServerThread(server.accept(), ui);
+                    connections.add(thread);
                     thread.start();
                 } catch (SocketException e) {
                     return;

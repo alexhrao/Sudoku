@@ -39,7 +39,7 @@ public class Answer extends Text implements Comparable<Answer> {
     }
 
     /**
-     *
+     * Gets the value of this Answer, as an integer.
      * @return The integer value.
      */
     public int getValue() {
