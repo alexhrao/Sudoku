@@ -25,6 +25,10 @@ import main.java.server.ui.GameUI;
 import main.java.server.ui.Square;
 import java.io.IOException;
 
+/**
+ * This is the entry point of the Sudoku game. It collects starting information from the player, creates the game, and
+ * manages the actual logic used to play the game.
+ */
 public class Sudoku extends Application{
     private GameUI ui;
     private Controller control;
@@ -42,7 +46,7 @@ public class Sudoku extends Application{
     private int numSpaces;
 
     /**
-     *
+     * The start method, overriding the one in Application.
      * @param primaryStage The Primary Window for this application.
      * @throws Exception Throws this if setup fails.
      */
@@ -51,7 +55,7 @@ public class Sudoku extends Application{
         this.gatherInformation();
         this.primaryStage = primaryStage;
         control = new Controller(playerName, playerColor, serverName, hostName, serverPort, hostPort);
-        ui = new GameUI(playerName, playerColor, control);
+        ui = new GameUI(control);
         server = new SudokuServer(control.getServerHost(), control.getServerPort(), ui);
         Thread tServer = new Thread(server);
         tServer.start();
@@ -67,7 +71,7 @@ public class Sudoku extends Application{
     }
 
     /**
-     *
+     * The main method, kept for legacy systems.
      * @param args Command line arguments.
      */
     public static void main(String[] args) {
@@ -333,7 +337,7 @@ public class Sudoku extends Application{
     }
 
     /**
-     *
+     * Gets the current GameUI.
      * @return The GameUI currently being used.
      */
     public GameUI getUi() {
@@ -341,7 +345,7 @@ public class Sudoku extends Application{
     }
 
     /**
-     *
+     * Gets the current controller.
      * @return The current Controller.
      */
     public Controller getControl() {
@@ -349,10 +353,10 @@ public class Sudoku extends Application{
     }
 
     /**
-     *
+     * Gets the current solution board. This uses the controller to do this.
      * @return A double-layered int array representing the solution board.
      */
     public int[][] getSolnBoard() {
-        return solnBoard;
+        return control.getSolnBoard();
     }
 }

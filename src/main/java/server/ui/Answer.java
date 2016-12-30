@@ -4,32 +4,51 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
+/**
+ * The Answer Class represents an Answer in the Sudoku game. This is a number that appears to completely fill
+ * the given square. It can have many colors, though three are reserved: Black is a starting answer, Green is a given
+ * answer, and Dark Red is an incorrect answer. Any other color represents the player who correctly answered that square.
+ */
 public class Answer extends Text implements Comparable<Answer> {
     private boolean isVisible = false;
     private int value = 0;
+
+    /**
+     * Creates a new answer, with default font size of 50 and is not visible.
+     */
     public Answer() {
         this.clear();
         this.setFont(new Font(50));
-        this.setFill(Color.WHITE);
+        this.setFill(Color.BLACK);
+        this.setVisible(false);
     }
 
+    /**
+     * Sets the value of the answer. If it is not between 1 and 9, the value is set to 0 and the Answer is not visible.
+     * @param ans The integer that represents the answer.
+     */
     public void setValue(int ans) {
         if (ans > 9 || ans < 1) {
             this.clear();
-            this.setFill(Color.WHITE);
         } else {
             this.setText(Integer.toString(ans));
             this.setVisible(true);
             isVisible = true;
             value = ans;
-            this.setFill(Color.BLACK);
         }
     }
 
+    /**
+     *
+     * @return The integer value.
+     */
     public int getValue() {
         return value;
     }
 
+    /**
+     * A Convenience method that will set the text to nothing, make it invisible, and reset the value to 0.
+     */
     public void clear() {
         this.setText("");
         this.setVisible(false);
@@ -37,21 +56,36 @@ public class Answer extends Text implements Comparable<Answer> {
         value = 0;
     }
 
+    /**
+     * A method that tells whether or not this Answer is visible.
+     * @return A boolean that tells whether or not the Answer is visible.
+     */
     public boolean getVisible() {
         return isVisible;
     }
 
+    /**
+     * Compares this Answer to a given Answer.
+     * @param answer The answer object we are comparing to.
+     * @return An integer that is positive if this square has a greater value than the given square.
+     */
     @Override
     public int compareTo(Answer answer) {
         return answer.getValue() - this.getValue();
     }
 
+    /**
+     * Two Answers are equivalent if their values are the same and their fills are the same. It will throw an
+     * IllegalArgumentException if the given Object is not of class Answer.
+     * @param object The object we are comparing to.
+     * @return A boolean defining whether or not the two Answers are equivalent.
+     */
     @Override
-    public boolean equals(Object object) {
+    public boolean equals(Object object) throws IllegalArgumentException {
         if (object == null || !(object instanceof Answer)) {
             throw new IllegalArgumentException("Valid variable of class Answer not given!");
         } else {
-            return ((Answer) object).getValue() == this.getValue();
+            return (((Answer) object).getValue() == this.getValue()) && ((Answer) object).getFill().equals(this.getFill());
         }
     }
 }

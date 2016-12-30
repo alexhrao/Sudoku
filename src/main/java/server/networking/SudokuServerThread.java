@@ -76,6 +76,7 @@ public class SudokuServerThread extends Thread {
                     }
                     Platform.runLater(new AddChat());
                 } else {
+                    ui.getControl().getLastClicked().getOverlay().setStroke(ui.getControl().getColor());
                     for (int i = 0; i < instruct.getData().length; i++) {
                         Data datum = instruct.getData()[i];
                         int ans = datum.getAns();

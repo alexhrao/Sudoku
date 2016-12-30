@@ -3,6 +3,10 @@ package main.java.server.logic;
 import javafx.scene.paint.Color;
 import main.java.server.ui.Square;
 
+/**
+ * The Controller class keeps the current state of the game, as seen from the vantage point of this user. It also keeps
+ * track of information pertinent to this player, such as hosts and ports.
+ */
 public class Controller {
     private Square lastClicked;
     private String playerName;
@@ -16,7 +20,7 @@ public class Controller {
     private String clientHost;
 
     /**
-     *
+     * Constructs the controller for the current game, given the following parameters.
      * @param name The String name of this player.
      * @param color The Color of this player.
      * @param serverHost the String hostname of the server.
@@ -34,7 +38,7 @@ public class Controller {
     }
 
     /**
-     *
+     * Gets the last clicked square (as clicked by this user).
      * @return A Square that represents the last clicked square.
      */
     public Square getLastClicked() {
@@ -42,7 +46,7 @@ public class Controller {
     }
 
     /**
-     *
+     * Gets this player's name.
      * @return The String name of this player.
      */
     public String getName() {
@@ -50,7 +54,7 @@ public class Controller {
     }
 
     /**
-     *
+     * Gets this player's color.
      * @return A Color representing color of this player.
      */
     public Color getColor() {
@@ -58,7 +62,7 @@ public class Controller {
     }
 
     /**
-     *
+     * Returns whether or not this user is taking notes.
      * @return A boolean representing whether the player is in a note-taking state.
      */
     public boolean isNote() {
@@ -66,7 +70,7 @@ public class Controller {
     }
 
     /**
-     *
+     * Returns whether or not this player is playing or paused.
      * @return A boolean representing whether the player is playing or paused.
      */
     public boolean isPlay() {
@@ -74,7 +78,7 @@ public class Controller {
     }
 
     /**
-     *
+     * Sets the given square to be the last clicked square.
      * @param square Set the given Square as the last clicked square.
      */
     public void setLastClicked(Square square) {
@@ -82,7 +86,7 @@ public class Controller {
     }
 
     /**
-     *
+     * Sets the note-taking state.
      * @param note Set the note-taking status to the given boolean.
      */
     public void setNote(boolean note) {
@@ -90,7 +94,7 @@ public class Controller {
     }
 
     /**
-     *
+     * Sets the playing state.
      * @param play Set the playing status to the given boolean
      */
     public void setPlay(boolean play) {
@@ -98,23 +102,23 @@ public class Controller {
     }
 
     /**
-     *
+     * Gets the solution board; this is a synchronized method.
      * @return A double-layered int array of the solution board.
      */
-    public int[][] getSolnBoard() {
+    public synchronized int[][] getSolnBoard() {
         return solnBoard;
     }
 
     /**
-     *
+     * Sets the solution board; this is a synchronized method.
      * @param solnBoard A double-layered int array of the solution board.
      */
-    public void setSolnBoard(int[][] solnBoard) {
+    public synchronized void setSolnBoard(int[][] solnBoard) {
         this.solnBoard = solnBoard;
     }
 
     /**
-     *
+     * Sets the server port.
      * @param port The server port, as an int.
      */
     public void setServerPort(int port) {
@@ -122,7 +126,7 @@ public class Controller {
     }
 
     /**
-     *
+     * Gets the server port.
      * @return The server port, as an int.
      */
     public int getServerPort() {
@@ -130,7 +134,7 @@ public class Controller {
     }
 
     /**
-     *
+     * Sets the client port.
      * @param port the client port, as an int.
      */
     public void setClientPort(int port) {
@@ -138,7 +142,7 @@ public class Controller {
     }
 
     /**
-     *
+     * Gets the client port.
      * @return The client port, as an int.
      */
     public int getClientPort() {
@@ -154,10 +158,26 @@ public class Controller {
     }
 
     /**
-     *
+     * Gets the client host, as a String.
      * @return The client host, as a String.
      */
     public String getClientHost() {
         return this.clientHost;
+    }
+
+    /**
+     * Sets the server host.
+     * @param host The server host, as a String.
+     */
+    public void setServerHost(String host) {
+        this.serverHost = host;
+    }
+
+    /**
+     * Sets the client host.
+     * @param host The client host, as a String.
+     */
+    public void setClientHost(String host) {
+        this.clientHost = host;
     }
 }

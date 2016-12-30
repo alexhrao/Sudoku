@@ -8,6 +8,10 @@ import main.java.server.logic.Controller;
 import main.java.server.networking.Chat;
 import main.java.server.networking.SudokuClient;
 
+/**
+ * GameUI is a BorderPane that handles all the UI elements. It also has a few convenience methods. The controller is
+ * synchronized.
+ */
 public class GameUI extends BorderPane {
     private Board board = new Board();
     private ButtonMenu menu = new ButtonMenu();
@@ -16,7 +20,13 @@ public class GameUI extends BorderPane {
     private Chat chat;
     private Chatter chatter;
 
-    public GameUI(String playerName, Color playerColor, Controller control) {
+    /**
+     * Creates a complete visual representation of the current Sudoku Game.
+     * @param control The current controller for this game.
+     */
+    public GameUI(Controller control) {
+        String playerName = control.getName();
+        Color playerColor = control.getColor();
         this.control = control;
         GridPane squares = new GridPane();
         for (int r = 0; r < 3; r++) {
@@ -51,34 +61,68 @@ public class GameUI extends BorderPane {
         this.setBottom(chatter);
     }
 
+    /**
+     * Gets the Board that represents the current game.
+     * @return A Board of this game (FX).
+     */
     public Board getBoard() {
         return board;
     }
 
+    /**
+     * Gets the current ButtonMenu that is positioned on the left.
+     * @return The current ButtonMenu.
+     */
     public ButtonMenu getMenu() {
         return menu;
     }
 
+    /**
+     * Gets the current ToolBar that is positioned on the top.
+     * @return A ToolBar that has all the player information.
+     */
     public InfoMenu getInfo() {
         return info;
     }
 
+    /**
+     * A synchronized method that gets the Solution Board. This is a convenience method that retrieves the Solution from
+     * the controller.
+     * @return A double-layered integer array that represents the solution.
+     */
     public synchronized int[][] getSolnBoard() {
         return this.control.getSolnBoard();
     }
 
+    /**
+     * A synchronized method that sets the solution board. This is a convenience method that sets the Solution board of
+     * the controller.
+     * @param solnBoard A double-layered int array that represents the solution.
+     */
     public synchronized void setSolnBoard(int[][] solnBoard) {
         this.control.setSolnBoard(solnBoard);
     }
 
+    /**
+     * Gets the controller.
+     * @return The current game's controller.
+     */
     public Controller getControl() {
         return this.control;
     }
 
+    /**
+     * Gets the Side Chat positioned on the right side.
+     * @return The current game's chat log.
+     */
     public Chat getChat() {
         return chat;
     }
 
+    /**
+     * Gets the User's chat sender, positioned on the bottom side.
+     * @return The current game's chat sender.
+     */
     public Chatter getChatter() {
         return chatter;
     }
