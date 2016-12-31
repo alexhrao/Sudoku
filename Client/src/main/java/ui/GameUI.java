@@ -6,7 +6,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import main.java.logic.Controller;
 import main.java.networking.Chat;
-import main.java.networking.SudokuClient;
+import main.java.networking.SudokuSender;
 
 /**
  * GameUI is a BorderPane that handles all the UI elements. It also has a few convenience methods. The controller is
@@ -41,8 +41,8 @@ public class GameUI extends BorderPane {
         chatter = new Chatter();
         chatter.getSender().setOnAction(e -> {
             chat.thisPlayerChat(chatter.getChatter().getText());
-            SudokuClient client = new SudokuClient(control, control.getColor(), chatter.getChatter().getText());
-            Thread tClient = new Thread(client);
+            SudokuSender sender = new SudokuSender(control, control.getColor(), chatter.getChatter().getText());
+            Thread tClient = new Thread(sender);
             tClient.start();
         });
         Rectangle overlay = new Rectangle(chat.getChatWidth() + 6, 770, Color.color(0, 0, 0, 0));

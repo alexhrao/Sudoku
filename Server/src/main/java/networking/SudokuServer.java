@@ -6,8 +6,11 @@ import java.io.*;
 import java.net.ServerSocket;
 import java.net.SocketException;
 import java.util.ArrayList;
-//TODO: Add removal of player!
 
+/**
+ * This class is responsible for creating and maintaining the game. It primarily consists of passing sockets to threads,
+ * but does keep a lot of accounting data.
+ */
 public class SudokuServer implements Runnable {
     private String host;
     private int port;
@@ -24,11 +27,19 @@ public class SudokuServer implements Runnable {
     private static final String HOST = "localhost";
     private static final int PORT = 60000;
 
+    /**
+     * Creates the Sudoku Server with the given host and port.
+     * @param host The host (usually unneeded).
+     * @param port The port.
+     */
     public SudokuServer(String host, int port) {
         this.host = host;
         this.port = port;
     }
 
+    /**
+     * Listens for connections, passing these connections to a new thread.
+     */
     @Override
     public synchronized void run() {
         try (ServerSocket server = new ServerSocket(port)) {
@@ -49,68 +60,103 @@ public class SudokuServer implements Runnable {
         }
     }
 
+    /**
+     * Creates the server. No arguments are allowed, but to stop the server, type in the console window.
+     * @param args Not important.
+     */
     public static void main(String[] args) {
         SudokuServer sudokuServer = new SudokuServer(HOST, PORT);
         Thread server = new Thread(sudokuServer);
         server.start();
         try (BufferedReader in = new BufferedReader(new InputStreamReader(System.in))) {
-            String line;
-            while ((line = in.readLine()) != null) {
-                if (line.equals("quit")) {
-                    sudokuServer.getServer().close();
-                    return;
-                }
-            }
+            in.readLine();
+            sudokuServer.getServer().close();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
+    /**
+     * Sets the continuing condition.
+     * @param isGoing If the server should keep listening.
+     */
     public void setGoing(boolean isGoing) {
         this.isGoing = isGoing;
     }
 
+    /**
+     * Gets the serverSocket.
+     * @return The currently utilized serverSocket.
+     */
     public ServerSocket getServer() {
         return server;
     }
 
-    public String getHost() {
-        return this.host;
-    }
-
-    public void setHost(String host) {
-        this.host = host;
-    }
-
+    /**
+     * Gets all the player threads.
+     * @return The connections.
+     */
     public synchronized ArrayList<SudokuServerThread> getThreads() {
         return this.connections;
     }
 
+    /**
+     * Tells if this is the first player.
+     * @return If this is the first player.
+     */
     public synchronized boolean isFirstPlayer() {
         return this.firstPlayer;
     }
 
+    /**
+     * Gets the player names.
+     * @return The player names (in order).
+     */
     public synchronized ArrayList<String> getPlayerName() {
         return this.playerName;
     }
 
+    /**
+     * Gets the player colors.
+     * @return The player colors (in order).
+     */
     public synchronized ArrayList<Color> getPlayerColor() {
         return this.playerColor;
     }
 
+    /**
+     * Gets the board.
+     * @return The board.
+     */
     public synchronized int[][] getBoard() {
         return this.board;
     }
 
+    /**
+     * Gets the solution board.
+     * @return The solution board.
+     */
     public synchronized int[][] getSoln() {
         return this.soln;
     }
 
+    /**
+     * Sets the boards. This will automatically falsify the first player.
+     * @param board The board.
+     * @param soln The solution.
+     */
     public synchronized void setBoards(int[][] board, int[][] soln) {
         this.board = board;
         this.soln = soln;
         this.firstPlayer = false;
     }
 
+    /**
+     * Adds the specified player.
+     * @param name The player name.
+     * @param color The player color.
+     * @return The player's ID.
+     */
     public synchronized int addPlayer(String name, Color color) {
         this.playerName.add(name);
         this.playerColor.add(color);
@@ -118,6 +164,10 @@ public class SudokuServer implements Runnable {
         return this.playerColor.size();
     }
 
+    /**
+     * Removes the specified player.
+     * @param id The player to remove.
+     */
     public synchronized void removePlayer(int id) {
         this.playerName.set(id - 1, null);
         this.playerColor.set(id - 1, null);
@@ -130,16 +180,33 @@ public class SudokuServer implements Runnable {
         this.board = new int[9][9];
         this.soln = this.board;
         this.firstPlayer = true;
+        this.packets.clear();
+        this.playerColor.clear();
+        this.playerId.clear();
+        this.playerName.clear();
+        this.connections.clear();
     }
 
+    /**
+     * Gets the playerID collection.
+     * @return
+     */
     public synchronized ArrayList<Integer> getPlayerId() {
         return this.playerId;
     }
 
+    /**
+     * Adds a packet to the stack.
+     * @param packet The packet to add.
+     */
     public synchronized void addPacket(SudokuPacket packet) {
         this.packets.add(packet);
     }
 
+    /**
+     * Gets all the current SudokuPackets.
+     * @return All Sudoku Packets since the beginning of the game.
+     */
     public synchronized ArrayList<SudokuPacket> getPackets() {
         return this.packets;
     }

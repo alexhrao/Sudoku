@@ -12,7 +12,10 @@ import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.net.SocketException;
 
-//TODO: Add Documentation
+/**
+ * This class is responsible for actually talking with the client. It relays information to and from itself and other
+ * clients.
+ */
 public class SudokuServerThread extends Thread {
     private Socket client;
     private volatile SudokuServer server;
@@ -20,12 +23,20 @@ public class SudokuServerThread extends Thread {
     private volatile boolean isGoing = true;
     private volatile int id;
 
+    /**
+     * Creates a thread with the server and the socket.
+     * @param socket The accepted socket.
+     * @param server The parent server.
+     */
     public SudokuServerThread(Socket socket, SudokuServer server) {
         super("SudokuServerThread");
         this.client = socket;
         this.server = server;
     }
 
+    /**
+     * Talks with the player and relays information to other threads, if need be.
+     */
     @Override
     public synchronized void run() {
         /* If it's data, we'll need to send this to the rest of the threads in threads. As such, just set the data for

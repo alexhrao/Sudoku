@@ -14,7 +14,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
-import main.java.networking.SudokuClient;
+import main.java.networking.SudokuSender;
 import main.java.networking.SudokuListener;
 import main.java.ui.Board;
 import main.java.ui.ButtonMenu;
@@ -51,8 +51,8 @@ public class Sudoku extends Application{
         primaryStage.setResizable(false);
         primaryStage.setOnCloseRequest((WindowEvent n) -> {
             try {
-                SudokuClient client = new SudokuClient(control);
-                (new Thread(client)).start();
+                SudokuSender sender = new SudokuSender(control);
+                (new Thread(sender)).start();
                 player.getClient().close();
             } catch (IOException | NullPointerException e) {
             }
@@ -165,8 +165,8 @@ public class Sudoku extends Application{
         });
         menu.getClear().setOnAction((ActionEvent e) -> {
             control.getLastClicked().clear();
-            SudokuClient client = new SudokuClient(control, control.getLastClicked());
-            (new Thread(client)).start();
+            SudokuSender sender = new SudokuSender(control, control.getLastClicked());
+            (new Thread(sender)).start();
         });
         menu.getPause().setOnAction((ActionEvent e) -> {
             if (control.isPlay()) {
@@ -186,8 +186,8 @@ public class Sudoku extends Application{
             sq.getAnswer().setValue(ui.getSolnBoard()[r][c]);
             sq.getAnswer().setFill(Color.GREEN);
             menu.disable();
-            SudokuClient client = new SudokuClient(control, sq);
-            Thread tClient = new Thread(client);
+            SudokuSender sender = new SudokuSender(control, sq);
+            Thread tClient = new Thread(sender);
             tClient.start();
         });
         for (int i = 0; i < 9; i++) {
@@ -244,9 +244,8 @@ public class Sudoku extends Application{
                         control.getLastClicked().getAnswer().setFill(Color.DARKRED);
                     }
                 }
-                SudokuClient client;
-                client = new SudokuClient(control, control.getLastClicked());
-                Thread tClient = new Thread(client);
+                SudokuSender sender = new SudokuSender(control, control.getLastClicked());
+                Thread tClient = new Thread(sender);
                 tClient.start();
             });
         }
@@ -271,7 +270,7 @@ public class Sudoku extends Application{
                     }
                     Square first = control.getLastClicked();
                     control.setLastClicked(sq);
-                    SudokuClient client;
+                    SudokuSender sender;
                     sq.setSelected(true);
                     if (sq.getAnswer().getVisible() && !sq.getAnswer().getFill().equals(Color.DARKRED)) {
                         ui.getMenu().disable();
@@ -288,11 +287,11 @@ public class Sudoku extends Application{
                         }
                     }
                     if (first == null) {
-                        client = new SudokuClient(control, sq);
+                        sender = new SudokuSender(control, sq);
                     } else {
-                        client = new SudokuClient(control, first, sq);
+                        sender = new SudokuSender(control, first, sq);
                     }
-                    Thread tClient = new Thread(client);
+                    Thread tClient = new Thread(sender);
                     tClient.start();
                 });
             }

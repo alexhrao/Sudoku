@@ -14,11 +14,10 @@ public class Chat extends GridPane {
     private VBox thisPlayer;
     private VBox thatPlayer;
     private HBox sendChat;
-    private TextField chatter;
     private int chatWidth;
 
     /**
-     *
+     * Creates a new Chat with default width of 300.
      * @param control The controller.
      */
     public Chat(Controller control) {
@@ -26,7 +25,7 @@ public class Chat extends GridPane {
     }
 
     /**
-     *
+     * Creates a new Chat with the given width.
      * @param chatWidth A preferred int width for the chat box.
      * @param control The controller.
      */
@@ -46,7 +45,7 @@ public class Chat extends GridPane {
     }
 
     /**
-     *
+     * Chats as this player.
      * @param msg The String message to send.
      */
     public void thisPlayerChat(String msg) {
@@ -57,7 +56,7 @@ public class Chat extends GridPane {
     }
 
     /**
-     *
+     * Chats as a different player.
      * @param msg The String message to receive.
      * @param color The Color this message should be.
      */
@@ -66,38 +65,6 @@ public class Chat extends GridPane {
         message.setFill(color);
         thatPlayer.getChildren().add(message);
         thisPlayer.getChildren().add(new Text(""));
-    }
-
-    /**
-     *
-     * @param msg The String message to receive.
-     */
-    public void thatPlayerChat(String msg) {
-        thatPlayerChat(msg, Color.BLACK);
-    }
-
-    /**
-     *
-     * @return The VBox chat box for this player.
-     */
-    public VBox getThisPlayer() {
-        return thisPlayer;
-    }
-
-    /**
-     *
-     * @return The VBox chat box for the other player(s).
-     */
-    public VBox getThatPlayer() {
-        return thatPlayer;
-    }
-
-    /**
-     *
-     * @return The HBox Chat builder.
-     */
-    public HBox getSendChat() {
-        return sendChat;
     }
 
     /**
