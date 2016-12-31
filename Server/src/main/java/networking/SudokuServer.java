@@ -46,7 +46,6 @@ public class SudokuServer implements Runnable {
             this.server = server;
             while (isGoing) {
                 try {
-
                     SudokuServerThread thread = new SudokuServerThread(server.accept(), this);
                     thread.start();
                 } catch (SocketException e) {
@@ -65,12 +64,15 @@ public class SudokuServer implements Runnable {
      * @param args Not important.
      */
     public static void main(String[] args) {
+        System.out.println("Starting Server...");
         SudokuServer sudokuServer = new SudokuServer(HOST, PORT);
         Thread server = new Thread(sudokuServer);
+        System.out.println("Server Started. Listening for connections...");
         server.start();
         try (BufferedReader in = new BufferedReader(new InputStreamReader(System.in))) {
             in.readLine();
             sudokuServer.getServer().close();
+            System.out.println("Server has stopped.");
         } catch (IOException e) {
             e.printStackTrace();
         }

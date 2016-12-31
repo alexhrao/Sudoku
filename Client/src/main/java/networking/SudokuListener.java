@@ -58,6 +58,7 @@ public class SudokuListener extends Thread implements Runnable {
                 SudokuPacket packet = new SudokuPacket(ui.getControl().getSpaces(), ui.getControl().getName(),
                         ui.getControl().getColor());
                 out.writeObject(packet);
+                out.flush();
                 SudokuPacket instruct;
                 while ((instruct = (SudokuPacket) in.readObject()) != null) {
                     if (instruct.isBoard()) {

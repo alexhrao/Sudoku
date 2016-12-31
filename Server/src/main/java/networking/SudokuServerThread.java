@@ -93,6 +93,7 @@ public class SudokuServerThread extends Thread {
                         int[][] solnBoard = Grid.to(soln);
                         server.setBoards(board, solnBoard);
                     }
+                    System.out.println("Connected to player " + instruct.getName());
                     id = server.addPlayer(instruct.getName(), Color.color(instruct.getColor()[0], instruct.getColor()[1], instruct.getColor()[2], instruct.getColor()[3]));
                     SudokuPacket response = new SudokuPacket(server.getBoard(), server.getSoln());
                     out.writeObject(response);
@@ -139,7 +140,11 @@ public class SudokuServerThread extends Thread {
                 }
             }
         } catch (SocketException e) {
-            server.getThreads().remove(this);
+            try {
+                server.getThreads().remove(this);
+            } catch (Exception n) {
+                e.printStackTrace();
+            }
             SudokuPacket instruct = new SudokuPacket(this.id);
             server.addPacket(instruct);
             for (SudokuServerThread thread : server.getThreads()) {
