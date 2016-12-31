@@ -25,6 +25,16 @@ public class SudokuProtocol implements Serializable {
         this.data = packet.getData();
     }
 
+    public SudokuProtocol(int[][] board, int[][] solnBoard, String name, Color color) {
+        this.packet = new SudokuPacket(board, solnBoard, name, color);
+        this.data = packet.getData();
+    }
+
+    public SudokuProtocol(int spaces, String name, Color color) {
+        this.packet = new SudokuPacket(spaces, name, color);
+        this.data = packet.getData();
+    }
+
     public SudokuProtocol(Data... data) {
         this.data = data;
         this.packet = new SudokuPacket(data);
@@ -35,8 +45,8 @@ public class SudokuProtocol implements Serializable {
         this.data = packet.getData();
     }
 
-    public SudokuProtocol(String message, Color color) {
-        this.packet = new SudokuPacket(message, color);
+    public SudokuProtocol(String message, Color color, int id, boolean isMessage) {
+        this.packet = new SudokuPacket(message, color, id, isMessage);
         this.data = packet.getData();
     }
 

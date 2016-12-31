@@ -11,12 +11,15 @@ public class InfoMenu extends ToolBar {
     private Text pause = new Text("Playing...");
 
     public InfoMenu() {
-        this(toArr("Player 1"), toArr(Color.RED));
+        this.setPrefHeight(25);
+        this.getItems().add(pause);
     }
+
     public InfoMenu(String name, Color color) {
         this(toArr(name), toArr(color));
     }
     public InfoMenu(String[] name, Color[] color) {
+        this();
         this.name = new Text[name.length];
         for (int k = 0; k < name.length; k++) {
             this.name[k] = new Text(name[k]);
@@ -24,8 +27,6 @@ public class InfoMenu extends ToolBar {
         }
         this.color = color;
 
-        this.setPrefHeight(25);
-        this.getItems().add(pause);
         this.getItems().add(new Text("   "));
         this.getItems().add(this.name[0]);
         for (int k = 1; k < this.name.length; k++) {

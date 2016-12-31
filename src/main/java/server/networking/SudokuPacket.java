@@ -11,13 +11,15 @@ public class SudokuPacket implements Serializable {
     private double[] color = new double[4];
     private int[][] board;
     private int[][] solnBoard;
+    private int spaces;
     private boolean isBoard = false;
     private boolean isPlayer = false;
-    private boolean isReturn = false;
     private boolean isMessage = false;
+    private boolean isStarter = false;
     private String message;
+    private int id;
 
-    public SudokuPacket(String name, Color color, boolean isReturn) {
+    public SudokuPacket(String name, Color color, boolean isPlayer) {
         this.name = name;
         this.color[0] = color.getRed();
         this.color[1] = color.getGreen();
@@ -25,7 +27,33 @@ public class SudokuPacket implements Serializable {
         this.color[3] = color.getOpacity();
         this.isPlayer = true;
         this.data = null;
-        this.isReturn = isReturn;
+    }
+
+    public SudokuPacket(String name, Color color, int id) {
+        this(name, color, true);
+        this.id = id;
+    }
+
+    public SudokuPacket(int[][] board, int[][] solnBoard, String name, Color color) {
+        this.name = name;
+        this.color[0] = color.getRed();
+        this.color[1] = color.getGreen();
+        this.color[2] = color.getBlue();
+        this.color[3] = color.getOpacity();
+        this.board = board;
+        this.solnBoard = solnBoard;
+        this.isBoard = true;
+        this.isPlayer = true;
+    }
+
+    public SudokuPacket(int spaces, String name, Color color) {
+        this.name = name;
+        this.color[0] = color.getRed();
+        this.color[1] = color.getGreen();
+        this.color[2] = color.getBlue();
+        this.color[3] = color.getOpacity();
+        this.spaces = spaces;
+        this.isStarter = true;
     }
 
     public SudokuPacket(int[][] board, int[][] solnBoard) {
@@ -35,12 +63,10 @@ public class SudokuPacket implements Serializable {
         this.data = null;
     }
 
-    public SudokuPacket(String message) {
-        this(message, Color.BLACK);
-    }
-    public SudokuPacket(String message, Color color) {
+    public SudokuPacket(String message, Color color, int id, boolean isMessage) {
         this.message = message;
         this.isMessage = true;
+        this.id = id;
         this.data = null;
         this.color[0] = color.getRed();
         this.color[1] = color.getGreen();
@@ -118,15 +144,23 @@ public class SudokuPacket implements Serializable {
         return name;
     }
 
-    public boolean isReturn() {
-        return this.isReturn;
-    }
-
     public boolean isMessage() {
         return this.isMessage;
     }
 
     public String getMessage() {
         return this.message;
+    }
+
+    public boolean isStarter() {
+        return this.isStarter;
+    }
+
+    public int getSpaces() {
+        return this.spaces;
+    }
+
+    public int getId() {
+        return this.id;
     }
 }

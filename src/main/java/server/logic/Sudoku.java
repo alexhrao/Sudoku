@@ -18,6 +18,7 @@ import main.java.server.generator.Generator;
 import main.java.server.generator.Grid;
 import main.java.server.generator.Solver;
 import main.java.server.networking.SudokuClient;
+import main.java.server.networking.SudokuListener;
 import main.java.server.networking.SudokuServer;
 import main.java.server.ui.Board;
 import main.java.server.ui.ButtonMenu;
@@ -36,7 +37,7 @@ public class Sudoku extends Application{
     private int[][] gameBoard;
     private int[][] solnBoard;
     private SudokuServer server;
-    private Stage primaryStage;
+    private SudokuListener player;
     private String playerName;
     private Color playerColor;
     private String hostName;
@@ -53,20 +54,26 @@ public class Sudoku extends Application{
     @Override
     public void start(Stage primaryStage) throws Exception {
         this.gatherInformation();
-        this.primaryStage = primaryStage;
         control = new Controller(playerName, playerColor, serverName, hostName, serverPort, hostPort);
+        control.setSpaces(this.numSpaces);
         ui = new GameUI(control);
-        server = new SudokuServer(control.getServerHost(), control.getServerPort(), ui);
-        Thread tServer = new Thread(server);
-        tServer.start();
         this.setup();
-        ui.getBoard().populate(gameBoard);
+        player = new SudokuListener(ui);
+//        server = new SudokuServer(control.getServerHost(), control.getServerPort(), ui);
+        player.start();
         Scene game = new Scene(ui, 1175, 825);
         primaryStage.setTitle("Sudoku");
         primaryStage.setScene(game);
         primaryStage.getIcons().add(
                 new Image("File:./src/main/resources/icon.png"));
         primaryStage.setResizable(false);
+        primaryStage.setOnCloseRequest(n -> {
+            try {
+                player.getClient().close();
+            } catch (IOException e) {
+                System.out.println("Done!");
+            }
+        });
         primaryStage.show();
     }
 
@@ -173,21 +180,13 @@ public class Sudoku extends Application{
     }
 
     private void setup() {
-        Grid game = generator.generate(numSpaces);
+        Grid game = generator.generate(6);
         gameBoard = Grid.to(game);
         Solver solver = new Solver();
         solver.solve(game);
         solnBoard = Grid.to(game);
         ui.setSolnBoard(solnBoard);
-        ui.getMenu().getSend().setOnAction((ActionEvent e) -> {
-            SudokuClient clientStart;
-            clientStart = new SudokuClient(control.getClientHost(), control.getClientPort(), gameBoard, solnBoard);
-            Thread tClientStart = new Thread(clientStart);
-            tClientStart.start();
-            SudokuClient playerInfo = new SudokuClient(control.getClientHost(), control.getClientPort(), control.getName(), control.getColor(), true);
-            Thread tplayerInfo = new Thread(playerInfo);
-            tplayerInfo.start();
-        });
+        ui.getMenu().getSend().setVisible(false);
         ButtonMenu menu = ui.getMenu();
         menu.getNote().setOnAction((ActionEvent e) -> {
             control.setNote(!control.isNote());
@@ -197,7 +196,11 @@ public class Sudoku extends Application{
                 menu.getNote().setText("Note");
             }
         });
-        menu.getClear().setOnAction((ActionEvent e) -> control.getLastClicked().clear());
+        menu.getClear().setOnAction((ActionEvent e) -> {
+            control.getLastClicked().clear();
+            SudokuClient client = new SudokuClient(control, control.getLastClicked());
+            (new Thread(client)).start();
+        });
         menu.getPause().setOnAction((ActionEvent e) -> {
             if (control.isPlay()) {
                 menu.getPause().setText("Pause");
@@ -216,7 +219,7 @@ public class Sudoku extends Application{
             sq.getAnswer().setValue(ui.getSolnBoard()[r][c]);
             sq.getAnswer().setFill(Color.GREEN);
             menu.disable();
-            SudokuClient client = new SudokuClient(control.getClientHost(), control.getClientPort(), sq);
+            SudokuClient client = new SudokuClient(control, sq);
             Thread tClient = new Thread(client);
             tClient.start();
         });
@@ -275,7 +278,7 @@ public class Sudoku extends Application{
                     }
                 }
                 SudokuClient client;
-                client = new SudokuClient(control.getClientHost(), control.getClientPort(), control.getLastClicked());
+                client = new SudokuClient(control, control.getLastClicked());
                 Thread tClient = new Thread(client);
                 tClient.start();
             });
@@ -318,22 +321,15 @@ public class Sudoku extends Application{
                         }
                     }
                     if (first == null) {
-                        client = new SudokuClient(control.getClientHost(), control.getClientPort(), sq);
+                        client = new SudokuClient(control, sq);
                     } else {
-                        client = new SudokuClient(control.getClientHost(), control.getClientPort(), first, sq);
+                        client = new SudokuClient(control, first, sq);
                     }
                     Thread tClient = new Thread(client);
                     tClient.start();
                 });
             }
         }
-        primaryStage.setOnCloseRequest((WindowEvent n) -> {
-            try {
-                server.getServer().close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        });
     }
 
     /**

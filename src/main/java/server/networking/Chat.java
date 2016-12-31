@@ -32,7 +32,9 @@ public class Chat extends GridPane {
      */
     public Chat(int chatWidth, Controller control) {
         thisPlayer = new VBox(SPACING);
+        thisPlayer.setMinWidth(chatWidth / 2);
         thatPlayer = new VBox(SPACING);
+        thatPlayer.setMinWidth(chatWidth / 2);
         sendChat = new HBox(SPACING);
         this.chatWidth = chatWidth;
         this.control = control;

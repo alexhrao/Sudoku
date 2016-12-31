@@ -11,7 +11,6 @@ import javafx.scene.paint.Color;
 public class SudokuClient implements Runnable {
     private String host;
     private int port;
-    private ObjectOutputStream out;
     private SudokuProtocol translator;
     private Square[] squares;
     private int[][] board;
@@ -20,32 +19,39 @@ public class SudokuClient implements Runnable {
     private boolean isPlayer = false;
     private String playerName;
     private Color playerColor;
+    private int id;
     private String message;
     private boolean isReturn = false;
     private boolean isMessage = false;
     private Color messageColor;
+    private Controller control;
 
     public SudokuClient(Controller control, Square...squares) {
         this(control.getClientHost(), control.getClientPort(), squares);
+        this.control = control;
     }
 
     public SudokuClient(Controller control, int[][] board, int[][] solnBoard) {
         this(control.getClientHost(), control.getClientPort(), board, solnBoard);
+        this.control = control;
     }
 
     public SudokuClient(Controller control, String playerName, Color playerColor) {
         this(control.getClientHost(), control.getClientPort(), playerName, playerColor);
+        this.control = control;
     }
 
     public SudokuClient(Controller control, String playerName, Color playerColor, boolean isReturn) {
         this(control.getClientHost(), control.getClientPort(), playerName, playerColor, isReturn);
+        this.control = control;
     }
 
     public SudokuClient(Controller control, Color color, String message) {
         this(control.getClientHost(), control.getClientPort(), color, message);
+        this.control = control;
     }
 
-    public SudokuClient(String host, int port, int[][] board, int[][] solnBoard) {
+    private SudokuClient(String host, int port, int[][] board, int[][] solnBoard) {
         this.host = host;
         this.port = port;
         this.board = board;
@@ -53,11 +59,11 @@ public class SudokuClient implements Runnable {
         this.isBoard = true;
     }
 
-    public SudokuClient(String host, int port, String playerName, Color playerColor) {
+    private SudokuClient(String host, int port, String playerName, Color playerColor) {
         this(host, port, playerName, playerColor, false);
     }
 
-    public SudokuClient(String host, int port, String playerName, Color playerColor, boolean isReturn) {
+    private SudokuClient(String host, int port, String playerName, Color playerColor, boolean isReturn) {
         this.host = host;
         this.port = port;
         this.playerName = playerName;
@@ -66,14 +72,14 @@ public class SudokuClient implements Runnable {
         this.isReturn = isReturn;
     }
 
-    public SudokuClient(String host, int port, Color color, String message) {
+    private SudokuClient(String host, int port, Color color, String message) {
         this.host = host;
         this.port = port;
         this.message = message;
         this.isMessage = true;
         this.messageColor = color;
     }
-    public SudokuClient(String host, int port, Square... squares) {
+    private SudokuClient(String host, int port, Square... squares) {
         this.host = host;
         this.port = port;
         this.squares = squares;
@@ -87,7 +93,7 @@ public class SudokuClient implements Runnable {
             } else if (isPlayer) {
                 translator = new SudokuProtocol(this.playerName, this.playerColor, this.isReturn);
             } else if (isMessage) {
-                translator = new SudokuProtocol(this.message, this.messageColor);
+                translator = new SudokuProtocol(this.message, this.messageColor, control.getId(), true);
             } else {
                 translator = new SudokuProtocol(this.squares);
             }

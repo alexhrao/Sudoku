@@ -18,6 +18,8 @@ public class Controller {
     private int clientPort;
     private String serverHost;
     private String clientHost;
+    private int spaces;
+    private int id;
 
     /**
      * Constructs the controller for the current game, given the following parameters.
@@ -179,5 +181,21 @@ public class Controller {
      */
     public void setClientHost(String host) {
         this.clientHost = host;
+    }
+
+    public void setSpaces(int spaces) {
+        this.spaces = spaces;
+    }
+
+    public int getSpaces() {
+        return this.spaces;
+    }
+
+    public int getId() {
+        return this.id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

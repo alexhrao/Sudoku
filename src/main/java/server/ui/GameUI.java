@@ -25,8 +25,6 @@ public class GameUI extends BorderPane {
      * @param control The current controller for this game.
      */
     public GameUI(Controller control) {
-        String playerName = control.getName();
-        Color playerColor = control.getColor();
         this.control = control;
         GridPane squares = new GridPane();
         for (int r = 0; r < 3; r++) {
@@ -37,13 +35,13 @@ public class GameUI extends BorderPane {
                 squares.add(box, c, r);
             }
         }
-        info = new InfoMenu(playerName, playerColor);
+        info = new InfoMenu();
         StackPane center = new StackPane(squares, board);
         chat = new Chat(control);
         chatter = new Chatter();
         chatter.getSender().setOnAction(e -> {
             chat.thisPlayerChat(chatter.getChatter().getText());
-            SudokuClient client = new SudokuClient(control.getClientHost(), control.getClientPort(), control.getColor(), chatter.getChatter().getText());
+            SudokuClient client = new SudokuClient(control, control.getColor(), chatter.getChatter().getText());
             Thread tClient = new Thread(client);
             tClient.start();
         });
