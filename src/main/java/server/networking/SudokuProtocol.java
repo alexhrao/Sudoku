@@ -5,6 +5,7 @@ import javafx.scene.paint.Color;
 import main.java.server.ui.Square;
 import java.io.Serializable;
 
+//TODO: Refactor Protocol (get rid of this class!)
 public class SudokuProtocol implements Serializable {
 
     private SudokuPacket packet;

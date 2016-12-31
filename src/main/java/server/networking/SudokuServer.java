@@ -7,6 +7,9 @@ import java.io.*;
 import java.net.ServerSocket;
 import java.net.SocketException;
 import java.util.ArrayList;
+//TODO: Add Packageinfo file.
+//TODO: Separate Modules (Server / Client)
+//TODO: Add removal of player!
 
 public class SudokuServer implements Runnable {
     private String host;

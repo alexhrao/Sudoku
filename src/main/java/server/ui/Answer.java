@@ -88,4 +88,14 @@ public class Answer extends Text implements Comparable<Answer> {
             return (((Answer) object).getValue() == this.getValue()) && ((Answer) object).getFill().equals(this.getFill());
         }
     }
+
+    /**
+     * Returns the hash of this answer, defined as a combination of the answer and it's color components.
+     * @return The hash code.
+     */
+    @Override
+    public int hashCode() {
+        return (31 * this.value) + (int) (((Color) this.getFill()).getRed() * 23) +
+                (int) (((Color) this.getFill()).getGreen() * 7) + (int) (((Color) this.getFill()).getBlue() * 19);
+    }
 }

@@ -16,6 +16,8 @@ import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.util.ArrayList;
 
+//TODO: Add Documentation
+//TODO: Remove SOP
 /**
  * Created by alexh on 12/24/2016.
  */

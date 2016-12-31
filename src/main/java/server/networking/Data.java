@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 
 public class Data implements Serializable {
+    //TODO: Make this an inner class of SudokuPacket
     private double[] ansColor;
     private double[] overColor;
     private int ans = 0;

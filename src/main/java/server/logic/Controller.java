@@ -15,9 +15,7 @@ public class Controller {
     private boolean isPlay;
     private volatile int[][] solnBoard;
     private int serverPort;
-    private int clientPort;
     private String serverHost;
-    private String clientHost;
     private int spaces;
     private int id;
 
@@ -26,17 +24,13 @@ public class Controller {
      * @param name The String name of this player.
      * @param color The Color of this player.
      * @param serverHost the String hostname of the server.
-     * @param clientHost The String hostname of the client.
      * @param serverPort The int port of the server.
-     * @param clientPort The int port of the client.
      */
-    public Controller(String name, Color color, String serverHost, String clientHost, int serverPort, int clientPort) {
+    public Controller(String name, Color color, String serverHost, int serverPort) {
         this.playerName = name;
         this.playerColor = color;
         this.serverHost = serverHost;
-        this.clientHost = clientHost;
         this.serverPort = serverPort;
-        this.clientPort = clientPort;
     }
 
     /**
@@ -136,22 +130,6 @@ public class Controller {
     }
 
     /**
-     * Sets the client port.
-     * @param port the client port, as an int.
-     */
-    public void setClientPort(int port) {
-        this.clientPort = port;
-    }
-
-    /**
-     * Gets the client port.
-     * @return The client port, as an int.
-     */
-    public int getClientPort() {
-        return this.clientPort;
-    }
-
-    /**
      *
      * @return The server host, as a String.
      */
@@ -160,27 +138,11 @@ public class Controller {
     }
 
     /**
-     * Gets the client host, as a String.
-     * @return The client host, as a String.
-     */
-    public String getClientHost() {
-        return this.clientHost;
-    }
-
-    /**
      * Sets the server host.
      * @param host The server host, as a String.
      */
     public void setServerHost(String host) {
         this.serverHost = host;
-    }
-
-    /**
-     * Sets the client host.
-     * @param host The client host, as a String.
-     */
-    public void setClientHost(String host) {
-        this.clientHost = host;
     }
 
     public void setSpaces(int spaces) {

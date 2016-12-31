@@ -9,6 +9,7 @@ import java.net.Socket;
 import javafx.scene.paint.Color;
 
 public class SudokuClient implements Runnable {
+    //TODO: Refactor this class.
     private String host;
     private int port;
     private SudokuProtocol translator;
@@ -27,27 +28,27 @@ public class SudokuClient implements Runnable {
     private Controller control;
 
     public SudokuClient(Controller control, Square...squares) {
-        this(control.getClientHost(), control.getClientPort(), squares);
+        this(control.getServerHost(), control.getServerPort(), squares);
         this.control = control;
     }
 
     public SudokuClient(Controller control, int[][] board, int[][] solnBoard) {
-        this(control.getClientHost(), control.getClientPort(), board, solnBoard);
+        this(control.getServerHost(), control.getServerPort(), board, solnBoard);
         this.control = control;
     }
 
     public SudokuClient(Controller control, String playerName, Color playerColor) {
-        this(control.getClientHost(), control.getClientPort(), playerName, playerColor);
+        this(control.getServerHost(), control.getServerPort(), playerName, playerColor);
         this.control = control;
     }
 
     public SudokuClient(Controller control, String playerName, Color playerColor, boolean isReturn) {
-        this(control.getClientHost(), control.getClientPort(), playerName, playerColor, isReturn);
+        this(control.getServerHost(), control.getServerPort(), playerName, playerColor, isReturn);
         this.control = control;
     }
 
     public SudokuClient(Controller control, Color color, String message) {
-        this(control.getClientHost(), control.getClientPort(), color, message);
+        this(control.getServerHost(), control.getServerPort(), color, message);
         this.control = control;
     }
 

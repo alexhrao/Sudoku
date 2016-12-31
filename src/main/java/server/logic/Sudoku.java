@@ -19,7 +19,6 @@ import main.java.server.generator.Grid;
 import main.java.server.generator.Solver;
 import main.java.server.networking.SudokuClient;
 import main.java.server.networking.SudokuListener;
-import main.java.server.networking.SudokuServer;
 import main.java.server.ui.Board;
 import main.java.server.ui.ButtonMenu;
 import main.java.server.ui.GameUI;
@@ -35,13 +34,9 @@ public class Sudoku extends Application{
     private Controller control;
     private Generator generator = new Generator();
     private int[][] gameBoard;
-    private int[][] solnBoard;
-    private SudokuServer server;
     private SudokuListener player;
     private String playerName;
     private Color playerColor;
-    private String hostName;
-    private int hostPort;
     private String serverName;
     private int serverPort;
     private int numSpaces;
@@ -54,20 +49,19 @@ public class Sudoku extends Application{
     @Override
     public void start(Stage primaryStage) throws Exception {
         this.gatherInformation();
-        control = new Controller(playerName, playerColor, serverName, hostName, serverPort, hostPort);
+        control = new Controller(playerName, playerColor, serverName, serverPort);
         control.setSpaces(this.numSpaces);
         ui = new GameUI(control);
         this.setup();
         player = new SudokuListener(ui);
-//        server = new SudokuServer(control.getServerHost(), control.getServerPort(), ui);
         player.start();
-        Scene game = new Scene(ui, 1175, 825);
+        Scene game = new Scene(ui);
         primaryStage.setTitle("Sudoku");
         primaryStage.setScene(game);
         primaryStage.getIcons().add(
                 new Image("File:./src/main/resources/icon.png"));
         primaryStage.setResizable(false);
-        primaryStage.setOnCloseRequest(n -> {
+        primaryStage.setOnCloseRequest((WindowEvent n) -> {
             try {
                 player.getClient().close();
             } catch (IOException e) {
@@ -100,7 +94,6 @@ public class Sudoku extends Application{
          */
         // Structure:
         GridPane controls = new GridPane();
-        GridPane advanced = new GridPane();
         GridPane colorPane = new GridPane();
         ImageView background = new ImageView(new Image("File:./src/main/resources/icon.png"));
         // Controls
@@ -111,16 +104,13 @@ public class Sudoku extends Application{
         GridPane spacesPane = new GridPane();
         spacesPane.add(new Text("How many spaces?"), 0, 0);
         spacesPane.add(spaces, 1, 0);
-        TextField serverHost = new TextField("localhost");
+        TextField sHost = new TextField("localhost");
         TextField sPort = new TextField("60000");
         sPort.setMaxWidth(75);
-        GridPane serverPane = new GridPane();
-        serverPane.add(new Text("Server Host & Port:"), 0, 0);
-        serverPane.add(serverHost, 1, 0);
-        serverPane.add(sPort, 2, 0);
-        TextField clientHost = new TextField("localhost");
-        TextField clientPort = new TextField("60000");
-        clientPort.setMaxWidth(75);
+        GridPane advanced = new GridPane();
+        advanced.add(new Text("Server Host & Port:"), 0, 0);
+        advanced.add(sHost, 1, 0);
+        advanced.add(sPort, 2, 0);
         advanced.setVisible(false);
 
         Button done = new Button("Done");
@@ -137,19 +127,15 @@ public class Sudoku extends Application{
         Button cancel = new Button("Cancel");
         cancel.setOnAction(e -> System.exit(0));
 
-        advanced.add(new Text("Client Host & Port:"), 0, 1);
-        advanced.add(clientHost, 1, 1);
-        advanced.add(clientPort, 2, 1);
         colorPane.add(new Text("Pick your color:"), 0, 0);
         colorPane.add(colorPicker, 1, 0);
         controls.add(name, 0, 1);
         controls.add(colorPane, 0, 2);
         controls.add(spacesPane, 0, 3);
-        controls.add(serverPane, 0, 4, 3, 1);
-        controls.add(showAdvanced, 0, 5, 3, 1);
-        controls.add(advanced, 0, 6, 3, 1);
-        controls.add(done, 0, 7);
-        controls.add(cancel, 1, 7);
+        controls.add(showAdvanced, 0, 4, 3, 1);
+        controls.add(advanced, 0, 5, 3, 1);
+        controls.add(done, 0, 6);
+        controls.add(cancel, 1, 6);
 
         StackPane infoPane = new StackPane(background, controls);
         Stage infoStage = new Stage();
@@ -165,17 +151,11 @@ public class Sudoku extends Application{
         playerName = name.getText();
         playerColor = colorPicker.getValue();
         numSpaces = Integer.parseInt(spaces.getText());
-        serverName = serverHost.getText();
+        serverName = sHost.getText();
         try {
             serverPort = Integer.parseInt(sPort.getText());
         } catch (Exception e) {
             serverPort = 0;
-        }
-        hostName = clientHost.getText();
-        try {
-            hostPort = Integer.parseInt(clientPort.getText());
-        } catch (Exception e) {
-            hostPort = 0;
         }
     }
 
@@ -184,7 +164,7 @@ public class Sudoku extends Application{
         gameBoard = Grid.to(game);
         Solver solver = new Solver();
         solver.solve(game);
-        solnBoard = Grid.to(game);
+        int[][] solnBoard = Grid.to(game);
         ui.setSolnBoard(solnBoard);
         ui.getMenu().getSend().setVisible(false);
         ButtonMenu menu = ui.getMenu();
@@ -330,29 +310,5 @@ public class Sudoku extends Application{
                 });
             }
         }
-    }
-
-    /**
-     * Gets the current GameUI.
-     * @return The GameUI currently being used.
-     */
-    public GameUI getUi() {
-        return ui;
-    }
-
-    /**
-     * Gets the current controller.
-     * @return The current Controller.
-     */
-    public Controller getControl() {
-        return control;
-    }
-
-    /**
-     * Gets the current solution board. This uses the controller to do this.
-     * @return A double-layered int array representing the solution board.
-     */
-    public int[][] getSolnBoard() {
-        return control.getSolnBoard();
     }
 }
