@@ -131,7 +131,7 @@ public class Sudoku extends Application{
         Scene infoScene = new Scene(infoPane);
         infoScene.setFill(null);
         infoStage.setScene(infoScene);
-        infoStage.setResizable(true);
+        // infoStage.setResizable(true);
 
         infoStage.getIcons().add(new Image("File:./src/main/resources/icon.png"));
         done.setOnAction(e -> infoStage.close());

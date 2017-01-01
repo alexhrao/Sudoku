@@ -25,7 +25,7 @@ public class SudokuPacket implements Serializable {
     private int id;
 
     /**
-     * This constructure makes a packet for a new player.
+     * This constructor makes a packet for a new player.
      * @param name The player name.
      * @param color The player color.
      * @param isPlayer An identifier for if it is a player.
@@ -52,7 +52,7 @@ public class SudokuPacket implements Serializable {
     }
 
     /**
-     * This constructur creates the board and the beginning volley.
+     * This constructor creates the board and the beginning volley.
      * @param board The board.
      * @param solnBoard The solution.
      * @param name The player name.
@@ -346,6 +346,7 @@ public class SudokuPacket implements Serializable {
          * Tells if this square is selected or not.
          * @return If the square is selected.
          */
+        @Deprecated
         public boolean isSelected() {
             return selected;
         }
