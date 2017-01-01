@@ -12,7 +12,10 @@ import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.net.SocketException;
 
-//TODO: Add Documentation
+/**
+ * This class is responsible for actually talking with the client. It relays information to and from itself and other
+ * clients.
+ */
 public class SudokuServerThread extends Thread {
     private Socket client;
     private volatile SudokuServer server;
@@ -20,12 +23,20 @@ public class SudokuServerThread extends Thread {
     private volatile boolean isGoing = true;
     private volatile int id;
 
+    /**
+     * Creates a thread with the server and the socket.
+     * @param socket The accepted socket.
+     * @param server The parent server.
+     */
     public SudokuServerThread(Socket socket, SudokuServer server) {
         super("SudokuServerThread");
         this.client = socket;
         this.server = server;
     }
 
+    /**
+     * Talks with the player and relays information to other threads, if need be.
+     */
     @Override
     public void run() {
         /* If it's data, we'll need to send this to the rest of the threads in threads. As such, just set the data for
@@ -65,7 +76,7 @@ public class SudokuServerThread extends Thread {
 
         Basically, it's this. If we get a new player, then we should ALWAYS respond with a board and player combination.
         If the board hasn't already been created, then we should create it. Otherwise, reply back with the existing
-        board and solution. Otherwise, respond back with the already
+        board and solution. Otherwise, respond back with the already.
                 */
         try (ObjectOutputStream out = new ObjectOutputStream(client.getOutputStream())) {
             out.flush();
@@ -73,41 +84,29 @@ public class SudokuServerThread extends Thread {
                 SudokuPacket instruct;
                 instruct = (SudokuPacket) reader.readObject();
                 if (instruct.isStarter()) {
-                    System.out.println("I am here");
-                    int[][] board;
-                    int[][] solnBoard;
                     if (server.isFirstPlayer()) {
-                        System.out.println("Cool");
                         Generator generator = new Generator();
                         Solver solver = new Solver();
-                        board = Grid.to(generator.generate(instruct.getSpaces()));
+                        int[][] board = Grid.to(generator.generate(instruct.getSpaces()));
                         Grid soln = generator.generate(instruct.getSpaces());
                         solver.solve(soln);
-                        solnBoard = Grid.to(soln);
-                        System.out.println("We made it here...");
+                        int[][] solnBoard = Grid.to(soln);
                         server.setBoards(board, solnBoard);
-                        System.out.println("but not here.");
                     }
-                    System.out.println("Coolio?");
                     id = server.addPlayer(instruct.getName(), Color.color(instruct.getColor()[0], instruct.getColor()[1], instruct.getColor()[2], instruct.getColor()[3]));
-                    SudokuPacket response = new SudokuPacket(server.getBoard(), server.getSoln()); //server.getBoard(), server.getSoln());
+                    System.out.println("Connected to player " + id + ": " + instruct.getName());
+                    SudokuPacket response = new SudokuPacket(server.getBoard(), server.getSoln());
                     out.writeObject(response);
                     // send all the player information:
                     SudokuPacket thisPlayer = new SudokuPacket(instruct.getName(), server.getPlayerColor().get(id - 1), id);
                     out.writeObject(thisPlayer);
-                    for (int i = 0; i < server.getPlayerName().size() - 1; i++) {
-                        if (server.getPlayerName().get(i) != null) {
-                            SudokuPacket player = new SudokuPacket(server.getPlayerName().get(i), server.getPlayerColor().get(i), server.getPlayerId().get(i));
-                            out.writeObject(player);
-                        }
-                    }
                     for (SudokuPacket packet : server.getPackets()) {
                         out.writeObject(packet);
                     }
+                    server.addPacket(thisPlayer);
                     for (SudokuServerThread thread : server.getThreads()) {
                         if (thread.isAlive()) {
-                            SudokuPacket player = new SudokuPacket(instruct.getName(), Color.color(instruct.getColor()[0], instruct.getColor()[1], instruct.getColor()[2], instruct.getColor()[3]),
-                                    id);
+                            SudokuPacket player = new SudokuPacket(instruct.getName(), server.getPlayerColor().get(id - 1), id);
                             thread.setPacket(player);
                             thread.interrupt();
                         }
@@ -116,14 +115,21 @@ public class SudokuServerThread extends Thread {
                     // Wait to be interrupted!
                     while (isGoing) {
                         try {
-                            Thread.sleep(1);
+                            synchronized (this) {
+                                this.wait();
+                            }
                         } catch (InterruptedException e) {
-                            out.writeObject(this.packet);
+                            if (this.isGoing) {
+                                out.writeObject(this.packet);
+                            } else {
+                                throw new SocketException();
+                            }
                         }
                     }
                 } else {
                     server.addPacket(instruct);
                     if (instruct.isRemove()) {
+                        this.id = instruct.getId();
                         throw new SocketException();
                     }
                     for (SudokuServerThread thread : server.getThreads()) {
@@ -135,16 +141,22 @@ public class SudokuServerThread extends Thread {
                 }
             }
         } catch (SocketException e) {
-            server.getThreads().remove(this);
-            SudokuPacket instruct = new SudokuPacket(this.id);
-            server.addPacket(instruct);
-            for (SudokuServerThread thread : server.getThreads()) {
-                if (thread.isAlive()) {
-                    thread.setPacket(instruct);
-                    thread.interrupt();
+            if (server.getThreads().contains(this)) {
+                server.getThreads().set(server.getThreads().indexOf(this), null);
+                System.out.println("Disconnected from player " + id + ": " + server.getPlayerName().get(id - 1));
+                server.removePlayer(this.id);
+                SudokuPacket instruct = new SudokuPacket(this.id);
+                server.addPacket(instruct);
+                for (SudokuServerThread thread : server.getThreads()) {
+                    if (thread != null && thread.isAlive()) {
+                        thread.setPacket(instruct);
+                        thread.interrupt();
+                    }
                 }
+            } else {
+                server.getThreads().get(id - 1).halt();
+                server.getThreads().get(id - 1).interrupt();
             }
-            server.removePlayer(this.id);
         } catch(IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }

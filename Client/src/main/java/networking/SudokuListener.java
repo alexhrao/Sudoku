@@ -14,16 +14,30 @@ import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.net.SocketException;
 
+/**
+ * This class is responsible for listening to the server, and in the eyes of the server, it's the player. It sends
+ * information only at the beginning, then only listens.
+ */
 public class SudokuListener extends Thread implements Runnable {
     private GameUI ui;
     private String serverHost;
     private int serverPort;
     private Socket client;
 
+    /**
+     * Creates a default listener listening on localhost 60000.
+     * @param ui The current GameUI.
+     */
     public SudokuListener(GameUI ui) {
         this("localhost", 60000, ui);
     }
 
+    /**
+     * Creates a listener listening on the specified host and port.
+     * @param host The server host.
+     * @param port The server port.
+     * @param ui The current GameUI.
+     */
     public SudokuListener(String host, int port, GameUI ui) {
         super("Listener");
         this.ui = ui;
@@ -31,6 +45,9 @@ public class SudokuListener extends Thread implements Runnable {
         this.serverPort = port;
     }
 
+    /**
+     * Constantly listens to the server for more information. Must be stopped by closing the socket prematurely.
+     */
     @Override
     public void run() {
         try (Socket client = new Socket(serverHost, serverPort);
@@ -41,6 +58,7 @@ public class SudokuListener extends Thread implements Runnable {
                 SudokuPacket packet = new SudokuPacket(ui.getControl().getSpaces(), ui.getControl().getName(),
                         ui.getControl().getColor());
                 out.writeObject(packet);
+                out.flush();
                 SudokuPacket instruct;
                 while ((instruct = (SudokuPacket) in.readObject()) != null) {
                     if (instruct.isBoard()) {
@@ -69,10 +87,7 @@ public class SudokuListener extends Thread implements Runnable {
                         class AddName implements Runnable {
                             @Override
                             public void run() {
-                                Text tName = new Text(name);
-                                tName.setFill(Color.color(color[0], color[1], color[2], color[3]));
-                                ui.getInfo().add(tName);
-                                ui.getMenu().getSend().setDisable(true);
+                                ui.getInfo().addPlayer(name, Color.color(color[0], color[1], color[2], color[3]));
                             }
                         }
                         Platform.runLater(new AddName());
@@ -154,6 +169,10 @@ public class SudokuListener extends Thread implements Runnable {
         return false;
     }
 
+    /**
+     * Gets the client socket that this class listens with.
+     * @return The client socket ("listener").
+     */
     public Socket getClient() {
         return this.client;
     }

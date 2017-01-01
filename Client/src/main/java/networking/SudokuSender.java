@@ -8,7 +8,11 @@ import java.io.ObjectOutputStream;
 import java.net.Socket;
 import javafx.scene.paint.Color;
 
-public class SudokuClient implements Runnable {
+/**
+ * This class sends information to the server to be sent off to all other players. It creates a packet using the given
+ * data, then sends off the packet to be distributed.
+ */
+public class SudokuSender implements Runnable {
     private Square[] squares;
     private String message;
     private boolean isMessage = false;
@@ -16,21 +20,41 @@ public class SudokuClient implements Runnable {
     private Color messageColor;
     private Controller control;
 
-    public SudokuClient(Controller control, Square...squares) {
+    /**
+     * This constructor makes a packet for Squares.
+     * @param control The current controller.
+     * @param squares The modified Squares.
+     */
+    public SudokuSender(Controller control, Square...squares) {
         this.control = control;
         this.squares = squares;
     }
-    public SudokuClient(Controller control, Color color, String message) {
+
+    /**
+     * This constructor makes a packet for messages.
+     * @param control The current controller.
+     * @param color The color of the message.
+     * @param message The content of the message.
+     */
+    public SudokuSender(Controller control, Color color, String message) {
         this.control = control;
         this.message = message;
         this.isMessage = true;
         this.messageColor = color;
     }
-    public SudokuClient(Controller control) {
+
+    /**
+     * This constructor makes a packet for removing a player.
+     * @param control The controller.
+     */
+    public SudokuSender(Controller control) {
         this.control = control;
         this.isRemove = true;
     }
 
+    /**
+     * This method creates the packet, then sends it off to the server for distribution.
+     */
     @Override
     public void run() {
         try (Socket client = new Socket(control.getServerHost(), control.getServerPort());
