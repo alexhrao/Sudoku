@@ -30,7 +30,7 @@ public class SudokuServer implements Runnable {
     }
 
     @Override
-    public synchronized void run() {
+    public void run() {
         try (ServerSocket server = new ServerSocket(port)) {
             this.server = server;
             while (isGoing) {
@@ -81,44 +81,44 @@ public class SudokuServer implements Runnable {
         this.host = host;
     }
 
-    public synchronized ArrayList<SudokuServerThread> getThreads() {
+    public ArrayList<SudokuServerThread> getThreads() {
         return this.connections;
     }
 
-    public synchronized boolean isFirstPlayer() {
+    public boolean isFirstPlayer() {
         return this.firstPlayer;
     }
 
-    public synchronized ArrayList<String> getPlayerName() {
+    public ArrayList<String> getPlayerName() {
         return this.playerName;
     }
 
-    public synchronized ArrayList<Color> getPlayerColor() {
+    public ArrayList<Color> getPlayerColor() {
         return this.playerColor;
     }
 
-    public synchronized int[][] getBoard() {
+    public int[][] getBoard() {
         return this.board;
     }
 
-    public synchronized int[][] getSoln() {
+    public int[][] getSoln() {
         return this.soln;
     }
 
-    public synchronized void setBoards(int[][] board, int[][] soln) {
+    public void setBoards(int[][] board, int[][] soln) {
         this.board = board;
         this.soln = soln;
         this.firstPlayer = false;
     }
 
-    public synchronized int addPlayer(String name, Color color) {
+    public int addPlayer(String name, Color color) {
         this.playerName.add(name);
         this.playerColor.add(color);
         this.playerId.add(this.playerColor.size());
         return this.playerColor.size();
     }
 
-    public synchronized void removePlayer(int id) {
+    public void removePlayer(int id) {
         this.playerName.set(id - 1, null);
         this.playerColor.set(id - 1, null);
         this.playerId.set(id - 1, null);
@@ -132,15 +132,15 @@ public class SudokuServer implements Runnable {
         this.firstPlayer = true;
     }
 
-    public synchronized ArrayList<Integer> getPlayerId() {
+    public ArrayList<Integer> getPlayerId() {
         return this.playerId;
     }
 
-    public synchronized void addPacket(SudokuPacket packet) {
+    public void addPacket(SudokuPacket packet) {
         this.packets.add(packet);
     }
 
-    public synchronized ArrayList<SudokuPacket> getPackets() {
+    public ArrayList<SudokuPacket> getPackets() {
         return this.packets;
     }
 

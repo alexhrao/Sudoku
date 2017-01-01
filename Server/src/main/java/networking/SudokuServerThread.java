@@ -27,7 +27,7 @@ public class SudokuServerThread extends Thread {
     }
 
     @Override
-    public synchronized void run() {
+    public void run() {
         /* If it's data, we'll need to send this to the rest of the threads in threads. As such, just set the data for
          each of these threads, then interrupt that thread! On interrupt, that thread should send the now-obtained data
          back to it's connected client.
@@ -73,17 +73,24 @@ public class SudokuServerThread extends Thread {
                 SudokuPacket instruct;
                 instruct = (SudokuPacket) reader.readObject();
                 if (instruct.isStarter()) {
+                    System.out.println("I am here");
+                    int[][] board;
+                    int[][] solnBoard;
                     if (server.isFirstPlayer()) {
+                        System.out.println("Cool");
                         Generator generator = new Generator();
                         Solver solver = new Solver();
-                        int[][] board = Grid.to(generator.generate(instruct.getSpaces()));
+                        board = Grid.to(generator.generate(instruct.getSpaces()));
                         Grid soln = generator.generate(instruct.getSpaces());
                         solver.solve(soln);
-                        int[][] solnBoard = Grid.to(soln);
+                        solnBoard = Grid.to(soln);
+                        System.out.println("We made it here...");
                         server.setBoards(board, solnBoard);
+                        System.out.println("but not here.");
                     }
+                    System.out.println("Coolio?");
                     id = server.addPlayer(instruct.getName(), Color.color(instruct.getColor()[0], instruct.getColor()[1], instruct.getColor()[2], instruct.getColor()[3]));
-                    SudokuPacket response = new SudokuPacket(server.getBoard(), server.getSoln());
+                    SudokuPacket response = new SudokuPacket(server.getBoard(), server.getSoln()); //server.getBoard(), server.getSoln());
                     out.writeObject(response);
                     // send all the player information:
                     SudokuPacket thisPlayer = new SudokuPacket(instruct.getName(), server.getPlayerColor().get(id - 1), id);
@@ -109,7 +116,7 @@ public class SudokuServerThread extends Thread {
                     // Wait to be interrupted!
                     while (isGoing) {
                         try {
-                            this.wait();
+                            Thread.sleep(1);
                         } catch (InterruptedException e) {
                             out.writeObject(this.packet);
                         }
