@@ -18,5 +18,12 @@ public class Game {
     c)
         If it queries the current Games, then it should return with a list of games and their identifiers.
 
+    When we create a new game, we need a person who is the owner. Just give this as a string?
+    We'll need to keep track of:
+        * Players (Names, IDs, Colors, etc.)
+        * Game History (the packet stack)
+        *
      */
+
+
 }

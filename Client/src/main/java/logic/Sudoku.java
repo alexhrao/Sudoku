@@ -47,7 +47,7 @@ public class Sudoku extends Application{
         primaryStage.setTitle("Sudoku");
         primaryStage.setScene(game);
         primaryStage.getIcons().add(
-                new Image("File:./src/main/resources/icon.png"));
+                new Image("File:./resources/icon.png"));
         primaryStage.setResizable(false);
         primaryStage.setOnCloseRequest((WindowEvent n) -> {
             try {
@@ -84,7 +84,7 @@ public class Sudoku extends Application{
         // Structure:
         GridPane controls = new GridPane();
         GridPane colorPane = new GridPane();
-        ImageView background = new ImageView(new Image("File:./src/main/resources/icon.png"));
+        ImageView background = new ImageView(new Image("File:./resources/icon.png"));
         // Controls
         TextField name = new TextField("Your Name");
         ColorPicker colorPicker = new ColorPicker(Color.RED);
@@ -133,7 +133,7 @@ public class Sudoku extends Application{
         infoStage.setScene(infoScene);
         // infoStage.setResizable(true);
 
-        infoStage.getIcons().add(new Image("File:./src/main/resources/icon.png"));
+        infoStage.getIcons().add(new Image("File:./resources/icon.png"));
         done.setOnAction(e -> infoStage.close());
         infoStage.setTitle("Player Information");
         infoStage.showAndWait();
