@@ -41,7 +41,7 @@ public class SudokuServer implements Runnable {
      * Listens for connections, passing these connections to a new thread.
      */
     @Override
-    public synchronized void run() {
+    public void run() {
         try (ServerSocket server = new ServerSocket(port)) {
             this.server = server;
             while (isGoing) {
@@ -98,7 +98,7 @@ public class SudokuServer implements Runnable {
      * Gets all the player threads.
      * @return The connections.
      */
-    public synchronized ArrayList<SudokuServerThread> getThreads() {
+    public ArrayList<SudokuServerThread> getThreads() {
         return this.connections;
     }
 
@@ -106,7 +106,7 @@ public class SudokuServer implements Runnable {
      * Tells if this is the first player.
      * @return If this is the first player.
      */
-    public synchronized boolean isFirstPlayer() {
+    public boolean isFirstPlayer() {
         return this.firstPlayer;
     }
 
@@ -114,7 +114,7 @@ public class SudokuServer implements Runnable {
      * Gets the player names.
      * @return The player names (in order).
      */
-    public synchronized ArrayList<String> getPlayerName() {
+    public ArrayList<String> getPlayerName() {
         return this.playerName;
     }
 
@@ -122,7 +122,7 @@ public class SudokuServer implements Runnable {
      * Gets the player colors.
      * @return The player colors (in order).
      */
-    public synchronized ArrayList<Color> getPlayerColor() {
+    public ArrayList<Color> getPlayerColor() {
         return this.playerColor;
     }
 
@@ -138,7 +138,7 @@ public class SudokuServer implements Runnable {
      * Gets the solution board.
      * @return The solution board.
      */
-    public synchronized int[][] getSoln() {
+    public int[][] getSoln() {
         return this.soln;
     }
 
@@ -147,7 +147,7 @@ public class SudokuServer implements Runnable {
      * @param board The board.
      * @param soln The solution.
      */
-    public synchronized void setBoards(int[][] board, int[][] soln) {
+    public void setBoards(int[][] board, int[][] soln) {
         this.board = board;
         this.soln = soln;
         this.firstPlayer = false;
@@ -159,7 +159,7 @@ public class SudokuServer implements Runnable {
      * @param color The player color.
      * @return The player's ID.
      */
-    public synchronized int addPlayer(String name, Color color) {
+    public int addPlayer(String name, Color color) {
         this.playerName.add(name);
         this.playerColor.add(color);
         this.playerId.add(this.playerColor.size());
@@ -170,10 +170,10 @@ public class SudokuServer implements Runnable {
      * Removes the specified player.
      * @param id The player to remove.
      */
-    public synchronized void removePlayer(int id) {
-        this.playerName.set(id - 1, null);
-        this.playerColor.set(id - 1, null);
-        this.playerId.set(id - 1, null);
+    public void removePlayer(int id) {
+        this.playerName.set(id + 1, null);
+        this.playerColor.set(id + 1, null);
+        this.playerId.set(id + 1, null);
         for (String name : this.playerName) {
             if (name != null) {
                 return;
@@ -191,9 +191,9 @@ public class SudokuServer implements Runnable {
 
     /**
      * Gets the playerID collection.
-     * @return
+     * @return The collection of player IDs.
      */
-    public synchronized ArrayList<Integer> getPlayerId() {
+    public ArrayList<Integer> getPlayerId() {
         return this.playerId;
     }
 
@@ -201,7 +201,7 @@ public class SudokuServer implements Runnable {
      * Adds a packet to the stack.
      * @param packet The packet to add.
      */
-    public synchronized void addPacket(SudokuPacket packet) {
+    public void addPacket(SudokuPacket packet) {
         this.packets.add(packet);
     }
 
@@ -209,7 +209,7 @@ public class SudokuServer implements Runnable {
      * Gets all the current SudokuPackets.
      * @return All Sudoku Packets since the beginning of the game.
      */
-    public synchronized ArrayList<SudokuPacket> getPackets() {
+    public ArrayList<SudokuPacket> getPackets() {
         return this.packets;
     }
 
