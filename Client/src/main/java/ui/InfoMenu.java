@@ -2,58 +2,42 @@ package main.java.ui;
 
 import javafx.scene.Node;
 import javafx.scene.control.ToolBar;
+import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 
 public class InfoMenu extends ToolBar {
-    private Text[] name;
-    private Color[] color;
     private Text pause = new Text("Playing...");
+    private GameUI ui;
 
-    public InfoMenu() {
+    public InfoMenu(GameUI ui) {
         this.setPrefHeight(25);
         this.getItems().add(pause);
+        this.ui = ui;
     }
 
-    public InfoMenu(String name, Color color) {
-        this(toArr(name), toArr(color));
+    public InfoMenu(String name, Color color, GameUI ui) {
+        this(toArr(name), toArr(color), ui);
     }
-    public InfoMenu(String[] name, Color[] color) {
-        this();
-        this.name = new Text[name.length];
+    public InfoMenu(String[] name, Color[] color, GameUI ui) {
+        this(ui);
+        this.getItems().add(new HBox(20, pause));
         for (int k = 0; k < name.length; k++) {
-            this.name[k] = new Text(name[k]);
-            this.name[k].setFill(color[k]);
+            Text item = new Text(name[k]);
+            item.setFill(color[k]);
+            HBox person = new HBox(20, item);
+            this.getItems().add(person);
         }
-        this.color = color;
-
-        this.getItems().add(new Text("   "));
-        this.getItems().add(this.name[0]);
-        for (int k = 1; k < this.name.length; k++) {
-            this.getItems().add(new Text("   "));
-            this.getItems().add(this.name[k]);
-        }
-    }
-
-    public Text getName(int player) {
-        return name[player - 1];
-    }
-
-    public void setName(int player, String name) {
-        this.name[player - 1] = new Text(name);
-    }
-
-    public Color getColor(int player) {
-        return color[player - 1];
-    }
-
-    public void setColor(int player, Color color) {
-        this.color[player - 1] = color;
     }
 
     public void add(Node node) {
-        this.getItems().add(new Text("   "));
         this.getItems().add(node);
+    }
+
+    public void addPlayer(String name, Color color) {
+        Text person = new Text(name);
+        person.setFill(color);
+        this.getItems().addAll(new HBox(20, person));
     }
 
     public void setPause(boolean isPause) {
@@ -65,8 +49,12 @@ public class InfoMenu extends ToolBar {
     }
 
     public void removePlayer(int index) {
-        this.getItems().set((2 * index) + 1, new Text(""));
-        this.getItems().set((2 * index) + 2, new Text(""));
+        if (index > ui.getControl().getId()) {
+            this.getItems().set(index, new HBox(20));
+        } else {
+            this.getItems().set(index + 1, new HBox(20));
+        }
+
     }
 
     private static String[] toArr(String in) {

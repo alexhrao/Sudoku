@@ -87,10 +87,7 @@ public class SudokuListener extends Thread implements Runnable {
                         class AddName implements Runnable {
                             @Override
                             public void run() {
-                                Text tName = new Text(name);
-                                tName.setFill(Color.color(color[0], color[1], color[2], color[3]));
-                                ui.getInfo().add(tName);
-                                ui.getMenu().getSend().setDisable(true);
+                                ui.getInfo().addPlayer(name, Color.color(color[0], color[1], color[2], color[3]));
                             }
                         }
                         Platform.runLater(new AddName());

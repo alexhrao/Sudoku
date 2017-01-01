@@ -12,7 +12,6 @@ import java.util.ArrayList;
  * but does keep a lot of accounting data.
  */
 public class SudokuServer implements Runnable {
-    private String host;
     private int port;
     private volatile boolean isGoing = true;
     private volatile boolean firstPlayer = true;
@@ -24,16 +23,19 @@ public class SudokuServer implements Runnable {
     private volatile ArrayList<SudokuPacket> packets = new ArrayList<>();
     private volatile int[][] board;
     private volatile int[][] soln;
-    private static final String HOST = "localhost";
-    private static final int PORT = 60000;
+    public static final int PORT = 60000;
 
     /**
+     * Creates a Sudoku Server with the default port defined in PORT.
+     */
+    public SudokuServer() {
+        this(PORT);
+    }
+    /**
      * Creates the Sudoku Server with the given host and port.
-     * @param host The host (usually unneeded).
      * @param port The port.
      */
-    public SudokuServer(String host, int port) {
-        this.host = host;
+    public SudokuServer(int port) {
         this.port = port;
     }
 
@@ -53,7 +55,7 @@ public class SudokuServer implements Runnable {
                 }
             }
         } catch (SocketException e) {
-            System.out.println("Server Port closed");
+            System.out.println("Server Port " + port + " was not available.");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -63,9 +65,9 @@ public class SudokuServer implements Runnable {
      * Creates the server. No arguments are allowed, but to stop the server, type in the console window.
      * @param args Not important.
      */
-    public static void main(String[] args) {
+    public static synchronized void main(String[] args) {
         System.out.println("Starting Server...");
-        SudokuServer sudokuServer = new SudokuServer(HOST, PORT);
+        SudokuServer sudokuServer = new SudokuServer(PORT);
         Thread server = new Thread(sudokuServer);
         System.out.println("Server Started. Listening for connections...");
         server.start();
@@ -73,6 +75,7 @@ public class SudokuServer implements Runnable {
             in.readLine();
             sudokuServer.getServer().close();
             System.out.println("Server has stopped.");
+
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -82,7 +85,7 @@ public class SudokuServer implements Runnable {
      * Sets the continuing condition.
      * @param isGoing If the server should keep listening.
      */
-    public void setGoing(boolean isGoing) {
+    public synchronized void setGoing(boolean isGoing) {
         this.isGoing = isGoing;
     }
 
@@ -90,7 +93,7 @@ public class SudokuServer implements Runnable {
      * Gets the serverSocket.
      * @return The currently utilized serverSocket.
      */
-    public ServerSocket getServer() {
+    public synchronized ServerSocket getServer() {
         return server;
     }
 
@@ -98,7 +101,7 @@ public class SudokuServer implements Runnable {
      * Gets all the player threads.
      * @return The connections.
      */
-    public ArrayList<SudokuServerThread> getThreads() {
+    public synchronized ArrayList<SudokuServerThread> getThreads() {
         return this.connections;
     }
 
@@ -106,7 +109,7 @@ public class SudokuServer implements Runnable {
      * Tells if this is the first player.
      * @return If this is the first player.
      */
-    public boolean isFirstPlayer() {
+    public synchronized boolean isFirstPlayer() {
         return this.firstPlayer;
     }
 
@@ -114,7 +117,7 @@ public class SudokuServer implements Runnable {
      * Gets the player names.
      * @return The player names (in order).
      */
-    public ArrayList<String> getPlayerName() {
+    public synchronized ArrayList<String> getPlayerName() {
         return this.playerName;
     }
 
@@ -122,7 +125,7 @@ public class SudokuServer implements Runnable {
      * Gets the player colors.
      * @return The player colors (in order).
      */
-    public ArrayList<Color> getPlayerColor() {
+    public synchronized ArrayList<Color> getPlayerColor() {
         return this.playerColor;
     }
 
@@ -138,7 +141,7 @@ public class SudokuServer implements Runnable {
      * Gets the solution board.
      * @return The solution board.
      */
-    public int[][] getSoln() {
+    public synchronized int[][] getSoln() {
         return this.soln;
     }
 
@@ -147,7 +150,7 @@ public class SudokuServer implements Runnable {
      * @param board The board.
      * @param soln The solution.
      */
-    public void setBoards(int[][] board, int[][] soln) {
+    public synchronized void setBoards(int[][] board, int[][] soln) {
         this.board = board;
         this.soln = soln;
         this.firstPlayer = false;
@@ -171,9 +174,9 @@ public class SudokuServer implements Runnable {
      * @param id The player to remove.
      */
     public void removePlayer(int id) {
-        this.playerName.set(id + 1, null);
-        this.playerColor.set(id + 1, null);
-        this.playerId.set(id + 1, null);
+        this.playerName.set(id - 1, null);
+        this.playerColor.set(id - 1, null);
+        this.playerId.set(id - 1, null);
         for (String name : this.playerName) {
             if (name != null) {
                 return;
@@ -187,6 +190,7 @@ public class SudokuServer implements Runnable {
         this.playerId.clear();
         this.playerName.clear();
         this.connections.clear();
+        System.out.println("No Active Players - Game reset.");
     }
 
     /**
@@ -201,7 +205,7 @@ public class SudokuServer implements Runnable {
      * Adds a packet to the stack.
      * @param packet The packet to add.
      */
-    public void addPacket(SudokuPacket packet) {
+    public synchronized void addPacket(SudokuPacket packet) {
         this.packets.add(packet);
     }
 
@@ -209,7 +213,7 @@ public class SudokuServer implements Runnable {
      * Gets all the current SudokuPackets.
      * @return All Sudoku Packets since the beginning of the game.
      */
-    public ArrayList<SudokuPacket> getPackets() {
+    public synchronized ArrayList<SudokuPacket> getPackets() {
         return this.packets;
     }
 

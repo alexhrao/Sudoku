@@ -35,7 +35,7 @@ public class GameUI extends BorderPane {
                 squares.add(box, c, r);
             }
         }
-        info = new InfoMenu();
+        info = new InfoMenu(this);
         StackPane center = new StackPane(squares, board);
         chat = new Chat(control);
         chatter = new Chatter();

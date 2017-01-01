@@ -131,12 +131,13 @@ public class Sudoku extends Application{
         Scene infoScene = new Scene(infoPane);
         infoScene.setFill(null);
         infoStage.setScene(infoScene);
-        infoStage.setResizable(false);
+        infoStage.setResizable(true);
 
         infoStage.getIcons().add(new Image("File:./src/main/resources/icon.png"));
         done.setOnAction(e -> infoStage.close());
         infoStage.setTitle("Player Information");
         infoStage.showAndWait();
+
         String playerName = name.getText();
         Color playerColor = colorPicker.getValue();
         int numSpaces = Integer.parseInt(spaces.getText());
