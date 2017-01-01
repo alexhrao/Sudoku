@@ -76,7 +76,7 @@ public class SudokuServerThread extends Thread {
 
         Basically, it's this. If we get a new player, then we should ALWAYS respond with a board and player combination.
         If the board hasn't already been created, then we should create it. Otherwise, reply back with the existing
-        board and solution. Otherwise, respond back with the already
+        board and solution. Otherwise, respond back with the already.
                 */
         try (ObjectOutputStream out = new ObjectOutputStream(client.getOutputStream())) {
             out.flush();
