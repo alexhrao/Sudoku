@@ -23,13 +23,14 @@ public class SudokuListener extends Thread implements Runnable {
     private String serverHost;
     private int serverPort;
     private Socket client;
-
+    public static final String HOST = "localhost";
+    public static final int PORT = 60000;
     /**
      * Creates a default listener listening on localhost 60000.
      * @param ui The current GameUI.
      */
     public SudokuListener(GameUI ui) {
-        this("localhost", 60000, ui);
+        this(HOST, PORT, ui);
     }
 
     /**

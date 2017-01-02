@@ -1,7 +1,10 @@
 package main.java.logic;
 
 import javafx.application.Application;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
+import javafx.geometry.*;
+import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ColorPicker;
@@ -11,8 +14,10 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
-import javafx.scene.text.Text;
+import javafx.scene.text.*;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javafx.stage.WindowEvent;
 import main.java.networking.SudokuSender;
 import main.java.networking.SudokuListener;
@@ -20,7 +25,12 @@ import main.java.ui.Board;
 import main.java.ui.ButtonMenu;
 import main.java.ui.GameUI;
 import main.java.ui.Square;
+
+import javax.imageio.ImageIO;
+import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.net.URL;
 
 /**
  * This is the entry point of the Sudoku game. It collects starting information from the player, creates the game, and
@@ -30,6 +40,8 @@ public class Sudoku extends Application{
     private GameUI ui;
     private Controller control;
     private SudokuListener player;
+    private SudokuLoader loader;
+    private Image icon;
 
     /**
      * The start method, overriding the one in Application.
@@ -41,13 +53,12 @@ public class Sudoku extends Application{
         this.gatherInformation();
         ui = new GameUI(control);
         this.setup();
-        player = new SudokuListener(ui);
+        player = new SudokuListener(control.getServerHost(), control.getServerPort(), ui);
         player.start();
         Scene game = new Scene(ui);
         primaryStage.setTitle("Sudoku");
         primaryStage.setScene(game);
-        primaryStage.getIcons().add(
-                new Image("File:./resources/icon.png"));
+        primaryStage.getIcons().add(icon);
         primaryStage.setResizable(false);
         primaryStage.setOnCloseRequest((WindowEvent n) -> {
             try {
@@ -69,7 +80,7 @@ public class Sudoku extends Application{
     }
 
 
-    private void gatherInformation() {
+    private void gatherInformation() throws Exception {
         /* Regardless of server set up, we need to capture:
             * Player Name
             * Player Color
@@ -84,60 +95,104 @@ public class Sudoku extends Application{
         // Structure:
         GridPane controls = new GridPane();
         GridPane colorPane = new GridPane();
-        ImageView background = new ImageView(new Image("File:./resources/icon.png"));
+        Image selection = null;
+        try {
+            BufferedImage bufferedImage = ImageIO.read(getClass().getResource("/icon.png"));
+            icon = SwingFXUtils.toFXImage(bufferedImage, null);
+            bufferedImage = ImageIO.read(getClass().getResource("/selection.png"));
+            selection = SwingFXUtils.toFXImage(bufferedImage, null);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        ImageView background = new ImageView(icon);
+        background.setFitWidth(700);
+        background.setFitHeight(700);
         // Controls
         TextField name = new TextField("Your Name");
+        name.setMaxWidth(150);
+        name.setFont(new Font(16));
         ColorPicker colorPicker = new ColorPicker(Color.RED);
         TextField spaces = new TextField("30");
+        spaces.setFont(new Font(16));
         spaces.setMaxWidth(40);
         GridPane spacesPane = new GridPane();
-        spacesPane.add(new Text("How many spaces?"), 0, 0);
+        Text manySpaces = new Text("How many spaces?");
+        manySpaces.setFont(new Font(18));
+        manySpaces.setFill(Color.BROWN);
+        spacesPane.add(manySpaces, 0, 0);
         spacesPane.add(spaces, 1, 0);
+        spacesPane.setPadding(new Insets(5, 0, 5, 0));
         TextField sHost = new TextField("localhost");
+        sHost.setFont(new Font(16));
         TextField sPort = new TextField("60000");
+        sPort.setFont(new Font(16));
         sPort.setMaxWidth(75);
         GridPane advanced = new GridPane();
-        advanced.add(new Text("Server Host & Port:"), 0, 0);
+        Text serverHostPort = new Text("Server Host & Port");
+        serverHostPort.setFill(Color.BROWN);
+        serverHostPort.setFont(new Font(16));
+        advanced.add(serverHostPort, 0, 0);
         advanced.add(sHost, 1, 0);
         advanced.add(sPort, 2, 0);
+        advanced.setPadding(new Insets(5, 0, 5, 0));
         advanced.setVisible(false);
 
         Button done = new Button("Done");
+        done.setTextFill(Color.BROWN);
         Button showAdvanced = new Button("Show Advanced Options:");
+        showAdvanced.setFont(new Font(16));
         showAdvanced.setOnAction(e -> {
             if (advanced.isVisible()) {
-                showAdvanced.setText("Show Advanced Options:");
+                showAdvanced.setText("Show Advanced Options");
                 advanced.setVisible(false);
             } else {
-                showAdvanced.setText("Hide Advanced Options:");
+                showAdvanced.setText("Hide Advanced Options");
                 advanced.setVisible(true);
             }
         });
         Button cancel = new Button("Cancel");
+        cancel.setTextFill(Color.BROWN);
         cancel.setOnAction(e -> System.exit(0));
+        HBox buttons = new HBox(10, done, cancel);
 
-        colorPane.add(new Text("Pick your color:"), 0, 0);
+        Text playerAskColor = new Text("Player Color:  ");
+        playerAskColor.setFont(new Font(18));
+        playerAskColor.setFill(Color.BROWN);
+        colorPane.add(playerAskColor, 0, 0);
         colorPane.add(colorPicker, 1, 0);
         controls.add(name, 0, 1);
         controls.add(colorPane, 0, 2);
         controls.add(spacesPane, 0, 3);
-        controls.add(showAdvanced, 0, 4, 3, 1);
-        controls.add(advanced, 0, 5, 3, 1);
-        controls.add(done, 0, 6);
-        controls.add(cancel, 1, 6);
+        controls.add(new HBox(10, showAdvanced), 0, 4, 1, 1);
+        controls.add(advanced, 0, 5, 2, 1);
+        controls.add(buttons, 0, 6);
 
+/*        name.setTranslateY(-111);
+        name.setTranslateX(-270);
+        name.setMaxWidth(150);
+        colorPane.setTranslateY(290);
+        colorPane.setTranslateX(10);
+        spacesPane.setTranslateY(300);
+        spacesPane.setTranslateX(10);
+        advanced.setTranslateX(10);*/
+        controls.setTranslateY(480);
+        controls.setTranslateX(10);
         StackPane infoPane = new StackPane(background, controls);
+        //StackPane.setMargin(controls, new Insets(100, 10, 100, 10));
         Stage infoStage = new Stage();
         Scene infoScene = new Scene(infoPane);
         infoScene.setFill(null);
         infoStage.setScene(infoScene);
         // infoStage.setResizable(true);
 
-        infoStage.getIcons().add(new Image("File:./resources/icon.png"));
+        infoStage.getIcons().add(icon);
         done.setOnAction(e -> infoStage.close());
         infoStage.setTitle("Player Information");
+        infoStage.setOnCloseRequest((WindowEvent e) -> System.exit(0));
+        infoStage.initStyle(StageStyle.TRANSPARENT);
         infoStage.showAndWait();
-
+        loader = new SudokuLoader();
+        loader.start(infoStage);
         String playerName = name.getText();
         Color playerColor = colorPicker.getValue();
         int numSpaces = Integer.parseInt(spaces.getText());
