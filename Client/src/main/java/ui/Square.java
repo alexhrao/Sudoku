@@ -11,7 +11,7 @@ import javafx.scene.shape.Rectangle;
 public class Square extends StackPane {
     private Notes notes = new Notes();
     private Answer answer = new Answer();
-    private Rectangle overlay = new Rectangle(85, 85, Color.rgb(0, 0, 0, 0.0));
+    private Rectangle overlay = new Rectangle(85, 85, Color.color(1, 1, 1, 1));
     private boolean selected = false;
     private int row;
     private int col;
@@ -25,8 +25,9 @@ public class Square extends StackPane {
         this.row = row;
         this.col = col;
         overlay.setStroke(Color.BLACK);
-
-        this.getChildren().addAll(answer, notes, overlay);
+        this.setMinSize(86, 86);
+        this.setMaxSize(86, 86);
+        this.getChildren().addAll(overlay, answer, notes);
     }
 
     /**
@@ -91,6 +92,15 @@ public class Square extends StackPane {
     public void clear() {
         notes.clear();
         answer.clear();
+        this.setColor(Color.color(1, 1, 1, 1));
+    }
+
+    public void setColor(Color color) {
+        this.overlay.setFill(color);
+    }
+
+    public Color getColor() {
+        return (Color) this.overlay.getFill();
     }
 
     /**

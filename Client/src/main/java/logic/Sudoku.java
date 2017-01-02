@@ -95,26 +95,34 @@ public class Sudoku extends Application{
         // Structure:
         GridPane controls = new GridPane();
         GridPane colorPane = new GridPane();
-        Image selection = null;
+        Image infoScreen = null;
         try {
             BufferedImage bufferedImage = ImageIO.read(getClass().getResource("/icon.png"));
             icon = SwingFXUtils.toFXImage(bufferedImage, null);
-            bufferedImage = ImageIO.read(getClass().getResource("/selection.png"));
-            selection = SwingFXUtils.toFXImage(bufferedImage, null);
+            bufferedImage = ImageIO.read(getClass().getResource("/SudokuInfoScreen.png"));
+            infoScreen = SwingFXUtils.toFXImage(bufferedImage, null);
         } catch (IOException e) {
             e.printStackTrace();
         }
-        ImageView background = new ImageView(icon);
-        background.setFitWidth(700);
-        background.setFitHeight(700);
+        ImageView background = new ImageView(infoScreen);
+        background.setFitWidth(825);
+        background.setFitHeight(825);
         // Controls
         TextField name = new TextField("Your Name");
-        name.setMaxWidth(150);
+        name.setMinWidth(260);
         name.setFont(new Font(16));
+
+        Text playerAskColor = new Text("Player Color:  ");
+        playerAskColor.setFont(new Font(18));
+        playerAskColor.setFill(Color.BROWN);
         ColorPicker colorPicker = new ColorPicker(Color.RED);
+        colorPicker.setMinWidth(150);
+        colorPane.add(playerAskColor, 0, 0);
+        colorPane.add(colorPicker, 1, 0);
+
         TextField spaces = new TextField("30");
         spaces.setFont(new Font(16));
-        spaces.setMaxWidth(40);
+        spaces.setMaxWidth(112);
         GridPane spacesPane = new GridPane();
         Text manySpaces = new Text("How many spaces?");
         manySpaces.setFont(new Font(18));
@@ -122,23 +130,28 @@ public class Sudoku extends Application{
         spacesPane.add(manySpaces, 0, 0);
         spacesPane.add(spaces, 1, 0);
         spacesPane.setPadding(new Insets(5, 0, 5, 0));
+
         TextField sHost = new TextField("localhost");
         sHost.setFont(new Font(16));
+        sHost.setMaxWidth(150);
         TextField sPort = new TextField("60000");
         sPort.setFont(new Font(16));
-        sPort.setMaxWidth(75);
+        sPort.setMaxWidth(150);
+
         GridPane advanced = new GridPane();
-        Text serverHostPort = new Text("Server Host & Port");
-        serverHostPort.setFill(Color.BROWN);
-        serverHostPort.setFont(new Font(16));
-        advanced.add(serverHostPort, 0, 0);
+        Text serverHostPrompt = new Text("Server Host:  ");
+        Text serverPortPrompt = new Text("Server Port:  ");
+        serverHostPrompt.setFill(Color.BROWN);
+        serverHostPrompt.setFont(new Font(18));
+        serverPortPrompt.setFill(Color.BROWN);
+        serverPortPrompt.setFont(new Font(18));
+        advanced.add(serverHostPrompt, 0, 0);
         advanced.add(sHost, 1, 0);
-        advanced.add(sPort, 2, 0);
+        advanced.add(serverPortPrompt, 0, 1);
+        advanced.add(sPort, 1, 1);
         advanced.setPadding(new Insets(5, 0, 5, 0));
         advanced.setVisible(false);
 
-        Button done = new Button("Done");
-        done.setTextFill(Color.BROWN);
         Button showAdvanced = new Button("Show Advanced Options:");
         showAdvanced.setFont(new Font(16));
         showAdvanced.setOnAction(e -> {
@@ -150,47 +163,41 @@ public class Sudoku extends Application{
                 advanced.setVisible(true);
             }
         });
+        showAdvanced.setMinWidth(260);
+
+        Button done = new Button("Done");
+        done.setTextFill(Color.BROWN);
+        done.setFont(new Font(16));
+        done.setMinWidth(125);
         Button cancel = new Button("Cancel");
         cancel.setTextFill(Color.BROWN);
+        cancel.setFont(new Font(16));
         cancel.setOnAction(e -> System.exit(0));
+        cancel.setMinWidth(125);
         HBox buttons = new HBox(10, done, cancel);
 
-        Text playerAskColor = new Text("Player Color:  ");
-        playerAskColor.setFont(new Font(18));
-        playerAskColor.setFill(Color.BROWN);
-        colorPane.add(playerAskColor, 0, 0);
-        colorPane.add(colorPicker, 1, 0);
         controls.add(name, 0, 1);
-        controls.add(colorPane, 0, 2);
+        controls.add(colorPane, 0, 2, 2, 1);
         controls.add(spacesPane, 0, 3);
-        controls.add(new HBox(10, showAdvanced), 0, 4, 1, 1);
-        controls.add(advanced, 0, 5, 2, 1);
-        controls.add(buttons, 0, 6);
-
-/*        name.setTranslateY(-111);
-        name.setTranslateX(-270);
-        name.setMaxWidth(150);
-        colorPane.setTranslateY(290);
-        colorPane.setTranslateX(10);
-        spacesPane.setTranslateY(300);
-        spacesPane.setTranslateX(10);
-        advanced.setTranslateX(10);*/
-        controls.setTranslateY(480);
+        controls.add(buttons, 0, 4);
+        controls.add(showAdvanced, 0, 5, 1, 1);
+        controls.add(advanced, 0, 6, 2, 2);
+        controls.setTranslateY(560);
         controls.setTranslateX(10);
+
         StackPane infoPane = new StackPane(background, controls);
-        //StackPane.setMargin(controls, new Insets(100, 10, 100, 10));
         Stage infoStage = new Stage();
         Scene infoScene = new Scene(infoPane);
         infoScene.setFill(null);
         infoStage.setScene(infoScene);
         // infoStage.setResizable(true);
-
         infoStage.getIcons().add(icon);
         done.setOnAction(e -> infoStage.close());
         infoStage.setTitle("Player Information");
         infoStage.setOnCloseRequest((WindowEvent e) -> System.exit(0));
         infoStage.initStyle(StageStyle.TRANSPARENT);
         infoStage.showAndWait();
+
         loader = new SudokuLoader();
         loader.start(infoStage);
         String playerName = name.getText();
@@ -203,7 +210,6 @@ public class Sudoku extends Application{
         } catch (Exception e) {
             serverPort = 0;
         }
-
         control = new Controller(playerName, playerColor, serverName, serverPort);
         control.setSpaces(numSpaces);
     }
