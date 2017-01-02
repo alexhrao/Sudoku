@@ -47,7 +47,7 @@ public class SudokuLoader extends Preloader implements Runnable {
         this.ready();
     }
 
-    public void ready() {
+    private void ready() {
         this.statusButton.setText("Play!");
         this.statusButton.setDisable(false);
     }
@@ -56,9 +56,11 @@ public class SudokuLoader extends Preloader implements Runnable {
         return this.stage;
     }
 
-    public Button getStatusButton() {
-        return this.statusButton;
-    }
+// --Commented out by Inspection START (1/2/2017 3:44 PM):
+//    public Button getStatusButton() {
+//        return this.statusButton;
+//    }
+// --Commented out by Inspection STOP (1/2/2017 3:44 PM)
 
     public static void main(String[] args) {
         launch(args);

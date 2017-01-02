@@ -2,7 +2,6 @@ package main.java.networking;
 
 import javafx.application.Platform;
 import javafx.scene.paint.Color;
-import javafx.scene.text.Text;
 import main.java.ui.GameUI;
 import main.java.ui.Square;
 import main.java.networking.SudokuPacket.Data;
@@ -19,12 +18,12 @@ import java.net.SocketException;
  * information only at the beginning, then only listens.
  */
 public class SudokuListener extends Thread implements Runnable {
-    private GameUI ui;
-    private String serverHost;
-    private int serverPort;
+    private final GameUI ui;
+    private final String serverHost;
+    private final int serverPort;
     private Socket client;
-    public static final String HOST = "localhost";
-    public static final int PORT = 60000;
+    private static final String HOST = "localhost";
+    private static final int PORT = 60000;
     /**
      * Creates a default listener listening on localhost 60000.
      * @param ui The current GameUI.

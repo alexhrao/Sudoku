@@ -5,7 +5,7 @@ import java.util.Random;
  * A Generator to generate random Sudoku {@link Grid} instances.
  */
 public class Generator {
-    private Solver solver;
+    private final Solver solver;
 
     /**
     * Constructs a new Generator instance.

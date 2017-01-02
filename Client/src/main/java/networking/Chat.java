@@ -1,20 +1,17 @@
 package main.java.networking;
 
-import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import main.java.logic.Controller;
 
 public class Chat extends GridPane {
-    private final int SPACING = 20;
-    private Controller control;
-    private VBox thisPlayer;
-    private VBox thatPlayer;
-    private HBox sendChat;
-    private int chatWidth;
+    public static final int SPACING = 20;
+    private final Controller control;
+    private final VBox thisPlayer;
+    private final VBox thatPlayer;
+    private final int chatWidth;
 
     /**
      * Creates a new Chat with default width of 300.
@@ -29,12 +26,11 @@ public class Chat extends GridPane {
      * @param chatWidth A preferred int width for the chat box.
      * @param control The controller.
      */
-    public Chat(int chatWidth, Controller control) {
+    private Chat(int chatWidth, Controller control) {
         thisPlayer = new VBox(SPACING);
         thisPlayer.setMinWidth(chatWidth / 2);
         thatPlayer = new VBox(SPACING);
         thatPlayer.setMinWidth(chatWidth / 2);
-        sendChat = new HBox(SPACING);
         this.chatWidth = chatWidth;
         this.control = control;
         this.setMinWidth(chatWidth);

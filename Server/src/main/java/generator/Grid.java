@@ -9,7 +9,7 @@ import java.util.Optional;
  * {@link Cell}s.
  */
 public class Grid {
-    private final Cell[][] grid;
+    private Cell[][] grid;
 
     private Grid(Cell[][] grid) {
         this.grid = grid;
@@ -31,7 +31,7 @@ public class Grid {
         }
         return out;
     }
-    public static Grid of(int[][] grid) {
+    private static Grid of(int[][] grid) {
         verifyGrid(grid);
 
         Cell[][] cells = new Cell[9][9];
@@ -125,7 +125,7 @@ public class Grid {
     *
     * @return the size of this Grid
     */
-    public int getSize() {
+    private int getSize() {
         return grid.length;
     }
 
@@ -200,16 +200,17 @@ public class Grid {
         if (firstCell.isEmpty()) {
             return Optional.of(firstCell);
         }
+
         return getNextEmptyCellOf(firstCell);
     }
 
     /**
-    * Returns the next empty {@link Cell} consecutively to the given {@link Cell} in this Grid.
-    * <br><br> Note: The result is wrapped by an {@link Optional}.
-    *
-    * @param cell the {@link Cell} of which the next empty {@link Cell} should be obtained
-    * @return a non-null value containing the next empty {@link Cell} if present
-    */
+     * Returns the next empty {@link Cell} consecutively to the given {@link Cell} in this Grid.
+     * <br><br> Note: The result is wrapped by an {@link Optional}.
+     *
+     * @param cell the {@link Cell} of which the next empty {@link Cell} should be obtained
+     * @return a non-null value containing the next empty {@link Cell} if present
+     */
     public Optional<Cell> getNextEmptyCellOf(Cell cell) {
         Cell nextEmptyCell = null;
 
@@ -226,137 +227,138 @@ public class Grid {
     }
 
     /**
-    * Returns a {@link String} representation of this Grid.
-    *
-    * @return a {@link String} representation of this Grid.
-    */
+     * Returns a {@link String} representation of this Grid.
+     *
+     * @return a {@link String} representation of this Grid.
+     */
     @Override public String toString() {
         return StringConverter.toString(this);
     }
 
     /**
-    * This class represents a Cell within a Sudoku {@link Grid}. <br><br> It features a couple of
-    * convenient methods.
-    */
-    static class Cell {
+     * This class represents a Cell within a Sudoku {@link Grid}. <br><br> It features a couple of
+     * convenient methods.
+     */
+    public static class Cell {
         private int value;
         private Collection<Cell> rowNeighbors;
         private Collection<Cell> columnNeighbors;
         private Collection<Cell> boxNeighbors;
         private Cell nextCell;
 
-        Cell(int value) {
+        public Cell(int value) {
             this.value = value;
         }
 
         /**
-        * Returns the value of the Cell. <br><br> The value is a digit (1, ..., 9) or 0 if the Cell is
-        * empty.
-        *
-        * @return the value of the Cell.
-        */
-        int getValue() {
+         * Returns the value of the Cell. <br><br> The value is a digit (1, ..., 9) or 0 if the Cell is
+         * empty.
+         *
+         * @return the value of the Cell.
+         */
+        public int getValue() {
             return value;
         }
 
         /**
-        * Indicates whether the Cell is empty or not.
-        *
-        * @return true if the Cell is empty, false otherwise
-        */
-        boolean isEmpty() {
+         * Indicates whether the Cell is empty or not.
+         *
+         * @return true if the Cell is empty, false otherwise
+         */
+        public boolean isEmpty() {
             return value == 0;
         }
 
         /**
-        * Allows to change the value of the Cell.
-        *
-        * @param value the new value of the Cell
-        */
-        void setValue(int value) {
+         * Allows to change the value of the Cell.
+         *
+         * @param value the new value of the Cell
+         */
+        public void setValue(int value) {
             this.value = value;
         }
 
         /**
-        * Returns a {@link Collection} of all other Cells in the same row than this Cell.
-        *
-        * @return a {@link Collection} of row neighbors
-        */
-        Collection<Cell> getRowNeighbors() {
+         * Returns a {@link Collection} of all other Cells in the same row than this Cell.
+         *
+         * @return a {@link Collection} of row neighbors
+         */
+        public Collection<Cell> getRowNeighbors() {
             return rowNeighbors;
         }
 
         /**
-        * Allows to set a {@link Collection} of Cells, which are interpreted to be in the same row.
-        *
-        * @param rowNeighbors a {@link Collection} of row neighbors
-        */
-        void setRowNeighbors(Collection<Cell> rowNeighbors) {
+         * Allows to set a {@link Collection} of Cells, which are interpreted to be in the same row.
+         *
+         * @param rowNeighbors a {@link Collection} of row neighbors
+         */
+        public void setRowNeighbors(Collection<Cell> rowNeighbors) {
             this.rowNeighbors = rowNeighbors;
         }
 
         /**
-        * Returns a {@link Collection} of all other Cells in the same column than this Cell.
-        *
-        * @return a {@link Collection} of column neighbors
-        */
-        Collection<Cell> getColumnNeighbors() {
+         * Returns a {@link Collection} of all other Cells in the same column than this Cell.
+         *
+         * @return a {@link Collection} of column neighbors
+         */
+        public Collection<Cell> getColumnNeighbors() {
             return columnNeighbors;
         }
 
         /**
-        * Allows to set a {@link Collection} of Cells, which are interpreted to be in the same column.
-        *
-        * @param columnNeighbors a {@link Collection} of column neighbors
-        */
-        void setColumnNeighbors(Collection<Cell> columnNeighbors) {
+         * Allows to set a {@link Collection} of Cells, which are interpreted to be in the same column.
+         *
+         * @param columnNeighbors a {@link Collection} of column neighbors
+         */
+        public void setColumnNeighbors(Collection<Cell> columnNeighbors) {
             this.columnNeighbors = columnNeighbors;
         }
 
         /**
-        * Returns a {@link Collection} of all other Cells in the same box than this Cell.
-        *
-        * @return a {@link Collection} of box neighbors
-        */
-        Collection<Cell> getBoxNeighbors() {
+         * Returns a {@link Collection} of all other Cells in the same box than this Cell.
+         *
+         * @return a {@link Collection} of box neighbors
+         */
+        public Collection<Cell> getBoxNeighbors() {
             return boxNeighbors;
         }
 
         /**
-        * Allows to set a {@link Collection} of Cells, which are interpreted to be in the same box.
-        *
-        * @param boxNeighbors a {@link Collection} of box neighbors
-        */
-        void setBoxNeighbors(Collection<Cell> boxNeighbors) {
+         * Allows to set a {@link Collection} of Cells, which are interpreted to be in the same box.
+         *
+         * @param boxNeighbors a {@link Collection} of box neighbors
+         */
+        public void setBoxNeighbors(Collection<Cell> boxNeighbors) {
             this.boxNeighbors = boxNeighbors;
         }
 
         /**
-        * Returns the next Cell consecutive to this Cell. <br><br> This function returns the Cell to
-        * the right of each Cell if the Cell is not the last Cell in a row. It returns the first Cell
-        * of the next row of each Cell if the Cell is the last Cell in a row. For the very last Cell in
-        * the very last row this function returns null.
-        *
-        * @return the next Cell consecutive to this Cell or null if it is the last Cell.
-        */
-        Cell getNextCell() {
+         * Returns the next Cell consecutive to this Cell. <br><br> This function returns the Cell to
+         * the right of each Cell if the Cell is not the last Cell in a row. It returns the first Cell
+         * of the next row of each Cell if the Cell is the last Cell in a row. For the very last Cell in
+         * the very last row this function returns null.
+         *
+         * @return the next Cell consecutive to this Cell or null if it is the last Cell.
+         */
+        public Cell getNextCell() {
             return nextCell;
         }
 
         /**
-        * Allows to set a Cell which is interpreted to be the next Cell consecutive to this Cell.
-        *
-        * @param nextCell the next Cell consecutive to this Cell.
-        */
-        void setNextCell(Cell nextCell) {
-      this.nextCell = nextCell;
-    }
+         * Allows to set a Cell which is interpreted to be the next Cell consecutive to this Cell.
+         *
+         * @param nextCell the next Cell consecutive to this Cell.
+         */
+        public void setNextCell(Cell nextCell) {
+            this.nextCell = nextCell;
+        }
     }
 
     private static class StringConverter {
         public static String toString(Grid grid) {
             StringBuilder builder = new StringBuilder();
             int size = grid.getSize();
+
             printTopBorder(builder);
             for (int row = 0; row < size; row++) {
                 printRowBorder(builder);
@@ -374,11 +376,11 @@ public class Grid {
         }
 
         private static void printTopBorder(StringBuilder builder) {
-            builder.append("\n");
+            builder.append("╔═══╤═══╤═══╦═══╤═══╤═══╦═══╤═══╤═══╗\n");
         }
 
         private static void printRowBorder(StringBuilder builder) {
-            builder.append("");
+            builder.append("║");
         }
 
         private static void printValue(StringBuilder builder, Grid grid, int row, int column) {
@@ -393,7 +395,7 @@ public class Grid {
             }
 
             if (column % 3 == 0) {
-                builder.append("");
+                builder.append("║");
             } else {
                 builder.append("│");
             }
@@ -405,14 +407,14 @@ public class Grid {
             }
 
             if (row % 3 == 0) {
-                builder.append("\n");
+                builder.append("╠═══╪═══╪═══╬═══╪═══╪═══╬═══╪═══╪═══╣\n");
             } else {
-                builder.append("\n");
+                builder.append("╟───┼───┼───╫───┼───┼───╫───┼───┼───╢\n");
             }
         }
 
         private static void printBottomBorder(StringBuilder builder) {
-            builder.append("\n");
+            builder.append("╚═══╧═══╧═══╩═══╧═══╧═══╩═══╧═══╧═══╝\n");
         }
     }
 }

@@ -10,18 +10,18 @@ public class Solver {
     private final int[] values;
 
     /**
-    * Constructs a new Solver instance.
-    */
+     * Constructs a new Solver instance.
+     */
     public Solver() {
         this.values = generateRandomValues();
     }
 
     /**
-    * Solves a given {@link Grid} using backtracking.
-    *
-    * @param grid the {@link Grid} to solve
-    * @throws IllegalStateException in case the provided {@link Grid} is invalid.
-    */
+     * Solves a given {@link Grid} using backtracking.
+     *
+     * @param grid the {@link Grid} to solve
+     * @throws IllegalStateException in case the provided {@link Grid} is invalid.
+     */
     public void solve(Grid grid) {
         boolean solvable = solve(grid, grid.getFirstEmptyCell());
 
@@ -38,13 +38,11 @@ public class Solver {
         for (int value : values) {
             if (grid.isValidValueForCell(cell.get(), value)) {
                 cell.get().setValue(value);
-                if (solve(grid, grid.getNextEmptyCellOf(cell.get()))){
-                    return true;
-                } else {
-                    cell.get().setValue(EMPTY);
-                }
+                if (solve(grid, grid.getNextEmptyCellOf(cell.get()))) return true;
+                cell.get().setValue(EMPTY);
             }
         }
+
         return false;
     }
 
@@ -53,10 +51,9 @@ public class Solver {
 
         Random random = new Random();
         for (int i = 0, j = random.nextInt(9), tmp = values[j]; i < values.length;
-            i++, j = random.nextInt(9), tmp = values[j]) {
-            if(i == j) {
-                continue;
-            }
+             i++, j = random.nextInt(9), tmp = values[j]) {
+            if(i == j) continue;
+
             values[j] = values[i];
             values[i] = tmp;
         }

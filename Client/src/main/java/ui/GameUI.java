@@ -15,13 +15,14 @@ import main.java.networking.SudokuSender;
  * synchronized.
  */
 public class GameUI extends BorderPane {
-    private Board board = new Board();
-    private ButtonMenu menu = new ButtonMenu();
-    private InfoMenu info;
-    private volatile Controller control;
-    private Chat chat;
-    private Chatter chatter;
-    private SudokuLoader splash;
+    private final Board board = new Board();
+    private final ButtonMenu menu = new ButtonMenu();
+    private final InfoMenu info;
+    private final Controller control;
+    private final Chat chat;
+    private final Chatter chatter;
+    @SuppressWarnings("FieldCanBeLocal")
+    private final SudokuLoader splash;
 
     /**
      * Creates a complete visual representation of the current Sudoku Game.
@@ -136,11 +137,13 @@ public class GameUI extends BorderPane {
         return chat;
     }
 
-    /**
-     * Gets the User's chat sender, positioned on the bottom side.
-     * @return The current game's chat sender.
-     */
-    public Chatter getChatter() {
-        return chatter;
-    }
+// --Commented out by Inspection START (1/2/2017 3:44 PM):
+//    /**
+//     * Gets the User's chat sender, positioned on the bottom side.
+//     * @return The current game's chat sender.
+//     */
+//    public Chatter getChatter() {
+//        return chatter;
+//    }
+// --Commented out by Inspection STOP (1/2/2017 3:44 PM)
 }

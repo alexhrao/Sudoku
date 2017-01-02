@@ -19,7 +19,7 @@ public class SudokuSender implements Runnable {
     private boolean isMessage = false;
     private boolean isRemove = false;
     private Color messageColor;
-    private Controller control;
+    private final Controller control;
 
     /**
      * This constructor makes a packet for Squares.
@@ -72,7 +72,7 @@ public class SudokuSender implements Runnable {
             out.writeObject(packet);
             out.flush();
             try {
-                Object done = in.readObject();
+                in.readObject();
             } catch (ClassNotFoundException e) {
                 e.printStackTrace();
             }

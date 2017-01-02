@@ -15,7 +15,6 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.*;
-import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.stage.WindowEvent;
@@ -64,7 +63,7 @@ public class Sudoku extends Application{
                 SudokuSender sender = new SudokuSender(control);
                 (new Thread(sender)).start();
                 player.getClient().close();
-            } catch (IOException | NullPointerException e) {
+            } catch (IOException | NullPointerException ignore) {
             }
         });
 

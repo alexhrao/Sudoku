@@ -178,6 +178,7 @@ public class SudokuPacket implements Serializable {
         this.data = data;
     }
 
+
     /**
      * Gets the square data, if any.
      * @return Square data.
@@ -290,6 +291,7 @@ public class SudokuPacket implements Serializable {
         return this.isLast;
     }
 
+
     /**
      * Sets the isLast property.
      * @param last If this packet is the last packet.
@@ -327,37 +329,39 @@ public class SudokuPacket implements Serializable {
             this.selected = selected;
         }
 
+
         /**
-         * Gets the color of the Answer itself.
-         * @return The 1x4 double for reconstructing the Answer Color.
-         */
+        * Gets the color of the Answer itself.
+        * @return The 1x4 double for reconstructing the Answer Color.
+        */
         public double[] getAnsColor() {
             return ansColor;
         }
 
         /**
-         * Gets the answer value.
-         * @return The answer value.
-         */
+        * Gets the answer value.
+        * @return The answer value.
+        */
         public int getAns() {
             return ans;
         }
 
         /**
-         * Gets the notes.
-         * @return Returns the int array of showing notes.
-         */
+        * Gets the notes.
+        * @return Returns the int array of showing notes.
+        */
         public int[] getNotes() {
             return notes;
         }
 
         /**
-         * Gets the position.
-         * @return Returns an int[Row, Col].
-         */
+        * Gets the position.
+        * @return Returns an int[Row, Col].
+        */
         public int[] getPosn() {
             return posn;
         }
+
 
         /**
          * Tells if this square is selected or not.

@@ -1,6 +1,5 @@
 package main.java.ui;
 
-import javafx.scene.Node;
 import javafx.scene.control.ToolBar;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
@@ -10,8 +9,8 @@ import javafx.scene.text.Text;
  * This class is responsible for creating and maintaining the ToolBar that holds player names.
  */
 public class InfoMenu extends ToolBar {
-    private Text pause = new Text("Playing...");
-    private GameUI ui;
+    private final Text pause = new Text("Playing...");
+    private final GameUI ui;
 
     /**
      * Create a default ToolBar with the pause indicator.

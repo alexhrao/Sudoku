@@ -16,14 +16,14 @@ import java.net.SocketException;
  * This class is responsible for actually talking with the client. It relays information to and from itself and other
  * clients.
  */
-public class SudokuServerThread extends Thread {
-    private Socket client;
-    private volatile SudokuServer server;
+class SudokuServerThread extends Thread {
+    private final Socket client;
+    private final SudokuServer server;
     private SudokuPacket packet;
     private volatile boolean isGoing = true;
     private volatile int id;
-    private int localPort;
-    private String host;
+    private final int localPort;
+    private final String host;
 
     /**
      * Creates a thread with the server and the socket.
@@ -167,11 +167,11 @@ public class SudokuServerThread extends Thread {
         }
     }
 
-    public synchronized void setPacket(SudokuPacket packet) {
+    private synchronized void setPacket(SudokuPacket packet) {
         this.packet = packet;
     }
 
-    public synchronized void halt() {
+    private synchronized void halt() {
         this.isGoing = false;
     }
 }

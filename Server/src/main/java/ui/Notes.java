@@ -10,8 +10,8 @@ import javafx.scene.text.Text;
  * dealing with this notes.
  */
 public class Notes extends GridPane {
-    private Text[] notes = new Text[9];
-    private boolean[] visibility = new boolean[9];
+    private final Text[] notes = new Text[9];
+    private final boolean[] visibility = new boolean[9];
 
     /**
      * Creates a new Notes object, using a default padding of 10 for the left and right. This is a convenience method.
@@ -51,7 +51,7 @@ public class Notes extends GridPane {
      * Shows the given note, an index from 0-8.
      * @param note An integer from 0-8, inclusive.
      */
-    public void show(int note) {
+    private void show(int note) {
         notes[note].setVisible(true);
         visibility[note] = true;
     }
@@ -60,22 +60,24 @@ public class Notes extends GridPane {
      * Hides the given note, an index from 0-8.
      * @param note An integer from 0-8, inclusive.
      */
-    public void hide(int note) {
+    private void hide(int note) {
         notes[note].setVisible(false);
         visibility[note] = false;
     }
 
-    /**
-     * Toggles the given note, an index from 0-8. If the note is currently visible, it is hidden, and vice versa.
-     * @param note An integer from 0-8, inclusive.
-     */
-    public void toggle(int note) {
-        if (visibility[note]) {
-            hide(note);
-        } else {
-            show(note);
-        }
-    }
+// --Commented out by Inspection START (1/2/2017 3:44 PM):
+//    /**
+//     * Toggles the given note, an index from 0-8. If the note is currently visible, it is hidden, and vice versa.
+//     * @param note An integer from 0-8, inclusive.
+//     */
+//    public void toggle(int note) {
+//        if (visibility[note]) {
+//            hide(note);
+//        } else {
+//            show(note);
+//        }
+//    }
+// --Commented out by Inspection STOP (1/2/2017 3:44 PM)
 
     /**
      * A convenience method that clears the Notes of all visible notes.

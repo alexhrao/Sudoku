@@ -9,12 +9,12 @@ import javafx.scene.shape.Rectangle;
  * an Answer and notes.
  */
 public class Square extends StackPane {
-    private Notes notes = new Notes();
-    private Answer answer = new Answer();
-    private Rectangle overlay = new Rectangle(85, 85, Color.TRANSPARENT);
+    private final Notes notes = new Notes();
+    private final Answer answer = new Answer();
+    private final Rectangle overlay = new Rectangle(85, 85, Color.TRANSPARENT);
     private boolean selected = false;
-    private int row;
-    private int col;
+    private final int row;
+    private final int col;
 
     /**
      * Creates a Square that has the specified row and column.
@@ -95,13 +95,15 @@ public class Square extends StackPane {
         this.setColor(Color.color(1, 1, 1, 1));
     }
 
-    public void setColor(Color color) {
+    private void setColor(Color color) {
         this.overlay.setFill(color);
     }
 
-    public Color getColor() {
-        return (Color) this.overlay.getFill();
-    }
+// --Commented out by Inspection START (1/2/2017 3:44 PM):
+//    public Color getColor() {
+//        return (Color) this.overlay.getFill();
+//    }
+// --Commented out by Inspection STOP (1/2/2017 3:44 PM)
 
     /**
      * Checks equivalency between this Square and another. They are the same if their answer and notes are the same,

@@ -12,18 +12,18 @@ import java.util.ArrayList;
  * but does keep a lot of accounting data.
  */
 public class SudokuServer implements Runnable {
-    private int port;
+    private final int port;
     private volatile boolean isGoing = true;
     private volatile boolean firstPlayer = true;
     private ServerSocket server;
-    private volatile ArrayList<SudokuServerThread> connections = new ArrayList<>();
-    private volatile ArrayList<String> playerName = new ArrayList<>();
-    private volatile ArrayList<Color> playerColor = new ArrayList<>();
-    private volatile ArrayList<Integer> playerId = new ArrayList<>();
-    private volatile ArrayList<SudokuPacket> packets = new ArrayList<>();
+    private final ArrayList<SudokuServerThread> connections = new ArrayList<>();
+    private final ArrayList<String> playerName = new ArrayList<>();
+    private final ArrayList<Color> playerColor = new ArrayList<>();
+    private final ArrayList<Integer> playerId = new ArrayList<>();
+    private final ArrayList<SudokuPacket> packets = new ArrayList<>();
     private volatile int[][] board;
     private volatile int[][] soln;
-    public static final int PORT = 60000;
+    private static final int PORT = 60000;
 
     /**
      * Creates a Sudoku Server with the default port defined in PORT.
@@ -81,19 +81,21 @@ public class SudokuServer implements Runnable {
         }
     }
 
-    /**
-     * Sets the continuing condition.
-     * @param isGoing If the server should keep listening.
-     */
-    public synchronized void setGoing(boolean isGoing) {
-        this.isGoing = isGoing;
-    }
+// --Commented out by Inspection START (1/2/2017 3:44 PM):
+//    /**
+//     * Sets the continuing condition.
+//     * @param isGoing If the server should keep listening.
+//     */
+//    public synchronized void setGoing(boolean isGoing) {
+//        this.isGoing = isGoing;
+//    }
+// --Commented out by Inspection STOP (1/2/2017 3:44 PM)
 
     /**
      * Gets the serverSocket.
      * @return The currently utilized serverSocket.
      */
-    public synchronized ServerSocket getServer() {
+    private synchronized ServerSocket getServer() {
         return server;
     }
 
@@ -193,25 +195,29 @@ public class SudokuServer implements Runnable {
         System.out.println("No Active Players - Game reset.");
     }
 
-    public void resetGame() {
-        this.board = new int[9][9];
-        this.soln = this.board;
-        this.firstPlayer = true;
-        this.packets.clear();
-        this.playerColor.clear();
-        this.playerId.clear();
-        this.playerName.clear();
-        this.connections.clear();
-        System.out.println("No Active Players - Game reset.");
-    }
+// --Commented out by Inspection START (1/2/2017 3:44 PM):
+//    public void resetGame() {
+//        this.board = new int[9][9];
+//        this.soln = this.board;
+//        this.firstPlayer = true;
+//        this.packets.clear();
+//        this.playerColor.clear();
+//        this.playerId.clear();
+//        this.playerName.clear();
+//        this.connections.clear();
+//        System.out.println("No Active Players - Game reset.");
+//    }
+// --Commented out by Inspection STOP (1/2/2017 3:44 PM)
 
-    /**
-     * Gets the playerID collection.
-     * @return The collection of player IDs.
-     */
-    public ArrayList<Integer> getPlayerId() {
-        return this.playerId;
-    }
+// --Commented out by Inspection START (1/2/2017 3:44 PM):
+//    /**
+//     * Gets the playerID collection.
+//     * @return The collection of player IDs.
+//     */
+//    public ArrayList<Integer> getPlayerId() {
+//        return this.playerId;
+//    }
+// --Commented out by Inspection STOP (1/2/2017 3:44 PM)
 
     /**
      * Adds a packet to the stack.

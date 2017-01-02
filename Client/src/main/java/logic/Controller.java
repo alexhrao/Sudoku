@@ -9,8 +9,8 @@ import main.java.ui.Square;
  */
 public class Controller {
     private Square lastClicked;
-    private String playerName;
-    private Color playerColor;
+    private final String playerName;
+    private final Color playerColor;
     private boolean isNote;
     private boolean isPlay;
     private volatile int[][] board;
@@ -19,6 +19,7 @@ public class Controller {
     private String serverHost;
     private int spaces;
     private int id;
+    @SuppressWarnings("FieldCanBeLocal")
     private boolean ready = false;
 
     /**
@@ -115,13 +116,15 @@ public class Controller {
         this.solnBoard = solnBoard;
     }
 
-    /**
-     * Sets the server port.
-     * @param port The server port, as an int.
-     */
-    public void setServerPort(int port) {
-        this.serverPort = port;
-    }
+// --Commented out by Inspection START (1/2/2017 3:44 PM):
+//    /**
+//     * Sets the server port.
+//     * @param port The server port, as an int.
+//     */
+//    public void setServerPort(int port) {
+//        this.serverPort = port;
+//    }
+// --Commented out by Inspection STOP (1/2/2017 3:44 PM)
 
     /**
      * Gets the server port.
@@ -139,13 +142,15 @@ public class Controller {
         return this.serverHost;
     }
 
-    /**
-     * Sets the server host.
-     * @param host The server host, as a String.
-     */
-    public void setServerHost(String host) {
-        this.serverHost = host;
-    }
+// --Commented out by Inspection START (1/2/2017 3:44 PM):
+//    /**
+//     * Sets the server host.
+//     * @param host The server host, as a String.
+//     */
+//    public void setServerHost(String host) {
+//        this.serverHost = host;
+//    }
+// --Commented out by Inspection STOP (1/2/2017 3:44 PM)
 
     /**
      * Set the number of requested spaces.
@@ -195,13 +200,15 @@ public class Controller {
         return this.board;
     }
 
-    /**
-     * True if we're ready to begin the game.
-     * @return If we are ready to begin.
-     */
-    public boolean isReady() {
-        return this.ready;
-    }
+// --Commented out by Inspection START (1/2/2017 3:44 PM):
+//    /**
+//     * True if we're ready to begin the game.
+//     * @return If we are ready to begin.
+//     */
+//    public boolean isReady() {
+//        return this.ready;
+//    }
+// --Commented out by Inspection STOP (1/2/2017 3:44 PM)
 
     /**
      * Set the isReady field.

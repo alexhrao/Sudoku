@@ -9,7 +9,7 @@ import javafx.scene.paint.Color;
  * has several convenience methods. The Board is exclusive to the client.
  */
 public class Board extends GridPane implements Comparable<Board> {
-    private Square[][] squares = new Square[9][9];
+    private final Square[][] squares = new Square[9][9];
 
     /**
      * This creates an empty board. Use populate to actually fill the squares.

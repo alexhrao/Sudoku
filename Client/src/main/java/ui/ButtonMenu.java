@@ -11,12 +11,12 @@ import javafx.scene.layout.VBox;
  * to enter the corresponding answer or note.
  */
 public class ButtonMenu extends VBox {
-    private Button note = new Button("Note");
-    private Button clear = new Button("Clear");
-    private Button pause = new Button("Pause");
-    private Button hint = new Button("Show Answer");
-    private Button send = new Button("Send Game");
-    private Numbers numbers = new Numbers();
+    private final Button note = new Button("Note");
+    private final Button clear = new Button("Clear");
+    private final Button pause = new Button("Pause");
+    private final Button hint = new Button("Show Answer");
+    private final Button send = new Button("Send Game");
+    private final Numbers numbers = new Numbers();
 
     /**
      * A convenience constructor that uses a padding of 10 to create a ButtonMenu.
@@ -30,7 +30,7 @@ public class ButtonMenu extends VBox {
      * Note, Clear, Pause, Show Answer, the Numbers, and the Send Game buttons.
      * @param padding An integer that tells how much padding to give.
      */
-    public ButtonMenu(int padding) {
+    private ButtonMenu(int padding) {
         numbers.setPadding(new Insets(padding));
         note.setPadding(new Insets(padding));
         clear.setPadding(new Insets(padding));
@@ -73,13 +73,15 @@ public class ButtonMenu extends VBox {
         return hint;
     }
 
-    /**
-     * A method that returns all of the Numbers.
-     * @return The Numbers buttons.
-     */
-    public Numbers getNumbers() {
-        return numbers;
-    }
+// --Commented out by Inspection START (1/2/2017 3:44 PM):
+//    /**
+//     * A method that returns all of the Numbers.
+//     * @return The Numbers buttons.
+//     */
+//    public Numbers getNumbers() {
+//        return numbers;
+//    }
+// --Commented out by Inspection STOP (1/2/2017 3:44 PM)
 
     /**
      * A method that gets the Send button.
@@ -122,7 +124,7 @@ public class ButtonMenu extends VBox {
      * Numbers class is a GridPane that has a 3x3 grid of the 9 Sudoku numbers.
      */
     private class Numbers extends GridPane {
-        private Button[] buttons = new Button[9];
+        private final Button[] buttons = new Button[9];
 
         /**
          * Creates a new Numbers, which is a GridPane with a 3x3 grid of the numbers 1-9.
