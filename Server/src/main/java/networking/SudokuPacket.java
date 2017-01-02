@@ -23,9 +23,10 @@ public class SudokuPacket implements Serializable {
     private boolean isRemove = false;
     private String message;
     private int id;
+    private boolean isLast = false;
 
     /**
-     * This constructure makes a packet for a new player.
+     * This constructor makes a packet for a new player.
      * @param name The player name.
      * @param color The player color.
      * @param isPlayer An identifier for if it is a player.
@@ -52,7 +53,7 @@ public class SudokuPacket implements Serializable {
     }
 
     /**
-     * This constructur creates the board and the beginning volley.
+     * This constructor creates the board and the beginning volley.
      * @param board The board.
      * @param solnBoard The solution.
      * @param name The player name.
@@ -282,6 +283,22 @@ public class SudokuPacket implements Serializable {
     }
 
     /**
+     * Get the isLast property; this is true if this is the last packet.
+     * @return If it's the last packet.
+     */
+    public boolean isLast() {
+        return this.isLast;
+    }
+
+    /**
+     * Sets the isLast property.
+     * @param last If this packet is the last packet.
+     */
+    public void setLast(boolean last) {
+        this.isLast = last;
+    }
+
+    /**
      * A convenience class that stores one full square.
      */
     public class Data implements Serializable {
@@ -346,6 +363,7 @@ public class SudokuPacket implements Serializable {
          * Tells if this square is selected or not.
          * @return If the square is selected.
          */
+        @Deprecated
         public boolean isSelected() {
             return selected;
         }

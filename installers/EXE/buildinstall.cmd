@@ -1,3 +1,4 @@
+@ECHO off
 rem Ensure Launch4j is installed and is in your path
 rem Hit enter when ready to start ...
 pause

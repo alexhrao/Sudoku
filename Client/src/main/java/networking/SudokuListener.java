@@ -151,6 +151,14 @@ public class SudokuListener extends Thread implements Runnable {
                             square.getOverlay().setStroke(Color.color(overColor[0], overColor[1], overColor[2], overColor[3]));
                         }
                     }
+                    // Probably never used :(
+                    if (instruct.isLast()) {
+                        Platform.runLater(() -> {
+                            ui.getControl().setReady(true);
+                            Thread.currentThread().interrupt();
+                        });
+                        ui.getControl().setReady(true);
+                    }
                 }
             }
         } catch (SocketException e) {

@@ -22,6 +22,8 @@ public class SudokuServerThread extends Thread {
     private SudokuPacket packet;
     private volatile boolean isGoing = true;
     private volatile int id;
+    private int localPort;
+    private String host;
 
     /**
      * Creates a thread with the server and the socket.
@@ -32,6 +34,8 @@ public class SudokuServerThread extends Thread {
         super("SudokuServerThread");
         this.client = socket;
         this.server = server;
+        this.localPort = socket.getLocalPort();
+        this.host = socket.getInetAddress().getHostName();
     }
 
     /**
@@ -94,7 +98,7 @@ public class SudokuServerThread extends Thread {
                         server.setBoards(board, solnBoard);
                     }
                     id = server.addPlayer(instruct.getName(), Color.color(instruct.getColor()[0], instruct.getColor()[1], instruct.getColor()[2], instruct.getColor()[3]));
-                    System.out.println("Connected to player " + id + ": " + instruct.getName());
+                    System.out.println("Connected to player " + id + ": " + instruct.getName() + " (Port: " + localPort + "; Host: " + host+ ")");
                     SudokuPacket response = new SudokuPacket(server.getBoard(), server.getSoln());
                     out.writeObject(response);
                     // send all the player information:
@@ -143,7 +147,7 @@ public class SudokuServerThread extends Thread {
         } catch (SocketException e) {
             if (server.getThreads().contains(this)) {
                 server.getThreads().set(server.getThreads().indexOf(this), null);
-                System.out.println("Disconnected from player " + id + ": " + server.getPlayerName().get(id - 1));
+                System.out.println("Disconnected from player " + id + ": " + server.getPlayerName().get(id - 1) + " (Port: " + localPort + " Host: " + host + ")");
                 server.removePlayer(this.id);
                 SudokuPacket instruct = new SudokuPacket(this.id);
                 server.addPacket(instruct);
@@ -154,7 +158,6 @@ public class SudokuServerThread extends Thread {
                     }
                 }
             } else {
-                id = Integer.parseInt(e.getMessage());
                 server.getThreads().get(id - 1).halt();
                 server.getThreads().get(id - 1).interrupt();
             }

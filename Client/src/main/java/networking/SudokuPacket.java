@@ -23,6 +23,7 @@ public class SudokuPacket implements Serializable {
     private boolean isRemove = false;
     private String message;
     private int id;
+    private boolean isLast = false;
 
     /**
      * This constructor makes a packet for a new player.
@@ -279,6 +280,22 @@ public class SudokuPacket implements Serializable {
      */
     public boolean isRemove() {
         return this.isRemove;
+    }
+
+    /**
+     * Get the isLast property; this is true if this is the last packet.
+     * @return If it's the last packet.
+     */
+    public boolean isLast() {
+        return this.isLast;
+    }
+
+    /**
+     * Sets the isLast property.
+     * @param last If this packet is the last packet.
+     */
+    public void setLast(boolean last) {
+        this.isLast = last;
     }
 
     /**

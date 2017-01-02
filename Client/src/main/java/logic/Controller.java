@@ -19,6 +19,7 @@ public class Controller {
     private String serverHost;
     private int spaces;
     private int id;
+    private boolean ready = false;
 
     /**
      * Constructs the controller for the current game, given the following parameters.
@@ -146,27 +147,67 @@ public class Controller {
         this.serverHost = host;
     }
 
+    /**
+     * Set the number of requested spaces.
+     * @param spaces The number of free spaces.
+     */
     public void setSpaces(int spaces) {
         this.spaces = spaces;
     }
 
+    /**
+     * Get the number of requested spaces.
+     * @return The number of free spaces requested.
+     */
     public int getSpaces() {
         return this.spaces;
     }
 
+    /**
+     * Get this player's ID.
+     * @return The current ID.
+     */
     public int getId() {
         return this.id;
     }
 
+    /**
+     * Set this player's ID.
+     * @param id This player's ID.
+     */
     public void setId(int id) {
         this.id = id;
     }
 
+    /**
+     * Set the current board.
+     * @param board The current board.
+     */
     public void setBoard(int[][] board) {
         this.board = board;
     }
 
+    /**
+     * Get the current board.
+     * @return The current board.
+     */
     public int[][] getBoard() {
         return this.board;
+    }
+
+    /**
+     * True if we're ready to begin the game.
+     * @return If we are ready to begin.
+     */
+    public boolean isReady() {
+        return this.ready;
+    }
+
+    /**
+     * Set the isReady field.
+     * @param ready If we are ready or not.
+     */
+    public void setReady(boolean ready) {
+        this.ready = ready;
     }
 }

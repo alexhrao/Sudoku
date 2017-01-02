@@ -3,7 +3,6 @@ package main.java.logic;
 import javafx.application.Application;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
-import javafx.geometry.*;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -27,10 +26,8 @@ import main.java.ui.GameUI;
 import main.java.ui.Square;
 
 import javax.imageio.ImageIO;
-import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.net.URL;
 
 /**
  * This is the entry point of the Sudoku game. It collects starting information from the player, creates the game, and
@@ -51,12 +48,13 @@ public class Sudoku extends Application{
     @Override
     public void start(Stage primaryStage) throws Exception {
         this.gatherInformation();
-        ui = new GameUI(control);
+        ui = new GameUI(control, loader);
         this.setup();
         player = new SudokuListener(control.getServerHost(), control.getServerPort(), ui);
         player.start();
+        loader.getStage().showAndWait();
         Scene game = new Scene(ui);
-        primaryStage.setTitle("Sudoku");
+        primaryStage.setTitle("Sudoku Online");
         primaryStage.setScene(game);
         primaryStage.getIcons().add(icon);
         primaryStage.setResizable(false);

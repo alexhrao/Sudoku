@@ -5,6 +5,7 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import main.java.logic.Controller;
+import main.java.logic.SudokuLoader;
 import main.java.networking.Chat;
 import main.java.networking.SudokuSender;
 
@@ -19,13 +20,15 @@ public class GameUI extends BorderPane {
     private volatile Controller control;
     private Chat chat;
     private Chatter chatter;
+    private SudokuLoader splash;
 
     /**
      * Creates a complete visual representation of the current Sudoku Game.
      * @param control The current controller for this game.
      */
-    public GameUI(Controller control) {
+    public GameUI(Controller control, SudokuLoader splash) {
         this.control = control;
+        this.splash = splash;
         GridPane squares = new GridPane();
         for (int r = 0; r < 3; r++) {
             for (int c = 0; c < 3; c++) {
