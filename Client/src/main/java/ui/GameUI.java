@@ -25,6 +25,7 @@ public class GameUI extends BorderPane {
     /**
      * Creates a complete visual representation of the current Sudoku Game.
      * @param control The current controller for this game.
+     * @param splash The Splash Screen (Deprecated!)
      */
     public GameUI(Controller control, SudokuLoader splash) {
         this.control = control;

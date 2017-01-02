@@ -34,7 +34,7 @@ public class SudokuServerThread extends Thread {
         super("SudokuServerThread");
         this.client = socket;
         this.server = server;
-        this.localPort = socket.getLocalPort();
+        this.localPort = socket.getPort();
         this.host = socket.getInetAddress().getHostName();
     }
 
