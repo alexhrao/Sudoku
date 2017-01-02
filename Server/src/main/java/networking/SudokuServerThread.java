@@ -130,7 +130,7 @@ public class SudokuServerThread extends Thread {
                     server.addPacket(instruct);
                     if (instruct.isRemove()) {
                         this.id = instruct.getId();
-                        throw new SocketException();
+                        throw new SocketException("" + instruct.getId());
                     }
                     for (SudokuServerThread thread : server.getThreads()) {
                         if (thread.isAlive()) {
@@ -154,6 +154,7 @@ public class SudokuServerThread extends Thread {
                     }
                 }
             } else {
+                id = Integer.parseInt(e.getMessage());
                 server.getThreads().get(id - 1).halt();
                 server.getThreads().get(id - 1).interrupt();
             }

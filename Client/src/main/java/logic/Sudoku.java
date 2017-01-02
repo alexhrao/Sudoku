@@ -295,7 +295,7 @@ public class Sudoku extends Application{
                         }
                     }
                     control.getLastClicked().getNotes().clear();
-                    control.getLastClicked().getAnswer().setValue(num);
+                    control.getLastClicked().getAnswer().setValue(num + 1);
                     int r = control.getLastClicked().getRow();
                     int c = control.getLastClicked().getCol();
                     if ((num + 1) == ui.getSolnBoard()[r][c]) {
@@ -346,6 +346,19 @@ public class Sudoku extends Application{
                             sq.getAnswer().setFill(control.getColor());
                         } else {
                             sq.getAnswer().setFill(Color.DARKRED);
+                        }
+                    }
+                    for (int num = 0; num < 9; num++) {
+                        int numPresent = 0;
+                        for (int r = 0; r < 9; r++) {
+                            for (int c = 0; c < 9; c++) {
+                                if (control.getBoard()[r][c] == (num + 1)) {
+                                    numPresent++;
+                                }
+                            }
+                        }
+                        if (numPresent == 9) {
+                            menu.getNumber(num).setDisable(true);
                         }
                     }
                     if (first == null) {
