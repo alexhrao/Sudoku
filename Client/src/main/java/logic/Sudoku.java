@@ -13,6 +13,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.text.*;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
@@ -66,6 +67,19 @@ public class Sudoku extends Application{
             } catch (IOException | NullPointerException e) {
             }
         });
+
+        GridPane squares = new GridPane();
+        for (int r = 0; r < 3; r++) {
+            for (int c = 0; c < 3; c++) {
+                Rectangle box = new Rectangle(255, 255, Color.rgb(0, 0, 0, 0.0));
+                box.setStroke(Color.BLACK);
+                box.setStrokeWidth(2.5);
+                squares.add(box, c, r);
+            }
+        }
+        ((StackPane) ui.getCenter()).getChildren().add(2, squares);
+        squares.setPickOnBounds(true);
+        squares.setDisable(true);
         primaryStage.show();
     }
 
@@ -253,6 +267,9 @@ public class Sudoku extends Application{
         for (int i = 0; i < 9; i++) {
             final int num = i;
             menu.getNumber(i).setOnAction((ActionEvent e) -> {
+                if (control.getLastClicked() == null) {
+                    return;
+                }
                 if (control.getLastClicked().getAnswer().getVisible()
                         && !control.getLastClicked().getAnswer().getFill().equals(Color.DARKRED)) {
                     return;
@@ -338,6 +355,7 @@ public class Sudoku extends Application{
                         ui.getMenu().enable();
                     }
                     sq.getOverlay().setStroke(control.getColor());
+                    sq.getOverlay().setStrokeWidth(3);
                     if (!(sq.getAnswer().getVisible()
                             && !sq.getAnswer().getFill().equals(Color.DARKRED))) {
                         if (sq.getAnswer().getValue() == ans) {

@@ -193,6 +193,18 @@ public class SudokuServer implements Runnable {
         System.out.println("No Active Players - Game reset.");
     }
 
+    public void resetGame() {
+        this.board = new int[9][9];
+        this.soln = this.board;
+        this.firstPlayer = true;
+        this.packets.clear();
+        this.playerColor.clear();
+        this.playerId.clear();
+        this.playerName.clear();
+        this.connections.clear();
+        System.out.println("No Active Players - Game reset.");
+    }
+
     /**
      * Gets the playerID collection.
      * @return The collection of player IDs.

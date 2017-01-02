@@ -1,6 +1,7 @@
 package main.java.ui;
 
 import javafx.scene.control.ScrollPane;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
@@ -45,9 +46,23 @@ public class GameUI extends BorderPane {
         chatter = new Chatter();
         chatter.getSender().setOnAction(e -> {
             chat.thisPlayerChat(chatter.getChatter().getText());
+            chatter.getSender().setDisable(true);
             SudokuSender sender = new SudokuSender(control, control.getColor(), chatter.getChatter().getText());
             Thread tClient = new Thread(sender);
             tClient.start();
+            chatter.getChatter().clear();
+        });
+        chatter.getChatter().setOnKeyPressed(e -> {
+            if (e.getCode().equals(KeyCode.ENTER)) {
+                chatter.getSender().fire();
+            }
+        });
+        chatter.getChatter().setOnKeyReleased(e -> {
+            if (chatter.getChatter().getText().isEmpty()) {
+                chatter.getSender().setDisable(true);
+            } else {
+                chatter.getSender().setDisable(false);
+            }
         });
         Rectangle overlay = new Rectangle(chat.getChatWidth() + 6, 770, Color.color(0, 0, 0, 0));
         overlay.setStroke(Color.color(0, 0, 0, 1));

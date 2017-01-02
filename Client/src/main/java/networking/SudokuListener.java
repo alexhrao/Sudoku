@@ -148,7 +148,27 @@ public class SudokuListener extends Thread implements Runnable {
                                     }
                                 }
                             }
-                            square.getOverlay().setStroke(Color.color(overColor[0], overColor[1], overColor[2], overColor[3]));
+                            Color color = Color.color(overColor[0], overColor[1], overColor[2], overColor[3]);
+                            square.getOverlay().setStroke(color);
+
+                            if (!color.equals(Color.BLACK)) {
+                                square.getOverlay().setStrokeWidth(2);
+                            } else {
+                                square.getOverlay().setStrokeWidth(1);
+                            }
+                            for (int num = 0; num < 9; num++) {
+                                int numPresent = 0;
+                                for (int r = 0; r < 9; r++) {
+                                    for (int c = 0; c < 9; c++) {
+                                        if (ui.getControl().getBoard()[r][c] == (num + 1)) {
+                                            numPresent++;
+                                        }
+                                    }
+                                }
+                                if (numPresent == 9) {
+                                    ui.getMenu().getNumber(num).setDisable(true);
+                                }
+                            }
                         }
                     }
                     // Probably never used :(

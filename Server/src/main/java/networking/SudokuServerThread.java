@@ -131,13 +131,14 @@ public class SudokuServerThread extends Thread {
                         }
                     }
                 } else {
+                    out.writeObject("");
                     server.addPacket(instruct);
                     if (instruct.isRemove()) {
                         this.id = instruct.getId();
                         throw new SocketException("" + instruct.getId());
                     }
                     for (SudokuServerThread thread : server.getThreads()) {
-                        if (thread.isAlive()) {
+                        if (thread != null && thread.isAlive()) {
                             thread.setPacket(instruct);
                             thread.interrupt();
                         }

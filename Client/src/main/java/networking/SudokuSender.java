@@ -4,6 +4,7 @@ import main.java.logic.Controller;
 import main.java.ui.Square;
 
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 import javafx.scene.paint.Color;
@@ -58,7 +59,8 @@ public class SudokuSender implements Runnable {
     @Override
     public void run() {
         try (Socket client = new Socket(control.getServerHost(), control.getServerPort());
-            ObjectOutputStream out = new ObjectOutputStream(client.getOutputStream())) {
+            ObjectOutputStream out = new ObjectOutputStream(client.getOutputStream());
+            ObjectInputStream in = new ObjectInputStream(client.getInputStream())) {
             SudokuPacket packet;
             if (isMessage) {
                 packet = new SudokuPacket(this.message, this.messageColor, control.getId(), true);
@@ -69,6 +71,11 @@ public class SudokuSender implements Runnable {
             }
             out.writeObject(packet);
             out.flush();
+            try {
+                Object done = in.readObject();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }

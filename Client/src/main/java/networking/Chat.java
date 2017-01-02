@@ -51,8 +51,12 @@ public class Chat extends GridPane {
     public void thisPlayerChat(String msg) {
         Text message = new Text(msg);
         message.setFill(control.getColor());
+        message.setWrappingWidth(thisPlayer.getMinWidth() - 2);
         thisPlayer.getChildren().add(message);
-        thatPlayer.getChildren().add(new Text(""));
+        Text spacer = new Text(msg);
+        spacer.setFill(Color.WHITE);
+        spacer.setWrappingWidth(thatPlayer.getMinWidth() - 2);
+        thatPlayer.getChildren().add(spacer);
     }
 
     /**
@@ -63,8 +67,12 @@ public class Chat extends GridPane {
     public void thatPlayerChat(String msg, Color color) {
         Text message = new Text(msg);
         message.setFill(color);
+        message.setWrappingWidth(thatPlayer.getMinWidth() - 2);
         thatPlayer.getChildren().add(message);
-        thisPlayer.getChildren().add(new Text(""));
+        Text spacer = new Text(msg);
+        spacer.setFill(Color.WHITE);
+        spacer.setWrappingWidth(thisPlayer.getMinWidth() - 2);
+        thisPlayer.getChildren().add(spacer);
     }
 
     /**

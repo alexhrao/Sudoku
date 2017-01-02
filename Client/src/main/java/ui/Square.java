@@ -11,7 +11,7 @@ import javafx.scene.shape.Rectangle;
 public class Square extends StackPane {
     private Notes notes = new Notes();
     private Answer answer = new Answer();
-    private Rectangle overlay = new Rectangle(85, 85, Color.color(1, 1, 1, 0));
+    private Rectangle overlay = new Rectangle(85, 85, Color.TRANSPARENT);
     private boolean selected = false;
     private int row;
     private int col;
