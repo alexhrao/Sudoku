@@ -7,7 +7,6 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import main.java.logic.Controller;
 import main.java.logic.SudokuLoader;
-import main.java.networking.Chat;
 import main.java.networking.SudokuSender;
 
 /**
