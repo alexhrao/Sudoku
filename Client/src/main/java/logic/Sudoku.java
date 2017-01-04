@@ -370,7 +370,7 @@ public class Sudoku extends Application{
                         int numPresent = 0;
                         for (int r = 0; r < 9; r++) {
                             for (int c = 0; c < 9; c++) {
-                                if (control.getBoard()[r][c] == (num + 1)) {
+                                if (board.getSquare(r, c).getAnswer().getValue() == (num + 1)) {
                                     numPresent++;
                                 }
                             }
