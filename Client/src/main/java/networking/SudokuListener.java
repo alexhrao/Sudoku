@@ -149,9 +149,8 @@ public class SudokuListener extends Thread implements Runnable {
                             }
                             Color color = Color.color(overColor[0], overColor[1], overColor[2], overColor[3]);
                             square.getOverlay().setStroke(color);
-
                             if (!color.equals(Color.BLACK)) {
-                                square.getOverlay().setStrokeWidth(2);
+                                square.getOverlay().setStrokeWidth(3);
                             } else {
                                 square.getOverlay().setStrokeWidth(1);
                             }

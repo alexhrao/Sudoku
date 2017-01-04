@@ -144,14 +144,14 @@ public class Sudoku extends Application{
 
         TextField sHost = new TextField("localhost");
         sHost.setFont(new Font(16));
-        sHost.setMaxWidth(150);
+        sHost.setMinWidth(212);
         TextField sPort = new TextField("60000");
         sPort.setFont(new Font(16));
-        sPort.setMaxWidth(150);
+        sPort.setMinWidth(212);
 
         GridPane advanced = new GridPane();
-        Text serverHostPrompt = new Text("Server Host:  ");
-        Text serverPortPrompt = new Text("Server Port:  ");
+        Text serverHostPrompt = new Text("Host:  ");
+        Text serverPortPrompt = new Text("Port:  ");
         serverHostPrompt.setFill(Color.BROWN);
         serverHostPrompt.setFont(new Font(18));
         serverPortPrompt.setFill(Color.BROWN);
@@ -165,6 +165,7 @@ public class Sudoku extends Application{
 
         Button showAdvanced = new Button("Show Advanced Options:");
         showAdvanced.setFont(new Font(16));
+        showAdvanced.setTextFill(Color.BROWN);
         showAdvanced.setOnAction(e -> {
             if (advanced.isVisible()) {
                 showAdvanced.setText("Show Advanced Options");
