@@ -79,7 +79,7 @@ public class Sudoku extends Application{
         ((StackPane) ui.getCenter()).getChildren().add(2, squares);
         squares.setPickOnBounds(true);
         squares.setDisable(true);
-        game.getStylesheets().add(getClass().getResource("/HelloWorld.css").toExternalForm());
+        game.getStylesheets().add(getClass().getResource("/Loader.css").toExternalForm());
         primaryStage.show();
     }
 
@@ -202,7 +202,7 @@ public class Sudoku extends Application{
         Stage infoStage = new Stage();
         Scene infoScene = new Scene(infoPane);
         infoScene.setFill(Color.TRANSPARENT);
-        infoScene.getStylesheets().add(getClass().getResource("/HelloWorld.css").toExternalForm());
+        infoScene.getStylesheets().add(getClass().getResource("/Loader.css").toExternalForm());
         infoStage.setScene(infoScene);
         infoStage.setResizable(false);
         infoStage.getIcons().add(icon);

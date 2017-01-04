@@ -12,7 +12,6 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -44,7 +43,7 @@ public class SudokuLoader extends Preloader implements Runnable {
         statusButton.setBackground(new Background(new BackgroundFill(Color.rgb(248, 196, 115), new CornerRadii(10), null)));
         StackPane splashPane = new StackPane(splash, statusButton);
         Scene loadScene = new Scene(splashPane);
-        loadScene.getStylesheets().add(getClass().getResource("/HelloWorld.css").toExternalForm());
+        loadScene.getStylesheets().add(getClass().getResource("/Loader.css").toExternalForm());
         loadScene.setFill(Color.TRANSPARENT);
         primaryStage.setScene(loadScene);
         this.ready();
