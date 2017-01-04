@@ -9,6 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -219,7 +220,6 @@ public class Sudoku extends Application{
         infoStage.showAndWait();
 
         loader = new SudokuLoader();
-        loader.start(infoStage);
         String playerName = name.getText();
         Color playerColor = colorPicker.getValue();
         int numSpaces = Integer.parseInt(spaces.getText());
@@ -230,6 +230,51 @@ public class Sudoku extends Application{
         } catch (Exception e) {
             serverPort = 0;
         }
+        boolean isValid = true;
+        if (playerName.isEmpty()) {
+            name.setText("Cannot be blank!");
+            isValid = false;
+        }
+        if (playerColor.equals(Color.BLACK) || playerColor.equals(Color.WHITE)
+                || playerColor.equals(Color.DARKRED) || playerColor.equals(Color.GREEN)
+                || playerColor.equals(Color.TRANSPARENT)) {
+            colorPicker.setPromptText("Invalid color chosen!");
+            playerAskColor.setFill(Color.RED);
+            isValid = false;
+        }
+
+        while (!isValid) {
+            infoStage.showAndWait();
+            playerName = name.getText();
+            playerColor = colorPicker.getValue();
+            numSpaces = Integer.parseInt(spaces.getText());
+            serverName = sHost.getText();
+            try {
+                serverPort = Integer.parseInt(sPort.getText());
+            } catch (Exception e) {
+                serverPort = 0;
+            }
+            isValid = true;
+            if (playerName.isEmpty()) {
+                name.setText("Cannot be blank!");
+                name.setTooltip(new Tooltip("Your name must not be blank!"));
+                isValid = false;
+            } else {
+                name.setTooltip(null);
+                name.setText(playerName);
+            }
+            if (playerColor.equals(Color.BLACK) || playerColor.equals(Color.WHITE)
+                    || playerColor.equals(Color.DARKRED) || playerColor.equals(Color.GREEN)
+                    || playerColor.equals(Color.TRANSPARENT)) {
+                playerAskColor.setFill(Color.RED);
+                colorPicker.setTooltip(new Tooltip("Choose a valid color!"));
+                isValid = false;
+            } else {
+                playerAskColor.setFill(Color.BROWN);
+                colorPicker.setTooltip(null);
+            }
+        }
+        loader.start(infoStage);
         control = new Controller(playerName, playerColor, serverName, serverPort);
         control.setSpaces(numSpaces);
     }
