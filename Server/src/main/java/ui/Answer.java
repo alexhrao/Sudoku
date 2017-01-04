@@ -10,6 +10,7 @@ import javafx.scene.text.Text;
  * answer, and Dark Red is an incorrect answer. Any other color represents the player who correctly answered that square.
  */
 public class Answer extends Text implements Comparable<Answer> {
+    private boolean isVisible = false;
     private int value = 0;
 
     /**
@@ -22,22 +23,20 @@ public class Answer extends Text implements Comparable<Answer> {
         this.setVisible(false);
     }
 
-// --Commented out by Inspection START (1/2/2017 3:44 PM):
-//    /**
-//     * Sets the value of the answer. If it is not between 1 and 9, the value is set to 0 and the Answer is not visible.
-//     * @param ans The integer that represents the answer.
-//     */
-//    public void setValue(int ans) {
-//        if (ans > 9 || ans < 1) {
-//            this.clear();
-//        } else {
-//            this.setText(Integer.toString(ans));
-//            this.setVisible(true);
-//            isVisible = true;
-//            value = ans;
-//        }
-//    }
-// --Commented out by Inspection STOP (1/2/2017 3:44 PM)
+    /**
+     * Sets the value of the answer. If it is not between 1 and 9, the value is set to 0 and the Answer is not visible.
+     * @param ans The integer that represents the answer.
+     */
+    public void setValue(int ans) {
+        if (ans > 9 || ans < 1) {
+            this.clear();
+        } else {
+            this.setText(Integer.toString(ans));
+            this.setVisible(true);
+            isVisible = true;
+            value = ans;
+        }
+    }
 
     /**
      * Gets the value of this Answer, as an integer.
@@ -53,19 +52,17 @@ public class Answer extends Text implements Comparable<Answer> {
     public void clear() {
         this.setText("");
         this.setVisible(false);
-        boolean isVisible = false;
+        isVisible = false;
         value = 0;
     }
 
-// --Commented out by Inspection START (1/2/2017 3:44 PM):
-//    /**
-//     * A method that tells whether or not this Answer is visible.
-//     * @return A boolean that tells whether or not the Answer is visible.
-//     */
-//    public boolean getVisible() {
-//        return isVisible;
-//    }
-// --Commented out by Inspection STOP (1/2/2017 3:44 PM)
+    /**
+     * A method that tells whether or not this Answer is visible.
+     * @return A boolean that tells whether or not the Answer is visible.
+     */
+    public boolean getVisible() {
+        return isVisible;
+    }
 
     /**
      * Compares this Answer to a given Answer.

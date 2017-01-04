@@ -1,6 +1,8 @@
 package main.java.logic;
 
+import javafx.scene.control.Button;
 import javafx.scene.paint.Color;
+import javafx.stage.Stage;
 import main.java.ui.Square;
 
 /**
@@ -15,17 +17,19 @@ public class Controller {
     private boolean isPlay;
     private volatile int[][] board;
     private volatile int[][] solnBoard;
-    private int serverPort;
-    private String serverHost;
+    private final int serverPort;
+    private final String serverHost;
     private int spaces;
     private int id;
     @SuppressWarnings("FieldCanBeLocal")
     private boolean ready = false;
+    private SudokuLoader loader;
 
     /**
      * Constructs the controller for the current game, given the following parameters.
-     * @param name The String name of this player.
-     * @param color The Color of this player.
+     *
+     * @param name       The String name of this player.
+     * @param color      The Color of this player.
      * @param serverHost the String hostname of the server.
      * @param serverPort The int port of the server.
      */
@@ -38,6 +42,7 @@ public class Controller {
 
     /**
      * Gets the last clicked square (as clicked by this user).
+     *
      * @return A Square that represents the last clicked square.
      */
     public Square getLastClicked() {
@@ -46,6 +51,7 @@ public class Controller {
 
     /**
      * Gets this player's name.
+     *
      * @return The String name of this player.
      */
     public String getName() {
@@ -54,6 +60,7 @@ public class Controller {
 
     /**
      * Gets this player's color.
+     *
      * @return A Color representing color of this player.
      */
     public Color getColor() {
@@ -62,6 +69,7 @@ public class Controller {
 
     /**
      * Returns whether or not this user is taking notes.
+     *
      * @return A boolean representing whether the player is in a note-taking state.
      */
     public boolean isNote() {
@@ -70,6 +78,7 @@ public class Controller {
 
     /**
      * Returns whether or not this player is playing or paused.
+     *
      * @return A boolean representing whether the player is playing or paused.
      */
     public boolean isPlay() {
@@ -78,6 +87,7 @@ public class Controller {
 
     /**
      * Sets the given square to be the last clicked square.
+     *
      * @param square Set the given Square as the last clicked square.
      */
     public void setLastClicked(Square square) {
@@ -86,6 +96,7 @@ public class Controller {
 
     /**
      * Sets the note-taking state.
+     *
      * @param note Set the note-taking status to the given boolean.
      */
     public void setNote(boolean note) {
@@ -94,6 +105,7 @@ public class Controller {
 
     /**
      * Sets the playing state.
+     *
      * @param play Set the playing status to the given boolean
      */
     public void setPlay(boolean play) {
@@ -102,6 +114,7 @@ public class Controller {
 
     /**
      * Gets the solution board; this is a synchronized method.
+     *
      * @return A double-layered int array of the solution board.
      */
     public synchronized int[][] getSolnBoard() {
@@ -110,24 +123,16 @@ public class Controller {
 
     /**
      * Sets the solution board; this is a synchronized method.
+     *
      * @param solnBoard A double-layered int array of the solution board.
      */
     public synchronized void setSolnBoard(int[][] solnBoard) {
         this.solnBoard = solnBoard;
     }
 
-// --Commented out by Inspection START (1/2/2017 3:44 PM):
-//    /**
-//     * Sets the server port.
-//     * @param port The server port, as an int.
-//     */
-//    public void setServerPort(int port) {
-//        this.serverPort = port;
-//    }
-// --Commented out by Inspection STOP (1/2/2017 3:44 PM)
-
     /**
      * Gets the server port.
+     *
      * @return The server port, as an int.
      */
     public int getServerPort() {
@@ -135,25 +140,15 @@ public class Controller {
     }
 
     /**
-     *
      * @return The server host, as a String.
      */
     public String getServerHost() {
         return this.serverHost;
     }
 
-// --Commented out by Inspection START (1/2/2017 3:44 PM):
-//    /**
-//     * Sets the server host.
-//     * @param host The server host, as a String.
-//     */
-//    public void setServerHost(String host) {
-//        this.serverHost = host;
-//    }
-// --Commented out by Inspection STOP (1/2/2017 3:44 PM)
-
     /**
      * Set the number of requested spaces.
+     *
      * @param spaces The number of free spaces.
      */
     public void setSpaces(int spaces) {
@@ -162,6 +157,7 @@ public class Controller {
 
     /**
      * Get the number of requested spaces.
+     *
      * @return The number of free spaces requested.
      */
     public int getSpaces() {
@@ -170,6 +166,7 @@ public class Controller {
 
     /**
      * Get this player's ID.
+     *
      * @return The current ID.
      */
     public int getId() {
@@ -178,6 +175,7 @@ public class Controller {
 
     /**
      * Set this player's ID.
+     *
      * @param id This player's ID.
      */
     public void setId(int id) {
@@ -186,6 +184,7 @@ public class Controller {
 
     /**
      * Set the current board.
+     *
      * @param board The current board.
      */
     public void setBoard(int[][] board) {
@@ -194,27 +193,18 @@ public class Controller {
 
     /**
      * Get the current board.
+     *
      * @return The current board.
      */
     public int[][] getBoard() {
         return this.board;
     }
 
-// --Commented out by Inspection START (1/2/2017 3:44 PM):
-//    /**
-//     * True if we're ready to begin the game.
-//     * @return If we are ready to begin.
-//     */
-//    public boolean isReady() {
-//        return this.ready;
-//    }
-// --Commented out by Inspection STOP (1/2/2017 3:44 PM)
+    public void setLoader(SudokuLoader loader)  {
+        this.loader = loader;
+    }
 
-    /**
-     * Set the isReady field.
-     * @param ready If we are ready or not.
-     */
-    public void setReady(boolean ready) {
-        this.ready = ready;
+    public void ready() {
+        loader.ready();
     }
 }

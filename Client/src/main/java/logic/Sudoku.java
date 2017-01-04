@@ -1,5 +1,6 @@
 package main.java.logic;
 
+import javafx.animation.*;
 import javafx.application.Application;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
@@ -11,13 +12,17 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.*;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
-import javafx.scene.text.*;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.stage.WindowEvent;
+import javafx.util.Duration;
 import main.java.networking.SudokuSender;
 import main.java.networking.SudokuListener;
 import main.java.ui.Board;
@@ -52,6 +57,7 @@ public class Sudoku extends Application{
         this.setup();
         player = new SudokuListener(control.getServerHost(), control.getServerPort(), ui);
         player.start();
+        control.setLoader(loader);
         loader.getStage().showAndWait();
         Scene game = new Scene(ui);
         primaryStage.setTitle("Sudoku Online");
@@ -322,6 +328,32 @@ public class Sudoku extends Application{
                         menu.enable();
                         control.getLastClicked().getAnswer().setFill(Color.DARKRED);
                     }
+                }
+                numPresent = 0;
+                for (int number = 1; number <= 9; number++) {
+                    for (int r = 0; r < 9; r++) {
+                        for (int c = 0; c < 9; c++) {
+                            if (ui.getBoard().getSquare(r, c).getAnswer().getValue() == number) {
+                                numPresent++;
+                            }
+                        }
+                    }
+                }
+                // We've completed the game.
+                if (numPresent == 81) {
+                    ParallelTransition animation = new ParallelTransition();
+                    for (int r = 0; r < 9; r++) {
+                        SequentialTransition row = new SequentialTransition();
+                        for (int c = 0; c < 9; c++) {
+                            Square square = ui.getBoard().getSquare(r, c);
+                            RotateTransition rotate = new RotateTransition(new Duration(100), square);
+                            rotate.setFromAngle(0);
+                            rotate.setToAngle(360);
+                            row.getChildren().add(rotate);
+                        }
+                        animation.getChildren().add(row);
+                    }
+                    animation.playFromStart();
                 }
                 SudokuSender sender = new SudokuSender(control, control.getLastClicked());
                 Thread tClient = new Thread(sender);

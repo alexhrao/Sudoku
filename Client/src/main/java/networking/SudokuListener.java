@@ -1,7 +1,11 @@
 package main.java.networking;
 
+import javafx.animation.ParallelTransition;
+import javafx.animation.RotateTransition;
+import javafx.animation.SequentialTransition;
 import javafx.application.Platform;
 import javafx.scene.paint.Color;
+import javafx.util.Duration;
 import main.java.ui.GameUI;
 import main.java.ui.Square;
 import main.java.networking.SudokuPacket.Data;
@@ -22,15 +26,6 @@ public class SudokuListener extends Thread implements Runnable {
     private final String serverHost;
     private final int serverPort;
     private Socket client;
-    private static final String HOST = "localhost";
-    private static final int PORT = 60000;
-    /**
-     * Creates a default listener listening on localhost 60000.
-     * @param ui The current GameUI.
-     */
-    public SudokuListener(GameUI ui) {
-        this(HOST, PORT, ui);
-    }
 
     /**
      * Creates a listener listening on the specified host and port.
@@ -154,12 +149,14 @@ public class SudokuListener extends Thread implements Runnable {
                             } else {
                                 square.getOverlay().setStrokeWidth(1);
                             }
+                            int numFinished = 0;
                             for (int num = 0; num < 9; num++) {
                                 int numPresent = 0;
                                 for (int r = 0; r < 9; r++) {
                                     for (int c = 0; c < 9; c++) {
                                         if (ui.getBoard().getSquare(r, c).getAnswer().getValue() == (num + 1)) {
                                             numPresent++;
+                                            numFinished++;
                                         }
                                     }
                                 }
@@ -167,15 +164,29 @@ public class SudokuListener extends Thread implements Runnable {
                                     ui.getMenu().getNumber(num).setDisable(true);
                                 }
                             }
+                            // We've completed the game.
+                            if (numFinished == 81) {
+                                Platform.runLater(() -> {
+                                    ParallelTransition animation = new ParallelTransition();
+                                    for (int r = 0; r < 9; r++) {
+                                        SequentialTransition transRow = new SequentialTransition();
+                                        for (int c = 0; c < 9; c++) {
+                                            Square transSquare = ui.getBoard().getSquare(r, c);
+                                            RotateTransition rotate = new RotateTransition(new Duration(100), transSquare);
+                                            rotate.setFromAngle(0);
+                                            rotate.setToAngle(360);
+                                            transRow.getChildren().add(rotate);
+                                        }
+                                        animation.getChildren().add(transRow);
+                                    }
+                                    animation.playFromStart();
+                                });
+                            }
                         }
                     }
                     // Probably never used :(
                     if (instruct.isLast()) {
-                        Platform.runLater(() -> {
-                            ui.getControl().setReady(true);
-                            Thread.currentThread().interrupt();
-                        });
-                        ui.getControl().setReady(true);
+                        Platform.runLater(() -> ui.getControl().ready());
                     }
                 }
             }
