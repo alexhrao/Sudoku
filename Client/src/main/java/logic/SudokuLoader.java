@@ -46,11 +46,10 @@ public class SudokuLoader extends Preloader implements Runnable {
         loadScene.getStylesheets().add(getClass().getResource("/Loader.css").toExternalForm());
         loadScene.setFill(Color.TRANSPARENT);
         primaryStage.setScene(loadScene);
-        this.ready();
     }
 
-    private void ready() {
-        this.statusButton.setText("Play!");
+    public void ready() {
+        this.statusButton.setText("Play");
         this.statusButton.setDisable(false);
     }
 

@@ -103,9 +103,20 @@ class SudokuServerThread extends Thread {
                     out.writeObject(response);
                     // send all the player information:
                     SudokuPacket thisPlayer = new SudokuPacket(instruct.getName(), server.getPlayerColor().get(id - 1), id);
-                    out.writeObject(thisPlayer);
-                    for (SudokuPacket packet : server.getPackets()) {
-                        out.writeObject(packet);
+                    if (server.getPackets().size() > 0) {
+                        out.writeObject(thisPlayer);
+                        for (int i = 0; i < server.getPackets().size() - 1; i++) {
+                            out.writeObject(server.getPackets().get(i));
+                        }
+                        if (server.getPackets().size() > 0) {
+                            SudokuPacket last = server.getPackets().get(server.getPackets().size() - 1);
+                            last.setLast(true);
+                            out.writeObject(last);
+                            last.setLast(false);
+                        }
+                    } else {
+                        thisPlayer.setLast(true);
+                        out.writeObject(thisPlayer);
                     }
                     server.addPacket(thisPlayer);
                     for (SudokuServerThread thread : server.getThreads()) {

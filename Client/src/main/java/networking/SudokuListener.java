@@ -186,11 +186,7 @@ public class SudokuListener extends Thread implements Runnable {
                     }
                     // Probably never used :(
                     if (instruct.isLast()) {
-                        Platform.runLater(() -> {
-                            ui.getControl().setReady(true);
-                            Thread.currentThread().interrupt();
-                        });
-                        ui.getControl().setReady(true);
+                        Platform.runLater(() -> ui.getControl().ready());
                     }
                 }
             }

@@ -57,6 +57,7 @@ public class Sudoku extends Application{
         this.setup();
         player = new SudokuListener(control.getServerHost(), control.getServerPort(), ui);
         player.start();
+        control.setLoader(loader);
         loader.getStage().showAndWait();
         Scene game = new Scene(ui);
         primaryStage.setTitle("Sudoku Online");
