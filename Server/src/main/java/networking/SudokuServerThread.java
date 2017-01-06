@@ -31,7 +31,7 @@ class SudokuServerThread extends Thread {
      * @param server The parent server.
      */
     public SudokuServerThread(Socket socket, SudokuServer server) {
-        super("SudokuServerThread");
+        super("SST - " + socket.getInetAddress().getHostAddress());
         this.client = socket;
         this.server = server;
         this.localPort = socket.getPort();
@@ -120,7 +120,7 @@ class SudokuServerThread extends Thread {
                     }
                     server.addPacket(thisPlayer);
                     for (SudokuServerThread thread : server.getThreads()) {
-                        if (thread.isAlive()) {
+                        if (thread != null && thread.isAlive()) {
                             SudokuPacket player = new SudokuPacket(instruct.getName(), server.getPlayerColor().get(id - 1), id);
                             thread.setPacket(player);
                             thread.interrupt();
