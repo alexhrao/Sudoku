@@ -2,9 +2,8 @@ package main.java.networking;
 
 import javafx.scene.paint.Color;
 
-import main.java.generator.Generator;
-import main.java.generator.Grid;
-import main.java.generator.Solver;
+import main.java.generator.SudokuBoard;
+import main.java.generator.SudokuSolver;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -89,13 +88,18 @@ class SudokuServerThread extends Thread {
                 instruct = (SudokuPacket) reader.readObject();
                 if (instruct.isStarter()) {
                     if (server.isFirstPlayer()) {
-                        Generator generator = new Generator();
-                        Solver solver = new Solver();
-                        int[][] board = Grid.to(generator.generate(instruct.getSpaces()));
-                        Grid soln = generator.generate(instruct.getSpaces());
-                        solver.solve(soln);
-                        int[][] solnBoard = Grid.to(soln);
-                        server.setBoards(board, solnBoard);
+                        if (instruct.isInput()) {
+                            try {
+                                SudokuSolver solver = new SudokuSolver(instruct.getInput());
+                                server.setBoards(solver.getBoard(), solver.getSoln());
+                            } catch (IllegalArgumentException e) {
+                                SudokuBoard generator = new SudokuBoard(instruct.getSpaces());
+                                server.setBoards(generator.getBoard(), generator.getSoln());
+                            }
+                        } else {
+                            SudokuBoard generator = new SudokuBoard(instruct.getSpaces());
+                            server.setBoards(generator.getBoard(), generator.getSoln());
+                        }
                     }
                     id = server.addPlayer(instruct.getName(), Color.color(instruct.getColor()[0], instruct.getColor()[1], instruct.getColor()[2], instruct.getColor()[3]));
                     System.out.println("Connected to player " + id + ": " + instruct.getName() + " (Port: " + localPort + "; Host: " + host+ ")");

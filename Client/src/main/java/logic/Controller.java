@@ -1,8 +1,6 @@
 package main.java.logic;
 
-import javafx.scene.control.Button;
 import javafx.scene.paint.Color;
-import javafx.stage.Stage;
 import main.java.ui.Square;
 
 /**
@@ -21,9 +19,8 @@ public class Controller {
     private final String serverHost;
     private int spaces;
     private int id;
-    @SuppressWarnings("FieldCanBeLocal")
-    private boolean ready = false;
     private SudokuLoader loader;
+    private String[] input = new String[9];
 
     /**
      * Constructs the controller for the current game, given the following parameters.
@@ -206,5 +203,13 @@ public class Controller {
 
     public void ready() {
         loader.ready();
+    }
+
+    public void setInput(String[] input) {
+        this.input = input;
+    }
+
+    public String[] getInput() {
+        return this.input;
     }
 }

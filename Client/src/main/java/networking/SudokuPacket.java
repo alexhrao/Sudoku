@@ -24,6 +24,8 @@ public class SudokuPacket implements Serializable {
     private String message;
     private int id;
     private boolean isLast = false;
+    private boolean isInput = false;
+    private String[] input;
 
     /**
      * This constructor makes a packet for a new player.
@@ -59,7 +61,6 @@ public class SudokuPacket implements Serializable {
      * @param name The player name.
      * @param color The player color.
      */
-    @Deprecated
     public SudokuPacket(int[][] board, int[][] solnBoard, String name, Color color) {
         this.name = name;
         this.color[0] = color.getRed();
@@ -86,6 +87,12 @@ public class SudokuPacket implements Serializable {
         this.color[3] = color.getOpacity();
         this.spaces = spaces;
         this.isStarter = true;
+    }
+
+    public SudokuPacket(String[] board, String name, Color color) {
+        this(0, name, color);
+        this.isInput = true;
+        this.input = board;
     }
 
     /**
@@ -300,6 +307,13 @@ public class SudokuPacket implements Serializable {
         this.isLast = last;
     }
 
+    public boolean isInput() {
+        return this.isInput;
+    }
+
+    public String[] getInput() {
+        return this.input;
+    }
     /**
      * A convenience class that stores one full square.
      */

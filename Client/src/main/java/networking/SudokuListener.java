@@ -50,8 +50,14 @@ public class SudokuListener extends Thread implements Runnable {
             this.client = client;
             out.flush();
             try (ObjectInputStream in = new ObjectInputStream(client.getInputStream())) {
-                SudokuPacket packet = new SudokuPacket(ui.getControl().getSpaces(), ui.getControl().getName(),
-                        ui.getControl().getColor());
+                SudokuPacket packet;
+                if (ui.getControl().getInput()[0] != null) {
+                    packet = new SudokuPacket(ui.getControl().getInput(), ui.getControl().getName(),
+                            ui.getControl().getColor());
+                } else {
+                    packet = new SudokuPacket(ui.getControl().getSpaces(), ui.getControl().getName(),
+                            ui.getControl().getColor());
+                }
                 out.writeObject(packet);
                 out.flush();
                 SudokuPacket instruct;
