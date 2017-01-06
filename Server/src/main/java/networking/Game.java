@@ -1,9 +1,57 @@
 package main.java.networking;
 
+import javafx.scene.paint.Color;
+
+import java.net.Socket;
+import java.util.ArrayList;
+
 /**
  * This class will be responsible for keeping games separate. It will do (most) of what the server currently does now!
  */
-public class Game {
+public class Game implements Runnable {
+    private ArrayList<SudokuServerThread> threads = new ArrayList<>();
+    private int[][] board;
+    private int[][] soln;
+    private ArrayList<SudokuPacket> packets = new ArrayList<>();
+    private ArrayList<String> names = new ArrayList<>();
+    private ArrayList<Color> colors = new ArrayList<>();
+    private String gameName;
+    private Socket playerOne;
+    private SudokuServer server;
+
+    public Game(Socket client, SudokuServer server) {
+        this.playerOne = client;
+        this.server = server;
+        SudokuServerThread player = new SudokuServerThread(client, server);
+        threads.add(player);
+    }
+
+    public void addPlayer(Socket client) {
+        SudokuServerThread player = new SudokuServerThread(client, this.server);
+        threads.add(player);
+    }
+
+    public void removePlayer(int id) {
+        names.set(id - 1, null);
+        colors.set(id - 1, null);
+    }
+
+    public ArrayList<SudokuPacket> getPackets() {
+        return this.packets;
+    }
+
+    public ArrayList<String> getNames() {
+        return this.names;
+    }
+
+    public ArrayList<Color> getColors() {
+        return this.colors;
+    }
+
+    @Override
+    public void run() {
+
+    }
     /*
     Basically, this class should be a "mini-server" - a server for a single game. Each Game instance will be
     centered around 1 single game - and it's name should be the name of the player that started the game! (And number
