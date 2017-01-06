@@ -18,6 +18,7 @@ public class SudokuSender implements Runnable {
     private String message;
     private boolean isMessage = false;
     private boolean isRemove = false;
+    private boolean isGame = false;
     private Color messageColor;
     private final Controller control;
 
@@ -54,6 +55,16 @@ public class SudokuSender implements Runnable {
     }
 
     /**
+     * Creates a sender to get games.
+     * @param control The current controller.
+     * @param isGame I
+     */
+    public SudokuSender(Controller control, boolean isGame) {
+        this.control = control;
+        this.isGame = true;
+    }
+
+    /**
      * This method creates the packet, then sends it off to the server for distribution.
      */
     @Override
@@ -62,7 +73,9 @@ public class SudokuSender implements Runnable {
             ObjectOutputStream out = new ObjectOutputStream(client.getOutputStream());
             ObjectInputStream in = new ObjectInputStream(client.getInputStream())) {
             SudokuPacket packet;
-            if (isMessage) {
+            if (isGame) {
+                packet = new SudokuPacket();
+            } else if (isMessage) {
                 packet = new SudokuPacket(this.message, this.messageColor, control.getId(), true);
             } else if (isRemove) {
                 packet = new SudokuPacket(control.getId());

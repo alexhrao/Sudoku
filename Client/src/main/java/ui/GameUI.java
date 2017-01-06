@@ -9,6 +9,8 @@ import main.java.logic.Controller;
 import main.java.logic.SudokuLoader;
 import main.java.networking.SudokuSender;
 
+import java.awt.*;
+
 /**
  * GameUI is a BorderPane that handles all the UI elements. It also has a few convenience methods. The controller is
  * synchronized.
@@ -30,21 +32,23 @@ public class GameUI extends BorderPane {
      * @param splash The Splash Screen (Deprecated!)
      */
     public GameUI(Controller control, SudokuLoader splash) {
+        double screenHeight = Toolkit.getDefaultToolkit().getScreenSize().getHeight();
         this.control = control;
         this.splash = splash;
         GridPane squares = new GridPane();
         for (int r = 0; r < 3; r++) {
             for (int c = 0; c < 3; c++) {
-                Rectangle box = new Rectangle(255, 255, Color.rgb(0, 0, 0, 0.0));
+                Rectangle box = new Rectangle(screenHeight / 8.4705, screenHeight / 8.4705, Color.rgb(0, 0, 0, 0.0));
                 box.setStroke(Color.BLACK);
                 box.setStrokeWidth(2.5);
                 squares.add(box, c, r);
             }
         }
-        info = new InfoMenu(this);
-        StackPane center = new StackPane(squares, board);
-        chat = new Chat(control);
-        chatter = new Chatter();
+        squares.setDisable(true);
+        info = new InfoMenu(this, screenHeight / 86.4);
+        StackPane center = new StackPane(board, squares);
+        chat = new Chat(screenHeight / 7.2, control);
+        chatter = new Chatter(screenHeight / 2.88);
         chatter.getSender().setOnAction(e -> {
             chat.thisPlayerChat(chatter.getChatter().getText());
             chatter.getSender().setDisable(true);
@@ -66,7 +70,7 @@ public class GameUI extends BorderPane {
                 chatter.getSender().setDisable(false);
             }
         });
-        Rectangle overlay = new Rectangle(chat.getChatWidth() + 6, 770, Color.color(0, 0, 0, 0));
+        Rectangle overlay = new Rectangle(chat.getChatWidth() + 6, screenHeight / 2.805, Color.color(0, 0, 0, 0));
         overlay.setStroke(Color.color(0, 0, 0, 1));
         overlay.setStrokeWidth(4);
         chatScroll = new ScrollPane(chat);
@@ -74,7 +78,7 @@ public class GameUI extends BorderPane {
         chatScroll.setFitToWidth(true);
         chatScroll.setVmin(0);
         chatScroll.setVmax(1);
-        chatScroll.setMinWidth(300);
+        chatScroll.setMinWidth(screenHeight / 7.2);
         StackPane chatPane = new StackPane(overlay, chatScroll);
         this.setTop(info);
         this.setCenter(center);

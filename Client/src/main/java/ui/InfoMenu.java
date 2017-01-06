@@ -13,11 +13,20 @@ public class InfoMenu extends ToolBar {
     private final GameUI ui;
 
     /**
-     * Create a default ToolBar with the pause indicator.
+     * Create a default ToolBar with the pause indicator and height of 25.
      * @param ui The current GameUI.
      */
     public InfoMenu(GameUI ui) {
-        this.setPrefHeight(25);
+        this(ui, 25);
+    }
+
+    /**
+     * Create a ToolBar with specified height.
+     * @param ui The current GameUI.
+     * @param height The height.
+     */
+    public InfoMenu(GameUI ui, double height) {
+        this.setPrefHeight(height);
         this.getItems().add(pause);
         this.ui = ui;
     }

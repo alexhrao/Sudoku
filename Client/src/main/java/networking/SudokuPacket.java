@@ -142,11 +142,22 @@ public class SudokuPacket implements Serializable {
         this.color[3] = color.getOpacity();
     }
 
+    /**
+     * Creates a packet consisting of game names.
+     * @param games The name of current games!
+     */
     public SudokuPacket(ArrayList<String> games) {
         this.games = new String[games.size()];
         for (int g = 0; g < games.size(); g++) {
             this.games[g] = games.get(g);
         }
+    }
+
+    /**
+     * Creates the packet to request game information.
+     */
+    public SudokuPacket() {
+        this.isQuery = true;
     }
 
     /**

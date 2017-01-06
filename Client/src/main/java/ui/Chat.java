@@ -13,7 +13,7 @@ public class Chat extends GridPane {
     private final Controller control;
     private final VBox thisPlayer;
     private final VBox thatPlayer;
-    private final int chatWidth;
+    private final double chatWidth;
 
     /**
      * Creates a new Chat with default width of 300.
@@ -28,7 +28,7 @@ public class Chat extends GridPane {
      * @param chatWidth A preferred int width for the chat box.
      * @param control The controller.
      */
-    private Chat(int chatWidth, Controller control) {
+    public Chat(double chatWidth, Controller control) {
         thisPlayer = new VBox(SPACING);
         thisPlayer.setMinWidth(chatWidth / 2);
         thatPlayer = new VBox(SPACING);
@@ -85,7 +85,7 @@ public class Chat extends GridPane {
      *
      * @return The int width for the chat log.
      */
-    public int getChatWidth() {
+    public double getChatWidth() {
         return this.chatWidth;
     }
 }
