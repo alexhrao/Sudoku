@@ -94,6 +94,7 @@ public class SudokuListener extends Thread implements Runnable {
                                 @Override
                                 public void run() {
                                     ui.getChat().thatPlayerChat(message, Color.color(color[0], color[1], color[2], color[3]));
+                                    ui.scrollToBottom();
                                 }
                             }
                             Platform.runLater(new AddChat());

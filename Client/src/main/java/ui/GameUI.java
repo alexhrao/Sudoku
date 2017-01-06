@@ -20,6 +20,7 @@ public class GameUI extends BorderPane {
     private final Controller control;
     private final Chat chat;
     private final Chatter chatter;
+    private final ScrollPane chatScroll;
     @SuppressWarnings("FieldCanBeLocal")
     private final SudokuLoader splash;
 
@@ -48,6 +49,7 @@ public class GameUI extends BorderPane {
             chat.thisPlayerChat(chatter.getChatter().getText());
             chatter.getSender().setDisable(true);
             SudokuSender sender = new SudokuSender(control, control.getColor(), chatter.getChatter().getText());
+            this.scrollToBottom();
             Thread tClient = new Thread(sender);
             tClient.start();
             chatter.getChatter().clear();
@@ -67,8 +69,11 @@ public class GameUI extends BorderPane {
         Rectangle overlay = new Rectangle(chat.getChatWidth() + 6, 770, Color.color(0, 0, 0, 0));
         overlay.setStroke(Color.color(0, 0, 0, 1));
         overlay.setStrokeWidth(4);
-        ScrollPane chatScroll = new ScrollPane(chat);
+        chatScroll = new ScrollPane(chat);
+        chatScroll.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
         chatScroll.setFitToWidth(true);
+        chatScroll.setVmin(0);
+        chatScroll.setVmax(1);
         chatScroll.setMinWidth(300);
         StackPane chatPane = new StackPane(overlay, chatScroll);
         this.setTop(info);
@@ -136,13 +141,7 @@ public class GameUI extends BorderPane {
         return chat;
     }
 
-// --Commented out by Inspection START (1/2/2017 3:44 PM):
-//    /**
-//     * Gets the User's chat sender, positioned on the bottom side.
-//     * @return The current game's chat sender.
-//     */
-//    public Chatter getChatter() {
-//        return chatter;
-//    }
-// --Commented out by Inspection STOP (1/2/2017 3:44 PM)
+    public void scrollToBottom() {
+        this.chatScroll.setVvalue(1);
+    }
 }
