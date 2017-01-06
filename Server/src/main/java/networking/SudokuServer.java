@@ -20,6 +20,7 @@ public class SudokuServer implements Runnable {
     private final ArrayList<String> playerName = new ArrayList<>();
     private final ArrayList<Color> playerColor = new ArrayList<>();
     private final ArrayList<Integer> playerId = new ArrayList<>();
+    private final ArrayList<Game> games = new ArrayList<>();
     private final ArrayList<SudokuPacket> packets = new ArrayList<>();
     private volatile int[][] board;
     private volatile int[][] soln;
@@ -235,4 +236,11 @@ public class SudokuServer implements Runnable {
         return this.packets;
     }
 
+    public synchronized void removeGame(Game game) {
+        games.remove(game);
+    }
+
+    public synchronized ArrayList<Game> getGames() {
+        return this.games;
+    }
 }

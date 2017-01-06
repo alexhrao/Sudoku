@@ -4,6 +4,7 @@ import javafx.scene.paint.Color;
 import main.java.ui.Square;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 /**
  * This class is responsible for trading data between the server and clients. It is serializable, and represents the
@@ -26,6 +27,10 @@ public class SudokuPacket implements Serializable {
     private boolean isLast = false;
     private boolean isInput = false;
     private String[] input;
+    private boolean isQuery = false;
+    private String[] games;
+    private String game;
+    private boolean isGame = false;
 
     /**
      * This constructor makes a packet for a new player.
@@ -41,6 +46,12 @@ public class SudokuPacket implements Serializable {
         this.color[3] = color.getOpacity();
         this.isPlayer = true;
         this.data = null;
+    }
+
+    public SudokuPacket(String gameName, String name, Color color) {
+        this(name, color, true);
+        this.game = gameName;
+        this.isGame = true;
     }
 
     /**
@@ -89,6 +100,12 @@ public class SudokuPacket implements Serializable {
         this.isStarter = true;
     }
 
+    /**
+     * This makes a packet for requesting a game with the String input.
+     * @param board The 9 element array with each line being a row.
+     * @param name The player name.
+     * @param color The player color.
+     */
     public SudokuPacket(String[] board, String name, Color color) {
         this(0, name, color);
         this.isInput = true;
@@ -123,6 +140,13 @@ public class SudokuPacket implements Serializable {
         this.color[1] = color.getGreen();
         this.color[2] = color.getBlue();
         this.color[3] = color.getOpacity();
+    }
+
+    public SudokuPacket(ArrayList<String> games) {
+        this.games = new String[games.size()];
+        for (int g = 0; g < games.size(); g++) {
+            this.games[g] = games.get(g);
+        }
     }
 
     /**
@@ -307,13 +331,52 @@ public class SudokuPacket implements Serializable {
         this.isLast = last;
     }
 
+    /**
+     * Returns if this packet represents a board input.
+     * @return If the input (String[]) is specified.
+     */
     public boolean isInput() {
         return this.isInput;
     }
 
+    /**
+     * Returns the board input.
+     * @return The board (String[]). If isInput is false, the behavior is not specified.
+     */
     public String[] getInput() {
         return this.input;
     }
+
+    /**
+     * Returns if this packet is requesting game information.
+     * @return If the client simply wants the most recent games.
+     */
+    public boolean isQuery() {return this.isQuery;}
+
+    /**
+     * Get the game information from this packet.
+     * @return The games.
+     */
+    public String[] getGames() {
+        return this.games;
+    }
+
+    /**
+     * Determines if this packet contains game information.
+     * @return If this contains game information.
+     */
+    public boolean isGame() {
+        return this.isGame;
+    }
+
+    /**
+     * Returns the game. If isGame is false, this behavior is unspecified!
+     * @return The game name.
+     */
+    public String getGame() {
+        return this.game;
+    }
+
     /**
      * A convenience class that stores one full square.
      */
@@ -345,33 +408,33 @@ public class SudokuPacket implements Serializable {
 
 
         /**
-        * Gets the color of the Answer itself.
-        * @return The 1x4 double for reconstructing the Answer Color.
-        */
+         * Gets the color of the Answer itself.
+         * @return The 1x4 double for reconstructing the Answer Color.
+         */
         public double[] getAnsColor() {
             return ansColor;
         }
 
         /**
-        * Gets the answer value.
-        * @return The answer value.
-        */
+         * Gets the answer value.
+         * @return The answer value.
+         */
         public int getAns() {
             return ans;
         }
 
         /**
-        * Gets the notes.
-        * @return Returns the int array of showing notes.
-        */
+         * Gets the notes.
+         * @return Returns the int array of showing notes.
+         */
         public int[] getNotes() {
             return notes;
         }
 
         /**
-        * Gets the position.
-        * @return Returns an int[Row, Col].
-        */
+         * Gets the position.
+         * @return Returns an int[Row, Col].
+         */
         public int[] getPosn() {
             return posn;
         }

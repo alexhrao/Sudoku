@@ -10,6 +10,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.net.SocketException;
+import java.util.ArrayList;
 
 /**
  * This class is responsible for actually talking with the client. It relays information to and from itself and other
@@ -21,6 +22,7 @@ class SudokuServerThread extends Thread {
     private SudokuPacket packet;
     private volatile boolean isGoing = true;
     private volatile int id;
+    private volatile String name;
     private final int localPort;
     private final String host;
 
@@ -83,11 +85,17 @@ class SudokuServerThread extends Thread {
                 */
         try (ObjectOutputStream out = new ObjectOutputStream(client.getOutputStream())) {
             out.flush();
-            try (ObjectInputStream reader = new ObjectInputStream(client.getInputStream())) {
-                SudokuPacket instruct;
-                instruct = (SudokuPacket) reader.readObject();
+            try (ObjectInputStream reader = new ObjectInputStream(client.getInputStream())) {;
+                SudokuPacket instruct = (SudokuPacket) reader.readObject();
                 if (instruct.isStarter()) {
-                    if (server.isFirstPlayer()) {
+                    if (instruct.isQuery()) {
+                        ArrayList<String> games = new ArrayList<>();
+                        for (Game game : server.getGames()) {
+                            games.add(game.toString());
+                        }
+                        SudokuPacket packet = new SudokuPacket(games);
+                        out.writeObject(packet);
+                    } else if (server.isFirstPlayer()) {
                         if (instruct.isInput()) {
                             try {
                                 SudokuSolver solver = new SudokuSolver(instruct.getInput());
@@ -101,6 +109,7 @@ class SudokuServerThread extends Thread {
                             server.setBoards(generator.getBoard(), generator.getSoln());
                         }
                     }
+                    this.name = instruct.getName();
                     id = server.addPlayer(instruct.getName(), Color.color(instruct.getColor()[0], instruct.getColor()[1], instruct.getColor()[2], instruct.getColor()[3]));
                     System.out.println("Connected to player " + id + ": " + instruct.getName() + " (Port: " + localPort + "; Host: " + host+ ")");
                     SudokuPacket response = new SudokuPacket(server.getBoard(), server.getSoln());

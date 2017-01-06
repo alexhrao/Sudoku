@@ -3,10 +3,12 @@ package main.java.networking;
 import javafx.scene.paint.Color;
 
 import java.net.Socket;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 /**
- * This class will be responsible for keeping games separate. It will do (most) of what the server currently does now!
+ * This class will be responsible for keeping games separate. It keeps track of this games players, colors, packets, etc.
+ * In many ways, it represents what the server would look like, if the server could not have multiple games.
  */
 public class Game implements Runnable {
     private ArrayList<SudokuServerThread> threads = new ArrayList<>();
@@ -16,17 +18,18 @@ public class Game implements Runnable {
     private ArrayList<String> names = new ArrayList<>();
     private ArrayList<Color> colors = new ArrayList<>();
     private String gameName;
-    private Socket playerOne;
     private SudokuServer server;
 
     public Game(Socket client, SudokuServer server) {
-        this.playerOne = client;
         this.server = server;
+        // Eventually, we'll be passing the GAME, not the server!
         SudokuServerThread player = new SudokuServerThread(client, server);
+        this.gameName = LocalDateTime.now() + ": " + player.getName();
         threads.add(player);
     }
 
     public void addPlayer(Socket client) {
+        // Eventually, we'll be passing the GAME, not the server!
         SudokuServerThread player = new SudokuServerThread(client, this.server);
         threads.add(player);
     }
@@ -34,6 +37,13 @@ public class Game implements Runnable {
     public void removePlayer(int id) {
         names.set(id - 1, null);
         colors.set(id - 1, null);
+
+        for (String name : names) {
+            if (name != null) {
+                return;
+            }
+        }
+        server.removeGame(this);
     }
 
     public ArrayList<SudokuPacket> getPackets() {
@@ -46,6 +56,26 @@ public class Game implements Runnable {
 
     public ArrayList<Color> getColors() {
         return this.colors;
+    }
+
+    public int[][] getBoard() {
+        return this.board;
+    }
+
+    public int[][] getSoln() {
+        return this.soln;
+    }
+
+    public void setBoard(int[][] board) {
+        this.board = board;
+    }
+
+    public void setSoln(int[][] soln) {
+        this.soln = soln;
+    }
+    @Override
+    public String toString() {
+        return this.gameName + "'s Game.";
     }
 
     @Override
