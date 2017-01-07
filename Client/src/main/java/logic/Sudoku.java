@@ -17,13 +17,9 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
-import javafx.stage.FileChooser;
-import javafx.stage.Stage;
-import javafx.stage.StageStyle;
-import javafx.stage.WindowEvent;
+import javafx.stage.*;
 import javafx.util.Duration;
 import main.java.networking.SudokuSender;
 import main.java.networking.SudokuListener;
@@ -33,7 +29,6 @@ import main.java.ui.GameUI;
 import main.java.ui.Square;
 
 import javax.imageio.ImageIO;
-import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.*;
 
@@ -56,7 +51,7 @@ public class Sudoku extends Application{
     @Override
     public void start(Stage primaryStage) throws Exception {
         this.gatherInformation();
-        ui = new GameUI(control, loader);
+        ui = new GameUI(control);
         this.setup();
         player = new SudokuListener(control.getServerHost(), control.getServerPort(), ui);
         player.start();
@@ -101,11 +96,12 @@ public class Sudoku extends Application{
             * A grid of the uicontrols.
          */
         // Structure:
-        double screenHeight = Toolkit.getDefaultToolkit().getScreenSize().getHeight();
+        double screenHeight = Screen.getPrimary().getVisualBounds().getHeight();
         GridPane controls = new GridPane();
         GridPane colorPane = new GridPane();
         Image infoScreen = null;
         Stage infoStage = new Stage();
+
         try {
             BufferedImage bufferedImage = ImageIO.read(getClass().getResource("/icon.png"));
             icon = SwingFXUtils.toFXImage(bufferedImage, null);
@@ -115,15 +111,15 @@ public class Sudoku extends Application{
             e.printStackTrace();
         }
         ImageView background = new ImageView(infoScreen);
-        background.setFitWidth(screenHeight / 2.618);
-        background.setFitHeight(screenHeight / 2.618);
+        background.setFitWidth(screenHeight / 1.3);
+        background.setFitHeight(screenHeight / 1.3);
         // Controls
         TextField name = new TextField("Your Name");
-        name.setMinWidth(screenHeight / 8.3);
-        name.setFont(new Font(16));
+        name.setMaxWidth(screenHeight / 4.7);
+        name.setFont(new Font(screenHeight / 65));
 
         Text playerAskColor = new Text("Player Color:  ");
-        playerAskColor.setFont(new Font(18));
+        playerAskColor.setFont(new Font(screenHeight / 65));
         playerAskColor.setFill(Color.BROWN);
         ColorPicker colorPicker = new ColorPicker(Color.RED);
         colorPicker.setMinWidth(screenHeight / 14.4);
@@ -131,11 +127,11 @@ public class Sudoku extends Application{
         colorPane.add(colorPicker, 1, 0);
 
         TextField spaces = new TextField("30");
-        spaces.setFont(new Font(16));
-        spaces.setMaxWidth(screenHeight / 19.3);
+        spaces.setFont(new Font(screenHeight / 65));
+        spaces.setMaxWidth(screenHeight / 9.2926);
         GridPane spacesPane = new GridPane();
         Text manySpaces = new Text("How many spaces?");
-        manySpaces.setFont(new Font(18));
+        manySpaces.setFont(new Font(screenHeight / 65));
         manySpaces.setFill(Color.BROWN);
         spacesPane.add(manySpaces, 0, 0);
         spacesPane.add(spaces, 1, 0);
@@ -145,7 +141,7 @@ public class Sudoku extends Application{
         GridPane uploadPane = new GridPane();
         final Text file = new Text("Choose File...");
         file.setUnderline(true);
-        file.setFont(new Font(16));
+        file.setFont(new Font(screenHeight / 65));
         file.setFill(Color.BROWN);
         Button uploadBoard = new Button("Upload...");
         final String[] stringBoard = new String[9];
@@ -171,25 +167,25 @@ public class Sudoku extends Application{
             }
         });
         uploadBoard.setTextFill(Color.BROWN);
-        uploadBoard.setFont(new Font(18));
+        uploadBoard.setFont(new Font(screenHeight / 65));
         uploadPane.add(uploadBoard, 0, 0);
         uploadPane.add(file, 1, 0);
 
 
         TextField sHost = new TextField("localhost");
-        sHost.setFont(new Font(16));
-        sHost.setMinWidth(screenHeight / 10.2);
+        sHost.setFont(new Font(screenHeight / 65));
+        sHost.setMinWidth(screenHeight / 4.911);
         TextField sPort = new TextField("60000");
-        sPort.setFont(new Font(16));
-        sPort.setMinWidth(screenHeight / 10.2);
+        sPort.setFont(new Font(screenHeight / 65));
+        sPort.setMinWidth(screenHeight / 4.911);
 
         GridPane advanced = new GridPane();
         Text serverHostPrompt = new Text("Host:  ");
         Text serverPortPrompt = new Text("Port:  ");
         serverHostPrompt.setFill(Color.BROWN);
-        serverHostPrompt.setFont(new Font(18));
+        serverHostPrompt.setFont(new Font(screenHeight / 65));
         serverPortPrompt.setFill(Color.BROWN);
-        serverPortPrompt.setFont(new Font(18));
+        serverPortPrompt.setFont(new Font(screenHeight / 65));
         advanced.add(serverHostPrompt, 0, 0);
         advanced.add(sHost, 1, 0);
         advanced.add(serverPortPrompt, 0, 1);
@@ -198,7 +194,7 @@ public class Sudoku extends Application{
         advanced.setVisible(false);
 
         Button showAdvanced = new Button("Show Advanced Options:");
-        showAdvanced.setFont(new Font(16));
+        showAdvanced.setFont(new Font(screenHeight / 65));
         showAdvanced.setTextFill(Color.BROWN);
         showAdvanced.setOnAction(e -> {
             if (advanced.isVisible()) {
@@ -209,17 +205,17 @@ public class Sudoku extends Application{
                 advanced.setVisible(true);
             }
         });
-        showAdvanced.setMinWidth(screenHeight / 8.3);
+        showAdvanced.setMinWidth(screenHeight / 3.9963);
 
         Button done = new Button("Done");
         done.setTextFill(Color.BROWN);
-        done.setFont(new Font(16));
-        done.setMinWidth(screenHeight / 17.28);
+        done.setFont(new Font(screenHeight / 65));
+        done.setMinWidth(screenHeight / 8.32);
         Button cancel = new Button("Cancel");
         cancel.setTextFill(Color.BROWN);
-        cancel.setFont(new Font(16));
+        cancel.setFont(new Font(screenHeight / 65));
         cancel.setOnAction(e -> System.exit(0));
-        cancel.setMinWidth(screenHeight / 17.28);
+        cancel.setMinWidth(screenHeight / 8.32);
         HBox buttons = new HBox(10, done, cancel);
 
         controls.add(name, 0, 1);
@@ -229,8 +225,8 @@ public class Sudoku extends Application{
         controls.add(buttons, 0, 4);
         controls.add(showAdvanced, 0, 5, 1, 1);
         controls.add(advanced, 0, 6, 2, 2);
-        controls.setTranslateY(screenHeight / 3.85);
-        controls.setTranslateX(screenHeight / 216);
+        controls.setTranslateY(screenHeight / 1.92);
+        controls.setTranslateX(screenHeight / 200);
 
         StackPane infoPane = new StackPane(background, controls);
         Scene infoScene = new Scene(infoPane);

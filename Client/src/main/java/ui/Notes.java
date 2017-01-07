@@ -4,6 +4,7 @@ import javafx.geometry.Insets;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import javafx.stage.Screen;
 
 /**
  * This class represents the Notes that the user can make inside a single Square. It has a few convenience methods for
@@ -36,11 +37,12 @@ public class Notes extends GridPane {
      * @param leftPad The left padding.
      */
     public Notes(int topPad, int rightPad, int bottomPad, int leftPad) {
+        double screenHeight = Screen.getPrimary().getVisualBounds().getHeight();
         this.setPadding(new Insets(topPad, rightPad, bottomPad, leftPad));
         for (int c = 0; c < 3; c++) {
             for (int r = 0; r < 3; r++) {
                 notes[c + (r * 3)] = new Text(" " + Integer.toString(1 + c + (r * 3)) + " ");
-                notes[c + (r * 3)].setFont(new Font(20));
+                notes[c + (r * 3)].setFont(new Font(screenHeight / 52));
                 this.add(notes[c + (r * 3)], c, r);
                 this.visibility[c + (r * 3)] = true;
             }

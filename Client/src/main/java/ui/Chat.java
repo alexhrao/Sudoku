@@ -6,6 +6,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
+import javafx.stage.Screen;
 import main.java.logic.Controller;
 
 public class Chat extends GridPane {
@@ -47,16 +48,17 @@ public class Chat extends GridPane {
      * @param msg The String message to send.
      */
     public void thisPlayerChat(String msg) {
+        double screenHeight = Screen.getPrimary().getVisualBounds().getHeight();
         Text message = new Text(msg);
         message.setFill(control.getColor());
         message.setWrappingWidth(thisPlayer.getMinWidth() - 2);
-        message.setFont(new Font(18));
+        message.setFont(new Font(screenHeight / 65));
         message.setTextAlignment(TextAlignment.LEFT);
         thisPlayer.getChildren().add(message);
         Text spacer = new Text(msg);
         spacer.setFill(Color.TRANSPARENT);
         spacer.setWrappingWidth(thatPlayer.getMinWidth() - 2);
-        spacer.setFont(new Font(18));
+        spacer.setFont(new Font(screenHeight / 65));
         spacer.setTextAlignment(TextAlignment.RIGHT);
         thatPlayer.getChildren().add(spacer);
     }
@@ -67,23 +69,24 @@ public class Chat extends GridPane {
      * @param color The Color this message should be.
      */
     public void thatPlayerChat(String msg, Color color) {
+        double screenHeight = Screen.getPrimary().getVisualBounds().getHeight();
         Text message = new Text(msg);
         message.setFill(color);
         message.setWrappingWidth(thatPlayer.getMinWidth() - 2);
-        message.setFont(new Font(18));
+        message.setFont(new Font(screenHeight / 65));
         message.setTextAlignment(TextAlignment.RIGHT);
         thatPlayer.getChildren().add(message);
         Text spacer = new Text(msg);
         spacer.setFill(Color.TRANSPARENT);
         spacer.setWrappingWidth(thisPlayer.getMinWidth() - 2);
-        spacer.setFont(new Font(18));
+        spacer.setFont(new Font(screenHeight / 65));
         spacer.setTextAlignment(TextAlignment.LEFT);
         thisPlayer.getChildren().add(spacer);
     }
 
     /**
      *
-     * @return The int width for the chat log.
+     * @return The width for the chat log.
      */
     public double getChatWidth() {
         return this.chatWidth;

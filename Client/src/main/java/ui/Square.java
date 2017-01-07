@@ -3,6 +3,7 @@ package main.java.ui;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import javafx.stage.Screen;
 
 /**
  * This class represents a single square on the Sudoku Board. It has all UI elements associated with a square, such as
@@ -11,7 +12,10 @@ import javafx.scene.shape.Rectangle;
 public class Square extends StackPane {
     private final Notes notes = new Notes();
     private final Answer answer = new Answer();
-    private final Rectangle overlay = new Rectangle(85, 85, Color.TRANSPARENT);
+    private final Rectangle overlay = new Rectangle(
+            Screen.getPrimary().getVisualBounds().getHeight() / 12.2353,
+            Screen.getPrimary().getVisualBounds().getHeight() / 12.2353,
+            Color.TRANSPARENT);
     private boolean selected = false;
     private final int row;
     private final int col;
@@ -25,8 +29,10 @@ public class Square extends StackPane {
         this.row = row;
         this.col = col;
         overlay.setStroke(Color.BLACK);
-        this.setMinSize(86, 86);
-        this.setMaxSize(86, 86);
+        this.setMinSize(1 + (Screen.getPrimary().getVisualBounds().getHeight() / 12.2353),
+                1 + (Screen.getPrimary().getVisualBounds().getHeight() / 12.2353));
+        this.setMaxSize(1 + (Screen.getPrimary().getVisualBounds().getHeight() / 12.2353),
+                1 + (Screen.getPrimary().getVisualBounds().getHeight() / 12.2353));
         this.getChildren().addAll(overlay, answer, notes);
     }
 

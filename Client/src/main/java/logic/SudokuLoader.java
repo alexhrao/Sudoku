@@ -11,6 +11,7 @@ import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 import javax.imageio.ImageIO;
@@ -25,22 +26,24 @@ public class SudokuLoader extends Preloader implements Runnable {
         this.stage.showAndWait();
     }
     @Override
+    //TODO: Fix height / width.
     public void start(Stage primaryStage) throws Exception {
+        double screenHeight = Screen.getPrimary().getVisualBounds().getHeight();
         this.stage = primaryStage;
         BufferedImage bufferedImage = ImageIO.read(getClass().getResource("/icon.png"));
         ImageView splash = new ImageView(SwingFXUtils.toFXImage(bufferedImage, null));
-        splash.setFitHeight(825);
-        splash.setFitWidth(825);
+        splash.setFitHeight(screenHeight / 1.3);
+        splash.setFitWidth(screenHeight / 1.3);
         statusButton = new Button("Wait");
         statusButton.setDisable(true);
         statusButton.setOnAction(e -> primaryStage.close());
         primaryStage.getIcons().add(splash.getImage());
-        statusButton.setTranslateY(366);
-        statusButton.setMinWidth(86);
-        statusButton.setMinHeight(85);
+        statusButton.setTranslateY(screenHeight / 2.91);
+        statusButton.setMinWidth(screenHeight / 12.1);
+        statusButton.setMinHeight(screenHeight / 12.09);
         statusButton.setTextFill(Color.RED);
-        statusButton.setFont(new Font(20));
-        statusButton.setBackground(new Background(new BackgroundFill(Color.rgb(248, 196, 115), new CornerRadii(10), null)));
+        statusButton.setFont(new Font(screenHeight / 52));
+        statusButton.setBackground(new Background(new BackgroundFill(Color.rgb(248, 196, 115), new CornerRadii(screenHeight / 104), null)));
         StackPane splashPane = new StackPane(splash, statusButton);
         Scene loadScene = new Scene(splashPane);
         loadScene.getStylesheets().add(getClass().getResource("/Loader.css").toExternalForm());

@@ -5,6 +5,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import javafx.stage.Screen;
 import main.java.logic.Controller;
 import main.java.logic.SudokuLoader;
 import main.java.networking.SudokuSender;
@@ -23,32 +24,28 @@ public class GameUI extends BorderPane {
     private final Chat chat;
     private final Chatter chatter;
     private final ScrollPane chatScroll;
-    @SuppressWarnings("FieldCanBeLocal")
-    private final SudokuLoader splash;
 
     /**
      * Creates a complete visual representation of the current Sudoku Game.
      * @param control The current controller for this game.
-     * @param splash The Splash Screen (Deprecated!)
      */
-    public GameUI(Controller control, SudokuLoader splash) {
-        double screenHeight = Toolkit.getDefaultToolkit().getScreenSize().getHeight();
+    public GameUI(Controller control) {
+        double screenHeight = Screen.getPrimary().getVisualBounds().getHeight();
         this.control = control;
-        this.splash = splash;
         GridPane squares = new GridPane();
         for (int r = 0; r < 3; r++) {
             for (int c = 0; c < 3; c++) {
-                Rectangle box = new Rectangle(screenHeight / 8.4705, screenHeight / 8.4705, Color.rgb(0, 0, 0, 0.0));
+                Rectangle box = new Rectangle(screenHeight / 4.0784, screenHeight / 4.0784, Color.rgb(0, 0, 0, 0.0));
                 box.setStroke(Color.BLACK);
                 box.setStrokeWidth(2.5);
                 squares.add(box, c, r);
             }
         }
         squares.setDisable(true);
-        info = new InfoMenu(this, screenHeight / 86.4);
+        info = new InfoMenu(this, screenHeight / 41.6);
         StackPane center = new StackPane(board, squares);
-        chat = new Chat(screenHeight / 7.2, control);
-        chatter = new Chatter(screenHeight / 2.88);
+        chat = new Chat(screenHeight / 3.4667, control);
+        chatter = new Chatter(screenHeight / 1.3867);
         chatter.getSender().setOnAction(e -> {
             chat.thisPlayerChat(chatter.getChatter().getText());
             chatter.getSender().setDisable(true);

@@ -4,6 +4,7 @@ import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Screen;
 
 /**
  * ButtonMenu is a class that defines the left side of the Sudoku Board game. It consists of the Note/Answer button, the
@@ -132,8 +133,9 @@ public class ButtonMenu extends VBox {
         public Numbers() {
             for (int r = 0; r < 3; r ++) {
                 for (int c = 0; c < 3; c++) {
+                    double height = Screen.getPrimary().getVisualBounds().getHeight();
                     Button number = new Button(" " + (1 + c + (r * 3)));
-                    number.setMinSize(30, 30);
+                    number.setMinSize(height / 35, height / 35);
                     buttons[c + (r * 3)] = number;
                     this.add(buttons[c + (r * 3)], c, r);
                 }

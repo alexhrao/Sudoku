@@ -3,6 +3,7 @@ package main.java.ui;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import javafx.stage.Screen;
 
 /**
  * The Answer Class represents an Answer in the Sudoku game. This is a number that appears to completely fill
@@ -18,7 +19,7 @@ public class Answer extends Text implements Comparable<Answer> {
      */
     public Answer() {
         this.clear();
-        this.setFont(new Font(50));
+        this.setFont(new Font(Screen.getPrimary().getVisualBounds().getHeight() / 20.8));
         this.setFill(Color.BLACK);
         this.setVisible(false);
     }
