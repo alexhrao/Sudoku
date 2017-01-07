@@ -25,6 +25,7 @@ public class Chatter extends HBox {
         this.getChildren().addAll(chatter, sender);
         this.setTranslateX(sendWidth / 7.5);
         sender.setMinSize(sendWidth / 50, sendWidth / 30);
+        sender.setDisable(true);
     }
 
     /**
