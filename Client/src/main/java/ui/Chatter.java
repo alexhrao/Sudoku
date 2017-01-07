@@ -6,7 +6,7 @@ import javafx.scene.layout.HBox;
 
 
 public class Chatter extends HBox {
-    private final TextField chatter = new TextField("Hello World!");
+    private final TextField chatter = new TextField();
     private final Button sender = new Button("Send");
 
     /**

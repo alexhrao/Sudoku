@@ -55,7 +55,6 @@ public class Sudoku extends Application{
      */
     @Override
     public void start(Stage primaryStage) throws Exception {
-        System.out.println(Toolkit.getDefaultToolkit().getScreenSize().getHeight());
         this.gatherInformation();
         ui = new GameUI(control, loader);
         this.setup();
