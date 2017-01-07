@@ -7,6 +7,7 @@ import javafx.application.Platform;
 import javafx.scene.paint.Color;
 import javafx.util.Duration;
 import main.java.ui.GameUI;
+import main.java.ui.Notes;
 import main.java.ui.Square;
 import main.java.networking.SudokuPacket.Data;
 
@@ -85,37 +86,23 @@ public class SudokuListener extends Thread implements Runnable {
                         if (ui.getControl().getId() == 0) {
                             ui.getControl().setId(id);
                         }
-                        class AddName implements Runnable {
-                            @Override
-                            public void run() {
-                                ui.getInfo().addPlayer(name, Color.color(color[0], color[1], color[2], color[3]));
-                            }
-                        }
-                        Platform.runLater(new AddName());
+                        Platform.runLater(() ->  ui.getInfo().addPlayer(name, Color.color(color[0], color[1], color[2], color[3])));
                     } else if (instruct.isMessage()) {
                         if (instruct.getId() != ui.getControl().getId()) {
                             String message = instruct.getMessage();
                             double[] color = instruct.getColor();
-                            class AddChat implements Runnable {
-                                @Override
-                                public void run() {
-                                    ui.getChat().thatPlayerChat(message, Color.color(color[0], color[1], color[2], color[3]));
-                                    ui.scrollToBottom();
-                                }
-                            }
-                            Platform.runLater(new AddChat());
+                            Platform.runLater(() -> {
+                                ui.getChat().thatPlayerChat(message, Color.color(color[0], color[1], color[2], color[3]));
+                                ui.scrollToBottom();
+                            });
                         }
                     } else if (instruct.isRemove()) {
                         int index = instruct.getId();
-                        class RemovePlayer implements Runnable {
-                            @Override
-                            public void run() {
-                                if (index != ui.getControl().getId()) {
-                                    ui.getInfo().removePlayer(index);
-                                }
+                        Platform.runLater(() -> {
+                            if (index != ui.getControl().getId()) {
+                                ui.getInfo().removePlayer(index);
                             }
-                        }
-                        Platform.runLater(new RemovePlayer());
+                        });
                     } else {
                         if (ui.getControl().getLastClicked() != null) {
                             ui.getControl().getLastClicked().getOverlay().setStroke(ui.getControl().getColor());
@@ -136,6 +123,26 @@ public class SudokuListener extends Thread implements Runnable {
                                     ui.getMenu().disable();
                                 } else {
                                     ui.getMenu().enable();
+                                }
+                                for (int r = 0; r < 9; r++) {
+                                    if (r != square.getRow()) {
+                                        Notes posNotes = ui.getBoard().getSquare(r, square.getCol()).getNotes();
+                                        posNotes.hide(ans);
+                                    }
+                                }
+                                for (int c = 0; c < 9; c++) {
+                                    if (c != square.getCol()) {
+                                        Notes posNotes = ui.getBoard().getSquare(square.getRow(), c).getNotes();
+                                        posNotes.hide(ans);
+                                    }
+                                }
+                                for (int r = (int) Math.floor(square.getRow() / 3) * 3; r < (Math.floor(square.getRow() / 3) * 3) + 3; r++) {
+                                    for (int c = (int) Math.floor(square.getCol() / 3) * 3; c < (Math.floor(square.getCol() / 3) * 3) + 3; c++) {
+                                        if (r != square.getRow() || c != square.getCol()) {
+                                            Notes posNotes = ui.getBoard().getSquare(r, c).getNotes();
+                                            posNotes.hide(ans);
+                                        }
+                                    }
                                 }
                                 square.getAnswer().setValue(ans);
                                 square.getAnswer().setFill(Color.color(ansColor[0], ansColor[1], ansColor[2], ansColor[3]));
@@ -191,7 +198,7 @@ public class SudokuListener extends Thread implements Runnable {
                             }
                         }
                     }
-                    // Probably never used :(
+
                     if (instruct.isLast()) {
                         Platform.runLater(() -> ui.getControl().ready());
                     }
