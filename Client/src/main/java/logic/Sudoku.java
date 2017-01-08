@@ -122,7 +122,7 @@ public class Sudoku extends Application{
         playerAskColor.setFont(new Font(screenHeight / 65));
         playerAskColor.setFill(Color.BROWN);
         ColorPicker colorPicker = new ColorPicker(Color.RED);
-        colorPicker.setMinWidth(screenHeight / 14.4);
+        colorPicker.setMaxWidth(screenHeight / 5);
         colorPane.add(playerAskColor, 0, 0);
         colorPane.add(colorPicker, 1, 0);
 
