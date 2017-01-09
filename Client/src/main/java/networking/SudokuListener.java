@@ -63,6 +63,7 @@ public class SudokuListener extends Thread implements Runnable {
                 out.flush();
                 SudokuPacket instruct;
                 while ((instruct = (SudokuPacket) in.readObject()) != null) {
+                    System.out.println("Message Received!");
                     if (instruct.isBoard()) {
                         int[][] board = instruct.getBoard();
                         int[][] solnBoard = instruct.getSolnBoard();
@@ -127,20 +128,20 @@ public class SudokuListener extends Thread implements Runnable {
                                 for (int r = 0; r < 9; r++) {
                                     if (r != square.getRow()) {
                                         Notes posNotes = ui.getBoard().getSquare(r, square.getCol()).getNotes();
-                                        posNotes.hide(ans);
+                                        posNotes.hide(ans - 1);
                                     }
                                 }
                                 for (int c = 0; c < 9; c++) {
                                     if (c != square.getCol()) {
                                         Notes posNotes = ui.getBoard().getSquare(square.getRow(), c).getNotes();
-                                        posNotes.hide(ans);
+                                        posNotes.hide(ans - 1);
                                     }
                                 }
                                 for (int r = (int) Math.floor(square.getRow() / 3) * 3; r < (Math.floor(square.getRow() / 3) * 3) + 3; r++) {
                                     for (int c = (int) Math.floor(square.getCol() / 3) * 3; c < (Math.floor(square.getCol() / 3) * 3) + 3; c++) {
                                         if (r != square.getRow() || c != square.getCol()) {
                                             Notes posNotes = ui.getBoard().getSquare(r, c).getNotes();
-                                            posNotes.hide(ans);
+                                            posNotes.hide(ans - 1);
                                         }
                                     }
                                 }
