@@ -76,7 +76,6 @@ public class SudokuServer implements Runnable {
             in.readLine();
             sudokuServer.getServer().close();
             System.out.println("Server has stopped.");
-
         } catch (IOException e) {
             e.printStackTrace();
         }

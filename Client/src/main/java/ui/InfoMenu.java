@@ -81,6 +81,5 @@ public class InfoMenu extends ToolBar {
         } else {
             this.getItems().set(id + 1, new HBox(20));
         }
-
     }
 }

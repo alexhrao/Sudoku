@@ -41,7 +41,7 @@ public class SudokuBoard {
     }
 
     private void generate() {
-        int k = 1;
+        int k;
         int n = 1;
         for (int r = 0; r < 9; r++) {
             k = n;
@@ -79,7 +79,6 @@ public class SudokuBoard {
         for (int r = 0; r < 9; r++) {
             System.arraycopy(soln[r], 0, board[r], 0, 9);
         }
-
         for (int r = 0; r < 9; r++) {
             for (int c = 0; c < 9; c++) {
                 strikeOut(r, c);
@@ -88,6 +87,7 @@ public class SudokuBoard {
 
     }
 
+    //TODO: Add support for indicating cell ##
     private void strikeOut(int row, int col) {
         int count = 9;
         for (int num = 1; num <= 9; num++) {
@@ -136,6 +136,7 @@ public class SudokuBoard {
             }
         }
     }
+
     private void randomRow() {
         int k1;
         int k2;

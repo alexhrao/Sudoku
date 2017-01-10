@@ -73,7 +73,6 @@ public class SudokuSender implements Runnable {
             ObjectOutputStream out = new ObjectOutputStream(client.getOutputStream());
             ObjectInputStream in = new ObjectInputStream(client.getInputStream())) {
             SudokuPacket packet;
-            System.out.println("Sent message!");
             if (isGame) {
                 packet = new SudokuPacket();
             } else if (isMessage) {

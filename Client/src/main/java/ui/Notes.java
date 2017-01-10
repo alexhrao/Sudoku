@@ -115,4 +115,15 @@ public class Notes extends GridPane {
         }
         return true;
     }
+
+    @Override
+    public int hashCode() {
+        int out = 0;
+        for (int i = 0; i < 9; i++) {
+            if (visibility[i]) {
+                out += i * 31;
+            }
+        }
+        return out;
+    }
 }

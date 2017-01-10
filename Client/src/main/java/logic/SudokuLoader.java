@@ -26,7 +26,6 @@ public class SudokuLoader extends Preloader implements Runnable {
         this.stage.showAndWait();
     }
     @Override
-    //TODO: Fix height / width.
     public void start(Stage primaryStage) throws Exception {
         double screenHeight = Screen.getPrimary().getVisualBounds().getHeight();
         this.stage = primaryStage;

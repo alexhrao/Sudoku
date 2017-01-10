@@ -63,7 +63,6 @@ public class SudokuListener extends Thread implements Runnable {
                 out.flush();
                 SudokuPacket instruct;
                 while ((instruct = (SudokuPacket) in.readObject()) != null) {
-                    System.out.println("Message Received!");
                     if (instruct.isBoard()) {
                         int[][] board = instruct.getBoard();
                         int[][] solnBoard = instruct.getSolnBoard();
