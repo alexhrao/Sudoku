@@ -1,6 +1,8 @@
 package main.java.logic;
 
-import javafx.animation.*;
+import javafx.animation.ParallelTransition;
+import javafx.animation.RotateTransition;
+import javafx.animation.SequentialTransition;
 import javafx.application.Application;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
@@ -9,7 +11,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.TextField;
-import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -19,7 +20,11 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
-import javafx.stage.*;
+import javafx.stage.FileChooser;
+import javafx.stage.Screen;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+import javafx.stage.WindowEvent;
 import javafx.util.Duration;
 import main.java.networking.SudokuSender;
 import main.java.networking.SudokuListener;
@@ -30,7 +35,10 @@ import main.java.ui.Square;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 
 /**
  * This is the entry point of the Sudoku game. It collects starting information from the player, creates the game, and
@@ -171,7 +179,6 @@ public class Sudoku extends Application{
         uploadPane.add(uploadBoard, 0, 0);
         uploadPane.add(file, 1, 0);
 
-
         TextField sHost = new TextField("localhost");
         sHost.setFont(new Font(screenHeight / 65));
         sHost.setMinWidth(screenHeight / 4.911);
@@ -226,7 +233,9 @@ public class Sudoku extends Application{
         controls.add(showAdvanced, 0, 5, 1, 1);
         controls.add(advanced, 0, 6, 2, 2);
         controls.setTranslateY(screenHeight / 1.92);
-        controls.setTranslateX(screenHeight / 200);
+        //controls.setTranslateX(screenHeight / 200);
+        controls.setTranslateX(-screenHeight / 4.7);
+        controls.setMaxWidth(screenHeight / 3);
 
         StackPane infoPane = new StackPane(background, controls);
         Scene infoScene = new Scene(infoPane);
@@ -252,50 +261,24 @@ public class Sudoku extends Application{
         } catch (Exception e) {
             serverPort = 0;
         }
-        boolean isValid = true;
-        if (playerName.isEmpty()) {
-            name.setText("Cannot be blank!");
-            isValid = false;
-        }
-        if (playerColor.equals(Color.BLACK) || playerColor.equals(Color.WHITE)
-                || playerColor.equals(Color.DARKRED) || playerColor.equals(Color.GREEN)
-                || playerColor.equals(Color.TRANSPARENT)) {
-            colorPicker.setPromptText("Invalid color chosen!");
-            playerAskColor.setFill(Color.RED);
-            isValid = false;
-        }
 
-        while (!isValid) {
-            infoStage.showAndWait();
-            playerName = name.getText();
-            playerColor = colorPicker.getValue();
-            numSpaces = Integer.parseInt(spaces.getText());
-            serverName = sHost.getText();
-            try {
-                serverPort = Integer.parseInt(sPort.getText());
-            } catch (Exception e) {
-                serverPort = 0;
-            }
-            isValid = true;
+        boolean isValid = true;
+        do {
             if (playerName.isEmpty()) {
                 name.setText("Cannot be blank!");
-                name.setTooltip(new Tooltip("Your name must not be blank!"));
                 isValid = false;
-            } else {
-                name.setTooltip(null);
-                name.setText(playerName);
             }
             if (playerColor.equals(Color.BLACK) || playerColor.equals(Color.WHITE)
                     || playerColor.equals(Color.DARKRED) || playerColor.equals(Color.GREEN)
                     || playerColor.equals(Color.TRANSPARENT)) {
+                colorPicker.setPromptText("Invalid color chosen!");
                 playerAskColor.setFill(Color.RED);
-                colorPicker.setTooltip(new Tooltip("Choose a valid color!"));
                 isValid = false;
-            } else {
-                playerAskColor.setFill(Color.BROWN);
-                colorPicker.setTooltip(null);
             }
-        }
+            if (!isValid) {
+                infoStage.showAndWait();
+            }
+        } while (!isValid);
         loader.start(infoStage);
         control = new Controller(playerName, playerColor, serverName, serverPort);
         if (stringBoard[0] == null) {
@@ -350,7 +333,9 @@ public class Sudoku extends Application{
                     return;
                 }
                 if (control.getLastClicked().getAnswer().getVisible()
-                        && !control.getLastClicked().getAnswer().getFill().equals(Color.DARKRED)) {
+                        && control.getLastClicked().getAnswer().getValue()
+                        != control.getSolnBoard()
+                        [control.getLastClicked().getRow()][control.getLastClicked().getCol()]) {
                     return;
                 }
                 int numPresent = 0;
@@ -404,7 +389,9 @@ public class Sudoku extends Application{
                 for (int number = 1; number <= 9; number++) {
                     for (int r = 0; r < 9; r++) {
                         for (int c = 0; c < 9; c++) {
-                            if (ui.getBoard().getSquare(r, c).getAnswer().getValue() == number) {
+                            if (ui.getBoard().getSquare(r, c).getAnswer().getValue() == number
+                                    && ui.getBoard().getSquare(r, c).getAnswer().getValue()
+                                    == ui.getControl().getSolnBoard()[r][c]) {
                                 numPresent++;
                             }
                         }
