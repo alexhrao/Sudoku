@@ -94,7 +94,7 @@ public class Sudoku extends Application{
         launch(args);
     }
 
-
+    //TODO: Add SinglePlayer Option
     private void gatherInformation() throws Exception {
         /* Regardless of server set up, we need to capture:
             * Player Name
