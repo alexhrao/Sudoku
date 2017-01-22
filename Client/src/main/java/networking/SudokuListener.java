@@ -118,7 +118,6 @@ public class SudokuListener extends Thread implements Runnable {
                             Square square = ui.getBoard().getSquare(row, col);
                             if (ans != 0) {
                                 square.clear();
-                                square.getAnswer().setVisible(true);
                                 if (square == ui.getControl().getLastClicked()) {
                                     if (ans == ui.getSolnBoard()[row][col]) {
                                         ui.getMenu().disable();
@@ -126,28 +125,31 @@ public class SudokuListener extends Thread implements Runnable {
                                         ui.getMenu().enable();
                                     }
                                 }
-                                for (int r = 0; r < 9; r++) {
-                                    if (r != square.getRow()) {
-                                        Notes posNotes = ui.getBoard().getSquare(r, square.getCol()).getNotes();
-                                        posNotes.hide(ans - 1);
-                                    }
-                                }
-                                for (int c = 0; c < 9; c++) {
-                                    if (c != square.getCol()) {
-                                        Notes posNotes = ui.getBoard().getSquare(square.getRow(), c).getNotes();
-                                        posNotes.hide(ans - 1);
-                                    }
-                                }
-                                for (int r = (int) Math.floor(square.getRow() / 3) * 3; r < (Math.floor(square.getRow() / 3) * 3) + 3; r++) {
-                                    for (int c = (int) Math.floor(square.getCol() / 3) * 3; c < (Math.floor(square.getCol() / 3) * 3) + 3; c++) {
-                                        if (r != square.getRow() || c != square.getCol()) {
-                                            Notes posNotes = ui.getBoard().getSquare(r, c).getNotes();
+                                if (ans == ui.getSolnBoard()[row][col]) {
+                                    for (int r = 0; r < 9; r++) {
+                                        if (r != square.getRow()) {
+                                            Notes posNotes = ui.getBoard().getSquare(r, square.getCol()).getNotes();
                                             posNotes.hide(ans - 1);
+                                        }
+                                    }
+                                    for (int c = 0; c < 9; c++) {
+                                        if (c != square.getCol()) {
+                                            Notes posNotes = ui.getBoard().getSquare(square.getRow(), c).getNotes();
+                                            posNotes.hide(ans - 1);
+                                        }
+                                    }
+                                    for (int r = (int) Math.floor(square.getRow() / 3) * 3; r < (Math.floor(square.getRow() / 3) * 3) + 3; r++) {
+                                        for (int c = (int) Math.floor(square.getCol() / 3) * 3; c < (Math.floor(square.getCol() / 3) * 3) + 3; c++) {
+                                            if (r != square.getRow() || c != square.getCol()) {
+                                                Notes posNotes = ui.getBoard().getSquare(r, c).getNotes();
+                                                posNotes.hide(ans - 1);
+                                            }
                                         }
                                     }
                                 }
                                 square.getAnswer().setValue(ans);
-                                square.getAnswer().setStroke(Color.color(ansColor[0], ansColor[1], ansColor[2], ansColor[3]));
+                                square.getAnswer().setFill(Color.color(ansColor[0], ansColor[1], ansColor[2], ansColor[3]));
+                                square.getAnswer().setVisible(true);
                             } else {
                                 square.getAnswer().setVisible(false);
                                 for (int n = 0; n < 9; n++) {
