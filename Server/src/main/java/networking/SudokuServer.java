@@ -82,7 +82,7 @@ public class SudokuServer implements Runnable {
         }
         SudokuServer sudokuServer = new SudokuServer(port);
         Thread server = new Thread(sudokuServer);
-        System.out.println("Server Started. Listening for connections...");
+        System.out.println("Server Started. Listening for connections on port " + port + "...");
         server.start();
         try (BufferedReader in = new BufferedReader(new InputStreamReader(System.in))) {
             in.readLine();
