@@ -13,6 +13,7 @@ import javafx.scene.control.ColorPicker;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -480,14 +481,13 @@ public class Sudoku extends Application{
                 });
             }
         }
-        game.setOnKeyTyped(n -> {
+        game.setOnKeyTyped((KeyEvent n) -> {
             try {
                 int num = Integer.parseInt(n.getCharacter()) - 1;
                 if (!ui.getMenu().getNumber(num).isDisabled()) {
                     ui.getMenu().getNumber(num).fire();
                 }
-            } catch (NumberFormatException e) {
-                e.printStackTrace();
+            } catch (NumberFormatException ignored) {
             }
         });
     }
