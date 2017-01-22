@@ -50,6 +50,7 @@ public class Sudoku extends Application{
     private SudokuListener player;
     private SudokuLoader loader;
     private Image icon;
+    private Scene game;
 
     /**
      * The start method, overriding the one in Application.
@@ -60,12 +61,12 @@ public class Sudoku extends Application{
     public void start(Stage primaryStage) throws Exception {
         this.gatherInformation();
         ui = new GameUI(control);
+        game = new Scene(ui);
         this.setup();
         player = new SudokuListener(control.getServerHost(), control.getServerPort(), ui);
         player.start();
         control.setLoader(loader);
         loader.getStage().showAndWait();
-        Scene game = new Scene(ui);
         primaryStage.setTitle("Sudoku Online");
         primaryStage.setScene(game);
         primaryStage.getIcons().add(icon);
@@ -479,5 +480,15 @@ public class Sudoku extends Application{
                 });
             }
         }
+        game.setOnKeyTyped(n -> {
+            try {
+                int num = Integer.parseInt(n.getCharacter()) - 1;
+                if (!ui.getMenu().getNumber(num).isDisabled()) {
+                    ui.getMenu().getNumber(num).fire();
+                }
+            } catch (NumberFormatException e) {
+                e.printStackTrace();
+            }
+        });
     }
 }
