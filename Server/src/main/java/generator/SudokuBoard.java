@@ -79,12 +79,37 @@ public class SudokuBoard {
         for (int r = 0; r < 9; r++) {
             System.arraycopy(soln[r], 0, board[r], 0, 9);
         }
+        int[] rowVec = new int[9];
+        int[] colVec = new int[9];
+        for (int ind = 0; ind < 9; ind++) {
+            rowVec[ind] = -1;
+            colVec[ind] = -1;
+        }
+        for (int ind = 0; ind < 9; ind++) {
+            int num;
+            do {
+                num = random.nextInt(9);
+            } while (contains(rowVec, num));
+            rowVec[ind] = num;
+            do {
+                num = random.nextInt(9);
+            } while (contains(colVec, num));
+            colVec[ind] = num;
+        }
         for (int r = 0; r < 9; r++) {
             for (int c = 0; c < 9; c++) {
-                strikeOut(r, c);
+                strikeOut(rowVec[r], rowVec[c]);
             }
         }
+    }
 
+    private boolean contains(int[] vec, int item) {
+        for (int i : vec) {
+            if (i == item) {
+                return true;
+            }
+        }
+        return false;
     }
 
     //TODO: Add support for indicating cell ##
