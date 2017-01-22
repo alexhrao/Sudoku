@@ -63,12 +63,24 @@ public class SudokuServer implements Runnable {
     }
 
     /**
-     * Creates the server. No arguments are allowed, but to stop the server, type in the console window.
+     * Creates the server. Optional input of the port; if no argument is given, 60000 is used.
+     * To stop the server, type in the console window.
      * @param args Not important.
      */
     public static synchronized void main(String[] args) {
         System.out.println("Starting Server...");
-        SudokuServer sudokuServer = new SudokuServer(PORT);
+        int port;
+        if (args.length > 0) {
+
+            try {
+                port = Integer.parseInt(args[0]);
+            } catch (NumberFormatException e) {
+                port = SudokuServer.PORT;
+            }
+        } else {
+            port = SudokuServer.PORT;
+        }
+        SudokuServer sudokuServer = new SudokuServer(port);
         Thread server = new Thread(sudokuServer);
         System.out.println("Server Started. Listening for connections...");
         server.start();
