@@ -45,6 +45,8 @@ import java.io.IOException;
  * This is the entry point of the Sudoku game. It collects starting information from the player, creates the game, and
  * manages the actual logic used to play the game.
  */
+
+//TODO: Add Resize Capabilities
 public class Sudoku extends Application{
     private GameUI ui;
     private Controller control;
