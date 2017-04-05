@@ -46,7 +46,6 @@ import java.io.IOException;
  * manages the actual logic used to play the game.
  */
 
-//TODO: Add Resize Capabilities
 public class Sudoku extends Application{
     private GameUI ui;
     private Controller control;
@@ -159,7 +158,8 @@ public class Sudoku extends Application{
         final String[] stringBoard = new String[9];
         uploadBoard.setOnAction(e -> {
             FileChooser fileChooser = new FileChooser();
-            fileChooser.setSelectedExtensionFilter(new FileChooser.ExtensionFilter("CSV files", ".csv"));
+            fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Sudoku Board files", "*.sdbd", "*.csv", "*.txt"));
+            fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("All Files", "*.*"));
             fileChooser.setTitle("Select board to upload:");
             File chosen;
             chosen = fileChooser.showOpenDialog(infoStage);
@@ -178,6 +178,7 @@ public class Sudoku extends Application{
                 file.setText("Choose File...");
             }
         });
+
         uploadBoard.setTextFill(Color.BROWN);
         uploadBoard.setFont(new Font(screenHeight / 65));
         uploadPane.add(uploadBoard, 0, 0);
