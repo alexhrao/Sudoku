@@ -62,7 +62,9 @@ public class SudokuListener extends Thread implements Runnable {
                 out.writeObject(packet);
                 out.flush();
                 SudokuPacket instruct;
+                boolean isFinished = false;
                 while ((instruct = (SudokuPacket) in.readObject()) != null) {
+                    Platform.runLater(ui::scrollToBottom);
                     if (instruct.isBoard()) {
                         int[][] board = instruct.getBoard();
                         int[][] solnBoard = instruct.getSolnBoard();
@@ -95,6 +97,9 @@ public class SudokuListener extends Thread implements Runnable {
                                 ui.getChat().thatPlayerChat(message, Color.color(color[0], color[1], color[2], color[3]));
                                 ui.scrollToBottom();
                             });
+                            Platform.runLater(ui::scrollToBottom);
+                        } else {
+                            Platform.runLater(ui::scrollToBottom);
                         }
                     } else if (instruct.isRemove()) {
                         int index = instruct.getId();
@@ -189,7 +194,8 @@ public class SudokuListener extends Thread implements Runnable {
                                 }
                             }
                             // We've completed the game.
-                            if (numFinished == 81) {
+                            if (numFinished == 81 && !isFinished) {
+                                isFinished = true;
                                 Platform.runLater(() -> {
                                     ParallelTransition animation = new ParallelTransition();
                                     for (int r = 0; r < 9; r++) {
@@ -214,6 +220,7 @@ public class SudokuListener extends Thread implements Runnable {
                 }
             }
         } catch (SocketException e) {
+            e.printStackTrace();
         } catch(EOFException e) {
             this.interrupt();
         } catch(IOException | ClassNotFoundException e){

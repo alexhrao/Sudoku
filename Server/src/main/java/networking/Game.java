@@ -11,6 +11,28 @@ import java.util.ArrayList;
  * In many ways, it represents what the server would look like, if the server could not have multiple games.
  */
 public class Game implements Runnable {
+
+    /*
+    We should also have a new way of storing threads. It would consist of this:
+        1. If a thread is joining, we have TWO ArrayLists of threads:
+            i. SENDER threads
+            ii. RECEIVER threads
+        That way, if we need to remove a thread, it's trivial; just set it's ID to null.
+        2. If a thread is querying, don't do anything at all.
+     */
+
+/*
+    private ArrayList<SudokuServerThread> senders = new ArrayList<>();
+    private ArrayList<SudokuServerThread> receivers = new ArrayList<>();
+
+    public void addPlayer(Socket sender) {
+        SudokuServerThread client = new SudokuServerThread(sender, this);
+        senders.add(client);
+        // get the receiver, and add it:
+        // SudokuServerThread receive = new SudokuServerThread(???, this);
+        // receivers.add(receive);
+    }
+*/
     private ArrayList<SudokuServerThread> threads = new ArrayList<>();
     private int[][] board;
     private int[][] soln;

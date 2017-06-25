@@ -1,5 +1,6 @@
 package main.java.ui;
 
+import javafx.application.Platform;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.*;
@@ -58,6 +59,7 @@ public class GameUI extends BorderPane {
         chatter.getChatter().setOnKeyPressed(e -> {
             if (e.getCode().equals(KeyCode.ENTER)) {
                 chatter.getSender().fire();
+                this.scrollToBottom();
             }
         });
         chatter.getChatter().setOnKeyReleased(e -> {
@@ -143,6 +145,7 @@ public class GameUI extends BorderPane {
     }
 
     public void scrollToBottom() {
-        this.chatScroll.setVvalue(1);
+        this.chatScroll.layout();
+        this.chatScroll.setVvalue(Double.MAX_VALUE);
     }
 }

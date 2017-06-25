@@ -1,5 +1,10 @@
 package main.java.generator;
 
+import com.sun.media.sound.InvalidFormatException;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 /**
  * This class solves a given Sudoku Puzzle, given as either an int array, or an array of strings.
  */
@@ -101,10 +106,14 @@ public class SudokuSolver {
     private void parseProblem(String[] input) throws IllegalArgumentException {
         try {
             board = new int[9][9];
+            Pattern exp = Pattern.compile("\\d");
+            Matcher res = exp.matcher(String.join(", ", input));
             for (int r = 0; r < 9; r++) {
                 for (int c = 0; c < 9; c++) {
-                    board[r][c] = Integer.parseInt(input[r].substring(0, 1));
-                    input[r] = input[r].substring(2);
+                    if (!res.find()) {
+                        throw new InvalidFormatException("Not enough integers!");
+                    }
+                    board[r][c] = Integer.parseInt(res.group(0));
                 }
             }
         } catch (Exception e) {
