@@ -12,15 +12,13 @@
 ## Installation
 
 ### macOS
-Simply download the .dmg from the _installers_ folder, and install!
+Simply download the _SudokuOnline.dmg_ from the _installers/DMG_ folder, and install!
 
 ### Windows
-Simply download the .exe from the _installers_ folder, and install!
+Simply download the _InstallSudokuOnline.exe_ from the _installers/EXE/Output_ folder, and install!
 
 ### All Other OS
 You'll need to have the latest version of The Java&trade; Runtime Environment (JRE&trade;). As of this writing, this version is 1.8, revision 131. You can download it [here][jre].
-
-
 Then, simply download the jar file from _out/artifacts/client_ folder, and run it as normally.
 
 ## Development
@@ -58,6 +56,6 @@ Alexander Rao
    [jdk]: <http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html>
    [ide]: <https://www.jetbrains.com/idea/download/>
    [ukr]: <https://www.github.com/udaykrao>
-   [rac]: <https://www.github.com/alexhrao>
+   [rac]: <https://www.github.com/Raeedah>
    [ahr]: <https://www.github.com/alexhrao>
    [rep]: <https://www.github.com/alexhrao/Sudoku>
