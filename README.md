@@ -57,5 +57,5 @@ Alexander Rao
    [ide]: <https://www.jetbrains.com/idea/download/>
    [ukr]: <https://www.github.com/udaykrao>
    [rac]: <https://www.github.com/Raeedah>
-   [ahr]: <https://www.github.com/alexhrao>
+   [ahr]: <https://alexhrao.github.io>
    [rep]: <https://www.github.com/alexhrao/Sudoku>
