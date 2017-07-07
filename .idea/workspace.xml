@@ -8,7 +8,6 @@
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Client/src/main/java/logic/Sudoku.java" afterPath="$PROJECT_DIR$/Client/src/main/java/logic/Sudoku.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server/src/main/java/networking/SudokuServerThread.java" afterPath="$PROJECT_DIR$/Server/src/main/java/networking/SudokuServerThread.java" />
     </list>
     <ignored path="JavaFxApplication.iws" />
@@ -104,7 +103,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Sudoku.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Sudoku.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Client/src/main/java/logic/Sudoku.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="495">
@@ -114,21 +113,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SudokuServer.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/server/src/main/java/networking/SudokuServer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1023">
-              <caret line="60" column="28" lean-forward="false" selection-start-line="60" selection-start-column="28" selection-end-line="60" selection-end-column="28" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SudokuServerThread.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="SudokuServerThread.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/server/src/main/java/networking/SudokuServerThread.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="33">
-              <caret line="71" column="48" lean-forward="false" selection-start-line="71" selection-start-column="48" selection-end-line="71" selection-end-column="48" />
+              <caret line="71" column="46" lean-forward="false" selection-start-line="71" selection-start-column="46" selection-end-line="71" selection-end-column="46" />
               <folding />
             </state>
           </provider>
@@ -286,9 +275,9 @@
         <option value="$PROJECT_DIR$/Server/src/main/java/generator/SudokuBoard.java" />
         <option value="$PROJECT_DIR$/server/src/main/java/networking/SudokuServer.java" />
         <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/server/src/main/java/networking/SudokuServerThread.java" />
         <option value="$PROJECT_DIR$/Client/src/main/java/ui/Chat.java" />
         <option value="$PROJECT_DIR$/Client/src/main/java/logic/Sudoku.java" />
+        <option value="$PROJECT_DIR$/server/src/main/java/networking/SudokuServerThread.java" />
       </list>
     </option>
   </component>
@@ -918,13 +907,6 @@
       <updated>1359379246138</updated>
       <workItem from="1359379250712" duration="1302000" />
     </task>
-    <task id="LOCAL-00044" summary="Change entry Screen; Add Splash Screen">
-      <created>1483327467172</created>
-      <option name="number" value="00044" />
-      <option name="presentableId" value="LOCAL-00044" />
-      <option name="project" value="LOCAL" />
-      <updated>1483327467172</updated>
-    </task>
     <task id="LOCAL-00045" summary="Change the board to allow for background changing; Change the loading screen.">
       <created>1483331609500</created>
       <option name="number" value="00045" />
@@ -1261,7 +1243,14 @@
       <option name="project" value="LOCAL" />
       <updated>1498412436442</updated>
     </task>
-    <option name="localTasksCounter" value="93" />
+    <task id="LOCAL-00093" summary="Fix &quot;Can't change bad numbers&quot; problem">
+      <created>1499469556499</created>
+      <option name="number" value="00093" />
+      <option name="presentableId" value="LOCAL-00093" />
+      <option name="project" value="LOCAL" />
+      <updated>1499469556500</updated>
+    </task>
+    <option name="localTasksCounter" value="94" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -1323,7 +1312,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="Work on the Game Class." />
     <MESSAGE value="Remove spaces option; Add server-option to upload puzzle." />
     <MESSAGE value="Add ability for packet to specify new game - or existing game; Add ServerThread ability to give back games." />
     <MESSAGE value="Add resolution-aware UI." />
@@ -1348,7 +1336,8 @@
     <MESSAGE value="Update EXE" />
     <MESSAGE value="Update Project Structure" />
     <MESSAGE value="Update EXE installer script and create new EXE installer" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update EXE installer script and create new EXE installer" />
+    <MESSAGE value="Fix &quot;Can't change bad numbers&quot; problem" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix &quot;Can't change bad numbers&quot; problem" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1622,14 +1611,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/main/java/networking/SudokuServerThread.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="33">
-          <caret line="71" column="48" lean-forward="false" selection-start-line="71" selection-start-column="48" selection-end-line="71" selection-end-column="48" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/server/src/main/java/networking/SudokuServer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1023">
@@ -1666,6 +1647,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="495">
           <caret line="342" column="0" lean-forward="true" selection-start-line="342" selection-start-column="0" selection-end-line="342" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/main/java/networking/SudokuServerThread.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="33">
+          <caret line="71" column="46" lean-forward="false" selection-start-line="71" selection-start-column="46" selection-end-line="71" selection-end-column="46" />
           <folding />
         </state>
       </provider>
