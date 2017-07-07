@@ -1,0 +1,11 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="SudokuPlayer">
+    <output-path>$PROJECT_DIR$/out/artifacts/SudokuPlayer</output-path>
+    <root id="archive" name="SudokuPlayer.jar">
+      <element id="module-output" name="Client" />
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/Client/META-INF/MANIFEST.MF" />
+      </element>
+    </root>
+  </artifact>
+</component>

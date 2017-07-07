@@ -1,0 +1,1776 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="PlayerTester" />
+    </artifacts-to-build>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/COPYRIGHT" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/bin/JAWTAccessBridge-64.dll" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/bin/JavaAccessBridge-64.dll" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/bin/WindowsAccessBridge-64.dll" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/bin/awt.dll" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/bin/bci.dll" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/bin/dcpr.dll" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/bin/decora_sse.dll" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/bin/deploy.dll" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/bin/dt_shmem.dll" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/bin/dt_socket.dll" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/bin/dtplugin/deployJava1.dll" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/bin/dtplugin/npdeployJava1.dll" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/bin/eula.dll" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/bin/fontmanager.dll" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/bin/fxplugins.dll" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/bin/glass.dll" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/bin/glib-lite.dll" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/bin/gstreamer-lite.dll" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/bin/hprof.dll" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/bin/instrument.dll" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/bin/j2pcsc.dll" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/bin/j2pkcs11.dll" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/bin/jaas_nt.dll" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/bin/jabswitch.exe" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/bin/java-rmi.exe" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/bin/java.dll" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/bin/java.exe" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/bin/java_crw_demo.dll" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/bin/javacpl.cpl" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/bin/javacpl.exe" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/bin/javafx_font.dll" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/bin/javafx_font_t2k.dll" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/bin/javafx_iio.dll" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/bin/javaw.exe" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/bin/javaws.exe" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/bin/jawt.dll" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/bin/jdwp.dll" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/bin/jfr.dll" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/bin/jfxmedia.dll" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/bin/jfxwebkit.dll" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/bin/jjs.exe" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/bin/jli.dll" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/bin/jp2iexp.dll" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/bin/jp2launcher.exe" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/bin/jp2native.dll" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/bin/jp2ssv.dll" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/bin/jpeg.dll" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/bin/jsdt.dll" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/bin/jsound.dll" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/bin/jsoundds.dll" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/bin/kcms.dll" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/bin/keytool.exe" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/bin/kinit.exe" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/bin/klist.exe" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/bin/ktab.exe" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/bin/lcms.dll" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/bin/management.dll" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/bin/mlib_image.dll" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/bin/msvcp120.dll" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/bin/msvcr100.dll" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/bin/msvcr120.dll" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/bin/net.dll" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/bin/nio.dll" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/bin/npt.dll" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/bin/orbd.exe" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/bin/pack200.exe" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/bin/plugin2/msvcr100.dll" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/bin/plugin2/npjp2.dll" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/bin/policytool.exe" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/bin/prism_common.dll" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/bin/prism_d3d.dll" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/bin/prism_sw.dll" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/bin/resource.dll" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/bin/rmid.exe" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/bin/rmiregistry.exe" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/bin/server/classes.jsa" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/bin/server/jvm.dll" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/bin/servertool.exe" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/bin/splashscreen.dll" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/bin/ssv.dll" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/bin/ssvagent.exe" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/bin/sunec.dll" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/bin/sunmscapi.dll" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/bin/t2k.dll" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/bin/tnameserv.exe" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/bin/unpack.dll" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/bin/unpack200.exe" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/bin/verify.dll" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/bin/w2k_lsa_auth.dll" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/bin/wsdetect.dll" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/bin/zip.dll" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/lib/charsets.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/lib/cmm/CIEXYZ.pf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/lib/cmm/GRAY.pf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/lib/cmm/LINEAR_RGB.pf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/lib/cmm/PYCC.pf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/lib/cmm/sRGB.pf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/lib/currency.data" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/lib/deploy.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/lib/deploy/ffjcext.zip" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/lib/deploy/splash.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/lib/deploy/splash@2x.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/lib/deploy/splash_11-lic.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/lib/deploy/splash_11@2x-lic.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/lib/ext/access-bridge-64.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/lib/ext/cldrdata.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/lib/ext/dnsns.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/lib/ext/jaccess.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/lib/ext/jfxrt.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/lib/ext/localedata.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/lib/ext/nashorn.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/lib/ext/sunec.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/lib/ext/sunjce_provider.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/lib/ext/sunmscapi.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/lib/ext/sunpkcs11.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/lib/ext/zipfs.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/lib/fontconfig.bfc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/lib/fonts/LucidaBrightDemiBold.ttf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/lib/fonts/LucidaBrightDemiItalic.ttf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/lib/fonts/LucidaBrightItalic.ttf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/lib/fonts/LucidaBrightRegular.ttf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/lib/fonts/LucidaSansDemiBold.ttf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/lib/fonts/LucidaSansRegular.ttf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/lib/fonts/LucidaTypewriterBold.ttf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/lib/fonts/LucidaTypewriterRegular.ttf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/lib/images/cursors/invalid32x32.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/lib/images/cursors/win32_CopyDrop32x32.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/lib/images/cursors/win32_CopyNoDrop32x32.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/lib/images/cursors/win32_LinkDrop32x32.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/lib/images/cursors/win32_LinkNoDrop32x32.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/lib/images/cursors/win32_MoveDrop32x32.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/lib/images/cursors/win32_MoveNoDrop32x32.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/lib/javaws.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/lib/jce.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/lib/jfr.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/lib/jfxswt.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/lib/jsse.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/lib/management-agent.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/lib/plugin.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/lib/resources.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/lib/rt.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/lib/security/US_export_policy.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/lib/security/cacerts" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/lib/security/local_policy.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/lib/security/trusted.libraries" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/lib/tzdb.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/Production/Client/SudokuInfoScreen.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/Production/Client/Thumbs.db" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/Production/Client/icon.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/Production/Client/main/java/logic/Controller.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/Production/Client/main/java/logic/Sudoku.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/Production/Client/main/java/logic/SudokuLoader.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/Production/Client/main/java/networking/SudokuListener.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/Production/Client/main/java/networking/SudokuPacket$Data.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/Production/Client/main/java/networking/SudokuPacket.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/Production/Client/main/java/networking/SudokuSender.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/Production/Client/main/java/ui/Answer.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/Production/Client/main/java/ui/Board.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/Production/Client/main/java/ui/ButtonMenu$Numbers.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/Production/Client/main/java/ui/ButtonMenu.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/Production/Client/main/java/ui/Chat.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/Production/Client/main/java/ui/Chatter.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/Production/Client/main/java/ui/GameUI.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/Production/Client/main/java/ui/InfoMenu.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/Production/Client/main/java/ui/Notes.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/Production/Client/main/java/ui/Square.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/Production/server/main/java/generator/SudokuBoard.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/Production/server/main/java/generator/SudokuSolver.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/Production/server/main/java/networking/Game.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/Production/server/main/java/networking/SudokuPacket$Data.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/Production/server/main/java/networking/SudokuPacket.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/Production/server/main/java/networking/SudokuServer.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/Production/server/main/java/networking/SudokuServerThread.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/Production/server/main/java/ui/Answer.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/Production/server/main/java/ui/Notes.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/Production/server/main/java/ui/Square.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/SudokuAlexServer/SudokuAlexServer.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/SudokuPlayer/SudokuPlayer.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/artifacts/SudokuAlexServer.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/artifacts/SudokuPlayer.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/description.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/dictionaries/alexh.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/gradle.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Sudoku.iml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/LICENSE" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/README.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/THIRDPARTYLICENSEREADME-JAVAFX.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/THIRDPARTYLICENSEREADME.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/Welcome.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/bin/server/Xusage.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/lib/accessibility.properties" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/lib/amd64/jvm.cfg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/lib/calendars.properties" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/lib/classlist" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/lib/content-types.properties" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/lib/deploy/messages.properties" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/lib/deploy/messages_de.properties" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/lib/deploy/messages_es.properties" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/lib/deploy/messages_fr.properties" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/lib/deploy/messages_it.properties" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/lib/deploy/messages_ja.properties" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/lib/deploy/messages_ko.properties" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/lib/deploy/messages_pt_BR.properties" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/lib/deploy/messages_sv.properties" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/lib/deploy/messages_zh_CN.properties" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/lib/deploy/messages_zh_HK.properties" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/lib/deploy/messages_zh_TW.properties" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/lib/ext/meta-index" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/lib/flavormap.properties" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/lib/fontconfig.properties.src" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/lib/hijrah-config-umalqura.properties" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/lib/images/cursors/cursors.properties" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/lib/javafx.properties" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/lib/jfr/default.jfc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/lib/jfr/profile.jfc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/lib/jvm.hprof.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/lib/logging.properties" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/lib/management/jmxremote.access" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/lib/management/jmxremote.password.template" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/lib/management/management.properties" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/lib/management/snmp.acl.template" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/lib/meta-index" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/lib/net.properties" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/lib/psfont.properties.ja" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/lib/psfontj2d.properties" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/lib/security/blacklist" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/lib/security/blacklisted.certs" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/lib/security/java.policy" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/lib/security/java.security" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/lib/security/javaws.policy" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/lib/sound.properties" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/lib/tzmappings" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/installers/EXE/jre/jre1.8.0_131/release" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadocs/allclasses-frame.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadocs/allclasses-noframe.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadocs/constant-values.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadocs/deprecated-list.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadocs/help-doc.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadocs/index-files/index-1.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadocs/index-files/index-10.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadocs/index-files/index-11.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadocs/index-files/index-12.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadocs/index-files/index-13.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadocs/index-files/index-2.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadocs/index-files/index-3.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadocs/index-files/index-4.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadocs/index-files/index-5.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadocs/index-files/index-6.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadocs/index-files/index-7.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadocs/index-files/index-8.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadocs/index-files/index-9.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadocs/index.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadocs/main/java/generator/SudokuBoard.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadocs/main/java/generator/SudokuSolver.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadocs/main/java/generator/class-use/SudokuBoard.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadocs/main/java/generator/class-use/SudokuSolver.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadocs/main/java/generator/package-frame.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadocs/main/java/generator/package-summary.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadocs/main/java/generator/package-tree.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadocs/main/java/generator/package-use.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadocs/main/java/logic/Controller.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadocs/main/java/logic/Sudoku.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadocs/main/java/logic/SudokuLoader.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadocs/main/java/logic/class-use/Controller.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadocs/main/java/logic/class-use/Sudoku.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadocs/main/java/logic/class-use/SudokuLoader.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadocs/main/java/logic/package-frame.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadocs/main/java/logic/package-summary.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadocs/main/java/logic/package-tree.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadocs/main/java/logic/package-use.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadocs/main/java/networking/Game.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadocs/main/java/networking/SudokuListener.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadocs/main/java/networking/SudokuPacket.Data.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadocs/main/java/networking/SudokuPacket.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadocs/main/java/networking/SudokuSender.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadocs/main/java/networking/SudokuServer.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadocs/main/java/networking/SudokuServerThread.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadocs/main/java/networking/class-use/Game.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadocs/main/java/networking/class-use/SudokuListener.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadocs/main/java/networking/class-use/SudokuPacket.Data.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadocs/main/java/networking/class-use/SudokuPacket.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadocs/main/java/networking/class-use/SudokuSender.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadocs/main/java/networking/class-use/SudokuServer.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadocs/main/java/networking/class-use/SudokuServerThread.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadocs/main/java/networking/package-frame.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadocs/main/java/networking/package-summary.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadocs/main/java/networking/package-tree.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadocs/main/java/networking/package-use.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadocs/main/java/ui/Answer.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadocs/main/java/ui/Board.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadocs/main/java/ui/ButtonMenu.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadocs/main/java/ui/Chat.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadocs/main/java/ui/Chatter.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadocs/main/java/ui/GameUI.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadocs/main/java/ui/InfoMenu.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadocs/main/java/ui/Notes.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadocs/main/java/ui/Square.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadocs/main/java/ui/class-use/Answer.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadocs/main/java/ui/class-use/Board.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadocs/main/java/ui/class-use/ButtonMenu.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadocs/main/java/ui/class-use/Chat.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadocs/main/java/ui/class-use/Chatter.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadocs/main/java/ui/class-use/GameUI.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadocs/main/java/ui/class-use/InfoMenu.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadocs/main/java/ui/class-use/Notes.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadocs/main/java/ui/class-use/Square.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadocs/main/java/ui/package-frame.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadocs/main/java/ui/package-summary.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadocs/main/java/ui/package-tree.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadocs/main/java/ui/package-use.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadocs/overview-frame.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadocs/overview-summary.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadocs/overview-tree.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadocs/package-list" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadocs/script.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadocs/serialized-form.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/javadocs/stylesheet.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/Production/Client/Loader.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/Production/Client/META-INF/MANIFEST.MF" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/Production/server/META-INF/MANIFEST.MF" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+    </list>
+    <ignored path="JavaFxApplication.iws" />
+    <ignored path=".idea/workspace.xml" />
+    <ignored path="$PROJECT_DIR$/out/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/Sudoku$Player.coverage" NAME="Player Coverage Results" MODIFIED="1483574033552" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/Sudoku$Main.coverage" NAME="Main Coverage Results" MODIFIED="1482440133562" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>main.java.*</FILTER>
+    </SUITE>
+  </component>
+  <component name="CreatePatchCommitExecutor">
+    <option name="PATCH_PATH" value="" />
+  </component>
+  <component name="DebuggerManager">
+    <breakpoint_any default_suspend_policy="SuspendAll" default_condition_enabled="true" converted="true">
+      <breakpoint>
+        <option name="NOTIFY_CAUGHT" value="true" />
+        <option name="NOTIFY_UNCAUGHT" value="true" />
+        <option name="ENABLED" value="false" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint>
+        <option name="NOTIFY_CAUGHT" value="true" />
+        <option name="NOTIFY_UNCAUGHT" value="true" />
+        <option name="ENABLED" value="false" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+    </breakpoint_any>
+    <ui_properties converted="true" />
+    <breakpoint_rules converted="true" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="FavoritesManager">
+    <favorites_list name="JavaFxApplication" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="600">
+      <file leaf-file-name="SudokuListener.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Client/src/main/java/networking/SudokuListener.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="396">
+              <caret line="78" column="32" lean-forward="true" selection-start-line="78" selection-start-column="32" selection-end-line="78" selection-end-column="32" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SudokuSolver.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/server/src/main/java/generator/SudokuSolver.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="363">
+              <caret line="14" column="7" lean-forward="false" selection-start-line="14" selection-start-column="7" selection-end-line="14" selection-end-column="7" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SudokuPacket.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Client/src/main/java/networking/SudokuPacket.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="660">
+              <caret line="426" column="9" lean-forward="true" selection-start-line="426" selection-start-column="9" selection-end-line="426" selection-end-column="9" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="package-info" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>client</find>
+      <find>Color.RED</find>
+      <find>solnBoard</find>
+      <find>==</find>
+      <find>DARKRED</find>
+      <find>File:</find>
+      <find>- 1</find>
+      <find>+ 1</find>
+      <find>server</find>
+      <find>serve</find>
+      <find>getPlay</find>
+      <find>main.</find>
+      <find>playerNAme</find>
+      <find>equals</find>
+      <find>gameBoard</find>
+      <find>sudokuProtocol</find>
+      <find>localhost</find>
+      <find>overlay</find>
+      <find>solve</find>
+      <find>if (!cell.isPresent()) {             return true;         }</find>
+      <find>Optional</find>
+      <find>Supp</find>
+      <find>Suppress</find>
+      <find>isQuery</find>
+      <find>screen</find>
+      <find>Font</find>
+      <find>awt</find>
+      <find>Hello World</find>
+      <find>setMinWidth</find>
+      <find>setFill</find>
+    </findStrings>
+  </component>
+  <component name="FindManager">
+    <FindUsagesManager>
+      <setting name="OPEN_NEW_TAB" value="false" />
+    </FindUsagesManager>
+  </component>
+  <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="Alexander Rao &lt;alexhrao@gmail.com&gt;" />
+      </list>
+    </option>
+    <option name="UPDATE_TYPE" value="MERGE" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="ThreadGroups" />
+      </map>
+    </option>
+  </component>
+  <component name="GradleLocalSettings">
+    <option name="externalProjectsViewState">
+      <projects_view />
+    </option>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/Client/src/java/networking/SudokuProtocol.java" />
+        <option value="$PROJECT_DIR$/Client/src/main/java/networking/SudokuProtocol.java" />
+        <option value="$PROJECT_DIR$/Client/src/main/java/networking/Square.java" />
+        <option value="$PROJECT_DIR$/Client/src/main/java/ui/SquareInterface.java" />
+        <option value="$PROJECT_DIR$/Server/src/main/java/networking/package-info.java" />
+        <option value="$PROJECT_DIR$/Server/src/main/java/networking/Square.java" />
+        <option value="$PROJECT_DIR$/Client/src/main/java/networking/Data.java" />
+        <option value="$PROJECT_DIR$/Server/src/main/java/networking/Data.java" />
+        <option value="$PROJECT_DIR$/Client/src/main/java/networking/SudokuClient.java" />
+        <option value="$PROJECT_DIR$/Server/src/main/java/generator/package-info.java" />
+        <option value="$PROJECT_DIR$/Server/src/main/java/networking/GameGroup.java" />
+        <option value="$PROJECT_DIR$/Client/META-INF/MANIFEST.MF" />
+        <option value="$PROJECT_DIR$/Client/src/main/java/ui/SudokuLoader.java" />
+        <option value="$PROJECT_DIR$/ClientSplash/src/main/java/logic/SudokuLoader.java" />
+        <option value="$PROJECT_DIR$/installers/EXE/buildinstall.cmd" />
+        <option value="$PROJECT_DIR$/Client/src/main/java/networking/Chat.java" />
+        <option value="$PROJECT_DIR$/Client/src/main/java/ui/Board.java" />
+        <option value="$PROJECT_DIR$/Server/src/main/java/generator/Grid.java" />
+        <option value="$PROJECT_DIR$/Server/src/main/java/generator/Solver.java" />
+        <option value="$PROJECT_DIR$/java/lang/annotations.xml" />
+        <option value="$PROJECT_DIR$/Server/src/main/java/ui/Answer.java" />
+        <option value="$PROJECT_DIR$/Server/src/main/java/ui/Square.java" />
+        <option value="$PROJECT_DIR$/Server/src/main/java/generator/Generator.java" />
+        <option value="$PROJECT_DIR$/Server/src/main/java/generator/Tester.java" />
+        <option value="$PROJECT_DIR$/Server/src/main/java/generator/SudokuGenerator.java" />
+        <option value="$PROJECT_DIR$/Client/src/main/java/logic/Controller.java" />
+        <option value="$PROJECT_DIR$/Server/src/main/java/generator/SudokuSolver.java" />
+        <option value="$PROJECT_DIR$/Server/src/main/java/networking/SudokuPacket.java" />
+        <option value="$PROJECT_DIR$/Client/src/main/java/networking/SudokuPacket.java" />
+        <option value="$PROJECT_DIR$/Server/src/main/java/networking/Game.java" />
+        <option value="$PROJECT_DIR$/Client/src/main/java/ui/Answer.java" />
+        <option value="$PROJECT_DIR$/Client/src/main/java/ui/Chat.java" />
+        <option value="$PROJECT_DIR$/Client/src/main/java/ui/Square.java" />
+        <option value="$PROJECT_DIR$/Client/src/main/java/ui/ButtonMenu.java" />
+        <option value="$PROJECT_DIR$/Client/src/main/java/ui/Chatter.java" />
+        <option value="$PROJECT_DIR$/installers/EXE/sudokualex.xml" />
+        <option value="$PROJECT_DIR$/installers/EXE/sudokualex.iss" />
+        <option value="$PROJECT_DIR$/Client/src/main/java/logic/SudokuLoader.java" />
+        <option value="$PROJECT_DIR$/Client/src/main/java/ui/InfoMenu.java" />
+        <option value="$PROJECT_DIR$/Client/src/main/java/ui/GameUI.java" />
+        <option value="$PROJECT_DIR$/Client/src/main/java/ui/Notes.java" />
+        <option value="$PROJECT_DIR$/Server/src/main/java/ui/Notes.java" />
+        <option value="$PROJECT_DIR$/Client/src/main/java/networking/SudokuSender.java" />
+        <option value="$PROJECT_DIR$/Server/src/main/java/networking/SudokuServerThread.java" />
+        <option value="$PROJECT_DIR$/.gitattributes" />
+        <option value="$PROJECT_DIR$/Client/src/main/java/networking/SudokuListener.java" />
+        <option value="$PROJECT_DIR$/Server/src/main/java/networking/SudokuServer.java" />
+        <option value="$PROJECT_DIR$/Server/src/main/java/generator/SudokuBoard.java" />
+        <option value="$PROJECT_DIR$/server/src/main/java/networking/SudokuServer.java" />
+        <option value="$PROJECT_DIR$/Client/src/main/java/logic/Sudoku.java" />
+        <option value="$PROJECT_DIR$/.gitignore" />
+      </list>
+    </option>
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-13" />
+    <option name="y" value="-13" />
+    <option name="width" value="3866" />
+    <option name="height" value="2106" />
+  </component>
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State>
+            <id />
+          </State>
+          <State>
+            <id>Spelling</id>
+          </State>
+        </expanded-state>
+        <selected-state>
+          <State>
+            <id>SpellCheckingInspection</id>
+          </State>
+        </selected-state>
+      </profile-state>
+    </entry>
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Sudoku" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Sudoku" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scratches" />
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="GoToFile.includeJavaFiles" value="false" />
+    <property name="OverrideImplement.combined" value="false" />
+    <property name="GoToClass.toSaveIncludeLibraries" value="false" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="recentsLimit" value="5" />
+    <property name="MemberChooser.sorted" value="false" />
+    <property name="MemberChooser.showClasses" value="true" />
+    <property name="GoToClass.includeLibraries" value="false" />
+    <property name="dynamic.classpath" value="false" />
+    <property name="MemberChooser.copyJavadoc" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="project.propDebugger" />
+    <property name="prop_add_unversioned_files" value="true" />
+    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="Groovy JUnit" />
+    <property name="full.screen.before.presentation.mode" value="false" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="main.java.server.ui" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="groovy.util.GroovyTestCase" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\alexh\Documents\IntelliJProjects\Sudoku\installers\EXE" />
+      <recent name="C:\Users\alexh\Documents\IntelliJProjects\Sudoku\installers" />
+      <recent name="C:\Users\alexh\Documents\IntelliJProjects\Sudoku" />
+      <recent name="C:\Users\alexh\Documents\IntelliJProjects\Sudoku\Client" />
+      <recent name="C:\Users\alexh\Documents\IntelliJProjects\Sudoku\Client\src\main\resources" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="main.java.logic" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="main.java.networking" />
+      <recent name="java.networking" />
+      <recent name="main.java.ui" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\alexh\Documents\IntelliJProjects\Sudoku\installers\EXE" />
+      <recent name="C:\Users\alexh\Documents\IntelliJProjects\Sudoku\installers\DMG" />
+      <recent name="C:\Users\alexh\Documents\IntelliJProjects\Sudoku" />
+      <recent name="C:\Users\alexh\Documents\IntelliJProjects\Sudoku\Server\src\main\java\ui" />
+      <recent name="C:\Users\alexh\Documents\IntelliJProjects\Sudoku\Client\src" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Application.Player">
+    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
+      <module name="" />
+      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m" />
+      <option name="PROGRAM_PARAMETERS" />
+      <predefined_log_file id="idea.log" enabled="true" />
+      <method />
+    </configuration>
+    <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android App">
+      <module name="" />
+      <option name="DEPLOY" value="true" />
+      <option name="ARTIFACT_NAME" value="" />
+      <option name="PM_INSTALL_OPTIONS" value="" />
+      <option name="ACTIVITY_EXTRA_FLAGS" value="" />
+      <option name="MODE" value="default_activity" />
+      <option name="TARGET_SELECTION_MODE" value="SHOW_DIALOG" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
+      <option name="FORCE_STOP_RUNNING_APP" value="true" />
+      <option name="DEBUGGER_TYPE" value="Java" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <Java />
+      <Profilers>
+        <option name="ENABLE_ADVANCED_PROFILING" value="true" />
+        <option name="GAPID_ENABLED" value="false" />
+        <option name="GAPID_DISABLE_PCS" value="false" />
+        <option name="SUPPORT_LIB_ENABLED" value="true" />
+        <option name="INSTRUMENTATION_ENABLED" value="true" />
+      </Profilers>
+      <option name="DEEP_LINK" value="" />
+      <option name="ACTIVITY_CLASS" value="" />
+      <method />
+    </configuration>
+    <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Tests">
+      <module name="" />
+      <option name="TESTING_TYPE" value="0" />
+      <option name="INSTRUMENTATION_RUNNER_CLASS" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="EXTRA_OPTIONS" value="" />
+      <option name="TARGET_SELECTION_MODE" value="SHOW_DIALOG" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
+      <option name="FORCE_STOP_RUNNING_APP" value="true" />
+      <option name="DEBUGGER_TYPE" value="Java" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <Java />
+      <Profilers>
+        <option name="ENABLE_ADVANCED_PROFILING" value="true" />
+        <option name="GAPID_ENABLED" value="false" />
+        <option name="GAPID_DISABLE_PCS" value="false" />
+        <option name="SUPPORT_LIB_ENABLED" value="true" />
+        <option name="INSTRUMENTATION_ENABLED" value="true" />
+      </Profilers>
+      <method />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="GradleRunConfiguration" factoryName="Gradle">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list />
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <method />
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="true" type="JarApplication" factoryName="JAR Application">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="Java Scratch" factoryName="Java Scratch">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="SCRATCH_FILE_ID" value="0" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType" factoryName="Kotlin">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="Sudoku" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType" factoryName="Kotlin script">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="filePath" />
+      <option name="vmParameters" />
+      <option name="alternativeJrePath" />
+      <option name="programParameters" />
+      <option name="passParentEnvs" value="true" />
+      <option name="workingDirectory" />
+      <option name="isAlternativeJrePathEnabled" value="false" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="Remote" factoryName="Remote">
+      <option name="USE_SOCKET_TRANSPORT" value="true" />
+      <option name="SERVER_MODE" value="false" />
+      <option name="SHMEM_ADDRESS" value="javadebug" />
+      <option name="HOST" value="localhost" />
+      <option name="PORT" value="5005" />
+      <method />
+    </configuration>
+    <configuration default="true" type="TestNG" factoryName="TestNG">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="ANNOTATION_TYPE" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
+      <envs />
+      <properties />
+      <listeners />
+      <method />
+    </configuration>
+    <configuration default="false" name="Player" type="Application" factoryName="Application">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" value="main.java.logic.Sudoku" />
+      <option name="VM_PARAMETERS" value="" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$/Client" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="Client" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="Server" type="Application" factoryName="Application">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" value="main.java.networking.SudokuServer" />
+      <option name="VM_PARAMETERS" value="" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$/Server" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="Server" />
+      <envs />
+      <method />
+    </configuration>
+    <list size="2">
+      <item index="0" class="java.lang.String" itemvalue="Application.Player" />
+      <item index="1" class="java.lang.String" itemvalue="Application.Server" />
+    </list>
+    <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
+      <Host>localhost</Host>
+      <Port>5050</Port>
+    </configuration>
+  </component>
+  <component name="SbtLocalSettings">
+    <option name="externalProjectsViewState">
+      <projects_view />
+    </option>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="" />
+      <created>1359379246138</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1359379246138</updated>
+      <workItem from="1359379250712" duration="1302000" />
+    </task>
+    <task id="LOCAL-00044" summary="Change entry Screen; Add Splash Screen">
+      <created>1483327467172</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1483327467172</updated>
+    </task>
+    <task id="LOCAL-00045" summary="Change the board to allow for background changing; Change the loading screen.">
+      <created>1483331609500</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1483331609500</updated>
+    </task>
+    <task id="LOCAL-00046" summary="Add Selection Screen image.">
+      <created>1483331749469</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1483331749469</updated>
+    </task>
+    <task id="LOCAL-00047" summary="Add most recent JARS.">
+      <created>1483332176794</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1483332176794</updated>
+    </task>
+    <task id="LOCAL-00048" summary="Fix bug where clicking square did not do anything.">
+      <created>1483332871470</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1483332871470</updated>
+    </task>
+    <task id="LOCAL-00049" summary="Update JARS.">
+      <created>1483332905917</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1483332905917</updated>
+    </task>
+    <task id="LOCAL-00050" summary="Add logic for disabling unneeded numbers.">
+      <created>1483337131412</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1483337131413</updated>
+    </task>
+    <task id="LOCAL-00051" summary="Add installer files.">
+      <created>1483377358694</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1483377358695</updated>
+    </task>
+    <task id="LOCAL-00052" summary="Fix board layout; Fix Chat logic; Add enter to chat.">
+      <created>1483391000463</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1483391000463</updated>
+    </task>
+    <task id="LOCAL-00053" summary="Refactor code; Fix board and outlining; Fix Chats.">
+      <created>1483394542382</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1483394542382</updated>
+    </task>
+    <task id="LOCAL-00054" summary="Refactor Chats.">
+      <created>1483407698241</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1483407698241</updated>
+    </task>
+    <task id="LOCAL-00055" summary="Move Chat to ui package.">
+      <created>1483408055702</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1483408055703</updated>
+    </task>
+    <task id="LOCAL-00056" summary="Add DMG.">
+      <created>1483414827577</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1483414827577</updated>
+    </task>
+    <task id="LOCAL-00057" summary="Fix square width problem; Fix coloration and spacing of front screen">
+      <created>1483540715949</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1483540715949</updated>
+    </task>
+    <task id="LOCAL-00058" summary="Make loading screen transparent.">
+      <created>1483547724624</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1483547724625</updated>
+    </task>
+    <task id="LOCAL-00059" summary="Add CSS file.">
+      <created>1483547861395</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1483547861395</updated>
+    </task>
+    <task id="LOCAL-00060" summary="Fix bug where numbers would not disable if not possible.">
+      <created>1483548568916</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1483548568916</updated>
+    </task>
+    <task id="LOCAL-00061" summary="Change EXE to most current version.">
+      <created>1483549036614</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1483549036614</updated>
+    </task>
+    <task id="LOCAL-00062" summary="Add Animation to winning.">
+      <created>1483561629867</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1483561629868</updated>
+    </task>
+    <task id="LOCAL-00063" summary="Made splash screen wait for history finish.">
+      <created>1483563294971</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1483563294971</updated>
+    </task>
+    <task id="LOCAL-00064" summary="Made splash screen wait for history finish.">
+      <created>1483566475877</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1483566475877</updated>
+    </task>
+    <task id="LOCAL-00065" summary="Make the scrollbar scroll to the bottom.">
+      <created>1483711060280</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1483711060280</updated>
+    </task>
+    <task id="LOCAL-00066" summary="Add null pointer checking (Fix removal of players); Make thread name more unique.">
+      <created>1483712061621</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1483712061621</updated>
+    </task>
+    <task id="LOCAL-00067" summary="Work on the Game Class.">
+      <created>1483712634728</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1483712634728</updated>
+    </task>
+    <task id="LOCAL-00068" summary="Remove spaces option; Add server-option to upload puzzle.">
+      <created>1483740274274</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1483740274274</updated>
+    </task>
+    <task id="LOCAL-00069" summary="Add ability for packet to specify new game - or existing game; Add ServerThread ability to give back games.">
+      <created>1483744241459</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1483744241459</updated>
+    </task>
+    <task id="LOCAL-00070" summary="Add resolution-aware UI.">
+      <created>1483747112862</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1483747112862</updated>
+    </task>
+    <task id="LOCAL-00071" summary="Add smart removal of notes.">
+      <created>1483765079199</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1483765079199</updated>
+    </task>
+    <task id="LOCAL-00072" summary="Redo javadocs; Add specifications for Game Class.">
+      <created>1483800750871</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1483800750881</updated>
+    </task>
+    <task id="LOCAL-00073" summary="Remove SOP; remove Hello World; redo javadocs.">
+      <created>1483813120994</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1483813120995</updated>
+    </task>
+    <task id="LOCAL-00074" summary="Fix screen resolution problem; redo javadocs.">
+      <created>1483830053334</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1483830053335</updated>
+    </task>
+    <task id="LOCAL-00075" summary="Fix logic with send button.">
+      <created>1483830570133</created>
+      <option name="number" value="00075" />
+      <option name="presentableId" value="LOCAL-00075" />
+      <option name="project" value="LOCAL" />
+      <updated>1483830570133</updated>
+    </task>
+    <task id="LOCAL-00076" summary="Update EXE.">
+      <created>1483836042327</created>
+      <option name="number" value="00076" />
+      <option name="presentableId" value="LOCAL-00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1483836042327</updated>
+    </task>
+    <task id="LOCAL-00077" summary="Update EXE.">
+      <created>1483979868588</created>
+      <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1483979868588</updated>
+    </task>
+    <task id="LOCAL-00078" summary="Expand imports; Fix uimenu not disabling; Fix stroke not staying thick.">
+      <created>1484249794269</created>
+      <option name="number" value="00078" />
+      <option name="presentableId" value="LOCAL-00078" />
+      <option name="project" value="LOCAL" />
+      <updated>1484249794270</updated>
+    </task>
+    <task id="LOCAL-00079" summary="Add EXE">
+      <created>1484249995343</created>
+      <option name="number" value="00079" />
+      <option name="presentableId" value="LOCAL-00079" />
+      <option name="project" value="LOCAL" />
+      <updated>1484249995343</updated>
+    </task>
+    <task id="LOCAL-00080" summary="Include javadocs; add language specification.">
+      <created>1484250421189</created>
+      <option name="number" value="00080" />
+      <option name="presentableId" value="LOCAL-00080" />
+      <option name="project" value="LOCAL" />
+      <updated>1484250421189</updated>
+    </task>
+    <task id="LOCAL-00081" summary="Allow user to use numeric keys to activate number.">
+      <created>1485047736437</created>
+      <option name="number" value="00081" />
+      <option name="presentableId" value="LOCAL-00081" />
+      <option name="project" value="LOCAL" />
+      <updated>1485047736438</updated>
+    </task>
+    <task id="LOCAL-00082" summary="Fix Listener to fill text instead of outline.">
+      <created>1485047949384</created>
+      <option name="number" value="00082" />
+      <option name="presentableId" value="LOCAL-00082" />
+      <option name="project" value="LOCAL" />
+      <updated>1485047949385</updated>
+    </task>
+    <task id="LOCAL-00083" summary="Remove printStackTrace() from integer parsing.">
+      <created>1485048312921</created>
+      <option name="number" value="00083" />
+      <option name="presentableId" value="LOCAL-00083" />
+      <option name="project" value="LOCAL" />
+      <updated>1485048312921</updated>
+    </task>
+    <task id="LOCAL-00084" summary="Add TODO for resizing">
+      <created>1485108680537</created>
+      <option name="number" value="00084" />
+      <option name="presentableId" value="LOCAL-00084" />
+      <option name="project" value="LOCAL" />
+      <updated>1485108680537</updated>
+    </task>
+    <task id="LOCAL-00085" summary="Add ability to specify port for server">
+      <created>1485110190606</created>
+      <option name="number" value="00085" />
+      <option name="presentableId" value="LOCAL-00085" />
+      <option name="project" value="LOCAL" />
+      <updated>1485110190606</updated>
+    </task>
+    <task id="LOCAL-00086" summary="Add port reporting to server.">
+      <created>1485122355812</created>
+      <option name="number" value="00086" />
+      <option name="presentableId" value="LOCAL-00086" />
+      <option name="project" value="LOCAL" />
+      <updated>1485122355812</updated>
+    </task>
+    <task id="LOCAL-00087" summary="Randomize board generation">
+      <created>1485123941712</created>
+      <option name="number" value="00087" />
+      <option name="presentableId" value="LOCAL-00087" />
+      <option name="project" value="LOCAL" />
+      <updated>1485123941712</updated>
+    </task>
+    <task id="LOCAL-00088" summary="Fix random board bug.">
+      <created>1485124028163</created>
+      <option name="number" value="00088" />
+      <option name="presentableId" value="LOCAL-00088" />
+      <option name="project" value="LOCAL" />
+      <updated>1485124028163</updated>
+    </task>
+    <task id="LOCAL-00089" summary="Add TODOS">
+      <created>1485124282362</created>
+      <option name="number" value="00089" />
+      <option name="presentableId" value="LOCAL-00089" />
+      <option name="project" value="LOCAL" />
+      <updated>1485124282362</updated>
+    </task>
+    <task id="LOCAL-00090" summary="Update EXE">
+      <created>1485124408952</created>
+      <option name="number" value="00090" />
+      <option name="presentableId" value="LOCAL-00090" />
+      <option name="project" value="LOCAL" />
+      <updated>1485124408952</updated>
+    </task>
+    <task id="LOCAL-00091" summary="Update Project Structure">
+      <created>1498405907197</created>
+      <option name="number" value="00091" />
+      <option name="presentableId" value="LOCAL-00091" />
+      <option name="project" value="LOCAL" />
+      <updated>1498405907207</updated>
+    </task>
+    <task id="LOCAL-00092" summary="Update EXE installer script and create new EXE installer">
+      <created>1498412436441</created>
+      <option name="number" value="00092" />
+      <option name="presentableId" value="LOCAL-00092" />
+      <option name="project" value="LOCAL" />
+      <updated>1498412436442</updated>
+    </task>
+    <option name="localTasksCounter" value="93" />
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="1302000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-13" y="-13" width="3866" height="2106" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3292876" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3298153" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27915567" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32978207" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3298153" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1515625" sideWeight="0.6703755" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.40316623" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection Results" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3298153" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32664907" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32994792" sideWeight="0.5" order="11" side_tool="true" content_ui="tabs" />
+      <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Problems" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3292876" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+    <MESSAGE value="Work on the Game Class." />
+    <MESSAGE value="Remove spaces option; Add server-option to upload puzzle." />
+    <MESSAGE value="Add ability for packet to specify new game - or existing game; Add ServerThread ability to give back games." />
+    <MESSAGE value="Add resolution-aware UI." />
+    <MESSAGE value="Add smart removal of notes." />
+    <MESSAGE value="Redo javadocs; Add specifications for Game Class." />
+    <MESSAGE value="Remove SOP; remove Hello World; redo javadocs." />
+    <MESSAGE value="Fix screen resolution problem; redo javadocs." />
+    <MESSAGE value="Fix logic with send button." />
+    <MESSAGE value="Update EXE." />
+    <MESSAGE value="Expand imports; Fix uimenu not disabling; Fix stroke not staying thick." />
+    <MESSAGE value="Add EXE" />
+    <MESSAGE value="Include javadocs; add language specification." />
+    <MESSAGE value="Allow user to use numeric keys to activate number." />
+    <MESSAGE value="Fix Listener to fill text instead of outline." />
+    <MESSAGE value="Remove printStackTrace() from integer parsing." />
+    <MESSAGE value="Add TODO for resizing" />
+    <MESSAGE value="Add ability to specify port for server" />
+    <MESSAGE value="Add port reporting to server." />
+    <MESSAGE value="Randomize board generation" />
+    <MESSAGE value="Fix random board bug." />
+    <MESSAGE value="Add TODOS" />
+    <MESSAGE value="Update EXE" />
+    <MESSAGE value="Update Project Structure" />
+    <MESSAGE value="Update EXE installer script and create new EXE installer" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update EXE installer script and create new EXE installer" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints-dialog>
+        <breakpoints-dialog />
+      </breakpoints-dialog>
+      <option name="time" value="181" />
+    </breakpoint-manager>
+    <watches-manager />
+  </component>
+  <component name="antWorkspaceConfiguration">
+    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
+    <option name="FILTER_TARGETS" value="false" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_112/javafx-src.zip!/com/sun/javafx/event/BasicEventDispatcher.java" />
+    <entry file="file://$PROJECT_DIR$/Server/src/main/java/generator/Grid.java" />
+    <entry file="file://$PROJECT_DIR$/javadocs/overview-frame.html" />
+    <entry file="file://$PROJECT_DIR$/Client/resources/Loader.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="44" lean-forward="true" selection-start-line="0" selection-start-column="44" selection-end-line="0" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Client/resources/icon.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Client/resources/SudokuInfoScreen.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3049">
+          <caret line="692" column="26" lean-forward="false" selection-start-line="692" selection-start-column="26" selection-end-line="692" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/main/java/ui/Square.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1607">
+          <caret line="128" column="0" lean-forward="true" selection-start-line="128" selection-start-column="0" selection-end-line="128" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Server/src/main/java/generator/Tester.java" />
+    <entry file="file://$PROJECT_DIR$/Server/src/main/java/generator/SudokuGenerator.java" />
+    <entry file="file://$PROJECT_DIR$/Server/src/main/java/generator/Solver.java" />
+    <entry file="file://$PROJECT_DIR$/server/src/main/java/networking/package-info.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/main/java/networking/SudokuPacket.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="772">
+          <caret line="156" column="54" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="471" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/installers/EXE/buildinstall.cmd">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="363">
+          <caret line="11" column="4" lean-forward="true" selection-start-line="11" selection-start-column="4" selection-end-line="11" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/installers/EXE/sudokualex.iss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="726">
+          <caret line="22" column="27" lean-forward="false" selection-start-line="22" selection-start-column="27" selection-end-line="22" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/installers/EXE/sudokualex.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="495">
+          <caret line="15" column="24" lean-forward="false" selection-start-line="15" selection-start-column="8" selection-end-line="15" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/javadocs/index.html" />
+    <entry file="file://$PROJECT_DIR$/Client/src/main/java/logic/Controller.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="660">
+          <caret line="21" column="32" lean-forward="true" selection-start-line="21" selection-start-column="32" selection-end-line="21" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Client/src/main/java/ui/Board.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-462">
+          <caret line="41" column="20" lean-forward="true" selection-start-line="41" selection-start-column="20" selection-end-line="41" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Client/src/main/java/ui/Square.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1089">
+          <caret line="36" column="5" lean-forward="true" selection-start-line="35" selection-start-column="58" selection-end-line="36" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Client/src/main/java/logic/SudokuLoader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1277">
+          <caret line="53" column="35" lean-forward="true" selection-start-line="53" selection-start-column="35" selection-end-line="53" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Client/src/main/java/ui/Answer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="594">
+          <caret line="21" column="88" lean-forward="false" selection-start-line="21" selection-start-column="88" selection-end-line="21" selection-end-column="88" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Client/src/main/java/ui/InfoMenu.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1508">
+          <caret line="82" column="9" lean-forward="false" selection-start-line="82" selection-start-column="9" selection-end-line="82" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Client/src/main/java/ui/Chat.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1224">
+          <caret line="53" column="61" lean-forward="true" selection-start-line="53" selection-start-column="61" selection-end-line="53" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Client/src/main/java/ui/Chatter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="528">
+          <caret line="20" column="49" lean-forward="false" selection-start-line="20" selection-start-column="49" selection-end-line="20" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/main/java/ui/Answer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="297">
+          <caret line="11" column="13" lean-forward="false" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Client/src/main/java/ui/Notes.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2475">
+          <caret line="83" column="7" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="129" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/main/java/ui/Notes.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3894">
+          <caret line="128" column="1" lean-forward="false" selection-start-line="128" selection-start-column="1" selection-end-line="128" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/main/java/networking/SudokuServerThread.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2013">
+          <caret line="71" column="46" lean-forward="false" selection-start-line="71" selection-start-column="46" selection-end-line="71" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Client/src/main/java/networking/SudokuSender.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2211">
+          <caret line="74" column="32" lean-forward="false" selection-start-line="74" selection-start-column="32" selection-end-line="74" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitattributes">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="627">
+          <caret line="19" column="33" lean-forward="false" selection-start-line="19" selection-start-column="33" selection-end-line="19" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_112/javafx-src.zip!/javafx/stage/Screen.java" />
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_112/javafx-src.zip!/javafx/scene/Node.java" />
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_112/javafx-src.zip!/javafx/scene/paint/Color.java" />
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_112/javafx-src.zip!/javafx/scene/shape/Shape.java" />
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_112/src.zip!/java/lang/ThreadLocal.java" />
+    <entry file="file://$PROJECT_DIR$/java/beans/annotations.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="4" column="7" lean-forward="true" selection-start-line="4" selection-start-column="7" selection-end-line="4" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/java/lang/annotations.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="33">
+          <caret line="1" column="7" lean-forward="true" selection-start-line="1" selection-start-column="7" selection-end-line="1" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_112/jre/lib/resources.jar!/java/lang/uniName.dat" />
+    <entry file="file://$PROJECT_DIR$/Client/src/main/java/ui/ButtonMenu.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1739">
+          <caret line="149" column="22" lean-forward="false" selection-start-line="149" selection-start-column="22" selection-end-line="149" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/main/java/networking/Game.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2178">
+          <caret line="108" column="41" lean-forward="false" selection-start-line="108" selection-start-column="41" selection-end-line="108" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/main/java/networking/SudokuServer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="858">
+          <caret line="60" column="28" lean-forward="false" selection-start-line="60" selection-start-column="28" selection-end-line="60" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Client/src/main/java/logic/Sudoku.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1610">
+          <caret line="186" column="53" lean-forward="true" selection-start-line="186" selection-start-column="53" selection-end-line="186" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Client/src/main/java/ui/GameUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="36" column="12" lean-forward="false" selection-start-line="36" selection-start-column="12" selection-end-line="36" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Sudoku.iml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Client/src/main/java/networking/SudokuPacket.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="660">
+          <caret line="426" column="9" lean-forward="true" selection-start-line="426" selection-start-column="9" selection-end-line="426" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/main/java/generator/SudokuBoard.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="113" column="0" lean-forward="false" selection-start-line="113" selection-start-column="0" selection-end-line="113" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Client/src/main/java/networking/SudokuListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="78" column="32" lean-forward="true" selection-start-line="78" selection-start-column="32" selection-end-line="78" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/main/java/generator/SudokuSolver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="363">
+          <caret line="14" column="7" lean-forward="false" selection-start-line="14" selection-start-column="7" selection-end-line="14" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <last-edited>SudokuPlayer</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+                <option value="0.5" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>No facets are configured</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>Client</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+                <option value="0.6" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>1.7</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>
