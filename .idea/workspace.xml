@@ -8,7 +8,7 @@
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server/src/main/java/networking/SudokuServerThread.java" afterPath="$PROJECT_DIR$/Server/src/main/java/networking/SudokuServerThread.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Client/src/main/java/ui/Chat.java" afterPath="$PROJECT_DIR$/Client/src/main/java/ui/Chat.java" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -83,12 +83,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Chat.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Chat.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Client/src/main/java/ui/Chat.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="66">
-              <caret line="8" column="27" lean-forward="true" selection-start-line="8" selection-start-column="27" selection-end-line="8" selection-end-column="27" />
-              <folding />
+            <state relative-caret-position="784">
+              <caret line="86" column="43" lean-forward="false" selection-start-line="86" selection-start-column="43" selection-end-line="86" selection-end-column="43" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -96,8 +98,8 @@
       <file leaf-file-name="GameUI.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Client/src/main/java/ui/GameUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="264">
-              <caret line="36" column="12" lean-forward="false" selection-start-line="36" selection-start-column="12" selection-end-line="36" selection-end-column="12" />
+            <state relative-caret-position="528">
+              <caret line="74" column="18" lean-forward="false" selection-start-line="74" selection-start-column="8" selection-end-line="74" selection-end-column="18" />
               <folding />
             </state>
           </provider>
@@ -113,7 +115,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SudokuServerThread.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="SudokuServerThread.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/server/src/main/java/networking/SudokuServerThread.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="33">
@@ -275,9 +277,9 @@
         <option value="$PROJECT_DIR$/Server/src/main/java/generator/SudokuBoard.java" />
         <option value="$PROJECT_DIR$/server/src/main/java/networking/SudokuServer.java" />
         <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/Client/src/main/java/ui/Chat.java" />
         <option value="$PROJECT_DIR$/Client/src/main/java/logic/Sudoku.java" />
         <option value="$PROJECT_DIR$/server/src/main/java/networking/SudokuServerThread.java" />
+        <option value="$PROJECT_DIR$/Client/src/main/java/ui/Chat.java" />
       </list>
     </option>
   </component>
@@ -907,13 +909,6 @@
       <updated>1359379246138</updated>
       <workItem from="1359379250712" duration="1302000" />
     </task>
-    <task id="LOCAL-00045" summary="Change the board to allow for background changing; Change the loading screen.">
-      <created>1483331609500</created>
-      <option name="number" value="00045" />
-      <option name="presentableId" value="LOCAL-00045" />
-      <option name="project" value="LOCAL" />
-      <updated>1483331609500</updated>
-    </task>
     <task id="LOCAL-00046" summary="Add Selection Screen image.">
       <created>1483331749469</created>
       <option name="number" value="00046" />
@@ -1250,7 +1245,14 @@
       <option name="project" value="LOCAL" />
       <updated>1499469556500</updated>
     </task>
-    <option name="localTasksCounter" value="94" />
+    <task id="LOCAL-00094" summary="Bring current">
+      <created>1499469588400</created>
+      <option name="number" value="00094" />
+      <option name="presentableId" value="LOCAL-00094" />
+      <option name="project" value="LOCAL" />
+      <updated>1499469588400</updated>
+    </task>
+    <option name="localTasksCounter" value="95" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -1312,7 +1314,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="Remove spaces option; Add server-option to upload puzzle." />
     <MESSAGE value="Add ability for packet to specify new game - or existing game; Add ServerThread ability to give back games." />
     <MESSAGE value="Add resolution-aware UI." />
     <MESSAGE value="Add smart removal of notes." />
@@ -1337,18 +1338,11 @@
     <MESSAGE value="Update Project Structure" />
     <MESSAGE value="Update EXE installer script and create new EXE installer" />
     <MESSAGE value="Fix &quot;Can't change bad numbers&quot; problem" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix &quot;Can't change bad numbers&quot; problem" />
+    <MESSAGE value="Bring current" />
+    <option name="LAST_COMMIT_MESSAGE" value="Bring current" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Client/src/main/java/ui/Chat.java</url>
-          <line>55</line>
-          <properties />
-          <option name="timeStamp" value="203" />
-        </line-breakpoint>
-      </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
@@ -1569,29 +1563,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Client/src/main/java/networking/SudokuSender.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="513">
-          <caret line="35" column="33" lean-forward="true" selection-start-line="35" selection-start-column="33" selection-end-line="35" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Client/src/main/java/networking/SudokuPacket.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="660">
           <caret line="170" column="0" lean-forward="false" selection-start-line="170" selection-start-column="0" selection-end-line="170" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Client/src/main/java/logic/Controller.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="363">
-          <caret line="45" column="0" lean-forward="false" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
-          <folding>
-            <element signature="e#1533#1534#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1619,26 +1595,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Client/src/main/java/ui/GameUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="36" column="12" lean-forward="false" selection-start-line="36" selection-start-column="12" selection-end-line="36" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Client/src/main/java/networking/SudokuListener.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="282">
           <caret line="96" column="51" lean-forward="false" selection-start-line="96" selection-start-column="51" selection-end-line="96" selection-end-column="51" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Client/src/main/java/ui/Chat.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="66">
-          <caret line="8" column="27" lean-forward="true" selection-start-line="8" selection-start-column="27" selection-end-line="8" selection-end-column="27" />
           <folding />
         </state>
       </provider>
@@ -1656,6 +1616,42 @@
         <state relative-caret-position="33">
           <caret line="71" column="46" lean-forward="false" selection-start-line="71" selection-start-column="46" selection-end-line="71" selection-end-column="46" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Client/src/main/java/networking/SudokuSender.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="513">
+          <caret line="35" column="33" lean-forward="true" selection-start-line="35" selection-start-column="33" selection-end-line="35" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Client/src/main/java/logic/Controller.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="363">
+          <caret line="45" column="0" lean-forward="false" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
+          <folding>
+            <element signature="e#1533#1534#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Client/src/main/java/ui/GameUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="528">
+          <caret line="74" column="18" lean-forward="false" selection-start-line="74" selection-start-column="8" selection-end-line="74" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Client/src/main/java/ui/Chat.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="784">
+          <caret line="86" column="43" lean-forward="false" selection-start-line="86" selection-start-column="43" selection-end-line="86" selection-end-column="43" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

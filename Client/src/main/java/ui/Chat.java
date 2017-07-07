@@ -9,6 +9,8 @@ import javafx.scene.text.TextAlignment;
 import javafx.stage.Screen;
 import main.java.logic.Controller;
 
+import java.awt.*;
+
 public class Chat extends GridPane {
     public static final int SPACING = 20;
     private final Controller control;
@@ -82,6 +84,7 @@ public class Chat extends GridPane {
         spacer.setFont(new Font(screenHeight / 65));
         spacer.setTextAlignment(TextAlignment.LEFT);
         thisPlayer.getChildren().add(spacer);
+        Toolkit.getDefaultToolkit().beep();
     }
 
     /**
