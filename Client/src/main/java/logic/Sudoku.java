@@ -334,6 +334,7 @@ public class Sudoku extends Application{
         for (int i = 0; i < 9; i++) {
             final int num = i;
             menu.getNumber(i).setOnAction((ActionEvent e) -> {
+                ui.getBoard().getSquare(control.getLastClicked().getRow(), control.getLastClicked().getCol()).clear();
                 ui.getBoard().getSquare(control.getLastClicked().getRow(), control.getLastClicked().getCol()).getAnswer().setValue(num + 1);
                 SudokuSender sender = new SudokuSender(control, control.getLastClicked());
                 Thread tClient = new Thread(sender);
