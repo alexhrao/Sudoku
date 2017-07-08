@@ -1,6 +1,5 @@
 package main.java.ui;
 
-import javafx.application.Platform;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.*;
@@ -8,10 +7,8 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Screen;
 import main.java.logic.Controller;
-import main.java.logic.SudokuLoader;
 import main.java.networking.SudokuSender;
 
-import java.awt.*;
 
 /**
  * GameUI is a BorderPane that handles all the UI elements. It also has a few convenience methods. The controller is
