@@ -85,6 +85,7 @@ public class GameUI extends BorderPane {
         chatScroll.setMinWidth(screenHeight / 7.2);
 
         StackPane chatPane = new StackPane(overlay, chatScroll);
+        chatPane.setMaxHeight(screenHeight / 1.3594);
         this.setTop(info);
         this.setCenter(center);
         this.setLeft(menu);
