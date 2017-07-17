@@ -8,17 +8,57 @@
     <title>Sudoku Online</title>
     <link rel="shortcut icon" type="application/ico" href="resources/images/branding/favicon.ico" />
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.4/summernote.css" />
     <link rel="stylesheet" type="text/css" href="resources/css/header.css" />
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.4/summernote.js"></script>
+    <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script type="text/javascript" src='https://www.google.com/recaptcha/api.js'></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery.typeit/4.4.0/typeit.min.js"></script>
     <script type="text/javascript" src="resources/scripts/onReady.js"></script>
 </head>
 
 <body>
+    <nav class="navbar navbar-fixed-top">
+        <div class="container-fluid navbar-inverse">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#menuBar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                <a id="logo" href="https://alexhrao.github.io" class="navbar-left">
+                    &nbsp;
+                    <img id="logoImage" class="img-circle" src="resources/images/branding/logo.png" height="50px"/>
+                    <div id="logoName" class="navbar-brand">
+                        Alexander Rao
+                    </div>
+                </a>
+            </div>
+            <div id="menuBar" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav visible-xs">
+                    <li><a href="https://alexhrao.github.io/Sudoku/">Sudoku Online</a></li>
+                    <li><a href="https://alexhrao.github.io/MealPlanner/">Meal Planner</a></li>
+                    <li><a href="https://alexhrao.github.io/SoluCheck/">SoluCheck</a></li>
+                    <li><a href="https://alexhrao.github.io/Chess/">Chess</a></li>
+                    <li><a href="https://alexhrao.github.io/VariableLoader/">Variable Loader</a></li>
+                </ul>
+                <ul class="nav navbar-nav hidden-xs">
+                    <li><a href="https://alexhrao.github.io/Sudoku/">Sudoku Online</a></li>
+                    <li><a href="https://alexhrao.github.io/MealPlanner/">Meal Planner</a></li>
+                    <li><a href="https://alexhrao.github.io/SoluCheck/">SoluCheck</a></li>
+                    <li><a href="https://alexhrao.github.io/Chess/">Chess</a></li>
+                    <li><a href="https://alexhrao.github.io/VariableLoader/">Variable Loader</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
     <div id="projects" class="container-fluid">
         <div class="row projects content">
             <div class="col-sm-12">
-                <!-- Project Information -->
                 <div class="tab-content">
                     <div id="sudokuOnline" class="tab-pane fade in active">
                         <div class="text-center">
