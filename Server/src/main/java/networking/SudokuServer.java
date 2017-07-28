@@ -24,6 +24,7 @@ public class SudokuServer implements Runnable {
     private final ArrayList<SudokuPacket> packets = new ArrayList<>();
     private volatile int[][] board;
     private volatile int[][] soln;
+    private volatile int spaces = 30;
     private static final int PORT = 60000;
 
     /**
@@ -168,6 +169,14 @@ public class SudokuServer implements Runnable {
         this.board = board;
         this.soln = soln;
         this.firstPlayer = false;
+    }
+
+    public synchronized int getSpaces() {
+        return this.spaces;
+    }
+
+    public synchronized void setSpaces(int spaces) {
+        this.spaces = spaces;
     }
 
     /**

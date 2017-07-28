@@ -73,6 +73,7 @@ public class SudokuListener extends Thread implements Runnable {
                         for (int row = 0; row < 9; row++) {
                             for (int col = 0; col < 9; col++) {
                                 ui.getBoard().getSquare(row, col).clear();
+                                ui.getBoard().getSquare(row, col).getAnswer().setFill(Color.BLACK);
                                 ui.getBoard().getSquare(row, col).getAnswer().setValue(board[row][col]);
                                 if (board[row][col] != 0) {
                                     ui.getBoard().getSquare(row, col).getAnswer().setVisible(true);

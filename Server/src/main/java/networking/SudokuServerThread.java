@@ -100,12 +100,14 @@ class SudokuServerThread extends Thread {
                             try {
                                 SudokuSolver solver = new SudokuSolver(instruct.getInput());
                                 server.setBoards(solver.getBoard(), solver.getSoln());
+                                server.setSpaces(instruct.getSpaces());
                             } catch (IllegalArgumentException e) {
                                 SudokuBoard generator = new SudokuBoard(instruct.getSpaces());
                                 server.setBoards(generator.getBoard(), generator.getSoln());
+                                server.setSpaces(instruct.getSpaces());
                             }
                         } else {
-                            SudokuBoard generator = new SudokuBoard(instruct.getSpaces());
+                            SudokuBoard generator = new SudokuBoard(server.getSpaces());
                             server.setBoards(generator.getBoard(), generator.getSoln());
                         }
                     }
@@ -156,10 +158,15 @@ class SudokuServerThread extends Thread {
                     }
                 } else {
                     out.writeObject("");
-                    server.addPacket(instruct);
                     if (instruct.isRemove()) {
                         this.id = instruct.getId();
+                        server.addPacket(instruct);
                         throw new SocketException("" + instruct.getId());
+                    } else if (instruct.isNew()) {
+                        SudokuBoard generator = new SudokuBoard(instruct.getSpaces());
+                        server.setBoards(generator.getBoard(), generator.getSoln());
+                        instruct = new SudokuPacket(server.getBoard(), server.getSoln());
+                        server.addPacket(instruct);
                     }
                     for (SudokuServerThread thread : server.getThreads()) {
                         if (thread != null && thread.isAlive()) {

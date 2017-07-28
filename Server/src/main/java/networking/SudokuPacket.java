@@ -31,6 +31,7 @@ public class SudokuPacket implements Serializable {
     private String[] games;
     private String game;
     private boolean isGame = false;
+    private boolean isNew = false;
 
     /**
      * This constructor makes a packet for a new player.
@@ -46,6 +47,11 @@ public class SudokuPacket implements Serializable {
         this.color[3] = color.getOpacity();
         this.isPlayer = true;
         this.data = null;
+    }
+
+    public SudokuPacket(boolean isNew) {
+        this.isNew = true;
+        this.spaces = 30;
     }
 
     public SudokuPacket(String gameName, String name, Color color) {
@@ -386,6 +392,10 @@ public class SudokuPacket implements Serializable {
      */
     public String getGame() {
         return this.game;
+    }
+
+    public boolean isNew() {
+        return this.isNew;
     }
 
     /**

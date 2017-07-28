@@ -19,6 +19,7 @@ public class SudokuSender implements Runnable {
     private boolean isMessage = false;
     private boolean isRemove = false;
     private boolean isGame = false;
+    private boolean isNew = false;
     private Color messageColor;
     private final Controller control;
 
@@ -64,6 +65,11 @@ public class SudokuSender implements Runnable {
         this.isGame = true;
     }
 
+    public SudokuSender(Controller control, String isNew) {
+        this.control = control;
+        this.isNew = true;
+    }
+
     /**
      * This method creates the packet, then sends it off to the server for distribution.
      */
@@ -79,6 +85,8 @@ public class SudokuSender implements Runnable {
                 packet = new SudokuPacket(this.message, this.messageColor, control.getId(), true);
             } else if (isRemove) {
                 packet = new SudokuPacket(control.getId());
+            } else if (isNew) {
+                packet = new SudokuPacket(true);
             } else {
                 packet = new SudokuPacket(this.squares);
             }

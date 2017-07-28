@@ -305,15 +305,9 @@ public class Sudoku extends Application{
             SudokuSender sender = new SudokuSender(control, control.getLastClicked());
             (new Thread(sender)).start();
         });
-        menu.getPause().setOnAction((ActionEvent e) -> {
-            if (control.isPlay()) {
-                menu.getPause().setText("Pause");
-                ui.getInfo().setPause(false);
-            } else {
-                menu.getPause().setText("Play");
-                ui.getInfo().setPause(true);
-            }
-            control.setPlay(!control.isPlay());
+        menu.getNewGame().setOnAction((ActionEvent e) -> {
+            SudokuSender sender = new SudokuSender(control, "isNew");
+            (new Thread(sender)).start();
         });
         menu.getHint().setOnAction((ActionEvent e) -> {
             Square sq = control.getLastClicked();

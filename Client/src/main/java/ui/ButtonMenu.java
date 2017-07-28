@@ -14,7 +14,7 @@ import javafx.stage.Screen;
 public class ButtonMenu extends VBox {
     private final Button note = new Button("Note");
     private final Button clear = new Button("Clear");
-    private final Button pause = new Button("Pause");
+    private final Button newGame = new Button("New Game");
     private final Button hint = new Button("Show Answer");
     private final Button send = new Button("Send Game");
     private final Numbers numbers = new Numbers();
@@ -35,11 +35,11 @@ public class ButtonMenu extends VBox {
         numbers.setPadding(new Insets(padding));
         note.setPadding(new Insets(padding));
         clear.setPadding(new Insets(padding));
-        pause.setPadding(new Insets(padding));
+        newGame.setPadding(new Insets(padding));
         hint.setPadding(new Insets(padding));
         numbers.setPadding(new Insets(padding));
         send.setPadding(new Insets(padding));
-        this.getChildren().addAll(note, clear, pause, hint, numbers, send);
+        this.getChildren().addAll(note, clear, newGame, hint, numbers, send);
     }
 
     /**
@@ -59,11 +59,11 @@ public class ButtonMenu extends VBox {
     }
 
     /**
-     * A method that gets the Pause button.
-     * @return The Pause button.
+     * A method that gets the New Game button.
+     * @return The New Game button.
      */
-    public Button getPause() {
-        return pause;
+    public Button getNewGame() {
+        return newGame;
     }
 
     /**
