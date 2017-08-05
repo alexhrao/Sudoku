@@ -17,4 +17,4 @@
 *.RTF	 diff=astextplain
 
 # Set language:
-javadocs/* linguist-documentation
+/javadocs/* linguist-documentation
