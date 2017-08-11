@@ -722,13 +722,6 @@
       <updated>1359379246138</updated>
       <workItem from="1359379250712" duration="1302000" />
     </task>
-    <task id="LOCAL-00055" summary="Move Chat to ui package.">
-      <created>1483408055702</created>
-      <option name="number" value="00055" />
-      <option name="presentableId" value="LOCAL-00055" />
-      <option name="project" value="LOCAL" />
-      <updated>1483408055703</updated>
-    </task>
     <task id="LOCAL-00056" summary="Add DMG.">
       <created>1483414827577</created>
       <option name="number" value="00056" />
@@ -1065,7 +1058,14 @@
       <option name="project" value="LOCAL" />
       <updated>1501959925820</updated>
     </task>
-    <option name="localTasksCounter" value="104" />
+    <task id="LOCAL-00104" summary="Update workspace">
+      <created>1502488038205</created>
+      <option name="number" value="00104" />
+      <option name="presentableId" value="LOCAL-00104" />
+      <option name="project" value="LOCAL" />
+      <updated>1502488038205</updated>
+    </task>
+    <option name="localTasksCounter" value="105" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -1127,7 +1127,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="Include javadocs; add language specification." />
     <MESSAGE value="Allow user to use numeric keys to activate number." />
     <MESSAGE value="Fix Listener to fill text instead of outline." />
     <MESSAGE value="Remove printStackTrace() from integer parsing." />
@@ -1152,7 +1151,9 @@
     <MESSAGE value="Add NewGame Button" />
     <MESSAGE value="Update EXE Installer" />
     <MESSAGE value="Add documentation" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add documentation" />
+    <MESSAGE value="Update workspace" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update workspace" />
+    <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
