@@ -4,17 +4,25 @@ import javafx.animation.ParallelTransition;
 import javafx.animation.RotateTransition;
 import javafx.animation.SequentialTransition;
 import javafx.application.Platform;
+import javafx.embed.swing.SwingFXUtils;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
+import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
+import javafx.stage.Stage;
 import javafx.util.Duration;
+import main.java.networking.SudokuPacket.Data;
 import main.java.ui.GameUI;
 import main.java.ui.Notes;
 import main.java.ui.Square;
-import main.java.networking.SudokuPacket.Data;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
 import java.io.EOFException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.net.ConnectException;
 import java.net.Socket;
 import java.net.SocketException;
 
@@ -89,7 +97,7 @@ public class SudokuListener extends Thread implements Runnable {
                         if (ui.getControl().getId() == 0) {
                             ui.getControl().setId(id);
                         }
-                        Platform.runLater(() ->  ui.getInfo().addPlayer(name, Color.color(color[0], color[1], color[2], color[3])));
+                        Platform.runLater(() -> ui.getInfo().addPlayer(name, Color.color(color[0], color[1], color[2], color[3])));
                     } else if (instruct.isMessage()) {
                         if (instruct.getId() != ui.getControl().getId()) {
                             String message = instruct.getMessage();
@@ -220,6 +228,19 @@ public class SudokuListener extends Thread implements Runnable {
                     }
                 }
             }
+        } catch (ConnectException e) {
+            Platform.runLater(() -> {
+                Image icon = null;
+                try {
+                    BufferedImage bufferedImage = ImageIO.read(getClass().getResource("/icon.png"));
+                    icon = SwingFXUtils.toFXImage(bufferedImage, null);
+                } catch (IOException ignored) { }
+                Alert alert = new Alert(Alert.AlertType.ERROR, "Host was unreachable. Please reopen the app in a few minutes and try again.", ButtonType.OK);
+                Stage stage = (Stage)(alert.getDialogPane().getScene().getWindow());
+                stage.getIcons().add(icon);
+                alert.showAndWait();
+                System.exit(1);
+            });
         } catch (SocketException e) {
             e.printStackTrace();
         } catch(EOFException e) {

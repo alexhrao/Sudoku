@@ -18,13 +18,9 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
-import javafx.stage.FileChooser;
-import javafx.stage.Screen;
-import javafx.stage.Stage;
-import javafx.stage.StageStyle;
-import javafx.stage.WindowEvent;
-import main.java.networking.SudokuSender;
+import javafx.stage.*;
 import main.java.networking.SudokuListener;
+import main.java.networking.SudokuSender;
 import main.java.ui.Board;
 import main.java.ui.ButtonMenu;
 import main.java.ui.GameUI;
@@ -354,7 +350,8 @@ public class Sudoku extends Application{
                     control.setLastClicked(sq);
                     SudokuSender sender;
                     sq.setSelected(true);
-                    if (sq.getAnswer().getVisible() && !sq.getAnswer().getFill().equals(Color.DARKRED)) {
+                    if (sq.getAnswer().getVisible() &&
+                            sq.getAnswer().getValue() == control.getSolnBoard()[sq.getRow()][sq.getCol()]) {
                         ui.getMenu().disable();
                     } else {
                         ui.getMenu().enable();
@@ -362,7 +359,7 @@ public class Sudoku extends Application{
                     sq.getOverlay().setStroke(control.getColor());
                     sq.getOverlay().setStrokeWidth(3);
                     if (!(sq.getAnswer().getVisible()
-                            && !sq.getAnswer().getFill().equals(Color.DARKRED))) {
+                            && sq.getAnswer().getValue() == control.getSolnBoard()[sq.getRow()][sq.getCol()])) {
                         if (sq.getAnswer().getValue() == ans) {
                             sq.getAnswer().setFill(control.getColor());
                         } else {
