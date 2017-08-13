@@ -7,11 +7,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="Add new EXE">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/installers/EXE/SudokuAlexServer.jar" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/installers/EXE/Output/InstallSudokuOnline.exe" afterPath="$PROJECT_DIR$/installers/EXE/Output/InstallSudokuOnline.exe" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/installers/EXE/SudokuOnline.exe" afterPath="$PROJECT_DIR$/installers/EXE/SudokuOnline.exe" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/installers/EXE/SudokuPlayer.jar" afterPath="$PROJECT_DIR$/installers/EXE/SudokuPlayer.jar" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Sudoku.iml" afterPath="$PROJECT_DIR$/Sudoku.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Client/src/main/java/networking/SudokuListener.java" afterPath="$PROJECT_DIR$/Client/src/main/java/networking/SudokuListener.java" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -78,20 +79,20 @@
       <file leaf-file-name="SudokuServerThread.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Server/src/main/java/networking/SudokuServerThread.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
+            <state relative-caret-position="2414">
               <caret line="151" column="61" lean-forward="false" selection-start-line="151" selection-start-column="61" selection-end-line="151" selection-end-column="61" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Sudoku.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Sudoku.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Client/src/main/java/logic/Sudoku.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="147">
-              <caret line="379" column="21" lean-forward="true" selection-start-line="379" selection-start-column="21" selection-end-line="379" selection-end-column="21" />
+            <state relative-caret-position="-4188">
+              <caret line="124" column="60" lean-forward="false" selection-start-line="124" selection-start-column="60" selection-end-line="124" selection-end-column="60" />
               <folding>
-                <marker date="1502642159859" expanded="true" signature="13554:13745" ph="{...}" />
+                <marker date="1502646903796" expanded="true" signature="13554:13745" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -103,20 +104,30 @@
             <state relative-caret-position="850">
               <caret line="60" column="40" lean-forward="false" selection-start-line="60" selection-start-column="40" selection-end-line="60" selection-end-column="40" />
               <folding>
-                <marker date="1502642885164" expanded="true" signature="3575:3736" ph="{...}" />
+                <marker date="1502646903799" expanded="true" signature="3575:3736" ph="{...}" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SudokuListener.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="SudokuListener.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Client/src/main/java/networking/SudokuListener.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2312">
-              <caret line="160" column="41" lean-forward="false" selection-start-line="160" selection-start-column="41" selection-end-line="160" selection-end-column="41" />
+            <state relative-caret-position="445">
+              <caret line="188" column="63" lean-forward="true" selection-start-line="188" selection-start-column="63" selection-end-line="188" selection-end-column="63" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Notes.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Client/src/main/java/ui/Notes.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="218">
+              <caret line="65" column="0" lean-forward="false" selection-start-line="65" selection-start-column="0" selection-end-line="65" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -261,10 +272,10 @@
         <option value="$PROJECT_DIR$/server/src/main/java/networking/SudokuServer.java" />
         <option value="$PROJECT_DIR$/server/src/main/java/networking/SudokuServerThread.java" />
         <option value="$PROJECT_DIR$/Client/src/main/java/ui/Notes.java" />
-        <option value="$PROJECT_DIR$/Client/src/main/java/networking/SudokuListener.java" />
         <option value="$PROJECT_DIR$/Client/src/main/java/ui/GameUI.java" />
-        <option value="$PROJECT_DIR$/Client/src/main/java/logic/Sudoku.java" />
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/Client/src/main/java/logic/Sudoku.java" />
+        <option value="$PROJECT_DIR$/Client/src/main/java/networking/SudokuListener.java" />
       </list>
     </option>
   </component>
@@ -313,7 +324,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -343,13 +353,46 @@
               <item name="installers" type="462c0819:PsiDirectoryNode" />
               <item name="EXE" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="Sudoku" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Sudoku" type="462c0819:PsiDirectoryNode" />
+              <item name="installers" type="462c0819:PsiDirectoryNode" />
+              <item name="EXE" type="462c0819:PsiDirectoryNode" />
+              <item name="Output" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Sudoku" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Sudoku" type="462c0819:PsiDirectoryNode" />
+              <item name="out" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Sudoku" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Sudoku" type="462c0819:PsiDirectoryNode" />
+              <item name="out" type="462c0819:PsiDirectoryNode" />
+              <item name="artifacts" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Sudoku" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Sudoku" type="462c0819:PsiDirectoryNode" />
+              <item name="out" type="462c0819:PsiDirectoryNode" />
+              <item name="artifacts" type="462c0819:PsiDirectoryNode" />
+              <item name="SudokuAlexServer" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Sudoku" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Sudoku" type="462c0819:PsiDirectoryNode" />
+              <item name="out" type="462c0819:PsiDirectoryNode" />
+              <item name="artifacts" type="462c0819:PsiDirectoryNode" />
+              <item name="SudokuPlayer" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
       <pane id="Scratches" />
+      <pane id="AndroidView" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -379,8 +422,20 @@
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="groovy.util.GroovyTestCase" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\alexh\Documents\IntelliJProjects\Sudoku\installers\EXE" />
+      <recent name="C:\Users\alexh\Documents\IntelliJProjects\Sudoku\installers" />
+      <recent name="C:\Users\alexh\Documents\IntelliJProjects\Sudoku" />
+      <recent name="C:\Users\alexh\Documents\IntelliJProjects\Sudoku\Client" />
+      <recent name="C:\Users\alexh\Documents\IntelliJProjects\Sudoku\Client\src\main\resources" />
+    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="main.java.logic" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="main.java.networking" />
+      <recent name="java.networking" />
+      <recent name="main.java.ui" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\alexhrao\Documents\IntelliJ\Sudoku\installers\EXE" />
@@ -388,18 +443,6 @@
       <recent name="C:\Users\alexh\Documents\IntelliJProjects\Sudoku\installers\DMG" />
       <recent name="C:\Users\alexh\Documents\IntelliJProjects\Sudoku" />
       <recent name="C:\Users\alexh\Documents\IntelliJProjects\Sudoku\Server\src\main\java\ui" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="main.java.networking" />
-      <recent name="java.networking" />
-      <recent name="main.java.ui" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\alexh\Documents\IntelliJProjects\Sudoku\installers\EXE" />
-      <recent name="C:\Users\alexh\Documents\IntelliJProjects\Sudoku\installers" />
-      <recent name="C:\Users\alexh\Documents\IntelliJProjects\Sudoku" />
-      <recent name="C:\Users\alexh\Documents\IntelliJProjects\Sudoku\Client" />
-      <recent name="C:\Users\alexh\Documents\IntelliJProjects\Sudoku\Client\src\main\resources" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -1054,12 +1097,12 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32979852" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27889714" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27889714" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32978207" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3298153" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15059927" sideWeight="0.6703755" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15059927" sideWeight="0.6703755" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -1354,7 +1397,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Server/src/main/java/networking/SudokuServerThread.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
+        <state relative-caret-position="2414">
           <caret line="151" column="61" lean-forward="false" selection-start-line="151" selection-start-column="61" selection-end-line="151" selection-end-column="61" />
           <folding />
         </state>
@@ -1397,30 +1440,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Client/src/main/java/ui/Notes.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="65" column="0" lean-forward="false" selection-start-line="65" selection-start-column="0" selection-end-line="65" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Client/src/main/java/networking/SudokuListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2312">
-          <caret line="160" column="41" lean-forward="false" selection-start-line="160" selection-start-column="41" selection-end-line="160" selection-end-column="41" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Client/src/main/java/ui/GameUI.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="850">
           <caret line="60" column="40" lean-forward="false" selection-start-line="60" selection-start-column="40" selection-end-line="60" selection-end-column="40" />
           <folding>
-            <marker date="1502642885164" expanded="true" signature="3575:3736" ph="{...}" />
+            <marker date="1502646903799" expanded="true" signature="3575:3736" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -1435,10 +1460,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Client/src/main/java/logic/Sudoku.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="379" column="21" lean-forward="true" selection-start-line="379" selection-start-column="21" selection-end-line="379" selection-end-column="21" />
+        <state relative-caret-position="-4188">
+          <caret line="124" column="60" lean-forward="false" selection-start-line="124" selection-start-column="60" selection-end-line="124" selection-end-column="60" />
           <folding>
-            <marker date="1502642159859" expanded="true" signature="13554:13745" ph="{...}" />
+            <marker date="1502646903796" expanded="true" signature="13554:13745" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Client/src/main/java/ui/Notes.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="218">
+          <caret line="65" column="0" lean-forward="false" selection-start-line="65" selection-start-column="0" selection-end-line="65" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Client/src/main/java/networking/SudokuListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="445">
+          <caret line="188" column="63" lean-forward="true" selection-start-line="188" selection-start-column="63" selection-end-line="188" selection-end-column="63" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
