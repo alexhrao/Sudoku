@@ -7,10 +7,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/installers/EXE/Output/InstallSudokuOnline.exe" afterPath="$PROJECT_DIR$/installers/EXE/Output/InstallSudokuOnline.exe" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/installers/EXE/SudokuAlexServer.jar" afterPath="$PROJECT_DIR$/installers/EXE/SudokuAlexServer.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/installers/EXE/SudokuOnline.exe" afterPath="$PROJECT_DIR$/installers/EXE/SudokuOnline.exe" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/installers/EXE/SudokuPlayer.jar" afterPath="$PROJECT_DIR$/installers/EXE/SudokuPlayer.jar" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="JavaFxApplication.iws" />
@@ -100,8 +96,8 @@
       <file leaf-file-name="SudokuListener.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Client/src/main/java/networking/SudokuListener.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1566">
-              <caret line="180" column="0" lean-forward="false" selection-start-line="180" selection-start-column="0" selection-end-line="180" selection-end-column="0" />
+            <state relative-caret-position="291">
+              <caret line="105" column="112" lean-forward="true" selection-start-line="105" selection-start-column="112" selection-end-line="105" selection-end-column="112" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -752,13 +748,6 @@
       <updated>1359379246138</updated>
       <workItem from="1359379250712" duration="1302000" />
     </task>
-    <task id="LOCAL-00059" summary="Add CSS file.">
-      <created>1483547861395</created>
-      <option name="number" value="00059" />
-      <option name="presentableId" value="LOCAL-00059" />
-      <option name="project" value="LOCAL" />
-      <updated>1483547861395</updated>
-    </task>
     <task id="LOCAL-00060" summary="Fix bug where numbers would not disable if not possible.">
       <created>1483548568916</created>
       <option name="number" value="00060" />
@@ -1095,7 +1084,14 @@
       <option name="project" value="LOCAL" />
       <updated>1502585382331</updated>
     </task>
-    <option name="localTasksCounter" value="108" />
+    <task id="LOCAL-00108" summary="Add new EXE">
+      <created>1502585684527</created>
+      <option name="number" value="00108" />
+      <option name="presentableId" value="LOCAL-00108" />
+      <option name="project" value="LOCAL" />
+      <updated>1502585684527</updated>
+    </task>
+    <option name="localTasksCounter" value="109" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -1157,7 +1153,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="Fix Listener to fill text instead of outline." />
     <MESSAGE value="Remove printStackTrace() from integer parsing." />
     <MESSAGE value="Add TODO for resizing" />
     <MESSAGE value="Add ability to specify port for server" />
@@ -1182,7 +1177,8 @@
     <MESSAGE value="Add documentation" />
     <MESSAGE value="Update workspace" />
     <MESSAGE value="Fix #13 (Bug where player cannot see correct board" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix #13 (Bug where player cannot see correct board" />
+    <MESSAGE value="Add new EXE" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add new EXE" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -1536,8 +1532,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Client/src/main/java/networking/SudokuListener.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1566">
-          <caret line="180" column="0" lean-forward="false" selection-start-line="180" selection-start-column="0" selection-end-line="180" selection-end-column="0" />
+        <state relative-caret-position="291">
+          <caret line="105" column="112" lean-forward="true" selection-start-line="105" selection-start-column="112" selection-end-line="105" selection-end-column="112" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
