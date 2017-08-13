@@ -125,7 +125,7 @@ public class Sudoku extends Application{
         playerAskColor.setFont(new Font(screenHeight / 65));
         playerAskColor.setFill(Color.BROWN);
         ColorPicker colorPicker = new ColorPicker(Color.RED);
-        colorPicker.setMaxWidth(screenHeight / 5);
+        colorPicker.setMaxWidth(screenHeight / 6.5);
         colorPane.add(playerAskColor, 0, 0);
         colorPane.add(colorPicker, 1, 0);
 
@@ -320,8 +320,21 @@ public class Sudoku extends Application{
         for (int i = 0; i < 9; i++) {
             final int num = i;
             menu.getNumber(i).setOnAction((ActionEvent e) -> {
-                ui.getBoard().getSquare(control.getLastClicked().getRow(), control.getLastClicked().getCol()).clear();
-                ui.getBoard().getSquare(control.getLastClicked().getRow(), control.getLastClicked().getCol()).getAnswer().setValue(num + 1);
+                Square square = ui.getBoard().getSquare(control.getLastClicked().getRow(), control.getLastClicked().getCol());
+                if (control.isNote()) {
+                    // Toggle note
+                    square.getAnswer().clear();
+                    square.getNotes().toggle(num + 1);
+                } else {
+                    // Answer
+                    square.clear();
+                    square.getAnswer().setValue(num + 1);
+                    if ((num + 1) == control.getSolnBoard()[square.getRow()][square.getCol()]) {
+                        square.getAnswer().setFill(control.getColor());
+                    } else {
+                        square.getAnswer().setFill(Color.DARKRED);
+                    }
+                }
                 SudokuSender sender = new SudokuSender(control, control.getLastClicked());
                 Thread tClient = new Thread(sender);
                 tClient.start();
@@ -336,7 +349,7 @@ public class Sudoku extends Application{
                     int ans = ui.getSolnBoard()[sq.getRow()][sq.getCol()];
                     for (int r = 0; r < 9; r++) {
                         for (int c = 0; c < 9; c++) {
-                            if (board.getSquare(r, c).getOverlay().getStroke().equals(control.getColor())) {
+                            if (board.getSquare(r, c) == control.getLastClicked()) {
                                 board.getSquare(r, c).getOverlay().setStroke(Color.BLACK);
                             }
                             board.getSquare(r, c).getOverlay().setStrokeWidth(1);
@@ -358,8 +371,7 @@ public class Sudoku extends Application{
                     }
                     sq.getOverlay().setStroke(control.getColor());
                     sq.getOverlay().setStrokeWidth(3);
-                    if (!(sq.getAnswer().getVisible()
-                            && sq.getAnswer().getValue() == control.getSolnBoard()[sq.getRow()][sq.getCol()])) {
+                    if (!(sq.getAnswer().getVisible())) {
                         if (sq.getAnswer().getValue() == ans) {
                             sq.getAnswer().setFill(control.getColor());
                         } else {
@@ -392,6 +404,9 @@ public class Sudoku extends Application{
         game.setOnKeyTyped((KeyEvent n) -> {
             try {
                 int num = Integer.parseInt(n.getCharacter()) - 1;
+                if (num < 0 || num > 8) {
+                    throw new NumberFormatException();
+                }
                 if (!ui.getMenu().getNumber(num).isDisabled()) {
                     ui.getMenu().getNumber(num).fire();
                 }

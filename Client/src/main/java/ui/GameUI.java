@@ -2,7 +2,10 @@ package main.java.ui;
 
 import javafx.scene.control.ScrollPane;
 import javafx.scene.input.KeyCode;
-import javafx.scene.layout.*;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Screen;
@@ -57,6 +60,7 @@ public class GameUI extends BorderPane {
             if (e.getCode().equals(KeyCode.ENTER)) {
                 chatter.getSender().fire();
                 this.scrollToBottom();
+                this.requestFocus();
             }
         });
         chatter.getChatter().setOnKeyReleased(e -> {

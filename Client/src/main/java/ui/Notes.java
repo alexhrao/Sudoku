@@ -54,8 +54,8 @@ public class Notes extends GridPane {
      * @param note An integer from 0-8, inclusive.
      */
     public void show(int note) {
-        notes[note].setVisible(true);
-        visibility[note] = true;
+        notes[note - 1].setVisible(true);
+        visibility[note - 1] = true;
     }
 
     /**
@@ -63,8 +63,8 @@ public class Notes extends GridPane {
      * @param note An integer from 0-8, inclusive.
      */
     public void hide(int note) {
-        notes[note].setVisible(false);
-        visibility[note] = false;
+        notes[note - 1].setVisible(false);
+        visibility[note - 1] = false;
     }
 
     /**
@@ -72,7 +72,7 @@ public class Notes extends GridPane {
      * @param note An integer from 0-8, inclusive.
      */
     public void toggle(int note) {
-        if (visibility[note]) {
+        if (visibility[note - 1]) {
             hide(note);
         } else {
             show(note);
@@ -84,7 +84,7 @@ public class Notes extends GridPane {
      */
     public void clear() {
         for (int k = 0; k < 9; k++) {
-            this.hide(k);
+            this.hide(k + 1);
         }
     }
 

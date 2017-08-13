@@ -168,9 +168,9 @@ public class SudokuListener extends Thread implements Runnable {
                                 square.getAnswer().setVisible(false);
                                 for (int n = 0; n < 9; n++) {
                                     if (contains(notes, n)) {
-                                        square.getNotes().show(n);
+                                        square.getNotes().show(n + 1);
                                     } else {
-                                        square.getNotes().hide(n);
+                                        square.getNotes().hide(n + 1);
                                     }
                                 }
                             }
