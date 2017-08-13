@@ -1,7 +1,6 @@
 package main.java.networking;
 
 import javafx.scene.paint.Color;
-
 import main.java.generator.SudokuBoard;
 import main.java.generator.SudokuSolver;
 
@@ -85,7 +84,7 @@ class SudokuServerThread extends Thread {
                 */
         try (ObjectOutputStream out = new ObjectOutputStream(client.getOutputStream())) {
             out.flush();
-            try (ObjectInputStream reader = new ObjectInputStream(client.getInputStream())) {;
+            try (ObjectInputStream reader = new ObjectInputStream(client.getInputStream())) {
                 SudokuPacket instruct = (SudokuPacket) reader.readObject();
                 if (instruct.isStarter()) {
                     if (instruct.isQuery()) {
@@ -166,8 +165,8 @@ class SudokuServerThread extends Thread {
                         SudokuBoard generator = new SudokuBoard(instruct.getSpaces());
                         server.setBoards(generator.getBoard(), generator.getSoln());
                         instruct = new SudokuPacket(server.getBoard(), server.getSoln());
-                        server.addPacket(instruct);
                     }
+                    server.addPacket(instruct);
                     for (SudokuServerThread thread : server.getThreads()) {
                         if (thread != null && thread.isAlive()) {
                             thread.setPacket(instruct);

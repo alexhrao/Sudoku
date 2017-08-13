@@ -2,7 +2,9 @@ package main.java.networking;
 
 import javafx.scene.paint.Color;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.ServerSocket;
 import java.net.SocketException;
 import java.util.ArrayList;
@@ -16,12 +18,12 @@ public class SudokuServer implements Runnable {
     private volatile boolean isGoing = true;
     private volatile boolean firstPlayer = true;
     private ServerSocket server;
-    private final ArrayList<SudokuServerThread> connections = new ArrayList<>();
-    private final ArrayList<String> playerName = new ArrayList<>();
-    private final ArrayList<Color> playerColor = new ArrayList<>();
-    private final ArrayList<Integer> playerId = new ArrayList<>();
-    private final ArrayList<Game> games = new ArrayList<>();
-    private final ArrayList<SudokuPacket> packets = new ArrayList<>();
+    private volatile ArrayList<SudokuServerThread> connections = new ArrayList<>();
+    private volatile ArrayList<String> playerName = new ArrayList<>();
+    private volatile ArrayList<Color> playerColor = new ArrayList<>();
+    private volatile ArrayList<Integer> playerId = new ArrayList<>();
+    private volatile ArrayList<Game> games = new ArrayList<>();
+    private volatile ArrayList<SudokuPacket> packets = new ArrayList<>();
     private volatile int[][] board;
     private volatile int[][] soln;
     private volatile int spaces = 30;
