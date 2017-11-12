@@ -15,7 +15,7 @@
   <manifest></manifest>
   <icon>SudokuAlexPlayer.ico</icon>
   <jre>
-    <path>jre1.8.0_144\</path>
+    <path>jre1.8.0_152\</path>
     <bundledJre64Bit>false</bundledJre64Bit>
     <bundledJreAsFallback>false</bundledJreAsFallback>
     <minVersion></minVersion>
